@@ -1404,7 +1404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12, y: -329.7}
+  m_AnchoredPosition: {x: 11.1, y: -329.7}
   m_SizeDelta: {x: 1006.3636, y: 2080.003}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &90240505
@@ -10069,6 +10069,9 @@ MonoBehaviour:
   worldCupSeason: 0
   hogwartsTeam1: 010000000200000003000000000000000300000001000000
   hogwartsTeam2: 000000000300000001000000020000000000000002000000
+  nextGame: {fileID: 0}
+  seekers: {fileID: 0}
+  chasers: {fileID: 0}
 --- !u!1 &523698849
 GameObject:
   m_ObjectHideFlags: 0
@@ -27676,10 +27679,10 @@ MonoBehaviour:
   house20SeekerDodge: 9
   house21SeekerDodge: 16
   house22SeekerDodge: 27
-  house1SeekerSight: 18
-  house2SeekerSight: 24
-  house3SeekerSight: 18
-  house4SeekerSight: 20
+  house1SeekerSight: 25
+  house2SeekerSight: 31
+  house3SeekerSight: 25
+  house4SeekerSight: 27
   house5SeekerSight: 35
   house6SeekerSight: 38
   house7SeekerSight: 38
