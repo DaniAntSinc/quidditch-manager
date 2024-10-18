@@ -98,6 +98,8 @@ public class GameManager : MonoBehaviour
 
     public TMP_Text seasonCountText;
 
+    public GameObject startMenu;
+
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -109,6 +111,11 @@ public class GameManager : MonoBehaviour
         britishIslesSeason = false;
         worldCupSeason = false;
         seasonGameCount = 0;
+    }
+
+    public void CloseStartMenu()
+    {
+        startMenu.SetActive(false);
     }
 
     public void TurnOnStats()
@@ -259,6 +266,7 @@ public class GameManager : MonoBehaviour
     {
         newTextLine = Instantiate(textElement, transform.position, transform.rotation);
         newTextLine.transform.parent = textElementHolder.transform;
+        newTextLine.transform.localPosition = new Vector3(0, 0, 0);
         newTextLine.transform.localScale = new Vector3(1, 1, 1);
 
         newTextLine.transform.SetAsFirstSibling();
