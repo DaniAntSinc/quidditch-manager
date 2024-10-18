@@ -9,6 +9,9 @@ using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject cheatsGO;
+    public bool cheats;
+
     public bool team1HasPossession;
     public float pitchLocation = 50;
     public TMP_Text team1ScoreText, team2ScoreText;
@@ -148,16 +151,25 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (cheats)
+        {
+            cheatsGO.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                StartGame();
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+                ReloadScene();
+        }
+        else
+        {
+            cheatsGO.SetActive(false);
+        }
+
         if (visitorText.text != "Visitor" && homeText.text != "Home")
             teamsSelected.SetActive(true);
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            StartGame();
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-            ReloadScene();
-
+       
         if (matchOver && !winnerChosen)
         {
             if (team1Score > team2Score)
