@@ -151,6 +151,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        /*if (Input.GetKeyDown(KeyCode.C))
+        {
+            cheats = !cheats;
+        }*/
         if (cheats)
         {
             cheatsGO.SetActive(true);
@@ -183,40 +187,51 @@ public class GameManager : MonoBehaviour
                 print("game is tied. sudden death? ");
             }
             winnerChosen = true;
-            if ((hogwartsSeason && seasonGameCount <= hogwartsTeam1.Length - 2))
+            if (hogwartsSeason)
             {
-                seasonCountText.text = "Game " + (seasonGameCount + 1) + " of " + hogwartsTeam1.Length;
-                nextGame.SetActive(true);
-
-                if (team1Score > team2Score)
+                if (seasonGameCount <= hogwartsTeam1.Length - 2)
                 {
-                    seasonTeams[hogwartsTeam1[seasonGameCount]].win++;
-                    seasonTeams[hogwartsTeam2[seasonGameCount]].loss++;
+                    seasonCountText.text = "Game " + (seasonGameCount + 1) + " of " + hogwartsTeam1.Length;
+                    nextGame.SetActive(true);
+
+                    if (team1Score > team2Score)
+                    {
+                        seasonTeams[hogwartsTeam1[seasonGameCount]].win++;
+                        seasonTeams[hogwartsTeam2[seasonGameCount]].loss++;
+                    }
+
+
+                    else if (team1Score < team2Score)
+                    {
+                        seasonTeams[hogwartsTeam2[seasonGameCount]].win++;
+                        seasonTeams[hogwartsTeam1[seasonGameCount]].loss++;
+                    }
+
+                    seasonTeams[hogwartsTeam1[seasonGameCount]].score += team1Score;
+                    seasonTeams[hogwartsTeam2[seasonGameCount]].score += team2Score;
+
+                    for (int i = 0; i < hogwartsTeamStandingsClass.Count; i++)
+                    {
+                        hogwartsTeamStandingsClass[i] = hogwartsTeams[i];
+                    }
+
+                    var tempStandings = hogwartsTeamStandingsClass.OrderByDescending(i => i.win).ThenBy(l => l.loss).ThenByDescending(p => p.score).ToList();
+
+                    for (int i = 0; i < tempStandings.Count; i++)
+                    {
+                        hogwartsSeasonTeam[i].text = tempStandings[i].team.ToString();
+                        hogwartsSeasonWin[i].text = tempStandings[i].win.ToString();
+                        hogwartsSeasonLoss[i].text = tempStandings[i].loss.ToString();
+                        hogwartsSeasonScore[i].text = tempStandings[i].score.ToString();
+                    }
                 }
-
-
-                else if (team1Score < team2Score)
+                else
                 {
-                    seasonTeams[hogwartsTeam2[seasonGameCount]].win++;
-                    seasonTeams[hogwartsTeam1[seasonGameCount]].loss++;
-                }
-
-                seasonTeams[hogwartsTeam1[seasonGameCount]].score += team1Score;
-                seasonTeams[hogwartsTeam2[seasonGameCount]].score += team2Score;
-
-                for (int i = 0; i < hogwartsTeamStandingsClass.Count; i++)
-                {
-                    hogwartsTeamStandingsClass[i] = hogwartsTeams[i];
-                }
-
-                var tempStandings = hogwartsTeamStandingsClass.OrderByDescending(i=>i.win).ThenBy(l=>l.loss).ThenByDescending(p=>p.score).ToList();
-
-                for (int i = 0; i < tempStandings.Count; i++)
-                {
-                    hogwartsSeasonTeam[i].text = tempStandings[i].team.ToString();
-                    hogwartsSeasonWin[i].text = tempStandings[i].win.ToString();
-                    hogwartsSeasonLoss[i].text = tempStandings[i].loss.ToString();
-                    hogwartsSeasonScore[i].text = tempStandings[i].score.ToString();
+                    seasonCountText.text = "Final Standings";
+                    OpenStats();
+                    TurnOnStandings();
+                    nextGame.SetActive(false);
+                    newGameButton.SetActive(true);
                 }
             }
             /*  else if (britishIslesSeason && seasonGameCount <= hogwartsTeam1.Length - 2))
@@ -1242,6 +1257,7 @@ public class GameManager : MonoBehaviour
         winnerChosen = false;
         matchOver = false;
         duration = 0;
+        seekers.gameStarted = false;
 
         windowGraph.GetComponent<WindowGraph>().DestroyAllChildren();
 
