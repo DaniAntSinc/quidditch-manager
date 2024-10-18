@@ -42,8 +42,11 @@ public class Seekers : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
-            Team1Caught();
+        if (gameManager.cheats)
+        {
+            if (Input.GetKeyDown(KeyCode.S))
+                Team1Caught();
+        }
         if (gameStarted)
         {
             if (!gameManager.matchOver)

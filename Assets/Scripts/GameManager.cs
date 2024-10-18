@@ -5,9 +5,13 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject cheatsGO;
+    public bool cheats;
+
     public bool team1HasPossession;
     public float pitchLocation = 50;
     public TMP_Text team1ScoreText, team2ScoreText;
@@ -69,18 +73,30 @@ public class GameManager : MonoBehaviour
 
     public List<int> valueListMaco = new List<int>() { };
 
-    public GameObject matchStatsMenu, matchMomentumMenu, windowGraph;
+    public GameObject matchStatsMenu, matchMomentumMenu, windowGraph, matchStandingsMenu;
     public TMP_Text team1Momentum, team2Momentum;
+    public GameObject seasonButtonMenu;
 
     //season Menu
     public GameObject exhibSeasonMenu, exhibButton, seasonButton, seasonBack, seasonBegin, seasonList;
     public bool hogwartsSeason, britishIslesSeason, worldCupSeason;
-    public int[] hogwartsTeam1 = new int[]{1,2,3,0,3,1};
-    public int[] hogwartsTeam2 = new int[] {0,3,1,2,0,2};
+    public int[] hogwartsTeam1 = new int[] { 1, 2, 3, 0, 3, 1 };
+    public int[] hogwartsTeam2 = new int[] { 0, 3, 1, 2, 0, 2 };
+
+    public SeasonTeam[] seasonTeams;
     int seasonGameCount;
     public GameObject nextGame;
     public Seekers seekers;
     public Chasers chasers;
+
+    public TMP_Text[] hogwartsSeasonTeam;
+    public TMP_Text[] hogwartsSeasonWin;
+    public TMP_Text[] hogwartsSeasonLoss;
+    public TMP_Text[] hogwartsSeasonScore;
+    public SeasonTeam[] hogwartsTeams;
+    List<SeasonTeam> hogwartsTeamStandingsClass = new List<SeasonTeam>();
+
+    public TMP_Text seasonCountText;
 
     private void Start()
     {
@@ -99,15 +115,24 @@ public class GameManager : MonoBehaviour
     {
         matchStatsMenu.SetActive(true);
         matchMomentumMenu.SetActive(false);
+        matchStandingsMenu.SetActive(false);
     }
 
     public void TurnOnMomentum()
     {
         matchStatsMenu.SetActive(false);
+        matchStandingsMenu.SetActive(false);
         matchMomentumMenu.SetActive(true);
         team1Momentum.text = players.team1;
         team2Momentum.text = players.team2;
         windowGraph.GetComponent<WindowGraph>().ToggleMomentum();
+    }
+
+    public void TurnOnStandings()
+    {
+        matchStatsMenu.SetActive(false);
+        matchMomentumMenu.SetActive(false);
+        matchStandingsMenu.SetActive(true);
     }
 
     public void SetLineUp()
@@ -126,16 +151,29 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        /*if (Input.GetKeyDown(KeyCode.C))
+        {
+            cheats = !cheats;
+        }*/
+        if (cheats)
+        {
+            cheatsGO.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                StartGame();
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+                ReloadScene();
+        }
+        else
+        {
+            cheatsGO.SetActive(false);
+        }
+
         if (visitorText.text != "Visitor" && homeText.text != "Home")
             teamsSelected.SetActive(true);
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            StartGame();
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-            ReloadScene();
-
+       
         if (matchOver && !winnerChosen)
         {
             if (team1Score > team2Score)
@@ -143,16 +181,67 @@ public class GameManager : MonoBehaviour
 
             else if (team1Score < team2Score)
                 CreateGameEvent(players.team2 + " wins! Final Score: " + team2Score + " to " + team1Score);
+
             else
             {
                 print("game is tied. sudden death? ");
             }
             winnerChosen = true;
-            if ((hogwartsSeason && seasonGameCount <= hogwartsTeam1.Length - 2) || britishIslesSeason || worldCupSeason)
+            if (hogwartsSeason)
             {
-                print("here: " + seasonGameCount);
-                nextGame.SetActive(true);
+                if (seasonGameCount <= hogwartsTeam1.Length - 2)
+                {
+                    seasonCountText.text = "Game " + (seasonGameCount + 1) + " of " + hogwartsTeam1.Length;
+                    nextGame.SetActive(true);
+
+                    if (team1Score > team2Score)
+                    {
+                        seasonTeams[hogwartsTeam1[seasonGameCount]].win++;
+                        seasonTeams[hogwartsTeam2[seasonGameCount]].loss++;
+                    }
+
+
+                    else if (team1Score < team2Score)
+                    {
+                        seasonTeams[hogwartsTeam2[seasonGameCount]].win++;
+                        seasonTeams[hogwartsTeam1[seasonGameCount]].loss++;
+                    }
+
+                    seasonTeams[hogwartsTeam1[seasonGameCount]].score += team1Score;
+                    seasonTeams[hogwartsTeam2[seasonGameCount]].score += team2Score;
+
+                    for (int i = 0; i < hogwartsTeamStandingsClass.Count; i++)
+                    {
+                        hogwartsTeamStandingsClass[i] = hogwartsTeams[i];
+                    }
+
+                    var tempStandings = hogwartsTeamStandingsClass.OrderByDescending(i => i.win).ThenBy(l => l.loss).ThenByDescending(p => p.score).ToList();
+
+                    for (int i = 0; i < tempStandings.Count; i++)
+                    {
+                        hogwartsSeasonTeam[i].text = tempStandings[i].team.ToString();
+                        hogwartsSeasonWin[i].text = tempStandings[i].win.ToString();
+                        hogwartsSeasonLoss[i].text = tempStandings[i].loss.ToString();
+                        hogwartsSeasonScore[i].text = tempStandings[i].score.ToString();
+                    }
+                }
+                else
+                {
+                    seasonCountText.text = "Final Standings";
+                    OpenStats();
+                    TurnOnStandings();
+                    nextGame.SetActive(false);
+                    newGameButton.SetActive(true);
+                }
             }
+            /*  else if (britishIslesSeason && seasonGameCount <= hogwartsTeam1.Length - 2))
+              {
+
+              }
+              else if (worldCupSeason && seasonGameCount <= hogwartsTeam1.Length - 2) )
+              { 
+
+              }*/
             else
             {
                 nextGame.SetActive(false);
@@ -192,6 +281,11 @@ public class GameManager : MonoBehaviour
 
     public void OpenStats()
     {
+        if (hogwartsSeason)
+        {
+            seasonButtonMenu.SetActive(true);
+        }
+
         statsPostGame.SetActive(true);
         matchStatsMenu.SetActive(true);
         matchMomentumMenu.SetActive(false);
@@ -1051,6 +1145,10 @@ public class GameManager : MonoBehaviour
     public void Exhibition() 
     {
         exhibSeasonMenu.SetActive(false);
+
+        hogwartsSeason = false;
+        britishIslesSeason = false;
+        worldCupSeason = false;
     }
 
     public void SeasonButton()
@@ -1069,6 +1167,11 @@ public class GameManager : MonoBehaviour
 
         seasonBack.SetActive(true);
         seasonBegin.SetActive(true);
+
+        hogwartsTeamStandingsClass.Add(seasonTeams[0]);
+        hogwartsTeamStandingsClass.Add(seasonTeams[1]);
+        hogwartsTeamStandingsClass.Add(seasonTeams[2]);
+        hogwartsTeamStandingsClass.Add(seasonTeams[3]);
     }
 
     public void BritishSeason()
@@ -1107,6 +1210,12 @@ public class GameManager : MonoBehaviour
 
     public void SeasonBegin()
     {
+        for (int i = 0; i < seasonTeams.Length; i++)
+        {
+            seasonTeams[i].win = 0;
+            seasonTeams[i].loss = 0;
+            seasonTeams[i].score = 0;
+        }
         if (hogwartsSeason)
         {
             visitorTeam = hogwartsTeam1[0];
@@ -1148,6 +1257,9 @@ public class GameManager : MonoBehaviour
         winnerChosen = false;
         matchOver = false;
         duration = 0;
+        seekers.gameStarted = false;
+
+        windowGraph.GetComponent<WindowGraph>().DestroyAllChildren();
 
 
      team1Chaser1Shot = 0; team1Chaser1Goal = 0; team1Chaser1Tackles = 0; team1Chaser1Intercepts = 0;

@@ -10,7 +10,7 @@ public class WindowGraph : MonoBehaviour
 {
     [SerializeField] private Sprite circleSprite;
     public TMP_Text maxUI, minUI, middleMax, middleMin;
-    private RectTransform graphContainer;
+    public RectTransform graphContainer;
     int maxValue;
 
     public GameObject gameManager;
@@ -29,7 +29,14 @@ public class WindowGraph : MonoBehaviour
 
     public void DestroyAllChildren()
     {
-        valueList.Clear();
+        if (graphContainer.transform.childCount > 0)
+        {
+            for (int i = 0; i < graphContainer.transform.childCount; i++)
+            {
+                Destroy(graphContainer.transform.GetChild(i).gameObject);
+            }
+        }
+
     }
 
     private GameObject CreateCircle(Vector2 anchoredPosition)

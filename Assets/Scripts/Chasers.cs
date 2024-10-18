@@ -101,16 +101,32 @@ public class Chasers : MonoBehaviour
 
     void CalculateSeekerTime()
     {
-        int[] seekerTime1 = { Random.Range(1, 60), Random.Range(1, 60), Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(450, 1800) };
-        int[] seekerTime2 = { Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 900), Random.Range(450, 1800) };
-        int[] seekerTime3 = { Random.Range(1, 60), Random.Range(60, 450), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 1800) };
-        int whichSeeker1 = Random.Range(0,1); //6
-        int whichSeeker2 = Random.Range(0, 1); //6
-        int whichSeeker3 = Random.Range(0, 1); //6
-        float avgseekerTime = (seekerTime1[whichSeeker1] + seekerTime2[whichSeeker2] + seekerTime3[whichSeeker3]) / 3;
-        print(seekerTime1[whichSeeker1] + " " + seekerTime2[whichSeeker2] + " " + seekerTime3[whichSeeker3]);
-        print(avgseekerTime);
-        StartCoroutine(StartSeeker(avgseekerTime));
+        if (gameManager.cheats)
+        {
+            int[] seekerTime1 = { Random.Range(1, 2), Random.Range(1, 60), Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(450, 1800) };
+            int[] seekerTime2 = { Random.Range(1, 2), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 900), Random.Range(450, 1800) };
+            int[] seekerTime3 = { Random.Range(1, 2), Random.Range(60, 450), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 1800) };
+            int whichSeeker1 = Random.Range(0, 1); 
+            int whichSeeker2 = Random.Range(0, 1); 
+            int whichSeeker3 = Random.Range(0, 1); 
+            float avgseekerTime = (seekerTime1[whichSeeker1] + seekerTime2[whichSeeker2] + seekerTime3[whichSeeker3]) / 3;
+            print(seekerTime1[whichSeeker1] + " " + seekerTime2[whichSeeker2] + " " + seekerTime3[whichSeeker3]);
+            print(avgseekerTime);
+            StartCoroutine(StartSeeker(avgseekerTime));
+        }
+        else
+        {
+            int[] seekerTime1 = { Random.Range(1, 60), Random.Range(1, 60), Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(450, 1800) };
+            int[] seekerTime2 = { Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 900), Random.Range(450, 1800) };
+            int[] seekerTime3 = { Random.Range(1, 60), Random.Range(60, 450), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 1800) };
+            int whichSeeker1 = Random.Range(0, 6);
+            int whichSeeker2 = Random.Range(0, 6);
+            int whichSeeker3 = Random.Range(0, 6);
+            float avgseekerTime = (seekerTime1[whichSeeker1] + seekerTime2[whichSeeker2] + seekerTime3[whichSeeker3]) / 3;
+            print(seekerTime1[whichSeeker1] + " " + seekerTime2[whichSeeker2] + " " + seekerTime3[whichSeeker3]);
+            print(avgseekerTime);
+            StartCoroutine(StartSeeker(avgseekerTime));
+        }
     }
 
     IEnumerator StartSeeker(float seekerStart)
