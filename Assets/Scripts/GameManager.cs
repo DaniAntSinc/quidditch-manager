@@ -1231,6 +1231,8 @@ public class GameManager : MonoBehaviour
         matchOver = false;
         duration = 0;
 
+        windowGraph.GetComponent<WindowGraph>().DestroyAllChildren();
+
 
      team1Chaser1Shot = 0; team1Chaser1Goal = 0; team1Chaser1Tackles = 0; team1Chaser1Intercepts = 0;
      team1Chaser2Shot = 0; team1Chaser2Goal = 0; team1Chaser2Tackles = 0; team1Chaser2Intercepts = 0;
