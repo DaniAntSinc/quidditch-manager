@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -76,8 +77,8 @@ public class GameManager : MonoBehaviour
     //season Menu
     public GameObject exhibSeasonMenu, exhibButton, seasonButton, seasonBack, seasonBegin, seasonList;
     public bool hogwartsSeason, britishIslesSeason, worldCupSeason;
-    public int[] hogwartsTeam1 = new int[]{1,2,3,0,3,1};
-    public int[] hogwartsTeam2 = new int[] {0,3,1,2,0,2};
+    public int[] hogwartsTeam1 = new int[] { 1, 2, 3, 0, 3, 1 };
+    public int[] hogwartsTeam2 = new int[] { 0, 3, 1, 2, 0, 2 };
 
     public SeasonTeam[] seasonTeams;
     int seasonGameCount;
@@ -90,7 +91,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text[] hogwartsSeasonLoss;
     public TMP_Text[] hogwartsSeasonScore;
     public SeasonTeam[] hogwartsTeams;
-    List<int> hogwartsTeamStandings = new List<int>() ;
+    List<SeasonTeam> hogwartsTeamStandingsClass = new List<SeasonTeam>();
 
     public TMP_Text seasonCountText;
 
@@ -170,7 +171,7 @@ public class GameManager : MonoBehaviour
                 print("game is tied. sudden death? ");
             }
             winnerChosen = true;
-            if ((hogwartsSeason && seasonGameCount <= hogwartsTeam1.Length - 2) || britishIslesSeason || worldCupSeason)
+            if ((hogwartsSeason && seasonGameCount <= hogwartsTeam1.Length - 2))
             {
                 seasonCountText.text = "Game " + (seasonGameCount + 1) + " of " + hogwartsTeam1.Length;
                 nextGame.SetActive(true);
@@ -190,25 +191,30 @@ public class GameManager : MonoBehaviour
 
                 seasonTeams[hogwartsTeam1[seasonGameCount]].score += team1Score;
                 seasonTeams[hogwartsTeam2[seasonGameCount]].score += team2Score;
-                //Update Standings
 
-                for (int i = 0; i < hogwartsTeamStandings.Count; i++)
+                for (int i = 0; i < hogwartsTeamStandingsClass.Count; i++)
                 {
-                    hogwartsTeamStandings[i] = hogwartsTeams[i].win;
+                    hogwartsTeamStandingsClass[i] = hogwartsTeams[i];
                 }
 
-                hogwartsTeamStandings.Reverse();
+                var tempStandings = hogwartsTeamStandingsClass.OrderByDescending(i=>i.win).ThenBy(l=>l.loss).ThenByDescending(p=>p.score).ToList();
 
-                print(hogwartsTeamStandings[0] + " " + hogwartsTeamStandings[1] + " " + hogwartsTeamStandings[2] + " " + hogwartsTeamStandings[3]);
-
-                for (int i = 0; i < hogwartsTeamStandings.Count; i++)
+                for (int i = 0; i < tempStandings.Count; i++)
                 {
-                    hogwartsSeasonTeam[i].text = hogwartsTeams[i].team.ToString();
-                    hogwartsSeasonWin[i].text = hogwartsTeams[i].win.ToString();
-                    hogwartsSeasonLoss[i].text = hogwartsTeams[i].loss.ToString();
-                    hogwartsSeasonScore[i].text = hogwartsTeams[i].score.ToString();
+                    hogwartsSeasonTeam[i].text = tempStandings[i].team.ToString();
+                    hogwartsSeasonWin[i].text = tempStandings[i].win.ToString();
+                    hogwartsSeasonLoss[i].text = tempStandings[i].loss.ToString();
+                    hogwartsSeasonScore[i].text = tempStandings[i].score.ToString();
                 }
             }
+            /*  else if (britishIslesSeason && seasonGameCount <= hogwartsTeam1.Length - 2))
+              {
+
+              }
+              else if (worldCupSeason && seasonGameCount <= hogwartsTeam1.Length - 2) )
+              { 
+
+              }*/
             else
             {
                 nextGame.SetActive(false);
@@ -1135,10 +1141,10 @@ public class GameManager : MonoBehaviour
         seasonBack.SetActive(true);
         seasonBegin.SetActive(true);
 
-        hogwartsTeamStandings.Add(seasonTeams[0].win);
-        hogwartsTeamStandings.Add(seasonTeams[1].win);
-        hogwartsTeamStandings.Add(seasonTeams[2].win);
-        hogwartsTeamStandings.Add(seasonTeams[3].win);
+        hogwartsTeamStandingsClass.Add(seasonTeams[0]);
+        hogwartsTeamStandingsClass.Add(seasonTeams[1]);
+        hogwartsTeamStandingsClass.Add(seasonTeams[2]);
+        hogwartsTeamStandingsClass.Add(seasonTeams[3]);
     }
 
     public void BritishSeason()

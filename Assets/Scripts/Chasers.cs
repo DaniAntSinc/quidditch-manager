@@ -101,12 +101,12 @@ public class Chasers : MonoBehaviour
 
     void CalculateSeekerTime()
     {
-        int[] seekerTime1 = { Random.Range(1, 60), Random.Range(1, 60), Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(450, 1800) };
-        int[] seekerTime2 = { Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 900), Random.Range(450, 1800) };
-        int[] seekerTime3 = { Random.Range(1, 60), Random.Range(60, 450), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 1800) };
-        int whichSeeker1 = Random.Range(0,1); //6
-        int whichSeeker2 = Random.Range(0, 1); //6
-        int whichSeeker3 = Random.Range(0, 1); //6
+        int[] seekerTime1 = { Random.Range(1, 2), Random.Range(1, 60), Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(450, 1800) };
+        int[] seekerTime2 = { Random.Range(1, 2), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 900), Random.Range(450, 1800) };
+        int[] seekerTime3 = { Random.Range(1, 2), Random.Range(60, 450), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 1800) };
+        int whichSeeker1 = Random.Range(0,1); //6       //Increase snitch time in first bracket to 60
+        int whichSeeker2 = Random.Range(0, 1); //6        //Increase snitch time in first bracket to 60
+        int whichSeeker3 = Random.Range(0, 1); //6        //Increase snitch time in first bracket to 60
         float avgseekerTime = (seekerTime1[whichSeeker1] + seekerTime2[whichSeeker2] + seekerTime3[whichSeeker3]) / 3;
         print(seekerTime1[whichSeeker1] + " " + seekerTime2[whichSeeker2] + " " + seekerTime3[whichSeeker3]);
         print(avgseekerTime);
