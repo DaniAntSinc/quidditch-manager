@@ -98,7 +98,10 @@ public class GameManager : MonoBehaviour
 
     public TMP_Text seasonCountText;
 
-    public GameObject startMenu;
+    bool musicPlaying = true;
+    public GameObject startMenu, settingsMenu, soundManager;
+    public Image musicToggle;
+    public TMP_Text musicToggleFeedbackUI;
 
     private void Start()
     {
@@ -1335,4 +1338,32 @@ public class GameManager : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
+
+    public void SettingsMenu()
+    {
+        settingsMenu.SetActive(true);
+    }
+
+    public void CloseSettingsMenu()
+    {
+        settingsMenu.SetActive(false);
+    }
+
+    public void ToggleMusic()
+    {
+        musicPlaying = !musicPlaying;
+
+        if (musicPlaying)
+        {
+            soundManager.SetActive(true);
+            musicToggle.color = Color.green;
+            musicToggleFeedbackUI.text = "On";
+        }
+        else
+        {
+            soundManager.SetActive(false);
+            musicToggle.color = Color.red;
+            musicToggleFeedbackUI.text = "Off";
+        }
+}
 }
