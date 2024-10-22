@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SeasonTeam : MonoBehaviour
 {
@@ -8,28 +9,12 @@ public class SeasonTeam : MonoBehaviour
     public int win;
     public int loss;
     public int score;
+    public Sprite logo;
 
-    public string[] chaserNames;
-    public int[] chaserDodge;
-    public int[] chaserIntercept;
-    public int[] chaserPass;
-    public int[] chaserShooting;
-    public int[] chaserSpeed;
-    public int[] chaserTackle;
-
-    public string[] beaterNames;
-    public int[] beaterLocateSpeed;
-    public int[] beaterDodge;
-
-    public string keeperName;
-    public int keeperDodge;
-    public int keeperBlock;
-
-    public string seekerName;
-    public int seekerSight;
-    public int seekerSpeed;
-    public int seekerReach;
-    public int seekerGrab;
+    public List<Chaser> chasers;
+    public List<Beater> beaters;
+    public List<Keeper> keeper;
+    public List<Seeker> seeker;
 
     public float teamSun, teamRain, teamFog, teamSnow;
 }
