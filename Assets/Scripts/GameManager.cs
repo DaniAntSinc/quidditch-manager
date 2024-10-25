@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text seasonCountText;
 
     bool musicPlaying = true;
-    public GameObject startMenu, settingsMenu, soundManager;
+    public GameObject startMenu, settingsMenu, soundManager, simulationMenu;
     public Image musicToggle;
     public TMP_Text musicToggleFeedbackUI;
 
@@ -1366,4 +1366,14 @@ public class GameManager : MonoBehaviour
             musicToggleFeedbackUI.text = "Off";
         }
 }
+
+    public void Simulation()
+    {
+        simulationMenu.SetActive(false);
+    }
+
+    public void ReturnFromSimMenu()
+    {
+        simulationMenu.SetActive(true);
+    }
 }
