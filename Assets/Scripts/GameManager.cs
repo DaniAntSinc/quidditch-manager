@@ -83,6 +83,9 @@ public class GameManager : MonoBehaviour
     public int[] hogwartsTeam1 = new int[] { 1, 2, 3, 0, 3, 1 };
     public int[] hogwartsTeam2 = new int[] { 0, 3, 1, 2, 0, 2 };
 
+    public List<int> britishIslesTeam1 = new List<int> { 2, 3, 4, 1, 4, 2, 6, 7, 8, 5, 8, 6 };
+    public List<int> britishIslesTeam2 = new List<int> { 1, 4, 2, 3, 1, 3, 5, 8, 6, 7, 5, 7 };
+
     public SeasonTeam[] seasonTeams;
     int seasonGameCount;
     public GameObject nextGame;
@@ -96,12 +99,29 @@ public class GameManager : MonoBehaviour
     public SeasonTeam[] hogwartsTeams;
     List<SeasonTeam> hogwartsTeamStandingsClass = new List<SeasonTeam>();
 
+    public TMP_Text[] britishIslesSeasonTeamGroup1;
+    public TMP_Text[] britishIslesSeasonWinGroup1;
+    public TMP_Text[] britishIslesSeasonLossGroup1;
+    public TMP_Text[] britishIslesSeasonScoreGroup1;
+    public TMP_Text[] britishIslesSeasonTeamGroup2;
+    public TMP_Text[] britishIslesSeasonWinGroup2;
+    public TMP_Text[] britishIslesSeasonLossGroup2;
+    public TMP_Text[] britishIslesSeasonScoreGroup2;
+    public SeasonTeam[] britishIslesTeamsGroup1;
+    public SeasonTeam[] britishIslesTeamsGroup2;
+    List<SeasonTeam> britishIslesTeamStandingsClassDivision1 = new List<SeasonTeam>();
+    List<SeasonTeam> britishIslesTeamStandingsClassDivision2 = new List<SeasonTeam>();
+    public GameObject hogwartsStandings, britishIslesStandings, worldCupStandings;
+
     public TMP_Text seasonCountText;
 
     bool musicPlaying = true;
     public GameObject startMenu, settingsMenu, soundManager, simulationMenu;
     public Image musicToggle;
     public TMP_Text musicToggleFeedbackUI;
+
+    public GameObject britishIslesChampionship;
+    public TMP_Text britishChampTeam1, britishChampTeam2, britishChampPoints1, britishChampPoints2;
 
     private void Start()
     {
@@ -142,6 +162,14 @@ public class GameManager : MonoBehaviour
     {
         matchStatsMenu.SetActive(false);
         matchMomentumMenu.SetActive(false);
+
+        if (hogwartsSeason)
+            hogwartsStandings.SetActive(true);
+        if (britishIslesSeason)
+            britishIslesStandings.SetActive(true);
+        if (worldCupSeason)
+            worldCupStandings.SetActive(true);
+
         matchStandingsMenu.SetActive(true);
     }
 
@@ -204,36 +232,6 @@ public class GameManager : MonoBehaviour
                     seasonCountText.text = "Game " + (seasonGameCount + 1) + " of " + hogwartsTeam1.Length;
                     nextGame.SetActive(true);
                     UpdateHogwartsStandingsUI();
-                  /*  if (team1Score > team2Score)
-                    {
-                        seasonTeams[hogwartsTeam1[seasonGameCount]].win++;
-                        seasonTeams[hogwartsTeam2[seasonGameCount]].loss++;
-                    }
-
-
-                    else if (team1Score < team2Score)
-                    {
-                        seasonTeams[hogwartsTeam2[seasonGameCount]].win++;
-                        seasonTeams[hogwartsTeam1[seasonGameCount]].loss++;
-                    }
-
-                    seasonTeams[hogwartsTeam1[seasonGameCount]].score += team1Score;
-                    seasonTeams[hogwartsTeam2[seasonGameCount]].score += team2Score;
-
-                    for (int i = 0; i < hogwartsTeamStandingsClass.Count; i++)
-                    {
-                        hogwartsTeamStandingsClass[i] = hogwartsTeams[i];
-                    }
-
-                    var tempStandings = hogwartsTeamStandingsClass.OrderByDescending(i => i.win).ThenBy(l => l.loss).ThenByDescending(p => p.score).ToList();
-
-                    for (int i = 0; i < tempStandings.Count; i++)
-                    {
-                        hogwartsSeasonTeam[i].text = tempStandings[i].team.ToString();
-                        hogwartsSeasonWin[i].text = tempStandings[i].win.ToString();
-                        hogwartsSeasonLoss[i].text = tempStandings[i].loss.ToString();
-                        hogwartsSeasonScore[i].text = tempStandings[i].score.ToString();
-                    }*/
                 }
                 else
                 {
@@ -245,11 +243,35 @@ public class GameManager : MonoBehaviour
                     newGameButton.SetActive(true);
                 }
             }
-            /*  else if (britishIslesSeason && seasonGameCount <= hogwartsTeam1.Length - 2))
-              {
-
-              }
-              else if (worldCupSeason && seasonGameCount <= hogwartsTeam1.Length - 2) )
+            if (britishIslesSeason)
+            {
+                print(seasonGameCount);
+                if (seasonGameCount <= 10)
+                {
+                    seasonCountText.text = "Game " + (seasonGameCount + 1) + " of " + britishIslesTeam1.Count;
+                    nextGame.SetActive(true);
+                    UpdateBritishIslesStandingsUI();
+                }
+                else if (seasonGameCount <= 11)
+                {
+                    britishIslesChampionship.SetActive(true);
+                    UpdateBritishIslesStandingsUI();
+                    seasonCountText.text = "Championship Match";
+                    nextGame.SetActive(true);
+                    OpenStats();
+                    TurnOnStandings();
+                }
+                else
+                {
+                    UpdateBritishIslesStandingsUI();
+                    seasonCountText.text = "Final Standings";
+                    OpenStats();
+                    TurnOnStandings();
+                    nextGame.SetActive(false);
+                    newGameButton.SetActive(true);
+                }
+            }
+             /* else if (worldCupSeason && seasonGameCount <= hogwartsTeam1.Length - 2) )
               { 
 
               }*/
@@ -265,7 +287,7 @@ public class GameManager : MonoBehaviour
         if (matchStarted)
             duration += Time.deltaTime;
     }
-
+    #region Standings
     public void UpdateHogwartsStandingsUI()
     {
         if (team1Score > team2Score)
@@ -300,6 +322,91 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpdateBritishIslesStandingsUI()
+    {
+        if (team1Score > team2Score)
+        {
+            seasonTeams[britishIslesTeam1[seasonGameCount]].win++;
+            seasonTeams[britishIslesTeam2[seasonGameCount]].loss++;
+        }
+
+
+        else if (team1Score < team2Score)
+        {
+            seasonTeams[britishIslesTeam2[seasonGameCount]].win++;
+            seasonTeams[britishIslesTeam1[seasonGameCount]].loss++;
+        }
+
+        seasonTeams[britishIslesTeam1[seasonGameCount]].score += team1Score;
+        seasonTeams[britishIslesTeam2[seasonGameCount]].score += team2Score;
+
+        //Division 1
+        for (int i = 0; i < britishIslesTeamStandingsClassDivision1.Count; i++)
+        {
+            britishIslesTeamStandingsClassDivision1[i] = britishIslesTeamsGroup1[i];
+        }
+
+        var tempStandings = britishIslesTeamStandingsClassDivision1.OrderByDescending(i => i.win).ThenBy(l => l.loss).ThenByDescending(p => p.score).ToList();
+
+        for (int i = 0; i < tempStandings.Count; i++)
+        {
+            britishIslesSeasonTeamGroup1[i].text = tempStandings[i].team.ToString();
+            britishIslesSeasonWinGroup1[i].text = tempStandings[i].win.ToString();
+            britishIslesSeasonLossGroup1[i].text = tempStandings[i].loss.ToString();
+            britishIslesSeasonScoreGroup1[i].text = tempStandings[i].score.ToString();
+        }
+        //Division2
+        for (int i = 0; i < britishIslesTeamStandingsClassDivision2.Count; i++)
+        {
+            britishIslesTeamStandingsClassDivision2[i] = britishIslesTeamsGroup2[i];
+        }
+
+        var tempStandings2 = britishIslesTeamStandingsClassDivision2.OrderByDescending(i => i.win).ThenBy(l => l.loss).ThenByDescending(p => p.score).ToList();
+
+        for (int i = 0; i < tempStandings2.Count; i++)
+        {
+            britishIslesSeasonTeamGroup2[i].text = tempStandings2[i].team.ToString();
+            britishIslesSeasonWinGroup2[i].text = tempStandings2[i].win.ToString();
+            britishIslesSeasonLossGroup2[i].text = tempStandings2[i].loss.ToString();
+            britishIslesSeasonScoreGroup2[i].text = tempStandings2[i].score.ToString();
+        }
+
+        if (seasonGameCount >= 11)
+        {
+            if (tempStandings[0].team == seasonTeams[4].team)
+                britishIslesTeam1.Add(4);
+            if (tempStandings[0].team == seasonTeams[5].team)
+                britishIslesTeam1.Add(5);
+            if (tempStandings[0].team == seasonTeams[6].team)
+                britishIslesTeam1.Add(6);
+            if (tempStandings[0].team == seasonTeams[7].team)
+                britishIslesTeam1.Add(7);
+            if (tempStandings2[0].team == seasonTeams[8].team)
+                britishIslesTeam2.Add(8);
+            if (tempStandings2[0].team == seasonTeams[9].team)
+                britishIslesTeam2.Add(9);
+            if (tempStandings2[0].team == seasonTeams[10].team)
+                britishIslesTeam2.Add(10);
+            if (tempStandings2[0].team == seasonTeams[11].team)
+                britishIslesTeam2.Add(11);
+
+            print(tempStandings[0] + " : " + tempStandings2[0]);
+            britishChampTeam1.text = tempStandings[0].team;
+            britishChampTeam2.text = tempStandings2[0].team;
+            if (seasonGameCount == 11)
+            {
+                britishChampPoints1.text = "0";
+                britishChampPoints2.text = "0";
+            }
+            if (seasonGameCount == 12)
+            {
+                britishChampPoints1.text = team1Score.ToString();
+                britishChampPoints2.text = team2Score.ToString();
+            }
+        }
+    }
+    #endregion
+
     public void CreateGameEvent(string messageForTextElement)
     {
         newTextLine = Instantiate(textElement, transform.position, transform.rotation);
@@ -327,7 +434,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenStats()
     {
-        if (hogwartsSeason)
+        if (hogwartsSeason || britishIslesSeason || worldCupSeason)
         {
             seasonButtonMenu.SetActive(true);
         }
@@ -1233,6 +1340,15 @@ public class GameManager : MonoBehaviour
 
         seasonBack.SetActive(true);
         seasonBegin.SetActive(true);
+
+        britishIslesTeamStandingsClassDivision1.Add(seasonTeams[4]);
+        britishIslesTeamStandingsClassDivision1.Add(seasonTeams[5]);
+        britishIslesTeamStandingsClassDivision1.Add(seasonTeams[6]);
+        britishIslesTeamStandingsClassDivision1.Add(seasonTeams[7]);
+        britishIslesTeamStandingsClassDivision2.Add(seasonTeams[8]);
+        britishIslesTeamStandingsClassDivision2.Add(seasonTeams[9]);
+        britishIslesTeamStandingsClassDivision2.Add(seasonTeams[10]);
+        britishIslesTeamStandingsClassDivision2.Add(seasonTeams[11]);
     }
 
     public void WorldCupSeason()
@@ -1261,6 +1377,8 @@ public class GameManager : MonoBehaviour
 
     public void SeasonBegin()
     {
+        seasonGameCount = 0;
+
         for (int i = 0; i < seasonTeams.Length; i++)
         {
             seasonTeams[i].win = 0;
@@ -1272,6 +1390,12 @@ public class GameManager : MonoBehaviour
             visitorTeam = hogwartsTeam1[0];
             homeTeam = hogwartsTeam2[0];
         }
+        if (britishIslesSeason)
+        {
+            print("here");
+            visitorTeam = britishIslesTeam1[0];
+            homeTeam = britishIslesTeam2[0];
+        }
         teamsUI.SetActive(false);
         exhibSeasonMenu.SetActive(false);
 
@@ -1281,7 +1405,7 @@ public class GameManager : MonoBehaviour
 
     public void NextSeasonGame()
     {
-        if (hogwartsSeason)
+        if (hogwartsSeason || britishIslesSeason)
             seasonGameCount++;
         else
         {
@@ -1289,8 +1413,17 @@ public class GameManager : MonoBehaviour
             nextGame.SetActive(false);
         }
 
-        visitorTeam = hogwartsTeam1[seasonGameCount];
-        homeTeam = hogwartsTeam2[seasonGameCount];
+        if (hogwartsSeason)
+        {
+            visitorTeam = hogwartsTeam1[seasonGameCount];
+            homeTeam = hogwartsTeam2[seasonGameCount];
+        }
+        if (britishIslesSeason)
+        {
+            visitorTeam = britishIslesTeam1[seasonGameCount];
+            homeTeam = britishIslesTeam2[seasonGameCount];
+
+        }
 
         ClearStats();
 
