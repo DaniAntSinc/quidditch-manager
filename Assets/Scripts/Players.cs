@@ -1132,6 +1132,102 @@ public class Players : MonoBehaviour
                 team1fog = teams[21].teamFog;
                 team1snow = teams[21].teamSnow;
                 break;
+            case 22:
+                team1 = teams[22].team;
+                team1ChasersNames[0] = teams[22].chasers[0].Name;
+
+                team1ChasersNames[1] = teams[22].chasers[1].Name;
+                team1ChasersNames[2] = teams[22].chasers[2].Name;
+                team1ChasersIntercept[0] = teams[22].chasers[0].intercept;
+                team1ChasersIntercept[1] = teams[22].chasers[1].intercept;
+                team1ChasersIntercept[2] = teams[22].chasers[2].intercept;
+                team1ChasersPass[0] = teams[22].chasers[0].pass;
+                team1ChasersPass[1] = teams[22].chasers[1].pass;
+                team1ChasersPass[2] = teams[22].chasers[2].pass;
+                team1ChaserTackle[0] = teams[22].chasers[0].tackle;
+                team1ChaserTackle[1] = teams[22].chasers[1].tackle;
+                team1ChaserTackle[2] = teams[22].chasers[2].tackle;
+                team1ChaserShooting[0] = teams[22].chasers[0].shooting;
+                team1ChaserShooting[1] = teams[22].chasers[1].shooting;
+                team1ChaserShooting[2] = teams[22].chasers[2].shooting;
+                team1ChaserDodge[0] = teams[22].chasers[0].dodge;
+                team1ChaserDodge[1] = teams[22].chasers[1].dodge;
+                team1ChaserDodge[2] = teams[22].chasers[2].dodge;
+                team1ChaserSpeed[0] = teams[22].chasers[0].speed;
+                team1ChaserSpeed[1] = teams[22].chasers[1].speed;
+                team1ChaserSpeed[2] = teams[22].chasers[2].speed;
+
+                team1Beaters[0] = teams[22].beaters[0].Name;
+                team1Beaters[1] = teams[22].beaters[1].Name;
+                team1BeaterLocateBludgerSpeed[0] = teams[22].beaters[0].locateSpeed;
+                team1BeaterLocateBludgerSpeed[1] = teams[22].beaters[1].locateSpeed;
+                team1BeaterDodge[0] = teams[22].beaters[0].dodge;
+                team1BeaterDodge[1] = teams[22].beaters[1].dodge;
+
+                team1Keeper = teams[22].keeper[0].Name;
+                team1KeeperDodge = teams[22].keeper[0].dodge;
+                team1KeeperBlock = teams[22].keeper[0].block;
+
+                team1Seeker = teams[22].seeker[0].Name;
+                team1SeekerDodge = teams[22].seeker[0].dodge;
+                team1SeekerSight = teams[22].seeker[0].sight;
+                team1SeekerSpeed = teams[22].seeker[0].speed;
+                team1SeekerReach = teams[22].seeker[0].reach;
+                team1SeekerGrabRange = teams[22].seeker[0].grab;
+
+                team1sun = teams[22].teamSun;
+                team1rain = teams[22].teamRain;
+                team1fog = teams[22].teamFog;
+                team1snow = teams[22].teamSnow;
+                break;
+            case 23:
+                team1 = teams[23].team;
+                team1ChasersNames[0] = teams[23].chasers[0].Name;
+
+                team1ChasersNames[1] = teams[23].chasers[1].Name;
+                team1ChasersNames[2] = teams[23].chasers[2].Name;
+                team1ChasersIntercept[0] = teams[23].chasers[0].intercept;
+                team1ChasersIntercept[1] = teams[23].chasers[1].intercept;
+                team1ChasersIntercept[2] = teams[23].chasers[2].intercept;
+                team1ChasersPass[0] = teams[23].chasers[0].pass;
+                team1ChasersPass[1] = teams[23].chasers[1].pass;
+                team1ChasersPass[2] = teams[23].chasers[2].pass;
+                team1ChaserTackle[0] = teams[23].chasers[0].tackle;
+                team1ChaserTackle[1] = teams[23].chasers[1].tackle;
+                team1ChaserTackle[2] = teams[23].chasers[2].tackle;
+                team1ChaserShooting[0] = teams[23].chasers[0].shooting;
+                team1ChaserShooting[1] = teams[23].chasers[1].shooting;
+                team1ChaserShooting[2] = teams[23].chasers[2].shooting;
+                team1ChaserDodge[0] = teams[23].chasers[0].dodge;
+                team1ChaserDodge[1] = teams[23].chasers[1].dodge;
+                team1ChaserDodge[2] = teams[23].chasers[2].dodge;
+                team1ChaserSpeed[0] = teams[23].chasers[0].speed;
+                team1ChaserSpeed[1] = teams[23].chasers[1].speed;
+                team1ChaserSpeed[2] = teams[23].chasers[2].speed;
+
+                team1Beaters[0] = teams[23].beaters[0].Name;
+                team1Beaters[1] = teams[23].beaters[1].Name;
+                team1BeaterLocateBludgerSpeed[0] = teams[23].beaters[0].locateSpeed;
+                team1BeaterLocateBludgerSpeed[1] = teams[23].beaters[1].locateSpeed;
+                team1BeaterDodge[0] = teams[23].beaters[0].dodge;
+                team1BeaterDodge[1] = teams[23].beaters[1].dodge;
+
+                team1Keeper = teams[23].keeper[0].Name;
+                team1KeeperDodge = teams[23].keeper[0].dodge;
+                team1KeeperBlock = teams[23].keeper[0].block;
+
+                team1Seeker = teams[23].seeker[0].Name;
+                team1SeekerDodge = teams[23].seeker[0].dodge;
+                team1SeekerSight = teams[23].seeker[0].sight;
+                team1SeekerSpeed = teams[23].seeker[0].speed;
+                team1SeekerReach = teams[23].seeker[0].reach;
+                team1SeekerGrabRange = teams[23].seeker[0].grab;
+
+                team1sun = teams[23].teamSun;
+                team1rain = teams[23].teamRain;
+                team1fog = teams[23].teamFog;
+                team1snow = teams[23].teamSnow;
+                break;
             default:
                 print("Unable to find visitor team");
                 break;
@@ -2194,6 +2290,102 @@ public class Players : MonoBehaviour
                 team2rain = teams[21].teamRain;
                 team2fog = teams[21].teamFog;
                 team2snow = teams[21].teamSnow;
+                break;
+            case 22:
+                team2 = teams[22].team;
+                team2ChasersNames[0] = teams[22].chasers[0].Name;
+
+                team2ChasersNames[1] = teams[22].chasers[1].Name;
+                team2ChasersNames[2] = teams[22].chasers[2].Name;
+                team2ChasersIntercept[0] = teams[22].chasers[0].intercept;
+                team2ChasersIntercept[1] = teams[22].chasers[1].intercept;
+                team2ChasersIntercept[2] = teams[22].chasers[2].intercept;
+                team2ChasersPass[0] = teams[22].chasers[0].pass;
+                team2ChasersPass[1] = teams[22].chasers[1].pass;
+                team2ChasersPass[2] = teams[22].chasers[2].pass;
+                team2ChaserTackle[0] = teams[22].chasers[0].tackle;
+                team2ChaserTackle[1] = teams[22].chasers[1].tackle;
+                team2ChaserTackle[2] = teams[22].chasers[2].tackle;
+                team2ChaserShooting[0] = teams[22].chasers[0].shooting;
+                team2ChaserShooting[1] = teams[22].chasers[1].shooting;
+                team2ChaserShooting[2] = teams[22].chasers[2].shooting;
+                team2ChaserDodge[0] = teams[22].chasers[0].dodge;
+                team2ChaserDodge[1] = teams[22].chasers[1].dodge;
+                team2ChaserDodge[2] = teams[22].chasers[2].dodge;
+                team2ChaserSpeed[0] = teams[22].chasers[0].speed;
+                team2ChaserSpeed[1] = teams[22].chasers[1].speed;
+                team2ChaserSpeed[2] = teams[22].chasers[2].speed;
+
+                team2Beaters[0] = teams[22].beaters[0].Name;
+                team2Beaters[1] = teams[22].beaters[1].Name;
+                team2BeaterLocateBludgerSpeed[0] = teams[22].beaters[0].locateSpeed;
+                team2BeaterLocateBludgerSpeed[1] = teams[22].beaters[1].locateSpeed;
+                team2BeaterDodge[0] = teams[22].beaters[0].dodge;
+                team2BeaterDodge[1] = teams[22].beaters[1].dodge;
+
+                team2Keeper = teams[22].keeper[0].Name;
+                team2KeeperDodge = teams[22].keeper[0].dodge;
+                team2KeeperBlock = teams[22].keeper[0].block;
+
+                team2Seeker = teams[22].seeker[0].Name;
+                team2SeekerDodge = teams[22].seeker[0].dodge;
+                team2SeekerSight = teams[22].seeker[0].sight;
+                team2SeekerSpeed = teams[22].seeker[0].speed;
+                team2SeekerReach = teams[22].seeker[0].reach;
+                team2SeekerGrabRange = teams[22].seeker[0].grab;
+
+                team2sun = teams[22].teamSun;
+                team2rain = teams[22].teamRain;
+                team2fog = teams[22].teamFog;
+                team2snow = teams[22].teamSnow;
+                break;
+            case 23:
+                team2 = teams[23].team;
+                team2ChasersNames[0] = teams[23].chasers[0].Name;
+
+                team2ChasersNames[1] = teams[23].chasers[1].Name;
+                team2ChasersNames[2] = teams[23].chasers[2].Name;
+                team2ChasersIntercept[0] = teams[23].chasers[0].intercept;
+                team2ChasersIntercept[1] = teams[23].chasers[1].intercept;
+                team2ChasersIntercept[2] = teams[23].chasers[2].intercept;
+                team2ChasersPass[0] = teams[23].chasers[0].pass;
+                team2ChasersPass[1] = teams[23].chasers[1].pass;
+                team2ChasersPass[2] = teams[23].chasers[2].pass;
+                team2ChaserTackle[0] = teams[23].chasers[0].tackle;
+                team2ChaserTackle[1] = teams[23].chasers[1].tackle;
+                team2ChaserTackle[2] = teams[23].chasers[2].tackle;
+                team2ChaserShooting[0] = teams[23].chasers[0].shooting;
+                team2ChaserShooting[1] = teams[23].chasers[1].shooting;
+                team2ChaserShooting[2] = teams[23].chasers[2].shooting;
+                team2ChaserDodge[0] = teams[23].chasers[0].dodge;
+                team2ChaserDodge[1] = teams[23].chasers[1].dodge;
+                team2ChaserDodge[2] = teams[23].chasers[2].dodge;
+                team2ChaserSpeed[0] = teams[23].chasers[0].speed;
+                team2ChaserSpeed[1] = teams[23].chasers[1].speed;
+                team2ChaserSpeed[2] = teams[23].chasers[2].speed;
+
+                team2Beaters[0] = teams[23].beaters[0].Name;
+                team2Beaters[1] = teams[23].beaters[1].Name;
+                team2BeaterLocateBludgerSpeed[0] = teams[23].beaters[0].locateSpeed;
+                team2BeaterLocateBludgerSpeed[1] = teams[23].beaters[1].locateSpeed;
+                team2BeaterDodge[0] = teams[23].beaters[0].dodge;
+                team2BeaterDodge[1] = teams[23].beaters[1].dodge;
+
+                team2Keeper = teams[23].keeper[0].Name;
+                team2KeeperDodge = teams[23].keeper[0].dodge;
+                team2KeeperBlock = teams[23].keeper[0].block;
+
+                team2Seeker = teams[23].seeker[0].Name;
+                team2SeekerDodge = teams[23].seeker[0].dodge;
+                team2SeekerSight = teams[23].seeker[0].sight;
+                team2SeekerSpeed = teams[23].seeker[0].speed;
+                team2SeekerReach = teams[23].seeker[0].reach;
+                team2SeekerGrabRange = teams[23].seeker[0].grab;
+
+                team2sun = teams[23].teamSun;
+                team2rain = teams[23].teamRain;
+                team2fog = teams[23].teamFog;
+                team2snow = teams[23].teamSnow;
                 break;
             default:
                 print("Unable to find home team");
