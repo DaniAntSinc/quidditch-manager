@@ -149,6 +149,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject britishIslesChampionship;
     public TMP_Text britishChampTeam1, britishChampTeam2, britishChampPoints1, britishChampPoints2;
+    public TMP_Text snitchDurationSeason;
 
     private void Start()
     {
@@ -1660,5 +1661,29 @@ public class GameManager : MonoBehaviour
     public void ReturnFromSimMenu()
     {
         simulationMenu.SetActive(true);
+    }
+
+    public void FastSnitch()
+    {
+        chasers.seekerTimeDuration = chasers.fastTime;
+        snitchDurationSeason.text = "The Snitch can appear anytime between 0-7 minutes";
+    }
+
+    public void MediumTime()
+    {
+        chasers.seekerTimeDuration = chasers.mediumTime;
+        snitchDurationSeason.text = "The Snitch can appear anytime between 0-15 minutes";
+    }
+
+    public void DefaultSnitch()
+    {
+        chasers.seekerTimeDuration = chasers.defaultTime;
+        snitchDurationSeason.text = "The Snitch can appear anytime between 0-30 minutes";
+    }
+
+    public void LongSnitch()
+    {
+        chasers.seekerTimeDuration = chasers.longTime;
+        snitchDurationSeason.text = "The Snitch can appear anytime between 0-60 minutes";
     }
 }

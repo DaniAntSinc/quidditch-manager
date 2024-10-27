@@ -24,6 +24,9 @@ public class Chasers : MonoBehaviour
     public bool team1Chaser1Sunned, team1Chaser2Sunned, team1Chaser3Sunned;
     public bool team2Chaser1Sunned, team2Chaser2Sunned, team2Chaser3Sunned;
 
+    public int cheatTime = 1, fastTime = 2, mediumTime = 4, defaultTime = 6, longTime = 7;
+    public int seekerTimeDuration;
+
     float seekerTime1, seekerTime2, seekerTime3;
 
     int passingChance, tempPassingTarget;
@@ -40,6 +43,8 @@ public class Chasers : MonoBehaviour
         keepers = GameObject.Find("Keepers").GetComponent<Keepers>();
         beaters = GameObject.Find("Beaters").GetComponent<Beaters>();
         shotTaken = false;
+
+        seekerTimeDuration = defaultTime;
     }
     void Update()
     {
@@ -103,9 +108,11 @@ public class Chasers : MonoBehaviour
     {
         if (gameManager.cheats)
         {
-            int[] seekerTime1 = { Random.Range(1, 2), Random.Range(1, 60), Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(450, 1800) };
-            int[] seekerTime2 = { Random.Range(1, 2), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 900), Random.Range(450, 1800) };
-            int[] seekerTime3 = { Random.Range(1, 2), Random.Range(60, 450), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 1800) };
+            seekerTimeDuration = cheatTime;
+
+            int[] seekerTime1 = { Random.Range(1, 2), Random.Range(1, 60), Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(450, 1800), Random.Range(900, 3600) };
+            int[] seekerTime2 = { Random.Range(1, 2), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 900), Random.Range(450, 1800), Random.Range(900, 3600) };
+            int[] seekerTime3 = { Random.Range(1, 2), Random.Range(60, 450), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 1800), Random.Range(900, 3600) };
             int whichSeeker1 = Random.Range(0, 1); 
             int whichSeeker2 = Random.Range(0, 1); 
             int whichSeeker3 = Random.Range(0, 1); 
@@ -116,12 +123,12 @@ public class Chasers : MonoBehaviour
         }
         else
         {
-            int[] seekerTime1 = { Random.Range(1, 60), Random.Range(1, 60), Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(450, 1800) };
-            int[] seekerTime2 = { Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 900), Random.Range(450, 1800) };
-            int[] seekerTime3 = { Random.Range(1, 60), Random.Range(60, 450), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 1800) };
-            int whichSeeker1 = Random.Range(0, 6);
-            int whichSeeker2 = Random.Range(0, 6);
-            int whichSeeker3 = Random.Range(0, 6);
+            int[] seekerTime1 = { Random.Range(1, 60), Random.Range(1, 60), Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(450, 1800), Random.Range(900, 3600) };
+            int[] seekerTime2 = { Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 900), Random.Range(450, 1800), Random.Range(900, 3600) };
+            int[] seekerTime3 = { Random.Range(1, 60), Random.Range(60, 450), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 1800), Random.Range(900, 3600) };
+            int whichSeeker1 = Random.Range(0, seekerTimeDuration);
+            int whichSeeker2 = Random.Range(0, seekerTimeDuration);
+            int whichSeeker3 = Random.Range(0, seekerTimeDuration);
             float avgseekerTime = (seekerTime1[whichSeeker1] + seekerTime2[whichSeeker2] + seekerTime3[whichSeeker3]) / 3;
             print(seekerTime1[whichSeeker1] + " " + seekerTime2[whichSeeker2] + " " + seekerTime3[whichSeeker3]);
             print(avgseekerTime);
