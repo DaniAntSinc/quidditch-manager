@@ -22005,7 +22005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4438679599665506848, guid: 9bf14c5e16522b84b91dfff31c88337a, type: 3}
       propertyPath: Name
-      value: Euan Haley
+      value: Adrian Rosario
       objectReference: {fileID: 0}
     - target: {fileID: 4438679599665506848, guid: 9bf14c5e16522b84b91dfff31c88337a, type: 3}
       propertyPath: pass
@@ -52142,7 +52142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1115426534
 RectTransform:
   m_ObjectHideFlags: 0

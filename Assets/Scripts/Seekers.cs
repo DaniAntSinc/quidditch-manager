@@ -8,7 +8,7 @@ public class Seekers : MonoBehaviour
     Players players;
     public Transform snitch;
     Beaters beaters;
-    float speed = 8, meanderSpeed = 1.5f;
+    float speed = 5, meanderSpeed = 1.5f;
     public Transform snitchLocation;
     bool seesSnitch;
     public Transform seeker1, team1SeekerPosition;
@@ -174,7 +174,7 @@ public class Seekers : MonoBehaviour
 
     public void EstablishSnitchPosition()
     {
-        speed = Random.Range(6, 45);
+        speed = Random.Range(1, 9);
         snitchLocation.transform.position = new Vector3(Random.Range(-75, 75), Random.Range(0, 100), Random.Range(-75, 75));
     }
 
