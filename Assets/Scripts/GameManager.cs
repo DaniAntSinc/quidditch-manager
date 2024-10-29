@@ -89,6 +89,9 @@ public class GameManager : MonoBehaviour
     public List<int> worldCupAwaySchedule = new List<int> { 13,14,15,16,17,18,23,12,19,20,21,22,14,13,16,17,20,21,19,20,21,12,17,18,23,13,14,15,21,22,12,14,19,18,23,22,19,20,21,22,23,13,22,17,18,19,20,21,15,16,12,23,13,14,18,19,20,15,16,17,22,23,13,14,12,21,12,15,17,19,21,23,16,17,23,13,14,15,15,16,17,18,19,12};
     public List<int> worldCupHomeSchedule = new List<int> { 12,23,22,21,20,19,13,18,17,16,15,14,12,15,18,19,22,23,13,23,22,16,15,14,19,18,17,16,12,20,15,13,16,17,20,21,12,18,17,16,15,14,23,12,16,15,14,13,18,17,22,21,20,19,23,22,21,12,14,13,18,17,16,15,20,19,13,14,16,18,20,22,19,18,12,22,21,20,13,23,22,21,20,14 };
 
+    public GameObject worldCupSeasonStandings, worldCupPlayoffsStandings;
+    bool playoffPageOn;
+
     public SeasonTeam[] seasonTeams;
     int seasonGameCount;
     public GameObject nextGame;
@@ -139,6 +142,11 @@ public class GameManager : MonoBehaviour
     List<SeasonTeam> worldCupTeamStandingsClassDivision2 = new List<SeasonTeam>();
     List<SeasonTeam> worldCupTeamStandingsClassDivision3 = new List<SeasonTeam>();
     public List<SeasonTeam> worldCupTeamStandingsClassDivision4 = new List<SeasonTeam>();
+    List<SeasonTeam> worldCupTeamPlayoffs = new List<SeasonTeam>();
+    List<SeasonTeam> worldCupTeamChampionship = new List<SeasonTeam>();
+    bool playoffsSet;
+    public TMP_Text[] worldCupPlayoffNames;
+    public TMP_Text[] worldCupPlayoffPoints;
 
     public TMP_Text seasonCountText;
 
@@ -162,6 +170,7 @@ public class GameManager : MonoBehaviour
         britishIslesSeason = false;
         worldCupSeason = false;
         seasonGameCount = 0;
+        //seasonGameCount = 79;
     }
 
     public void CloseStartMenu()
@@ -296,17 +305,28 @@ public class GameManager : MonoBehaviour
             }
             if (worldCupSeason)
             {
-                if (seasonGameCount <= worldCupAwaySchedule.Count - 2)
+                if (seasonGameCount <= 82)
                 {
                     seasonCountText.text = "Game " + (seasonGameCount + 1) + " of " + worldCupAwaySchedule.Count;
                     nextGame.SetActive(true);
                     UpdateWorldCupStandingsUI();
                 }
+                else if (seasonGameCount == 83 || seasonGameCount == 84 || seasonGameCount == 85)
+                {
+                    playoffPageOn = false;
+                    TogglePlayoffPage();
+                    UpdateWorldCupStandingsUI();
+                    seasonCountText.text = "Playoffs";
+                    nextGame.SetActive(true);
+                    OpenStats();
+                    TurnOnStandings();
+                }
                 else
                 {
-                    //Rework this for playoffs
+                    playoffPageOn = false;
+                    TogglePlayoffPage();
                     UpdateWorldCupStandingsUI();
-                    seasonCountText.text = "Final Standings";
+                    seasonCountText.text = "Finals";
                     OpenStats();
                     TurnOnStandings();
                     nextGame.SetActive(false);
@@ -450,6 +470,29 @@ public class GameManager : MonoBehaviour
             print(worldCupAwaySchedule[seasonGameCount]);
             seasonTeams[worldCupAwaySchedule[seasonGameCount]].win++;
             seasonTeams[worldCupHomeSchedule[seasonGameCount]].loss++;
+
+            if (seasonGameCount == 84)
+            {
+                worldCupPlayoffPoints[0].text = team1Score.ToString();
+                worldCupPlayoffPoints[3].text = team2Score.ToString();
+                worldCupTeamChampionship.Add(worldCupTeamPlayoffs[3]);
+                worldCupPlayoffNames[4].text = worldCupTeamChampionship[0].team;
+                worldCupAwaySchedule.Add(worldCupTeamChampionship[0].teamNumber);
+            }
+            if (seasonGameCount == 85)
+            {
+                worldCupPlayoffPoints[1].text = team1Score.ToString();
+                worldCupPlayoffPoints[2].text = team2Score.ToString();
+                worldCupTeamChampionship.Add(worldCupTeamPlayoffs[2]);
+                worldCupPlayoffNames[5].text = worldCupTeamChampionship[1].team;
+                worldCupHomeSchedule.Add(worldCupTeamChampionship[1].teamNumber);
+            }
+            if (seasonGameCount == 86)
+            {
+                worldCupPlayoffPoints[4].text = team1Score.ToString();
+                worldCupPlayoffPoints[5].text = team2Score.ToString();
+                worldCupPlayoffNames[6].text = worldCupTeamChampionship[0].team;
+            }
         }
 
 
@@ -458,6 +501,29 @@ public class GameManager : MonoBehaviour
             print(worldCupAwaySchedule[seasonGameCount]);
             seasonTeams[worldCupHomeSchedule[seasonGameCount]].win++;
             seasonTeams[worldCupAwaySchedule[seasonGameCount]].loss++;
+
+            if (seasonGameCount == 84)
+            {
+                worldCupPlayoffPoints[0].text = team1Score.ToString();
+                worldCupPlayoffPoints[3].text = team2Score.ToString();
+                worldCupTeamChampionship.Add(worldCupTeamPlayoffs[0]);
+                worldCupPlayoffNames[4].text = worldCupTeamChampionship[0].team;
+                worldCupAwaySchedule.Add(worldCupTeamChampionship[0].teamNumber);
+            }
+            if (seasonGameCount == 85)
+            {
+                worldCupPlayoffPoints[1].text = team1Score.ToString();
+                worldCupPlayoffPoints[2].text = team2Score.ToString();
+                worldCupTeamChampionship.Add(worldCupTeamPlayoffs[1]);
+                worldCupPlayoffNames[5].text = worldCupTeamChampionship[1].team;
+                worldCupHomeSchedule.Add(worldCupTeamChampionship[1].teamNumber);
+            }
+            if (seasonGameCount == 86)
+            {
+                worldCupPlayoffPoints[4].text = team1Score.ToString();
+                worldCupPlayoffPoints[5].text = team2Score.ToString();
+                worldCupPlayoffNames[6].text = worldCupTeamChampionship[1].team;
+            }
         }
 
         seasonTeams[worldCupAwaySchedule[seasonGameCount]].score += team1Score;
@@ -469,11 +535,6 @@ public class GameManager : MonoBehaviour
         }
 
         worldCupTeamStandingsClassDivision4.Clear();
-        //Clearing out wild card list before next round of standings updates
-      /*  for (int i = 0; i < worldCupTeamStandingsClassDivision4.Count; i++)
-        {
-            worldCupTeamStandingsClassDivision4.Remove(worldCupTeamStandingsClassDivision4[i]);
-        }*/
 
         //Group 1
         var tempstandings1 = worldCupTeamStandingsClassDivision1.OrderByDescending(i => i.win).ThenBy(l => l.loss).ThenByDescending(p => p.score).ToList();
@@ -529,11 +590,41 @@ public class GameManager : MonoBehaviour
             worldCupSeasonScoreGroup4[i].text = tempstandings4[i].score.ToString();
         }
 
-        //end of season
-        //turn off season/turn on playoff bracket
-        //show teams in bracket
-        //advance 2 rounds of playoffs
-        //advance 1 round of championship
+        if (!playoffsSet && seasonGameCount >= 83)
+        {
+            worldCupTeamPlayoffs.Add(tempstandings1[0]);
+            worldCupTeamPlayoffs.Add(tempstandings2[0]);
+            worldCupTeamPlayoffs.Add(tempstandings3[0]);
+
+            var playoffOrdering = worldCupTeamPlayoffs.OrderByDescending(i => i.win).ThenBy(l => l.loss).ThenByDescending(p => p.score).ToList();
+            worldCupTeamPlayoffs.Add(tempstandings4[0]);
+
+            worldCupPlayoffNames[3].text = worldCupTeamPlayoffs[0].team.ToString();
+            worldCupPlayoffNames[2].text = worldCupTeamPlayoffs[1].team.ToString();
+            worldCupPlayoffNames[1].text = worldCupTeamPlayoffs[2].team.ToString();
+            worldCupPlayoffNames[0].text = worldCupTeamPlayoffs[3].team.ToString();
+
+            for (int i = 0; i < worldCupTeamPlayoffs.Count; i++)
+            {
+                worldCupPlayoffPoints[i].text = "0";
+            }
+
+            worldCupAwaySchedule.Add(worldCupTeamPlayoffs[3].teamNumber);
+            worldCupAwaySchedule.Add(worldCupTeamPlayoffs[2].teamNumber);
+            worldCupHomeSchedule.Add(worldCupTeamPlayoffs[0].teamNumber);
+            worldCupHomeSchedule.Add(worldCupTeamPlayoffs[1].teamNumber);
+            //show teams in bracket
+            //add teams to brakcet
+            //play next game
+
+            //advance 2 rounds of playoffs
+            //advance 1 round of championship
+            playoffsSet = true;
+        }
+        if (seasonGameCount >= 85)
+        {
+            //championship match
+        }
     }
     #endregion
 
@@ -1522,6 +1613,7 @@ public class GameManager : MonoBehaviour
 
     public void SeasonBegin()
     {
+       // seasonGameCount = 79;
         seasonGameCount = 0;
 
         for (int i = 0; i < seasonTeams.Length; i++)
@@ -1685,5 +1777,21 @@ public class GameManager : MonoBehaviour
     {
         chasers.seekerTimeDuration = chasers.longTime;
         snitchDurationSeason.text = "The Snitch can appear anytime between 0-60 minutes";
+    }
+
+    public void TogglePlayoffPage()
+    {
+        playoffPageOn = !playoffPageOn;
+
+        if (playoffPageOn)
+        {
+            worldCupPlayoffsStandings.SetActive(true);
+            worldCupSeasonStandings.SetActive(false);
+        }
+        else
+        {
+            worldCupPlayoffsStandings.SetActive(false);
+            worldCupSeasonStandings.SetActive(true);
+        }
     }
 }

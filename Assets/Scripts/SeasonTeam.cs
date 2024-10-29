@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class SeasonTeam : MonoBehaviour
 {
     public string team;
+    //Referenced in GameManager;
+    public int teamNumber;
     public int win;
     public int loss;
     public int score;
