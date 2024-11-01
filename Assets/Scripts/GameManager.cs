@@ -159,6 +159,10 @@ public class GameManager : MonoBehaviour
     public TMP_Text britishChampTeam1, britishChampTeam2, britishChampPoints1, britishChampPoints2;
     public TMP_Text snitchDurationSeason;
 
+    public GameObject buttonPrefab;
+    public GameObject teamNameHolder;
+    public int visitorInt, homeInt;
+    public bool visitorSelected, homeSelected;
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -171,6 +175,17 @@ public class GameManager : MonoBehaviour
         worldCupSeason = false;
         seasonGameCount = 0;
         //seasonGameCount = 79;
+
+        for (int i = 0; i < seasonTeams.Length; i++)
+        {
+            GameObject currentButton = Instantiate(buttonPrefab, teamNameHolder.transform.position, teamNameHolder.transform.rotation);
+            currentButton.transform.parent = teamNameHolder.transform;
+            currentButton.transform.localScale = new Vector3(0.45f, 0.6f, 0.75f);
+            currentButton.GetComponent<ButtonSetUp>().teamNumber = i;
+            currentButton.transform.GetChild(1).GetComponent<Image>().sprite = seasonTeams[i].logo;
+            currentButton.GetComponent<ButtonSetUp>().teamName.text = seasonTeams[i].team;
+            //assign button
+        }
     }
 
     public void CloseStartMenu()
@@ -932,6 +947,24 @@ public class GameManager : MonoBehaviour
         visitorText.text = "Brazil";
     }
 
+    public void SetUpVisitor()
+    {
+        visitorSelected = true;
+        visitorTeam = visitorInt;
+        players.SetLineUp();
+        TurnOnLineUpVisitor();
+        visitorText.text = seasonTeams[visitorInt].team;
+    }
+
+    public void SetUpHome()
+    {
+        homeSelected = true;
+        homeTeam = homeInt;
+        players.SetLineUp();
+        TurnOnLineUpHome();
+        homeText.text = seasonTeams[homeInt].team;
+    }
+
     public void VRandomHouse()
     {
         int randTeam = UnityEngine.Random.Range(0, 4);
@@ -1276,6 +1309,16 @@ public class GameManager : MonoBehaviour
         players.SetLineUp();
         TurnOnLineUpHome();
         homeText.text = "Brazil";
+    }
+
+    public void VisitorSetUp()
+    { 
+    
+    }
+
+    public void HomeSetUp()
+    { 
+    
     }
 
     public void RandomHouse()
