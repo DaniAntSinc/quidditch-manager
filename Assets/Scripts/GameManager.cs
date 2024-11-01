@@ -163,6 +163,8 @@ public class GameManager : MonoBehaviour
     public GameObject teamNameHolder;
     public int visitorInt, homeInt;
     public bool visitorSelected, homeSelected;
+    public GameObject undoButtonExhibition;
+    public GameObject ExhibitionTeamHolder;
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -257,8 +259,13 @@ public class GameManager : MonoBehaviour
             cheatsGO.SetActive(false);
         }
 
-        if (visitorText.text != "Visitor" && homeText.text != "Home")
+        if (visitorSelected && homeSelected)
             teamsSelected.SetActive(true);
+        else
+            teamsSelected.SetActive(false);
+
+        //if (visitorText.text != "Visitor" && homeText.text != "Home")
+        //    teamsSelected.SetActive(true);
        
         if (matchOver && !winnerChosen)
         {
@@ -949,6 +956,7 @@ public class GameManager : MonoBehaviour
 
     public void SetUpVisitor()
     {
+        undoButtonExhibition.SetActive(true);
         visitorSelected = true;
         visitorTeam = visitorInt;
         players.SetLineUp();
@@ -963,6 +971,28 @@ public class GameManager : MonoBehaviour
         players.SetLineUp();
         TurnOnLineUpHome();
         homeText.text = seasonTeams[homeInt].team;
+    }
+
+    public void UndoSelection()
+    {
+        if (homeSelected)
+        {
+            homeSelected = false;
+            homeTeam = -1;
+            TurnOffLineUpHome();
+            homeText.text = "Home";
+        }
+        else if (visitorSelected)
+        {
+            visitorSelected = false;
+            visitorTeam = -1;
+            TurnOffVisitorLineUp();
+            visitorText.text = "Visitor";
+        }
+        if (!homeSelected && !visitorSelected)
+        {
+            undoButtonExhibition.SetActive(false);
+        }
     }
 
     public void VRandomHouse()
@@ -1557,6 +1587,38 @@ public class GameManager : MonoBehaviour
         beater4.text = players.team2Beaters[1];
         keeper2.text = players.team2Keeper;
         seeker2.text = players.team2Seeker;
+    }
+
+    void TurnOffVisitorLineUp()
+    {
+        for (int i = 0; i < lineUpArray.Length; i++)
+        {
+            lineUpArray[i].SetActive(true);
+        }
+
+        chaser1.text = "";
+        chaser2.text = "";
+        chaser3.text = "";
+        beater1.text = "";
+        beater2.text = "";
+        keeper1.text = "";
+        seeker1.text = "";
+    }
+
+    void TurnOffLineUpHome()
+    {
+        for (int i = 0; i < lineupArray2.Length; i++)
+        {
+            lineupArray2[i].SetActive(true);
+        }
+
+        chaser4.text = ""; 
+        chaser5.text = "";
+        chaser6.text = "";
+        beater3.text = "";
+        beater4.text = "";
+        keeper2.text = "";
+        seeker2.text = "";
     }
 
     public void Exhibition() 
