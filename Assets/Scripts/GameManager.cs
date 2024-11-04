@@ -165,6 +165,10 @@ public class GameManager : MonoBehaviour
     public bool visitorSelected, homeSelected;
     public GameObject undoButtonExhibition;
     public GameObject ExhibitionTeamHolder;
+
+    public GameObject visitorNewExhibitionSetUp, homeNewExhibitionSetUp;
+    public TMP_Text visitorDivision, homeDivision, visitorRankChaser, visitorRankBeater, visitorRankKeeper, visitorRankSeeker, homeRankChaser, homeRankBeater, homeRankKeeper, homeRankSeeker;
+    public Image visitorLogo, homeLogo;
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -822,21 +826,25 @@ public class GameManager : MonoBehaviour
     {
         if (homeSelected)
         {
+            homeNewExhibitionSetUp.SetActive(false);
             homeSelected = false;
             homeTeam = -1;
-            TurnOffLineUpHome();
+     //       TurnOffLineUpHome();
             homeText.text = "Home";
         }
         else if (visitorSelected)
         {
+            visitorNewExhibitionSetUp.SetActive(false);
             visitorSelected = false;
             visitorTeam = -1;
-            TurnOffVisitorLineUp();
+      //      TurnOffVisitorLineUp();
             visitorText.text = "Visitor";
         }
         if (!homeSelected && !visitorSelected)
         {
             undoButtonExhibition.SetActive(false);
+            visitorNewExhibitionSetUp.SetActive(false);
+            homeNewExhibitionSetUp.SetActive(false);
         }
     }
 
@@ -861,32 +869,90 @@ public class GameManager : MonoBehaviour
 
     void TurnOnLineUpVisitor()
     {
-        for (int i = 0; i < lineUpArray.Length; i++)
+        visitorNewExhibitionSetUp.SetActive(true);
+        visitorLogo.sprite = seasonTeams[visitorInt].logo;
+        switch(seasonTeams[visitorInt].chasers[0].division)
         {
-            lineUpArray[i].SetActive(true);
+            case 0:
+                visitorDivision.text = "Hogwarts";
+                break;
+            case 1:
+                visitorDivision.text = "British Isles";
+                break;
+            case 2:
+                visitorDivision.text = "World Cup";
+                break;
+            default:
+                print("Invalid Division");
+                break;
         }
-        chaser1.text = players.team1ChasersNames[0];
-        chaser2.text = players.team1ChasersNames[1];
-        chaser3.text = players.team1ChasersNames[2];
-        beater1.text = players.team1Beaters[0];
-        beater2.text = players.team1Beaters[1];
-        keeper1.text = players.team1Keeper;
-        seeker1.text = players.team1Seeker;
+
+        int chaserTeamValue = 0;
+        for (int i = 0; i < seasonTeams[visitorInt].chasers.Count; i++)
+        {
+            chaserTeamValue += seasonTeams[visitorInt].chasers[i].intercept;
+            chaserTeamValue += seasonTeams[visitorInt].chasers[i].pass;
+            chaserTeamValue += seasonTeams[visitorInt].chasers[i].shooting;
+            chaserTeamValue += seasonTeams[visitorInt].chasers[i].speed;
+            chaserTeamValue += seasonTeams[visitorInt].chasers[i].tackle;
+        }
+        visitorRankChaser.text = ((chaserTeamValue * 100)/1500).ToString("0");
+
+        int beaterTeamValue = 0;
+        for (int i = 0; i < seasonTeams[visitorInt].beaters.Count; i++)
+        {
+            beaterTeamValue += seasonTeams[visitorInt].beaters[i].locateSpeed;
+        }
+        visitorRankBeater.text = (beaterTeamValue / 2).ToString("0");
+
+        visitorRankKeeper.text = seasonTeams[visitorInt].keeper[0].block.ToString("0");
+
+        int seekerTeamValue = seasonTeams[visitorInt].seeker[0].sight + seasonTeams[visitorInt].seeker[0].speed + seasonTeams[visitorInt].seeker[0].reach + seasonTeams[visitorInt].seeker[0].grab;
+        visitorRankSeeker.text = (((seekerTeamValue *100)/ 304)).ToString("0");
     }
     void TurnOnLineUpHome()
     {
-        for (int i = 0; i < lineupArray2.Length; i++)
+        homeNewExhibitionSetUp.SetActive(true);
+        homeLogo.sprite = seasonTeams[homeInt].logo;
+        switch (seasonTeams[homeInt].chasers[0].division)
         {
-            lineupArray2[i].SetActive(true);
+            case 0:
+                homeDivision.text = "Hogwarts";
+                break;
+            case 1:
+                homeDivision.text = "British Isles";
+                break;
+            case 2:
+                homeDivision.text = "World Cup";
+                break;
+            default:
+                print("Invalid Division");
+                break;
         }
 
-        chaser4.text = players.team2ChasersNames[0];
-        chaser5.text = players.team2ChasersNames[1];
-        chaser6.text = players.team2ChasersNames[2];
-        beater3.text = players.team2Beaters[0];
-        beater4.text = players.team2Beaters[1];
-        keeper2.text = players.team2Keeper;
-        seeker2.text = players.team2Seeker;
+        int chaserTeamValue = 0;
+        for (int i = 0; i < seasonTeams[homeInt].chasers.Count; i++)
+        {
+            chaserTeamValue += seasonTeams[homeInt].chasers[i].intercept;
+            chaserTeamValue += seasonTeams[homeInt].chasers[i].pass;
+            chaserTeamValue += seasonTeams[homeInt].chasers[i].shooting;
+            chaserTeamValue += seasonTeams[homeInt].chasers[i].speed;
+            chaserTeamValue += seasonTeams[homeInt].chasers[i].tackle;
+        }
+
+        homeRankChaser.text = ((chaserTeamValue * 100) / 1500).ToString("0");
+
+        int beaterTeamValue = 0;
+        for (int i = 0; i < seasonTeams[homeInt].beaters.Count; i++)
+        {
+            beaterTeamValue += seasonTeams[homeInt].beaters[i].locateSpeed;
+        }
+        homeRankBeater.text = (beaterTeamValue / 2).ToString("0");
+
+        homeRankKeeper.text = seasonTeams[homeInt].keeper[0].block.ToString("0");
+
+        int seekerTeamValue = seasonTeams[homeInt].seeker[0].sight + seasonTeams[homeInt].seeker[0].speed + seasonTeams[homeInt].seeker[0].reach + seasonTeams[homeInt].seeker[0].grab;
+        homeRankSeeker.text = (((seekerTeamValue * 100) / 304)).ToString("0");
     }
 
     void TurnOffVisitorLineUp()
