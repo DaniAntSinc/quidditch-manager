@@ -175,17 +175,17 @@ public class Seekers : MonoBehaviour
     public void EstablishSnitchPosition()
     {
         speed = Random.Range(1, 9);
-        snitchLocation.transform.position = new Vector3(Random.Range(-75, 75), Random.Range(0, 100), Random.Range(-75, 75));
+        snitchLocation.transform.position = new Vector3(Random.Range(-30, 30), Random.Range(0, 40), Random.Range(-50, 50));
     }
 
     public void EstablishSeeker1Position()
     {
-        team1SeekerPosition.transform.position = new Vector3(Random.Range(-75, 75), Random.Range(0, 100), Random.Range(-75, 75));
+        team1SeekerPosition.transform.position = new Vector3(Random.Range(-75, 75), Random.Range(0, 50), Random.Range(-50, 50));
     }
 
     public void EstablishSeeker2Position()
     {
-        team2SeekerPosition.transform.position = new Vector3(Random.Range(-75, 75), Random.Range(0, 100), Random.Range(-75, 75));
+        team2SeekerPosition.transform.position = new Vector3(Random.Range(-30, 30), Random.Range(0, 50), Random.Range(-50, 50));
     }
 
     void Team1Caught()
