@@ -8,7 +8,7 @@ public class Seekers : MonoBehaviour
     Players players;
     public Transform snitch;
     Beaters beaters;
-    float speed = 5, meanderSpeed = 1.5f;
+    float speed = 5;
     public Transform snitchLocation;
     bool seesSnitch;
     public Transform seeker1, team1SeekerPosition;
@@ -76,9 +76,9 @@ public class Seekers : MonoBehaviour
                 if (!seesSnitch)
                 {
                     if (!seeker1Stunned)
-                        seeker1.transform.position = Vector3.MoveTowards(seeker1.transform.position, team1SeekerPosition.transform.position, meanderSpeed * Time.deltaTime);
+                        seeker1.transform.position = Vector3.MoveTowards(seeker1.transform.position, team1SeekerPosition.transform.position, (gameManager.seasonTeams[gameManager.visitorInt].seeker[0].speed * 0.7f) * Time.deltaTime);
                     if (!seeker2stunned)
-                        seeker2.transform.position = Vector3.MoveTowards(seeker2.transform.position, team2SeekerPosition.transform.position, meanderSpeed * Time.deltaTime);
+                        seeker2.transform.position = Vector3.MoveTowards(seeker2.transform.position, team2SeekerPosition.transform.position, (gameManager.seasonTeams[gameManager.homeInt].seeker[0].speed * 0.7f) * Time.deltaTime);
 
                     if (Vector3.Distance(seeker1.position, team1SeekerPosition.position) <= 2 && !seeker1Stunned)
                         EstablishSeeker1Position();

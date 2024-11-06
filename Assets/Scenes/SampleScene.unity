@@ -30109,7 +30109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 50
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -31523,7 +31523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4438679599665506848, guid: 9bf14c5e16522b84b91dfff31c88337a, type: 3}
       propertyPath: shooting
-      value: 35
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 4438679599665506848, guid: 9bf14c5e16522b84b91dfff31c88337a, type: 3}
       propertyPath: intercept
@@ -79786,7 +79786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4438679599665506848, guid: 9bf14c5e16522b84b91dfff31c88337a, type: 3}
       propertyPath: shooting
-      value: 25
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4438679599665506848, guid: 9bf14c5e16522b84b91dfff31c88337a, type: 3}
       propertyPath: intercept
@@ -81956,7 +81956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4438679599665506848, guid: 9bf14c5e16522b84b91dfff31c88337a, type: 3}
       propertyPath: shooting
-      value: 28
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 4438679599665506848, guid: 9bf14c5e16522b84b91dfff31c88337a, type: 3}
       propertyPath: intercept
@@ -85135,7 +85135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4438679599665506848, guid: 9bf14c5e16522b84b91dfff31c88337a, type: 3}
       propertyPath: shooting
-      value: 26
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 4438679599665506848, guid: 9bf14c5e16522b84b91dfff31c88337a, type: 3}
       propertyPath: intercept
@@ -90833,7 +90833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4438679599665506848, guid: 9bf14c5e16522b84b91dfff31c88337a, type: 3}
       propertyPath: shooting
-      value: 36
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 4438679599665506848, guid: 9bf14c5e16522b84b91dfff31c88337a, type: 3}
       propertyPath: intercept
@@ -115204,7 +115204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 40
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -115297,7 +115297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4438679599665506848, guid: 9bf14c5e16522b84b91dfff31c88337a, type: 3}
       propertyPath: shooting
-      value: 28
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 4438679599665506848, guid: 9bf14c5e16522b84b91dfff31c88337a, type: 3}
       propertyPath: intercept
