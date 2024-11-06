@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
         {
             GameObject currentButton = Instantiate(buttonPrefab, teamNameHolder.transform.position, teamNameHolder.transform.rotation);
             currentButton.transform.parent = teamNameHolder.transform;
-            currentButton.transform.localScale = new Vector3(0.45f, 0.6f, 0.75f);
+            currentButton.transform.localScale = new Vector3(0.35f, 0.43f, 0.75f);
             currentButton.GetComponent<ButtonSetUp>().teamNumber = i;
             currentButton.transform.GetChild(1).GetComponent<Image>().sprite = seasonTeams[i].logo;
             currentButton.GetComponent<ButtonSetUp>().teamName.text = seasonTeams[i].team;

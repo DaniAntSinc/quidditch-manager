@@ -24446,7 +24446,7 @@ MonoBehaviour:
   britishChampPoints1: {fileID: 1040542837}
   britishChampPoints2: {fileID: 1162984614}
   snitchDurationSeason: {fileID: 549310431}
-  buttonPrefab: {fileID: 5500132564603921367, guid: 0bececfbddaefd241b1308c020e7f4e0, type: 3}
+  buttonPrefab: {fileID: 3687537992931450851, guid: f53b4a7320ce8f84fab42949da15694f, type: 3}
   teamNameHolder: {fileID: 1112864627}
   visitorInt: 0
   homeInt: 0
@@ -28520,7 +28520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.87058824}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -29047,7 +29047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.87058824}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -53497,8 +53497,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000076293945, y: -189.95107}
-  m_SizeDelta: {x: 0, y: 379.902}
+  m_AnchoredPosition: {x: -5.7000046, y: -189.95107}
+  m_SizeDelta: {x: -1.7999969, y: 379.902}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1112864629
 MonoBehaviour:
@@ -79290,7 +79290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.87058824}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -81516,7 +81516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.87058824}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -101073,7 +101073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.87058824}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
