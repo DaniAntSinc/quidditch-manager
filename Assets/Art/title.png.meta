@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 903c050232f4cf548a6b88565635376a
+guid: 4044f4b8a4bac2942bd969f253d7eea5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,12 +136,75 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ui_0
+      name: Button Container
       rect:
         serializedVersion: 2
-        x: 4
-        y: 610
-        width: 402
+        x: 402
+        y: 369
+        width: 541
+        height: 143
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55167eab30bdc374da4584baaacdce10
+      internalID: -482281871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button Main - Active
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 10
+        width: 147
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 26, y: 29, z: 30, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff97cdc1c7cf4ce4ca09b3f88e607543
+      internalID: -1764720821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button Main - Hover
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 156
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 31, y: 34, z: 34, w: 29}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2ec448a75da8bf41874124107762c4a
+      internalID: -1795893268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Container 1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 103
+        width: 401
         height: 409
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -150,19 +213,124 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e287e9373083cd48a2803aafad0b3c6
-      internalID: 34910865
+      spriteID: 26f5f23e23e089e4c960b4ff3d24b51b
+      internalID: -1710280201
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ui_1
+      name: Decoration Sides
       rect:
         serializedVersion: 2
-        x: 4
-        y: 566
-        width: 129
+        x: 952
+        y: 75
+        width: 47
+        height: 388
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b52f5c5dd1f7f944bbe7ab0fdda7e895
+      internalID: -2118938512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Middle
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 12
+        width: 93
+        height: 90
+      alignment: 9
+      pivot: {x: 0.48924732, y: 0.7222222}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f73afe701313934aa797b4957854211
+      internalID: -2039007122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quidditch Manager
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 103
+        width: 359
+        height: 158
+      alignment: 9
+      pivot: {x: 0.5041783, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 684fafe2b7b9e544294803dc24c94d9f
+      internalID: -815753723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Right Wing
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 101
+        width: 189
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1760fd1c32b798248b88ce1039d729e5
+      internalID: 1694644661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Topper
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 464
+        width: 59
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8f0679a179a5684899d2e9e1a15e1c4
+      internalID: 1088180642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: World Cup text
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 62
+        width: 330
         height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -171,20 +339,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa567bf793a0ebe478099289642e3726
-      internalID: 963103703
+      spriteID: f4bb15ed5f699f74da388a09d9efa225
+      internalID: -1706202070
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ui_2
+      name: Left Wing
       rect:
         serializedVersion: 2
-        x: 139
-        y: 564
-        width: 195
-        height: 43
+        x: 762
+        y: 181
+        width: 184
+        height: 80
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,41 +360,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37d7391cea4630f4cb6f394612f31f94
-      internalID: -196600988
+      spriteID: e706980e60c57a940a67553daa261b5f
+      internalID: 1017037546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ui_3
+      name: Decoration TopBottom1
       rect:
         serializedVersion: 2
-        x: 4
-        y: 479
-        width: 193
-        height: 79
-      alignment: 9
-      pivot: {x: 0.9586158, y: 0.16167788}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ad6a6b2045b8e284fbb1b2409fcf1e5c
-      internalID: 1908709124
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ui_4
-      rect:
-        serializedVersion: 2
-        x: 205
-        y: 467
-        width: 92
-        height: 92
+        x: 402
+        y: 262
+        width: 539
+        height: 106
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,113 +381,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ead4789e8c85b547a531615d3484d45
-      internalID: 244988105
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ui_5
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 300
-        width: 360
-        height: 160
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bb878bb01650499419702afcc0e49337
-      internalID: 953185831
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ui_6
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 210
-        width: 135
-        height: 79
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 9, y: 8, z: 9, w: 9}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 51e1900b44fab7b40ac48c211ef15f75
-      internalID: 2109985628
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ui_7
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 142
-        width: 333
-        height: 47
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf82a181be500a447a04040d5aa23303
-      internalID: 644861577
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ui_8
-      rect:
-        serializedVersion: 2
-        x: 164
-        y: 212
-        width: 188
-        height: 82
-      alignment: 9
-      pivot: {x: 0.035526764, y: 0.13968156}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: acafb5af514887d40a8357f1b0af107d
-      internalID: -1945719996
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ui_9
-      rect:
-        serializedVersion: 2
-        x: 363
-        y: 241
-        width: 57
-        height: 51
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 479df4f77b425494aa3013591f33aaaf
-      internalID: -193070072
+      spriteID: 46f646b51922ee14a87efc1f1f24adb4
+      internalID: -2076823234
       vertices: []
       indices: 
       edges: []
@@ -356,16 +398,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ui_0: 34910865
-      ui_1: 963103703
-      ui_2: -196600988
-      ui_3: 1908709124
-      ui_4: 244988105
-      ui_5: 953185831
-      ui_6: 2109985628
-      ui_7: 644861577
-      ui_8: -1945719996
-      ui_9: -193070072
+      Button Container: -482281871
+      Button Main - Active: -1764720821
+      Button Main - Hover: -1795893268
+      Container 1: -1710280201
+      Decoration Sides: -2118938512
+      Decoration TopBottom1: -2076823234
+      Left Wing: 1017037546
+      Middle: -2039007122
+      Quidditch Manager: -815753723
+      Right Wing: 1694644661
+      Topper: 1088180642
+      World Cup text: -1706202070
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,0 +1,27 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:9df7afaf73288bb7da5e0940c6d60b3d:f40b28f372c11d28523720a27a38228c:ad91a54065cfe689795c1d4883f7a69b$
+#
+:format=40300
+:texture=title.png
+:size=1024x512
+:pivotpoints=enabled
+:borders=enabled
+:alphahandling=ClearTransparentPixels
+
+Button Container;402;369;541;143; 0.5;0.5; 0;0;0;0
+Button Main - Active;488;10;147;92; 0.5;0.5; 26;30;24;29
+Button Main - Hover;0;0;156;102; 0.5;0.5; 31;34;29;34
+Container 1;0;103;401;409; 0.5;0.5; 0;0;0;0
+Decoration Sides;952;75;47;388; 0.5;0.5; 0;0;0;0
+Decoration TopBottom1;402;262;539;106; 0.5;0.5; 0;0;0;0
+Left Wing;762;181;184;80; 0.5;0.5; 0;0;0;0
+Middle;636;12;93;90; 0.489247311827957;0.7222222222222222; 0;0;0;0
+Quidditch Manager;402;103;359;158; 0.5041782729805014;0.5; 0;0;0;0
+Right Wing;762;101;189;79; 0.5;0.5; 0;0;0;0
+Topper;944;464;59;48; 0.5;0.5; 0;0;0;0
+World Cup text;157;62;330;40; 0.5;0.5; 0;0;0;0
