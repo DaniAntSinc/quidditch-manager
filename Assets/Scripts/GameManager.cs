@@ -64,10 +64,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text team2beater1NameText, team2beater2NameText, team2Beater1BludgerSentText, team2Beater2BludgerSentText, team2Beater1BludgerHitText, team2Beater2BludgerHitText;
     public TMP_Text team2seekerNameText, team2SeekerSnitchCaughtText, team2SeekerSawText, team2SeekerReachText;
 
-    public GameObject[] lineUpArray, lineupArray2;
-    public TMP_Text chaser1, chaser2, chaser3, chaser4, chaser5, chaser6, beater1, beater2, beater3, beater4, keeper1, keeper2, seeker1, seeker2, team1Final, team2Final, weather, weather2;
-
-    public GameObject hogwarts, professional, international;
+    public TMP_Text team1Final, team2Final, weather, weather2;
 
     public bool sun, rain, fog, snow, indoors;
 
@@ -953,38 +950,6 @@ public class GameManager : MonoBehaviour
 
         int seekerTeamValue = seasonTeams[homeInt].seeker[0].sight + seasonTeams[homeInt].seeker[0].speed + seasonTeams[homeInt].seeker[0].reach + seasonTeams[homeInt].seeker[0].grab;
         homeRankSeeker.text = (((seekerTeamValue * 100) / 304)).ToString("0");
-    }
-
-    void TurnOffVisitorLineUp()
-    {
-        for (int i = 0; i < lineUpArray.Length; i++)
-        {
-            lineUpArray[i].SetActive(true);
-        }
-
-        chaser1.text = "";
-        chaser2.text = "";
-        chaser3.text = "";
-        beater1.text = "";
-        beater2.text = "";
-        keeper1.text = "";
-        seeker1.text = "";
-    }
-
-    void TurnOffLineUpHome()
-    {
-        for (int i = 0; i < lineupArray2.Length; i++)
-        {
-            lineupArray2[i].SetActive(true);
-        }
-
-        chaser4.text = ""; 
-        chaser5.text = "";
-        chaser6.text = "";
-        beater3.text = "";
-        beater4.text = "";
-        keeper2.text = "";
-        seeker2.text = "";
     }
 
     public void Exhibition() 
