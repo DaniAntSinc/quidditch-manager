@@ -21,8 +21,14 @@ public class Chasers : MonoBehaviour
     bool toggleMessageCooldown;
     float locationMessageCooldown = 3;
 
-    public bool team1Chaser1Sunned, team1Chaser2Sunned, team1Chaser3Sunned;
-    public bool team2Chaser1Sunned, team2Chaser2Sunned, team2Chaser3Sunned;
+    public bool team1Chaser1Stunned, team1Chaser2Stunned, team1Chaser3Stunned;
+    public bool team2Chaser1Stunned, team2Chaser2Stunned, team2Chaser3Stunned;
+
+    public float team1Chaser1Cooldown = 10f, team1Chaser2Cooldown = 10f, team1Chaser3Cooldown = 10f;
+    public float team2Chaser1Cooldown = 10f, team2Chaser2Cooldown = 10f, team2Chaser3Cooldown = 10f;
+
+    int team1Bonus = 10;
+    int team2Bonus = 10;
 
     public int cheatTime = 1, fastTime = 2, mediumTime = 4, defaultTime = 6, longTime = 7;
     public int seekerTimeDuration;
@@ -68,7 +74,73 @@ public class Chasers : MonoBehaviour
                     locationMessageCooldown = 3;
                     shotTaken = false;
                 }
-            } 
+            }
+
+            if (team1Chaser1Stunned)
+            {
+                team1Chaser1Cooldown -= Time.deltaTime;
+                if (team1Chaser1Cooldown <= 0)
+                {
+                    team1Chaser1Cooldown = Random.Range(5, 15);
+                    AdjustStats(1, -team2Bonus);
+                    team1Chaser1Stunned = false;
+                }
+            }
+
+            if (team1Chaser2Stunned)
+            {
+                team1Chaser2Cooldown -= Time.deltaTime;
+                if (team1Chaser2Cooldown <= 0)
+                {
+                    team1Chaser2Cooldown = Random.Range(5, 15);
+                    AdjustStats(1, -team2Bonus);
+                    team1Chaser2Stunned = false;
+                }
+            }
+
+            if (team1Chaser3Stunned)
+            {
+                team1Chaser3Cooldown -= Time.deltaTime;
+                if (team1Chaser3Cooldown <= 0)
+                {
+                    team1Chaser3Cooldown = Random.Range(5, 15);
+                    AdjustStats(1, -team2Bonus);
+                    team1Chaser3Stunned = false;
+                }
+            }
+
+            if (team2Chaser1Stunned)
+            {
+                team2Chaser1Cooldown -= Time.deltaTime;
+                if (team2Chaser1Cooldown <= 0)
+                {
+                    team2Chaser1Cooldown = Random.Range(5, 15);
+                    AdjustStats(0, -team2Bonus);
+                    team2Chaser1Stunned = false;
+                }
+            }
+
+            if (team2Chaser2Stunned)
+            {
+                team2Chaser2Cooldown -= Time.deltaTime;
+                if (team2Chaser2Cooldown <= 0)
+                {
+                    team2Chaser2Cooldown = Random.Range(5, 15);
+                    AdjustStats(0, -team2Bonus);
+                    team2Chaser2Stunned = false;
+                }
+            }
+
+            if (team2Chaser3Stunned)
+            {
+                team2Chaser3Cooldown -= Time.deltaTime;
+                if (team2Chaser3Cooldown <= 0)
+                {
+                    team2Chaser3Cooldown = Random.Range(5, 15);
+                    AdjustStats(0, -team2Bonus);
+                    team2Chaser3Stunned = false;
+                }
+            }
         }
     }
 
@@ -213,29 +285,37 @@ public class Chasers : MonoBehaviour
                         }
                         int teamTwoChaser = Random.Range(0, 3);
 
-                        int choosingRandomPassingChance = Random.Range(0, passingChance + players.team2ChasersIntercept[teamTwoChaser]);
-                        if (choosingRandomPassingChance > (passingChance - players.team2ChasersIntercept[teamTwoChaser]))
+                        if (teamTwoChaser == 0 && team2Chaser1Stunned || teamTwoChaser == 1 && team2Chaser2Stunned || teamTwoChaser == 2 && team2Chaser3Stunned)
                         {
-                            //pass intercepted
-                            StartCoroutine(waitForUpdate(players.team2ChasersNames[teamTwoChaser] + " intercepted the pass! ", 0.5f));
-                            gameManager.team1HasPossession = false;
-                            gameManager.pitchLocation = 100 - gameManager.pitchLocation;
-                            placementInList = teamTwoChaser;
-                            players.quaffleHolder = players.team2ChasersNames[teamTwoChaser];
-                            if (teamTwoChaser == 0)
-                                gameManager.team2Chaser1Intercepts += 1;
-                            if (teamTwoChaser == 1)
-                                gameManager.team2Chaser2Intercepts += 1;
-                            if (teamTwoChaser == 2)
-                                gameManager.team2Chaser3Intercepts += 1;
+                            return;
                         }
                         else
                         {
-                            //pass completed
-                            StartCoroutine(waitForUpdate(players.team1ChasersNames[tempPassingTarget] + " catches the Quaffle! ", 0.5f));
-                            gameManager.pitchLocation += Random.Range(-5, 15);
-                            placementInList = tempPassingTarget;
-                            players.quaffleHolder = players.team1ChasersNames[placementInList];
+
+                            int choosingRandomPassingChance = Random.Range(0, passingChance + players.team2ChasersIntercept[teamTwoChaser]);
+                            if (choosingRandomPassingChance > (passingChance - players.team2ChasersIntercept[teamTwoChaser]))
+                            {
+                                //pass intercepted
+                                StartCoroutine(waitForUpdate(players.team2ChasersNames[teamTwoChaser] + " intercepted the pass! ", 0.5f));
+                                gameManager.team1HasPossession = false;
+                                gameManager.pitchLocation = 100 - gameManager.pitchLocation;
+                                placementInList = teamTwoChaser;
+                                players.quaffleHolder = players.team2ChasersNames[teamTwoChaser];
+                                if (teamTwoChaser == 0)
+                                    gameManager.team2Chaser1Intercepts += 1;
+                                if (teamTwoChaser == 1)
+                                    gameManager.team2Chaser2Intercepts += 1;
+                                if (teamTwoChaser == 2)
+                                    gameManager.team2Chaser3Intercepts += 1;
+                            }
+                            else
+                            {
+                                //pass completed
+                                StartCoroutine(waitForUpdate(players.team1ChasersNames[tempPassingTarget] + " catches the Quaffle! ", 0.5f));
+                                gameManager.pitchLocation += Random.Range(-5, 15);
+                                placementInList = tempPassingTarget;
+                                players.quaffleHolder = players.team1ChasersNames[placementInList];
+                            }
                         }
                     }
                     else
@@ -303,29 +383,36 @@ public class Chasers : MonoBehaviour
                         }
                         int teamOneChaser = Random.Range(0, 3);
 
-                        int choosingRandomPassingChance = Random.Range(0, passingChance + players.team1ChasersIntercept[teamOneChaser]);
-                        if (choosingRandomPassingChance > (passingChance - players.team1ChasersIntercept[teamOneChaser]))
+                        if (teamOneChaser == 0 && team1Chaser1Stunned || teamOneChaser == 1 && team1Chaser2Stunned || teamOneChaser == 2 && team1Chaser3Stunned)
                         {
-                            //pass intercepted
-                            StartCoroutine(waitForUpdate(players.team1ChasersNames[teamOneChaser] + " intercepted the pass! ", 0.5f));
-                            gameManager.team1HasPossession = true;
-                            gameManager.pitchLocation = 100 - gameManager.pitchLocation;
-                            placementInList = teamOneChaser;
-                            players.quaffleHolder = players.team1ChasersNames[teamOneChaser];
-                            if (teamOneChaser == 0)
-                                gameManager.team1Chaser1Intercepts += 1;
-                            if (teamOneChaser == 1)
-                                gameManager.team1Chaser2Intercepts += 1;
-                            if (teamOneChaser == 2)
-                                gameManager.team1Chaser3Intercepts += 1;
+                            return;
                         }
                         else
                         {
-                            //pass completed
-                            StartCoroutine(waitForUpdate(players.team2ChasersNames[tempPassingTarget] + " catches the Quaffle! ", 0.5f));
-                            gameManager.pitchLocation += Random.Range(-5, 15);
-                            placementInList = tempPassingTarget;
-                            players.quaffleHolder = players.team2ChasersNames[placementInList];
+                            int choosingRandomPassingChance = Random.Range(0, passingChance + players.team1ChasersIntercept[teamOneChaser]);
+                            if (choosingRandomPassingChance > (passingChance - players.team1ChasersIntercept[teamOneChaser]))
+                            {
+                                //pass intercepted
+                                StartCoroutine(waitForUpdate(players.team1ChasersNames[teamOneChaser] + " intercepted the pass! ", 0.5f));
+                                gameManager.team1HasPossession = true;
+                                gameManager.pitchLocation = 100 - gameManager.pitchLocation;
+                                placementInList = teamOneChaser;
+                                players.quaffleHolder = players.team1ChasersNames[teamOneChaser];
+                                if (teamOneChaser == 0)
+                                    gameManager.team1Chaser1Intercepts += 1;
+                                if (teamOneChaser == 1)
+                                    gameManager.team1Chaser2Intercepts += 1;
+                                if (teamOneChaser == 2)
+                                    gameManager.team1Chaser3Intercepts += 1;
+                            }
+                            else
+                            {
+                                //pass completed
+                                StartCoroutine(waitForUpdate(players.team2ChasersNames[tempPassingTarget] + " catches the Quaffle! ", 0.5f));
+                                gameManager.pitchLocation += Random.Range(-5, 15);
+                                placementInList = tempPassingTarget;
+                                players.quaffleHolder = players.team2ChasersNames[placementInList];
+                            }
                         }
                     }
                     else
@@ -348,6 +435,12 @@ public class Chasers : MonoBehaviour
             if (gameManager.team1HasPossession)
             {
                 int RandomTeam2Chaser = Random.Range(0, players.team2ChasersNames.Length);
+
+                if (RandomTeam2Chaser == 0 && team2Chaser1Stunned || RandomTeam2Chaser == 1 && team2Chaser2Stunned || RandomTeam2Chaser == 2 && team2Chaser3Stunned)
+                {
+                    return;
+                }
+
                 int RandomTackleChance = Random.Range(0, players.team2ChaserTackle[RandomTeam2Chaser] + players.team1ChaserDodge[placementInList]);
                 if (RandomTackleChance > players.team2ChaserTackle[RandomTeam2Chaser])
                 {
@@ -375,6 +468,12 @@ public class Chasers : MonoBehaviour
             else
             {
                 int RandomTeam1Chaser = Random.Range(0, players.team1ChasersNames.Length);
+
+                if (RandomTeam1Chaser == 0 && team1Chaser1Stunned || RandomTeam1Chaser == 1 && team1Chaser2Stunned || RandomTeam1Chaser == 2 && team1Chaser3Stunned)
+                {
+                    return;
+                }
+
                 int RandomTackleChance = Random.Range(0, players.team1ChaserTackle[RandomTeam1Chaser] + players.team2ChaserDodge[placementInList]);
                 if (RandomTackleChance > players.team1ChaserTackle[RandomTeam1Chaser])
                 {
@@ -477,7 +576,10 @@ public class Chasers : MonoBehaviour
                 gameManager.team2KeeperShots += 1;
                 int totalOfShotAndBlock = Random.Range(0, players.team1ChaserShooting[placementInList] + players.team2KeeperBlock);
                 int hoopAimedAt = Random.Range(0, 3);
-                if (totalOfShotAndBlock > players.team1ChaserShooting[placementInList] && !keepers.keeper2Stunned)
+
+                if (keepers.keeper2Stunned)
+                    ShotIsGood();
+                else if (totalOfShotAndBlock > players.team1ChaserShooting[placementInList])
                 {
                     switch (hoopAimedAt)
                     {
@@ -505,7 +607,10 @@ public class Chasers : MonoBehaviour
                 gameManager.team1KeeperShots += 1;
                 int totalOfShotAndBlock = Random.Range(0, players.team2ChaserShooting[placementInList] + players.team1KeeperBlock);
                 int hoopAimedAt = Random.Range(0, 3);
-                if (totalOfShotAndBlock > players.team2ChaserShooting[placementInList] && !keepers.keeper1Stunned)
+
+                if (keepers.keeper1Stunned)
+                    ShotIsGood();
+                else if (totalOfShotAndBlock > players.team2ChaserShooting[placementInList])
                 {
                     switch (hoopAimedAt)
                     {
@@ -537,21 +642,29 @@ public class Chasers : MonoBehaviour
         CheckForSuccessfulShot();
         if (gameManager.team1HasPossession)
         {
-            int hoopAimedAt = Random.Range(0, 3);
-            switch (hoopAimedAt)
+            if (keepers.keeper2Stunned)
             {
-                case 0:
-                    StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the left hoop, and scores!", 0.5f));
-                    break;
-                case 1:
-                    StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the middle hoop, and scores!", 0.5f));
-                    break;
-                case 2:
-                    StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the right hoop, and scores!", 0.5f));
-                    break;
-                default:
-                    print("Exceeded hoop limit, you shouldn't be here");
-                    break;
+                StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the empty hoop and scores!", 0.5f));
+
+            }
+            else
+            {
+                int hoopAimedAt = Random.Range(0, 3);
+                switch (hoopAimedAt)
+                {
+                    case 0:
+                        StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the left hoop, and scores!", 0.5f));
+                        break;
+                    case 1:
+                        StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the middle hoop, and scores!", 0.5f));
+                        break;
+                    case 2:
+                        StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the right hoop, and scores!", 0.5f));
+                        break;
+                    default:
+                        print("Exceeded hoop limit, you shouldn't be here");
+                        break;
+                }
             }
             quaffleHeld = false;
             gameManager.team1Score += goal;
@@ -562,21 +675,26 @@ public class Chasers : MonoBehaviour
         }
         else
         {
-            int hoopAimedAt = Random.Range(0, 3);
-            switch (hoopAimedAt)
+            if (keepers.keeper1Stunned)
+                StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the empty hoop and scores!", 0.5f));
+            else
             {
-                case 0:
-                    StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the left hoop, and scores!", 0.5f));
-                    break;
-                case 1:
-                    StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the middle hoop, and scores!", 0.5f));
-                    break;
-                case 2:
-                    StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the right hoop, and scores!", 0.5f));
-                    break;
-                default:
-                    print("Exceeded hoop limit, you shouldn't be here");
-                    break;
+                int hoopAimedAt = Random.Range(0, 3);
+                switch (hoopAimedAt)
+                {
+                    case 0:
+                        StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the left hoop, and scores!", 0.5f));
+                        break;
+                    case 1:
+                        StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the middle hoop, and scores!", 0.5f));
+                        break;
+                    case 2:
+                        StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the right hoop, and scores!", 0.5f));
+                        break;
+                    default:
+                        print("Exceeded hoop limit, you shouldn't be here");
+                        break;
+                }
             }
             quaffleHeld = false;
             gameManager.team2Score += goal;
@@ -625,37 +743,113 @@ public class Chasers : MonoBehaviour
     {
         if (team == 0)
         {
+            if (ChaserNumber == 0)
+            {
+                team1Chaser1Stunned = true;
+            }
+            if (ChaserNumber == 1)
+            {
+                team1Chaser2Stunned = true;
+            }
+            if (ChaserNumber == 2)
+            {
+                team1Chaser3Stunned = true;
+            }
             if (players.team2ChasersNames[ChaserNumber] == players.quaffleHolder)
             {
                 StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " is hit by a bludger and drops the Quaffle!", 0.5f));
-                int RandomTeam2ChaserPickUp = Random.Range(0, players.team2ChasersNames.Length);
+                Turnover(team);
+            }
+            else
+            {
+                StartCoroutine(waitForUpdate(players.team1ChasersNames[ChaserNumber] + " is hit by a bludger!", 0.5f));
+            }
+            AdjustStats(0, team2Bonus);
+        }
+        if (team == 1)
+        {
+            if (ChaserNumber == 0)
+                team2Chaser1Stunned = true;
+            if (ChaserNumber == 1)
+                team2Chaser2Stunned = true;
+            if (ChaserNumber == 2)
+                team2Chaser3Stunned = true;
+            if (players.team1ChasersNames[ChaserNumber] == players.quaffleHolder)
+            {
+                StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " is hit by a bludger and drops the Quaffle!", 0.5f));
+                Turnover(team);
+            }
+            else
+            {
+                StartCoroutine(waitForUpdate(players.team2ChasersNames[ChaserNumber] + " is hit by a bludger!", 0.5f));
+            }
+            AdjustStats(1, team1Bonus);
+        }
+    }
+
+    void AdjustStats(int team, int modifier)
+    {
+        if (team == 0)
+        {
+            players.team2ChasersIntercept[0] += modifier;
+            players.team2ChasersIntercept[1] += modifier;
+            players.team2ChasersIntercept[2] += modifier;
+
+            players.team2ChasersPass[0] += modifier;
+            players.team2ChasersPass[1] += modifier;
+            players.team2ChasersPass[2] += modifier;
+
+            players.team2ChaserTackle[0] += modifier;
+            players.team2ChaserTackle[1] += modifier;
+            players.team2ChaserTackle[2] += modifier;
+        }
+
+        else
+        {
+            players.team1ChasersIntercept[0] += modifier;
+            players.team1ChasersIntercept[1] += modifier;
+            players.team1ChasersIntercept[2] += modifier;
+
+            players.team1ChasersPass[0] += modifier;
+            players.team1ChasersPass[1] += modifier;
+            players.team1ChasersPass[2] += modifier;
+
+            players.team1ChaserTackle[0] += modifier;
+            players.team1ChaserTackle[1] += modifier;
+            players.team1ChaserTackle[2] += modifier;
+        }
+    }
+
+    void Turnover(int team)
+    {
+        if (team == 0)
+        {
+            int RandomTeam2ChaserPickUp = Random.Range(0, players.team2ChasersNames.Length);
+
+            if (RandomTeam2ChaserPickUp == 0 && team2Chaser1Stunned || RandomTeam2ChaserPickUp == 1 && team2Chaser2Stunned || RandomTeam2ChaserPickUp == 2 && team2Chaser3Stunned)
+                Turnover(0);
+
+            else
+            {
                 StartCoroutine(waitForUpdate(players.team2ChasersNames[RandomTeam2ChaserPickUp] + " picks it up!", 0.5f));
                 gameManager.team1HasPossession = false;
                 gameManager.pitchLocation = 100 - gameManager.pitchLocation;
                 placementInList = RandomTeam2ChaserPickUp;
                 players.quaffleHolder = players.team2ChasersNames[RandomTeam2ChaserPickUp];
             }
-            else
-            {
-                StartCoroutine(waitForUpdate(players.team1ChasersNames[ChaserNumber] + " is hit by a bludger!", 0.5f));
-            }
         }
-        if (team == 1)
+        else
         {
-            if (players.team1ChasersNames[ChaserNumber] == players.quaffleHolder)
-            {
-                StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " is hit by a bludger and drops the Quaffle!", 0.5f));
-                int RandomTeam1ChaserPickUp = Random.Range(0, players.team1ChasersNames.Length);
-                StartCoroutine(waitForUpdate(players.team1ChasersNames[RandomTeam1ChaserPickUp] + " picks it up!", 0.5f));
-                gameManager.team1HasPossession = true;
-                gameManager.pitchLocation = 100 - gameManager.pitchLocation;
-                placementInList = RandomTeam1ChaserPickUp;
-                players.quaffleHolder = players.team2ChasersNames[RandomTeam1ChaserPickUp];
-            }
-            else
-            {
-                StartCoroutine(waitForUpdate(players.team2ChasersNames[ChaserNumber] + " is hit by a bludger!", 0.5f));
-            }
+            int RandomTeam1ChaserPickUp = Random.Range(0, players.team1ChasersNames.Length);
+
+            if (RandomTeam1ChaserPickUp == 0 && team1Chaser1Stunned || RandomTeam1ChaserPickUp == 1 && team1Chaser2Stunned || RandomTeam1ChaserPickUp == 2 && team1Chaser3Stunned)
+                Turnover(1);
+
+            StartCoroutine(waitForUpdate(players.team1ChasersNames[RandomTeam1ChaserPickUp] + " picks it up!", 0.5f));
+            gameManager.team1HasPossession = true;
+            gameManager.pitchLocation = 100 - gameManager.pitchLocation;
+            placementInList = RandomTeam1ChaserPickUp;
+            players.quaffleHolder = players.team2ChasersNames[RandomTeam1ChaserPickUp];
         }
     }
 

@@ -14,6 +14,10 @@ public class Beaters : MonoBehaviour
     bool bludger1Sent, bludger2Sent;
     bool beaterTeam1Beater1Stunned, beaterTeam1Beater2Stunned;
     bool beaterTeam2Beater1Stunned, beaterTeam2Beater2Stunned;
+    float team1beater1cooldown = 10;
+    float team1beater2cooldown = 10;
+    float team2beater1cooldown = 10;
+    float team2beater2cooldown = 10;
 
     public bool gameStarted;
 
@@ -53,7 +57,7 @@ public class Beaters : MonoBehaviour
                 if (bludger1cooldown <= 0)
                 {
                     bludger1Sent = false;
-                    bludger1cooldown = Random.Range(8, 20);
+                    bludger1cooldown = Random.Range(10, 30);
                 }
             }
             if (bludger2Sent)
@@ -62,7 +66,47 @@ public class Beaters : MonoBehaviour
                 if (bludger2cooldown <= 0)
                 {
                     bludger2Sent = false;
-                    bludger2cooldown = Random.Range(8, 20);
+                    bludger2cooldown = Random.Range(10, 30);
+                }
+            }
+
+            if (beaterTeam1Beater1Stunned)
+            {
+                team1beater1cooldown -= Time.deltaTime;
+                if (team1beater1cooldown <= 0)
+                {
+                    beaterTeam1Beater1Stunned = false;
+                    team1beater1cooldown = Random.Range(5, 30);
+                }
+            }
+
+            if (beaterTeam1Beater2Stunned)
+            {
+                team1beater2cooldown -= Time.deltaTime;
+                if (team1beater2cooldown <= 0)
+                {
+                    beaterTeam1Beater2Stunned = false;
+                    team1beater2cooldown = Random.Range(5, 30);
+                }
+            }
+
+            if (beaterTeam2Beater1Stunned)
+            {
+                team2beater1cooldown -= Time.deltaTime;
+                if (team2beater1cooldown <= 0)
+                {
+                    beaterTeam2Beater1Stunned = false;
+                    team2beater1cooldown = Random.Range(5, 30);
+                }
+            }
+
+            if (beaterTeam2Beater2Stunned)
+            {
+                team2beater2cooldown -= Time.deltaTime;
+                if (team2beater2cooldown <= 0)
+                {
+                    beaterTeam2Beater2Stunned = false;
+                    team2beater2cooldown = Random.Range(5, 30);
                 }
             }
         }
@@ -71,97 +115,192 @@ public class Beaters : MonoBehaviour
     void PickBludger1Target()
     {
         int bludgerWhoSentIt = Random.Range(0, 2);
-        int bludgerWhoRecivesIt = Random.Range(0, 6);
-        if ((bludgerWhoSentIt == 0 && !beaterTeam1Beater1Stunned) ||( bludgerWhoSentIt == 1 && !beaterTeam1Beater2Stunned)  )
-        {
-            switch (bludgerWhoRecivesIt)
-            {
-                //Keeper - goes away from goal posts
+        int bludgerWhoRecivesIt = Random.Range(0, 7);
 
-                case 0:
-                    StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2ChasersNames[0], 1.0f));
-                    ChaserTeam2Hit(bludgerWhoSentIt, 0);
-                    break;
-                case 1:
-                    StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2ChasersNames[1], 1.0f));
-                    ChaserTeam2Hit(bludgerWhoSentIt, 1);
-                    break;
-                case 2:
-                    StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2ChasersNames[2], 1.0f));
-                    ChaserTeam2Hit(bludgerWhoSentIt, 2);
-                    break;
-                case 3:
-                    StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2Beaters[0], 1.0f));
-                    Beater3Hit(bludgerWhoSentIt);
-                    break;
-                case 4:
-                    StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2Beaters[1], 1.0f));
-                    Beater4Hit(bludgerWhoSentIt);
-                    break;
-                case 5:
-                    StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2Keeper, 1.0f));
-                    Keeper2Stunned(bludgerWhoSentIt);
-                    break;
-                case 6:
-                    StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2Seeker, 1.0f));
-                    Seeker2Stunned(bludgerWhoSentIt);
-                    break;
-                default:
-                    print("Exceeded Bludger limit, you shouldn't be here");
-                    break;
-            }
+        if (bludgerWhoSentIt == 0)
+        {
             bludger2Sent = true;
-            if (bludgerWhoSentIt == 0)
+            if (beaterTeam1Beater1Stunned)
+                return;
+            else
+            {
+                switch (bludgerWhoRecivesIt)
+                {
+                    //Keeper - goes away from goal posts
+
+                    case 0:
+                        StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2ChasersNames[0], 0.5f));
+                        ChaserTeam2Hit(bludgerWhoSentIt, 0);
+                        break;
+                    case 1:
+                        StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2ChasersNames[1], 0.5f));
+                        ChaserTeam2Hit(bludgerWhoSentIt, 1);
+                        break;
+                    case 2:
+                        StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2ChasersNames[2], 0.5f));
+                        ChaserTeam2Hit(bludgerWhoSentIt, 2);
+                        break;
+                    case 3:
+                        StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2Beaters[0], 0.5f));
+                        Beater3Hit(bludgerWhoSentIt);
+                        break;
+                    case 4:
+                        StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2Beaters[1], 0.5f));
+                        Beater4Hit(bludgerWhoSentIt);
+                        break;
+                    case 5:
+                        StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2Keeper, 0.5f));
+                        Keeper2Stunned(bludgerWhoSentIt);
+                        break;
+                    case 6:
+                        StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2Seeker, 0.5f));
+                        Seeker2Stunned(bludgerWhoSentIt);
+                        break;
+                    default:
+                        print("Exceeded Bludger limit, you shouldn't be here");
+                        break;
+                }
                 gameManager.team1Beater1BludgerSent += 1;
-            if (bludgerWhoSentIt == 1)
-                gameManager.team1Beater2BludgerSent += 1;
+            }
+        }
+        if (bludgerWhoSentIt == 1)
+        {
+            if (beaterTeam1Beater2Stunned)
+                return;
+            else
+            {
+                switch (bludgerWhoRecivesIt)
+                {
+                    //Keeper - goes away from goal posts
+
+                    case 0:
+                        StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2ChasersNames[0], 0.5f));
+                        ChaserTeam2Hit(bludgerWhoSentIt, 0);
+                        break;
+                    case 1:
+                        StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2ChasersNames[1], 0.5f));
+                        ChaserTeam2Hit(bludgerWhoSentIt, 1);
+                        break;
+                    case 2:
+                        StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2ChasersNames[2], 0.5f));
+                        ChaserTeam2Hit(bludgerWhoSentIt, 2);
+                        break;
+                    case 3:
+                        StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2Beaters[0], 0.5f));
+                        Beater3Hit(bludgerWhoSentIt);
+                        break;
+                    case 4:
+                        StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2Beaters[1], 0.5f));
+                        Beater4Hit(bludgerWhoSentIt);
+                        break;
+                    case 5:
+                        StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2Keeper, 0.5f));
+                        Keeper2Stunned(bludgerWhoSentIt);
+                        break;
+                    case 6:
+                        StartCoroutine(waitForUpdate(players.team1Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team2Seeker, 0.5f));
+                        Seeker2Stunned(bludgerWhoSentIt);
+                        break;
+                    default:
+                        print("Exceeded Bludger limit, you shouldn't be here");
+                        break;
+                }
+                gameManager.team2Beater1BludgerSent += 1;
+            }
         }
     }
     void PickBludger2Target()
     {
         int bludgerWhoSentIt = Random.Range(0, 2);
-        int bludgerWhoRecivesIt = Random.Range(0, 6);
-        if ((bludgerWhoSentIt == 0 && !beaterTeam2Beater1Stunned) || (bludgerWhoSentIt == 1 && !beaterTeam2Beater2Stunned))
+        int bludgerWhoRecivesIt = Random.Range(0, 7);
+
+        if (bludgerWhoSentIt == 0)
         {
-            switch (bludgerWhoRecivesIt)
-            {
-                case 0:
-                    StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1ChasersNames[0], 1.0f));
-                    ChaserTeam1Hit(bludgerWhoSentIt, 0);
-                    break;
-                case 1:
-                    StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1ChasersNames[1], 1.0f));
-                    ChaserTeam1Hit(bludgerWhoSentIt, 1);
-                    break;
-                case 2:
-                    StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1ChasersNames[2], 1.0f));
-                    ChaserTeam1Hit(bludgerWhoSentIt, 2);
-                    break;
-                case 3:
-                    StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1Beaters[0], 1.0f));
-                    Beater1Hit(bludgerWhoSentIt);
-                    break;
-                case 4:
-                    StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1Beaters[1], 1.0f));
-                    Beater2Hit(bludgerWhoSentIt);
-                    break;
-                case 5:
-                    StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1Keeper, 1.0f));
-                    Keeper1Stunned(bludgerWhoSentIt);
-                    break;
-                case 6:
-                    StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at -" + players.team1Seeker, 1.0f));
-                    Seeker1Stunned(bludgerWhoSentIt);
-                    break;
-                default:
-                    print("Exceeded Bludger limit, you shouldn't be here");
-                    break;
-            }
             bludger1Sent = true;
-            if (bludgerWhoSentIt == 0)
+            if (beaterTeam2Beater1Stunned)
+                return;
+            else
+            {
+                switch (bludgerWhoRecivesIt)
+                {
+                    case 0:
+                        StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1ChasersNames[0], 0.5f));
+                        ChaserTeam1Hit(bludgerWhoSentIt, 0);
+                        break;
+                    case 1:
+                        StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1ChasersNames[1], 0.5f));
+                        ChaserTeam1Hit(bludgerWhoSentIt, 1);
+                        break;
+                    case 2:
+                        StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1ChasersNames[2], 0.5f));
+                        ChaserTeam1Hit(bludgerWhoSentIt, 2);
+                        break;
+                    case 3:
+                        StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1Beaters[0], 0.5f));
+                        Beater1Hit(bludgerWhoSentIt);
+                        break;
+                    case 4:
+                        StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1Beaters[1], 0.5f));
+                        Beater2Hit(bludgerWhoSentIt);
+                        break;
+                    case 5:
+                        StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1Keeper, 0.5f));
+                        Keeper1Stunned(bludgerWhoSentIt);
+                        break;
+                    case 6:
+                        StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at -" + players.team1Seeker, 0.5f));
+                        Seeker1Stunned(bludgerWhoSentIt);
+                        break;
+                    default:
+                        print("Exceeded Bludger limit, you shouldn't be here");
+                        break;
+                }
                 gameManager.team2Beater1BludgerSent += 1;
-            if (bludgerWhoSentIt == 1)
+            }
+        }
+
+        if (bludgerWhoSentIt == 1)
+        {
+            if (beaterTeam2Beater2Stunned)
+                return;
+            else
+            {
+                switch (bludgerWhoRecivesIt)
+                {
+                    case 0:
+                        StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1ChasersNames[0], 0.5f));
+                        ChaserTeam1Hit(bludgerWhoSentIt, 0);
+                        break;
+                    case 1:
+                        StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1ChasersNames[1], 0.5f));
+                        ChaserTeam1Hit(bludgerWhoSentIt, 1);
+                        break;
+                    case 2:
+                        StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1ChasersNames[2], 0.5f));
+                        ChaserTeam1Hit(bludgerWhoSentIt, 2);
+                        break;
+                    case 3:
+                        StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1Beaters[0], 0.5f));
+                        Beater1Hit(bludgerWhoSentIt);
+                        break;
+                    case 4:
+                        StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1Beaters[1], 0.5f));
+                        Beater2Hit(bludgerWhoSentIt);
+                        break;
+                    case 5:
+                        StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1Keeper, 0.5f));
+                        Keeper1Stunned(bludgerWhoSentIt);
+                        break;
+                    case 6:
+                        StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1Seeker, 0.5f));
+                        Seeker1Stunned(bludgerWhoSentIt);
+                        break;
+                    default:
+                        print("Exceeded Bludger limit, you shouldn't be here");
+                        break;
+                }
                 gameManager.team2Beater2BludgerSent += 1;
+            }
         }
     }
 
@@ -179,7 +318,7 @@ public class Beaters : MonoBehaviour
         }
         else
         {
-            StartCoroutine(waitForUpdate(players.team2Seeker + " dodges the incoming Bludger!", 1.0f));
+            StartCoroutine(waitForUpdate(players.team2Seeker + " dodges a Bludger!", 1.0f));
         }
             
     }
@@ -197,7 +336,7 @@ public class Beaters : MonoBehaviour
         }
         else
         {
-            StartCoroutine(waitForUpdate(players.team2Seeker + " dodges the incoming Bludger!", 1.0f));
+            StartCoroutine(waitForUpdate(players.team2Seeker + " dodges a Bludger!", 1.0f));
         }
     }
 
@@ -215,7 +354,7 @@ public class Beaters : MonoBehaviour
         }
         else
         {
-            StartCoroutine(waitForUpdate(players.team1Keeper + " dodges the incoming Bludger!", 1.0f));
+            StartCoroutine(waitForUpdate(players.team1Keeper + " dodges a Bludger!", 1.0f));
         }
     }
 
@@ -233,7 +372,7 @@ public class Beaters : MonoBehaviour
         }
         else
         {
-            StartCoroutine(waitForUpdate(players.team2Keeper + " dodges the incoming Bludger!", 1.0f));
+            StartCoroutine(waitForUpdate(players.team2Keeper + " dodges a Bludger!", 1.0f));
         }
     }
 
@@ -242,7 +381,7 @@ public class Beaters : MonoBehaviour
         int chanceToDodge = Random.Range(0, (players.team1BeaterDodge[0] + players.team2BeaterLocateBludgerSpeed[bludgerPerson]));
         if (chanceToDodge > players.team1BeaterDodge[0])
         {
-            StartCoroutine(waitForUpdate(players.team1Beaters[0] + " hit by a Bludger and is stunned!", 1.0f));
+            StartCoroutine(waitForUpdate(players.team1Beaters[0] + " is knocked out by a Bludger!", 1.0f));
             beaterTeam1Beater1Stunned = true;
             if (bludgerPerson == 0)
                 gameManager.team2Beater1BludgerHit += 1;
@@ -258,7 +397,7 @@ public class Beaters : MonoBehaviour
         int chanceToDodge = Random.Range(0, (players.team1BeaterDodge[1] + players.team2BeaterLocateBludgerSpeed[bludgerPerson]));
         if (chanceToDodge > players.team1BeaterDodge[1])
         {
-            StartCoroutine(waitForUpdate(players.team1Beaters[1] + " hit by a Bludger and is stunned!", 1.0f));
+            StartCoroutine(waitForUpdate(players.team1Beaters[1] + " is knocked out by a Bludger!", 1.0f));
             beaterTeam1Beater2Stunned = true;
             if (bludgerPerson == 0)
                 gameManager.team2Beater1BludgerHit += 1;
@@ -273,7 +412,7 @@ public class Beaters : MonoBehaviour
         int chanceToDodge = Random.Range(0, (players.team2BeaterDodge[0] + players.team1BeaterLocateBludgerSpeed[bludgerPerson]));
         if (chanceToDodge > players.team2BeaterDodge[0])
         {
-            StartCoroutine(waitForUpdate(players.team2Beaters[0] + " hit by a Bludger and is stunned!", 1.0f));
+            StartCoroutine(waitForUpdate(players.team2Beaters[0] + " is knocked out by a Bludger!", 1.0f));
             beaterTeam2Beater1Stunned = true;
             if (bludgerPerson == 0)
                 gameManager.team1Beater1BludgerHit += 1;
@@ -289,7 +428,7 @@ public class Beaters : MonoBehaviour
         int chanceToDodge = Random.Range(0, (players.team2BeaterDodge[1] + players.team1BeaterLocateBludgerSpeed[bludgerPerson]));
         if (chanceToDodge > players.team2BeaterDodge[1])
         {
-            StartCoroutine(waitForUpdate(players.team2Beaters[1] + " hit by a Bludger and is stunned!", 1.0f));
+            StartCoroutine(waitForUpdate(players.team2Beaters[1] + " is knocked out by a Bludger!", 1.0f));
             beaterTeam2Beater2Stunned = true;
             if (bludgerPerson == 0)
                 gameManager.team1Beater1BludgerHit += 1;

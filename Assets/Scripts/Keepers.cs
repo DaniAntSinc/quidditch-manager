@@ -14,7 +14,7 @@ public class Keepers : MonoBehaviour
             keeper1cooldown -= Time.deltaTime;
             if (keeper1cooldown <= 0)
             {
-                keeper1cooldown = Random.Range(6, 14);
+                keeper1cooldown = Random.Range(8, 15);
                 keeper1Stunned = false;
             }
         }
@@ -23,7 +23,7 @@ public class Keepers : MonoBehaviour
             keeper2cooldown -= Time.deltaTime;
             if (keeper2cooldown <= 0)
             {
-                keeper2cooldown = Random.Range(6, 14);
+                keeper2cooldown = Random.Range(8, 15);
                 keeper2Stunned = false;
             }
         }
