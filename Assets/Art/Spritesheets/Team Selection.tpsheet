@@ -1,0 +1,20 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:25462c7e0f9464643c91bf5a41fc383a:0bc8fc301611c2a7d63b2c50893308f9:70b35f06286e84cd08534f3e85ea397c$
+#
+:format=40300
+:texture=Team Selection.png
+:size=1024x1024
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=KeepTransparentPixels
+
+Group 196;300;481;306;305; 0.5;0.5; 0;0;0;0
+Rectangle 45;0;503;300;283; 0.5;0.5; 0;0;0;0
+Rectangle 46;254;921;301;103; 0.5;0.5; 0;0;0;0
+Rectangle 47;555;786;254;238; 0.5;0.5; 0;0;0;0
+Rectangle 48;0;966;254;58; 0.5;0.5; 0;0;0;0
