@@ -164,8 +164,12 @@ public class GameManager : MonoBehaviour
     public GameObject ExhibitionTeamHolder;
 
     public GameObject visitorNewExhibitionSetUp, homeNewExhibitionSetUp;
-    public TMP_Text visitorDivision, homeDivision, visitorRankChaser, visitorRankBeater, visitorRankKeeper, visitorRankSeeker, homeRankChaser, homeRankBeater, homeRankKeeper, homeRankSeeker;
+    public TMP_Text visitorRankChaser, visitorRankBeater, visitorRankKeeper, visitorRankSeeker, homeRankChaser, homeRankBeater, homeRankKeeper, homeRankSeeker;
     public Image visitorLogo, homeLogo;
+
+    bool optionsMenu;
+    public GameObject optionsTab;
+    public GameObject[] exhibitionOptions;
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -183,7 +187,7 @@ public class GameManager : MonoBehaviour
         {
             GameObject currentButton = Instantiate(buttonPrefab, teamNameHolder.transform.position, teamNameHolder.transform.rotation);
             currentButton.transform.parent = teamNameHolder.transform;
-            currentButton.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+            currentButton.transform.localScale = new Vector3(0.85f, 0.85f, 0.85f);
             currentButton.GetComponent<ButtonSetUp>().teamNumber = i;
             currentButton.transform.GetChild(1).GetComponent<Image>().sprite = seasonTeams[i].logo;
             currentButton.GetComponent<ButtonSetUp>().teamName.text = seasonTeams[i].team;
@@ -868,21 +872,6 @@ public class GameManager : MonoBehaviour
     {
         visitorNewExhibitionSetUp.SetActive(true);
         visitorLogo.sprite = seasonTeams[visitorInt].logo;
-        switch(seasonTeams[visitorInt].chasers[0].division)
-        {
-            case 0:
-                visitorDivision.text = "Hogwarts";
-                break;
-            case 1:
-                visitorDivision.text = "British Isles";
-                break;
-            case 2:
-                visitorDivision.text = "World Cup";
-                break;
-            default:
-                print("Invalid Division");
-                break;
-        }
 
         int chaserTeamValue = 0;
         for (int i = 0; i < seasonTeams[visitorInt].chasers.Count; i++)
@@ -911,21 +900,6 @@ public class GameManager : MonoBehaviour
     {
         homeNewExhibitionSetUp.SetActive(true);
         homeLogo.sprite = seasonTeams[homeInt].logo;
-        switch (seasonTeams[homeInt].chasers[0].division)
-        {
-            case 0:
-                homeDivision.text = "Hogwarts";
-                break;
-            case 1:
-                homeDivision.text = "British Isles";
-                break;
-            case 2:
-                homeDivision.text = "World Cup";
-                break;
-            default:
-                print("Invalid Division");
-                break;
-        }
 
         int chaserTeamValue = 0;
         for (int i = 0; i < seasonTeams[homeInt].chasers.Count; i++)
@@ -1230,4 +1204,26 @@ public class GameManager : MonoBehaviour
             worldCupSeasonStandings.SetActive(true);
         }
     }
+
+    public void OptionsToggle()
+    {
+        optionsMenu = !optionsMenu;
+        if (optionsMenu)
+        {
+            optionsTab.transform.position = new Vector3(-0.1282990276813507f, -35.422922134399415f, 90);
+            for (int i = 0; i < exhibitionOptions.Length; i++)
+            {
+                exhibitionOptions[i].SetActive(true);
+            }
+        }
+        else
+        {
+            optionsTab.transform.position = new Vector3(-0.1282990276813507f, -48.866058349609378f, 90);
+            for (int i = 0; i < exhibitionOptions.Length; i++)
+            {
+                exhibitionOptions[i].SetActive(false);
+            }
+        }
+    }
 }
+

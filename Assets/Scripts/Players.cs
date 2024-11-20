@@ -59,6 +59,11 @@ public class Players : MonoBehaviour
     public int team2SeekerReach ;
     public int team2SeekerGrabRange;
 
+    public GameObject[] weatherSelectorIcons;
+    public GameObject weatherSelector;
+    public GameObject[] snitchSelectorIcons;
+    public GameObject snitchSelector;
+
     #region PlayerTeamStats
     public List<SeasonTeam> teams;
 
@@ -2730,36 +2735,38 @@ public class Players : MonoBehaviour
     {
         WeatherReset();
         gameManager.sun = true;
-        gameManager.weather2.text = "Hot";
+        weatherSelector.transform.position = weatherSelectorIcons[0].transform.position + new Vector3(7.66f, 0, 0);
     }
     public void Rain()
     {
         WeatherReset();
         gameManager.rain = true;
-        gameManager.weather2.text = "Rain";
+        print("here");
+        weatherSelector.transform.position = weatherSelectorIcons[1].transform.position + new Vector3(7.66f, 0, 0);
     }
     public void Fog()
     {
         WeatherReset();
         gameManager.fog = true;
-        gameManager.weather2.text = "Fog";
+        weatherSelector.transform.position = weatherSelectorIcons[2].transform.position + new Vector3(7.66f, 0, 0);
     }
     public void Snow()
     {
         WeatherReset();
         gameManager.snow = true;
-        gameManager.weather2.text = "Snow";
+        weatherSelector.transform.position = weatherSelectorIcons[3].transform.position + new Vector3(7.66f, 0, 0);
     }
 
     public void Indoor()
     {
         WeatherReset();
         gameManager.indoors = true;
-        gameManager.weather2.text = "Indoors";
+        weatherSelector.transform.position = weatherSelectorIcons[4].transform.position + new Vector3(7.66f, 0, 0);
     }
 
     public void RandomWeather()
     {
+        weatherSelector.transform.position = weatherSelectorIcons[5].transform.position + new Vector3(7.66f, 0, 0);
         int randWeather = Random.Range(0, 5);
         switch (randWeather) {
             case 0: Sunny();
