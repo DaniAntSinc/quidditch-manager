@@ -2735,38 +2735,38 @@ public class Players : MonoBehaviour
     {
         WeatherReset();
         gameManager.sun = true;
-        weatherSelector.transform.position = weatherSelectorIcons[0].transform.position + new Vector3(7.66f, 0, 0);
+        weatherSelector.transform.position = weatherSelectorIcons[0].transform.position;
     }
     public void Rain()
     {
         WeatherReset();
         gameManager.rain = true;
         print("here");
-        weatherSelector.transform.position = weatherSelectorIcons[1].transform.position + new Vector3(7.66f, 0, 0);
+        weatherSelector.transform.position = weatherSelectorIcons[1].transform.position;
     }
     public void Fog()
     {
         WeatherReset();
         gameManager.fog = true;
-        weatherSelector.transform.position = weatherSelectorIcons[2].transform.position + new Vector3(7.66f, 0, 0);
+        weatherSelector.transform.position = weatherSelectorIcons[2].transform.position;
     }
     public void Snow()
     {
         WeatherReset();
         gameManager.snow = true;
-        weatherSelector.transform.position = weatherSelectorIcons[3].transform.position + new Vector3(7.66f, 0, 0);
+        weatherSelector.transform.position = weatherSelectorIcons[3].transform.position;
     }
 
     public void Indoor()
     {
         WeatherReset();
         gameManager.indoors = true;
-        weatherSelector.transform.position = weatherSelectorIcons[4].transform.position + new Vector3(7.66f, 0, 0);
+        weatherSelector.transform.position = weatherSelectorIcons[4].transform.position;
     }
 
     public void RandomWeather()
     {
-        weatherSelector.transform.position = weatherSelectorIcons[5].transform.position + new Vector3(7.66f, 0, 0);
+
         int randWeather = Random.Range(0, 5);
         switch (randWeather) {
             case 0: Sunny();
@@ -2782,6 +2782,7 @@ public class Players : MonoBehaviour
             default: print("Invalid Weather");
                 break;
         }
+        weatherSelector.transform.position = weatherSelectorIcons[5].transform.position;
         print(randWeather);
     }
 }

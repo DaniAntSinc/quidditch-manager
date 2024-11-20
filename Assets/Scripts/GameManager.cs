@@ -1168,25 +1168,25 @@ public class GameManager : MonoBehaviour
     public void FastSnitch()
     {
         chasers.seekerTimeDuration = chasers.fastTime;
-        snitchDurationSeason.text = "The Snitch can appear anytime between 0-7 minutes";
+        players.snitchSelector.transform.position = players.snitchSelectorIcons[0].transform.position;
     }
 
     public void MediumTime()
     {
         chasers.seekerTimeDuration = chasers.mediumTime;
-        snitchDurationSeason.text = "The Snitch can appear anytime between 0-15 minutes";
+        players.snitchSelector.transform.position = players.snitchSelectorIcons[1].transform.position;
     }
 
     public void DefaultSnitch()
     {
         chasers.seekerTimeDuration = chasers.defaultTime;
-        snitchDurationSeason.text = "The Snitch can appear anytime between 0-30 minutes";
+        players.snitchSelector.transform.position = players.snitchSelectorIcons[2].transform.position;
     }
 
     public void LongSnitch()
     {
         chasers.seekerTimeDuration = chasers.longTime;
-        snitchDurationSeason.text = "The Snitch can appear anytime between 0-60 minutes";
+        players.snitchSelector.transform.position = players.snitchSelectorIcons[3].transform.position;;
     }
 
     public void TogglePlayoffPage()
