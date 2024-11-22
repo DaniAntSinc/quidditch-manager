@@ -146,9 +146,11 @@ public class Seekers : MonoBehaviour
 
                 if (seeker1Stunned)
                 {
+                    gameManager.visitorSeekericon.SetActive(false);
                     seeker1downedDuration -= Time.deltaTime;
                     if (seeker1downedDuration <= 0)
                     {
+                        gameManager.visitorSeekericon.SetActive(true);
                         seeker1Stunned = false;
                         seeker1downedDuration = 5;
                     }
@@ -156,9 +158,11 @@ public class Seekers : MonoBehaviour
 
                 if (seeker2stunned)
                 {
+                    gameManager.homeSeekericon.SetActive(false);
                     seeker2downedDuration -= Time.deltaTime;
                     if (seeker2downedDuration <= 0)
                     {
+                        gameManager.homeSeekericon.SetActive(true);
                         seeker2stunned = false;
                         seeker2downedDuration = 5;
                     }

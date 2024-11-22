@@ -170,6 +170,13 @@ public class GameManager : MonoBehaviour
     bool optionsMenu;
     public GameObject optionsTab;
     public GameObject[] exhibitionOptions;
+    public GameObject spotter;
+    public GameObject[] spotterTarget;
+    public GameObject spotter2;
+    public GameObject[] spotterTarget2;
+
+    public GameObject visitorChaser1icon, visitorChaser2icon, visitorChaser3icon, visitorBeater1icon, visitorBeater2icon, visitorKeepericon, visitorSeekericon;
+    public GameObject homeChaser1icon, homeChaser2icon, homeChaser3icon, homeBeater1icon, homeBeater2icon, homeKeepericon, homeSeekericon;
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -662,6 +669,18 @@ public class GameManager : MonoBehaviour
         newTextLine.transform.SetAsFirstSibling();
 
         newTextLine.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().text = messageForTextElement;
+        if (messageForTextElement.Contains(":"))
+        {
+            newTextLine.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().color = Color.yellow;
+        }
+        else if (messageForTextElement.Contains("knocked out") || messageForTextElement.Contains("and is stunned"))
+        {
+            newTextLine.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().color = Color.red;
+        }
+        else if (messageForTextElement.Contains(" blocked by"))
+        {
+            newTextLine.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().color = Color.cyan;
+        }
 
         if (textElementHolder.transform.childCount > 19)
             Destroy(textElementHolder.transform.GetChild(19).gameObject);
@@ -961,6 +980,9 @@ public class GameManager : MonoBehaviour
         hogwartsTeamStandingsClass.Add(seasonTeams[1]);
         hogwartsTeamStandingsClass.Add(seasonTeams[2]);
         hogwartsTeamStandingsClass.Add(seasonTeams[3]);
+
+        spotter.SetActive(true);
+        spotter.transform.position = spotterTarget[0].transform.position;
     }
 
     public void BritishSeason()
@@ -980,6 +1002,9 @@ public class GameManager : MonoBehaviour
         britishIslesTeamStandingsClassDivision2.Add(seasonTeams[9]);
         britishIslesTeamStandingsClassDivision2.Add(seasonTeams[10]);
         britishIslesTeamStandingsClassDivision2.Add(seasonTeams[11]);
+
+        spotter.SetActive(true);
+        spotter.transform.position = spotterTarget[1].transform.position;
     }
 
     public void WorldCupSeason()
@@ -1005,6 +1030,9 @@ public class GameManager : MonoBehaviour
         worldCupTeamStandingsClassDivision3.Add(seasonTeams[21]);
         worldCupTeamStandingsClassDivision3.Add(seasonTeams[22]);
         worldCupTeamStandingsClassDivision3.Add(seasonTeams[23]);
+
+        spotter.SetActive(true);
+        spotter.transform.position = spotterTarget[2].transform.position;
     }
 
     public void SeasonBack()
@@ -1019,6 +1047,8 @@ public class GameManager : MonoBehaviour
         seasonButton.SetActive(true);
         playoffButton.SetActive(true);
         seasonList.SetActive(false);
+
+        spotter.SetActive(false);
     }
 
     public void SeasonBegin()
@@ -1052,6 +1082,8 @@ public class GameManager : MonoBehaviour
 
         players.RandomWeather();
         players.BeginMatch();
+
+        spotter.SetActive(false);
     }
 
     public void NextSeasonGame()
@@ -1169,24 +1201,28 @@ public class GameManager : MonoBehaviour
     {
         chasers.seekerTimeDuration = chasers.fastTime;
         players.snitchSelector.transform.position = players.snitchSelectorIcons[0].transform.position;
+        spotter2.transform.position = spotterTarget2[0].transform.position;
     }
 
     public void MediumTime()
     {
         chasers.seekerTimeDuration = chasers.mediumTime;
         players.snitchSelector.transform.position = players.snitchSelectorIcons[1].transform.position;
+        spotter2.transform.position = spotterTarget2[1].transform.position;
     }
 
     public void DefaultSnitch()
     {
         chasers.seekerTimeDuration = chasers.defaultTime;
         players.snitchSelector.transform.position = players.snitchSelectorIcons[2].transform.position;
+        spotter2.transform.position = spotterTarget2[2].transform.position;
     }
 
     public void LongSnitch()
     {
         chasers.seekerTimeDuration = chasers.longTime;
-        players.snitchSelector.transform.position = players.snitchSelectorIcons[3].transform.position;;
+        players.snitchSelector.transform.position = players.snitchSelectorIcons[3].transform.position;
+        spotter2.transform.position = spotterTarget2[3].transform.position;
     }
 
     public void TogglePlayoffPage()

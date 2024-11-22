@@ -78,66 +78,78 @@ public class Chasers : MonoBehaviour
 
             if (team1Chaser1Stunned)
             {
+                gameManager.visitorChaser1icon.SetActive(false);
                 team1Chaser1Cooldown -= Time.deltaTime;
                 if (team1Chaser1Cooldown <= 0)
                 {
                     team1Chaser1Cooldown = Random.Range(5, 15);
                     AdjustStats(1, -team2Bonus);
+                    gameManager.visitorChaser1icon.SetActive(true);
                     team1Chaser1Stunned = false;
                 }
             }
 
             if (team1Chaser2Stunned)
             {
+                gameManager.visitorChaser2icon.SetActive(false);
                 team1Chaser2Cooldown -= Time.deltaTime;
                 if (team1Chaser2Cooldown <= 0)
                 {
                     team1Chaser2Cooldown = Random.Range(5, 15);
                     AdjustStats(1, -team2Bonus);
+                    gameManager.visitorChaser2icon.SetActive(true);
                     team1Chaser2Stunned = false;
                 }
             }
 
             if (team1Chaser3Stunned)
             {
+                gameManager.visitorChaser3icon.SetActive(false);
                 team1Chaser3Cooldown -= Time.deltaTime;
                 if (team1Chaser3Cooldown <= 0)
                 {
                     team1Chaser3Cooldown = Random.Range(5, 15);
                     AdjustStats(1, -team2Bonus);
+                    gameManager.visitorChaser3icon.SetActive(true);
                     team1Chaser3Stunned = false;
                 }
             }
 
             if (team2Chaser1Stunned)
             {
+                gameManager.homeChaser1icon.SetActive(false);
                 team2Chaser1Cooldown -= Time.deltaTime;
                 if (team2Chaser1Cooldown <= 0)
                 {
                     team2Chaser1Cooldown = Random.Range(5, 15);
                     AdjustStats(0, -team2Bonus);
+                    gameManager.homeChaser1icon.SetActive(true);
                     team2Chaser1Stunned = false;
                 }
             }
 
             if (team2Chaser2Stunned)
             {
+                gameManager.homeChaser2icon.SetActive(false);
                 team2Chaser2Cooldown -= Time.deltaTime;
                 if (team2Chaser2Cooldown <= 0)
                 {
                     team2Chaser2Cooldown = Random.Range(5, 15);
                     AdjustStats(0, -team2Bonus);
+                    gameManager.homeChaser2icon.SetActive(true);
                     team2Chaser2Stunned = false;
                 }
             }
 
             if (team2Chaser3Stunned)
             {
+                gameManager.homeChaser3icon.SetActive(false);
                 team2Chaser3Cooldown -= Time.deltaTime;
                 if (team2Chaser3Cooldown <= 0)
                 {
                     team2Chaser3Cooldown = Random.Range(5, 15);
                     AdjustStats(0, -team2Bonus);
+                    gameManager.homeChaser3icon.SetActive(true);
                     team2Chaser3Stunned = false;
                 }
             }

@@ -72,40 +72,48 @@ public class Beaters : MonoBehaviour
 
             if (beaterTeam1Beater1Stunned)
             {
+                gameManager.visitorBeater1icon.SetActive(false);
                 team1beater1cooldown -= Time.deltaTime;
                 if (team1beater1cooldown <= 0)
                 {
                     beaterTeam1Beater1Stunned = false;
+                    gameManager.visitorBeater1icon.SetActive(true);
                     team1beater1cooldown = Random.Range(5, 30);
                 }
             }
 
             if (beaterTeam1Beater2Stunned)
             {
+                gameManager.visitorBeater2icon.SetActive(false);
                 team1beater2cooldown -= Time.deltaTime;
                 if (team1beater2cooldown <= 0)
                 {
                     beaterTeam1Beater2Stunned = false;
+                    gameManager.visitorBeater2icon.SetActive(true);
                     team1beater2cooldown = Random.Range(5, 30);
                 }
             }
 
             if (beaterTeam2Beater1Stunned)
             {
+                gameManager.homeBeater1icon.SetActive(false);
                 team2beater1cooldown -= Time.deltaTime;
                 if (team2beater1cooldown <= 0)
                 {
                     beaterTeam2Beater1Stunned = false;
+                    gameManager.homeBeater1icon.SetActive(true);
                     team2beater1cooldown = Random.Range(5, 30);
                 }
             }
 
             if (beaterTeam2Beater2Stunned)
             {
+                gameManager.homeBeater2icon.SetActive(false);
                 team2beater2cooldown -= Time.deltaTime;
                 if (team2beater2cooldown <= 0)
                 {
                     beaterTeam2Beater2Stunned = false;
+                    gameManager.homeBeater2icon.SetActive(true);
                     team2beater2cooldown = Random.Range(5, 30);
                 }
             }
