@@ -4,22 +4,23 @@
 # To import these sprites into your Unity project, download "TexturePackerImporter":
 # https://www.codeandweb.com/texturepacker/unity
 #
-# $TexturePacker:SmartUpdate:988c63d9e4132e158f453db9977b9baf:3e541c40e9edc96a20b689f748c2250b:5092d84d0aece8f36d0c262fe6cca819$
+# $TexturePacker:SmartUpdate:442208423297bf7d3729508f6d779b42:0b6f422af06ccf9746e05632af4fe007:5092d84d0aece8f36d0c262fe6cca819$
 #
 :format=40300
 :texture=General UI.png
-:size=512x256
+:size=1024x256
 :pivotpoints=enabled
 :borders=enabled
 :alphahandling=ClearTransparentPixels
 
-Polygon 9;418;152;46;46; 0.5;0.5; 23;22;23;22
-Rectangle 45;288;138;127;118; 0.5;0.5; 0;0;0;0
-Rectangle 46;0;1;127;28; 0.5;0.5; 101;25;1;2
-Rectangle 56;293;105;70;30; 0.5;0.5; 23;24;2;3
-Rectangle 58;0;32;129;55; 0.5;0.5; 65;63;28;26
-Rectangle 59;158;89;132;46; 0.5;0.5; 64;64;3;3
-Rectangle 60;418;201;52;55; 0.5;0.5; 0;0;0;0
-Rectangle 61;132;57;127;29; 0.5;0.5; 0;0;0;0
-Rectangle 62;158;138;127;118; 0.5;0.5; 0;0;0;0
-Team;0;90;155;166; 0.509677;0.542169; 0;0;0;0
+Group 220;0;167;529;89; 0.502835538752363;0.4943820224719101; 265;262;55;33
+Polygon 9;130;69;46;46; 0.5;0.5; 23;22;23;22
+Rectangle 45;0;46;127;118; 0.5;0.5; 0;0;0;0
+Rectangle 46;897;59;127;28; 0.5;0.5; 101;25;1;2
+Rectangle 56;796;105;70;30; 0.5;0.5; 23;24;2;3
+Rectangle 58;532;201;129;55; 0.5;0.5; 65;63;28;26
+Rectangle 59;130;118;132;46; 0.5;0.5; 64;64;3;3
+Rectangle 60;684;201;52;55; 0.5;0.5; 0;0;0;0
+Rectangle 61;265;135;127;29; 0.5;0.5; 0;0;0;0
+Rectangle 62;739;138;127;118; 0.5;0.5; 0;0;0;0
+Team;869;90;155;166; 0.509677;0.542169; 0;0;0;0
