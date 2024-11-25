@@ -194,7 +194,7 @@ public class GameManager : MonoBehaviour
         {
             GameObject currentButton = Instantiate(buttonPrefab, teamNameHolder.transform.position, teamNameHolder.transform.rotation);
             currentButton.transform.parent = teamNameHolder.transform;
-            currentButton.transform.localScale = new Vector3(0.85f, 0.85f, 0.85f);
+            currentButton.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
             currentButton.GetComponent<ButtonSetUp>().teamNumber = i;
             currentButton.transform.GetChild(1).GetComponent<Image>().sprite = seasonTeams[i].logo;
             currentButton.GetComponent<ButtonSetUp>().teamName.text = seasonTeams[i].team;
@@ -1246,7 +1246,7 @@ public class GameManager : MonoBehaviour
         optionsMenu = !optionsMenu;
         if (optionsMenu)
         {
-            optionsTab.transform.position = new Vector3(-0.1282990276813507f, -35.422922134399415f, 90);
+            optionsTab.transform.position = new Vector3(-0.1282990276813507f, -38.422922134399415f, 90);
             for (int i = 0; i < exhibitionOptions.Length; i++)
             {
                 exhibitionOptions[i].SetActive(true);
