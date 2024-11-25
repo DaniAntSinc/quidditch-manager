@@ -56,20 +56,23 @@ public class Seekers : MonoBehaviour
                 if (Vector3.Distance(snitch.position, snitchLocation.position) <= 2)
                     EstablishSnitchPosition();
 
-                if ((Vector3.Distance(snitch.position, seeker1.position) <= players.team1SeekerSight && !seesSnitch) && (Vector3.Distance(snitch.position, seeker2.position) <= players.team2SeekerSight && !seesSnitch))
+                if (Vector3.Distance(snitch.position, seeker1.position) <= players.team1SeekerSight && !seesSnitch)
                 {
-                    StartCoroutine(waitForUpdate("Looks like the Seekers see the Snitch!", 1.0f));
+                    StartCoroutine(waitForUpdate("Looks like " + players.team1Seeker + " sees the Snitch!", 0.25f));
                     seesSnitch = true;
+                    gameManager.team1SeekerSaw += 1;
+                }
 
-                    if (Vector3.Distance(snitch.position, seeker1.position) <= players.team1SeekerSight)
-                        gameManager.team1SeekerSaw += 1;
-                    if (Vector3.Distance(snitch.position, seeker2.position) <= players.team2SeekerSight)
-                        gameManager.team2SeekerSaw += 1;
+                if (Vector3.Distance(snitch.position, seeker2.position) <= players.team2SeekerSight && !seesSnitch)
+                {
+                    StartCoroutine(waitForUpdate("Looks like " + players.team2Seeker + " sees the Snitch!", 0.25f));
+                    seesSnitch = true;
+                    gameManager.team2SeekerSaw += 1;                        
                 }
 
                 if ((Vector3.Distance(snitch.position, seeker1.position) >= players.team1SeekerSight && Vector3.Distance(snitch.position, seeker2.position) >= players.team2SeekerSight) && seesSnitch)
                 {
-                    StartCoroutine(waitForUpdate("Looks like the Seekers lost sight of the Snitch!", 1.0f));
+                    StartCoroutine(waitForUpdate("Looks like the Seekers lost sight of the Snitch!", 0.25f));
                     seesSnitch = false;
                 }
 
@@ -95,10 +98,11 @@ public class Seekers : MonoBehaviour
 
                     if (Vector3.Distance(seeker1.position, snitch.position) <= players.team1SeekerGrabRange && !reachingCooldown1 && !seeker1Stunned)
                     {
+                        StartCoroutine(waitForUpdate(players.team1Seeker + " is reaching for the Snitch!", 0.01f));
                         int randomChance = Random.Range(0, 100);
-                        if (players.team1SeekerGrabRange <= randomChance)
+                        if (randomChance <= (players.team1SeekerReach + players.team1SeekerSight))
                         {
-                            StartCoroutine(waitForUpdate(players.team1Seeker + " has caught the Snitch!", 1.0f));
+                            StartCoroutine(waitForUpdate(players.team1Seeker + " has caught the Snitch!", 0.01f));
                             Team1Caught();
                         }
                         else
@@ -106,12 +110,13 @@ public class Seekers : MonoBehaviour
                             reachingCooldown1 = true;
                         }
                     }
-                    if (Vector3.Distance(seeker2.position, snitch.position) <= players.team2SeekerGrabRange && !reachingCooldown2 && !seeker2stunned)
+                    else if (Vector3.Distance(seeker2.position, snitch.position) <= players.team2SeekerGrabRange && !reachingCooldown2 && !seeker2stunned)
                     {
+                        StartCoroutine(waitForUpdate(players.team2Seeker + " is reaching for the Snitch!", 0.01f));
                         int randomChance = Random.Range(0, 100);
-                        if (players.team2SeekerGrabRange <= randomChance)
+                        if (randomChance <= (players.team2SeekerReach + players.team2SeekerSight))
                         {
-                            StartCoroutine(waitForUpdate(players.team2Seeker + " has caught the Snitch!", 1.0f));
+                            StartCoroutine(waitForUpdate(players.team2Seeker + " has caught the Snitch!", 0.01f));
                             Team2Caught();
                         }
                         else
@@ -126,10 +131,10 @@ public class Seekers : MonoBehaviour
                     cooldown1 -= Time.deltaTime;
                     if (cooldown1 <= 0)
                     {
-                        reachingCooldown1 = false;
-                        StartCoroutine(waitForUpdate(players.team1Seeker + " is reaching for the Snitch!", 1.0f));
+                        StartCoroutine(waitForUpdate(players.team1Seeker + " missed the Snitch!", 0.01f));
                         gameManager.team1SeekerReach += 1;
                         cooldown1 = 2f;
+                        reachingCooldown1 = false;
                     }
                 }
                 if (reachingCooldown2)
@@ -137,10 +142,10 @@ public class Seekers : MonoBehaviour
                     cooldown2 -= Time.deltaTime;
                     if (cooldown2 <= 0)
                     {
-                        reachingCooldown2 = false;
-                        StartCoroutine(waitForUpdate(players.team2Seeker + " is reaching for the Snitch!", 1.0f));
+                        StartCoroutine(waitForUpdate(players.team2Seeker + " missed the Snitch!", 0.01f));
                         gameManager.team2SeekerReach += 1;
                         cooldown2 = 2f;
+                        reachingCooldown2 = false;
                     }
                 }
 

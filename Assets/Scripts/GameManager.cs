@@ -286,7 +286,7 @@ public class GameManager : MonoBehaviour
 
             else
             {
-                print("game is tied. sudden death? ");
+                CreateGameEvent("It is a tie! " + players.team1 + ": " + team1Score + "to" + players.team2 + ": " + team2Score);
             }
             winnerChosen = true;
             if (hogwartsSeason)
@@ -673,7 +673,11 @@ public class GameManager : MonoBehaviour
         {
             newTextLine.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().color = Color.yellow;
         }
-        else if (messageForTextElement.Contains("knocked out") || messageForTextElement.Contains("and is stunned"))
+        else if (messageForTextElement.Contains("Snitch"))
+        {
+            newTextLine.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().color = Color.grey;
+        }
+        else if (messageForTextElement.Contains("knocked out") || messageForTextElement.Contains("and is stunned") || messageForTextElement.Contains("hit by"))
         {
             newTextLine.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().color = Color.red;
         }
