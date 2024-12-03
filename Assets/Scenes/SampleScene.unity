@@ -2399,7 +2399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 62
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -7926,7 +7926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 88
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -9124,7 +9124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 65
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -10556,7 +10556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 60
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -10908,7 +10908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 82
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -12584,7 +12584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 78
+      value: 71
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -22346,7 +22346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 64
+      value: 58
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -23917,11 +23917,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 32
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
-      value: 30
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 5618479484370042744, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: m_RootOrder
@@ -24260,7 +24260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 92
+      value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -26323,7 +26323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 55
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -26716,7 +26716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 65
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -34097,7 +34097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 70
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -40255,7 +40255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 94
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -41888,6 +41888,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 171a24d904e1fc747a4136c193360dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beaterTeam1Beater1Stunned: 0
+  beaterTeam1Beater2Stunned: 0
+  beaterTeam2Beater1Stunned: 0
+  beaterTeam2Beater2Stunned: 0
   gameStarted: 0
 --- !u!4 &1048352906
 Transform:
@@ -47975,7 +47979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 61
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -56812,7 +56816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 93
+      value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -58357,7 +58361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 91
+      value: 83
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -58720,7 +58724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 81
+      value: 73
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -66924,7 +66928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 95
+      value: 86
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -73528,7 +73532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 90
+      value: 82
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -73904,7 +73908,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -74696,7 +74700,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 97
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -77587,7 +77591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 94
+      value: 86
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -84225,7 +84229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 48
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -87797,7 +87801,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -91266,7 +91270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 78
+      value: 71
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
@@ -92024,7 +92028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: block
-      value: 44
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4451287880306712301, guid: e855bd53e44defe4a8546552c8c613aa, type: 3}
       propertyPath: dodge
