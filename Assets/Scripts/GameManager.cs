@@ -177,6 +177,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject visitorChaser1icon, visitorChaser2icon, visitorChaser3icon, visitorBeater1icon, visitorBeater2icon, visitorKeepericon, visitorSeekericon;
     public GameObject homeChaser1icon, homeChaser2icon, homeChaser3icon, homeBeater1icon, homeBeater2icon, homeKeepericon, homeSeekericon;
+
+    public Stadium[] stadiumList;
+    public GameObject[] stadiumGO;
+    public int stadiumSelected;
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -247,7 +251,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        CreateGameEvent("Welcome to today's match between " + players.team1 + " and " + players.team2);
+        CreateGameEvent("Welcome to today's match between " + players.team1 + " and " + players.team2 + " at " + stadiumList[stadiumSelected].stadiumName);
         team1Name.text = players.team1;
         team2Name.text = players.team2;
         StartCoroutine(WaitForKickOff());

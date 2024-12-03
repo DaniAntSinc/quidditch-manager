@@ -19,5 +19,5 @@ public class SeasonTeam : MonoBehaviour
     public List<Keeper> keeper;
     public List<Seeker> seeker;
 
-    public float teamSun, teamRain, teamFog, teamSnow;
+    public float teamSun, teamClear, teamRain, teamFog, teamSnow;
 }
