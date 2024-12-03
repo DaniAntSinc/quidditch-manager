@@ -295,6 +295,8 @@ public class GameManager : MonoBehaviour
                 {
                     seasonCountText.text = "Game " + (seasonGameCount + 1) + " of " + hogwartsTeam1.Length;
                     nextGame.SetActive(true);
+                    newGameButton.SetActive(false);
+                    print("absolute");
                     UpdateHogwartsStandingsUI();
                 }
                 else
@@ -307,12 +309,13 @@ public class GameManager : MonoBehaviour
                     newGameButton.SetActive(true);
                 }
             }
-            if (britishIslesSeason)
+            else if (britishIslesSeason)
             {
                 if (seasonGameCount <= 10)
                 {
                     seasonCountText.text = "Game " + (seasonGameCount + 1) + " of " + britishIslesTeam1.Count;
                     nextGame.SetActive(true);
+                    newGameButton.SetActive(false);
                     UpdateBritishIslesStandingsUI();
                 }
                 else if (seasonGameCount <= 11)
@@ -321,6 +324,7 @@ public class GameManager : MonoBehaviour
                     UpdateBritishIslesStandingsUI();
                     seasonCountText.text = "Championship Match";
                     nextGame.SetActive(true);
+                    newGameButton.SetActive(false);
                     OpenStats();
                     TurnOnStandings();
                 }
@@ -334,12 +338,13 @@ public class GameManager : MonoBehaviour
                     newGameButton.SetActive(true);
                 }
             }
-            if (worldCupSeason)
+            else if(worldCupSeason)
             {
                 if (seasonGameCount <= 82)
                 {
                     seasonCountText.text = "Game " + (seasonGameCount + 1) + " of " + worldCupAwaySchedule.Count;
                     nextGame.SetActive(true);
+                    newGameButton.SetActive(false);
                     UpdateWorldCupStandingsUI();
                 }
                 else if (seasonGameCount == 83 || seasonGameCount == 84 || seasonGameCount == 85)
@@ -349,6 +354,7 @@ public class GameManager : MonoBehaviour
                     UpdateWorldCupStandingsUI();
                     seasonCountText.text = "Playoffs";
                     nextGame.SetActive(true);
+                    newGameButton.SetActive(false);
                     OpenStats();
                     TurnOnStandings();
                 }

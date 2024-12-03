@@ -158,10 +158,7 @@ public class Chasers : MonoBehaviour
 
     public void KickOff()
     {
-        seekers.StartGame();
-        beaters.gameStarted = true;
-        CalculateSeekerTime();
-        gameManager.matchStarted = true;
+        StartingQuidditchGame();
 
         int RandomTeam1Chaser = Random.Range(0, players.team1ChasersNames.Length);
         int RandomTeam2Chaser = Random.Range(0, players.team2ChasersNames.Length);
@@ -188,6 +185,31 @@ public class Chasers : MonoBehaviour
         seekers.EstablishSnitchPosition();
     }
 
+    void StartingQuidditchGame()
+    {
+        gameManager.pitchLocation = 50;
+        team1Chaser1Stunned = false;
+        team1Chaser2Stunned = false;
+        team1Chaser3Stunned = false;
+        team2Chaser1Stunned = false;
+        team2Chaser2Stunned = false;
+        team2Chaser3Stunned = false;
+        beaters.beaterTeam1Beater1Stunned = false;
+        beaters.beaterTeam1Beater2Stunned = false;
+        beaters.beaterTeam2Beater1Stunned = false;
+        beaters.beaterTeam2Beater2Stunned = false;
+        seekers.seeker1Stunned = false;
+        seekers.seeker2stunned = false;
+        keepers.keeper1Stunned = false;
+        keepers.keeper2Stunned = false;
+
+        seekers.StartGame();
+        beaters.gameStarted = true;
+        beaters.StartNewBeaterGame();
+        CalculateSeekerTime();
+        gameManager.matchStarted = true;
+    }
+
     void CalculateSeekerTime()
     {
         if (gameManager.cheats)
@@ -207,12 +229,12 @@ public class Chasers : MonoBehaviour
         }
         else
         {
-            int[] seekerTime1 = { Random.Range(1, 60), Random.Range(1, 60), Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(450, 1800), Random.Range(900, 3600) };
-            int[] seekerTime2 = { Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 450), Random.Range(60, 900), Random.Range(450, 1800), Random.Range(900, 3600) };
-            int[] seekerTime3 = { Random.Range(1, 60), Random.Range(60, 450), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 900), Random.Range(450, 1800), Random.Range(900, 3600) };
+            int[] seekerTime1 = { Random.Range(1, 60), Random.Range(45, 90), Random.Range(45, 400), Random.Range(120, 600), Random.Range(60, 450), Random.Range(450, 1800), Random.Range(900, 3600) };
+            int[] seekerTime2 = { Random.Range(1, 60), Random.Range(60, 450), Random.Range(60, 450), Random.Range(300, 1000), Random.Range(350, 1100), Random.Range(450, 1800), Random.Range(900, 3600) };
+            int[] seekerTime3 = { Random.Range(1, 60), Random.Range(60, 450), Random.Range(450, 900), Random.Range(450, 900), Random.Range(700, 1500), Random.Range(450, 1800), Random.Range(900, 3600) };
             int whichSeeker1 = Random.Range(0, seekerTimeDuration);
-            int whichSeeker2 = Random.Range(0, seekerTimeDuration);
-            int whichSeeker3 = Random.Range(0, seekerTimeDuration);
+            int whichSeeker2 = Random.Range(1, seekerTimeDuration);
+            int whichSeeker3 = Random.Range(1, seekerTimeDuration);
             float avgseekerTime = (seekerTime1[whichSeeker1] + seekerTime2[whichSeeker2] + seekerTime3[whichSeeker3]) / 3;
             print(seekerTime1[whichSeeker1] + " " + seekerTime2[whichSeeker2] + " " + seekerTime3[whichSeeker3]);
             print(avgseekerTime);

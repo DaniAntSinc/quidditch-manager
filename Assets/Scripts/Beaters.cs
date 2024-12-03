@@ -12,8 +12,8 @@ public class Beaters : MonoBehaviour
     float bludger1cooldown;
     float bludger2cooldown;
     bool bludger1Sent, bludger2Sent;
-    bool beaterTeam1Beater1Stunned, beaterTeam1Beater2Stunned;
-    bool beaterTeam2Beater1Stunned, beaterTeam2Beater2Stunned;
+    public bool beaterTeam1Beater1Stunned, beaterTeam1Beater2Stunned;
+    public bool beaterTeam2Beater1Stunned, beaterTeam2Beater2Stunned;
     float team1beater1cooldown = 10;
     float team1beater2cooldown = 10;
     float team2beater1cooldown = 10;
@@ -29,6 +29,11 @@ public class Beaters : MonoBehaviour
         keepers = GameObject.Find("Keepers").GetComponent<Keepers>();
         chasers = GameObject.Find("Chasers").GetComponent<Chasers>();
 
+        StartNewBeaterGame();
+    }
+
+    public void StartNewBeaterGame()
+    {
         bludger1cooldown = Random.Range(6, 20);
         bludger2cooldown = Random.Range(6, 20);
     }
