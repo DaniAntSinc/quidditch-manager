@@ -9,6 +9,8 @@ public class SeasonTeam : MonoBehaviour
     //Referenced in GameManager;
     public int teamNumber;
     public Stadium homeStadium;
+    public int homeStadiumNum;
+
     public int win;
     public int loss;
     public int score;

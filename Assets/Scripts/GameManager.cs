@@ -275,7 +275,7 @@ public class GameManager : MonoBehaviour
             cheatsGO.SetActive(false);
         }
 
-        if (visitorSelected && homeSelected)
+        if (visitorSelected && homeSelected && !optionsMenu)
             teamsSelected.SetActive(true);
         else
             teamsSelected.SetActive(false);
@@ -850,6 +850,14 @@ public class GameManager : MonoBehaviour
     public void SetUpHome()
     {
         homeSelected = true;
+        //set up homestadium
+        for (int i = 0; i < stadiumGO.Length; i++)
+        {
+            stadiumGO[i].transform.GetChild(1).gameObject.SetActive(false);
+        }
+        
+        stadiumGO[seasonTeams[homeInt].GetComponent<SeasonTeam>().homeStadiumNum].transform.GetChild(1).gameObject.SetActive(true);
+
         homeTeam = homeInt;
         players.SetLineUp();
         TurnOnLineUpHome();
@@ -1265,14 +1273,17 @@ public class GameManager : MonoBehaviour
             {
                 exhibitionOptions[i].SetActive(true);
             }
+            teamsSelected.SetActive(false);
         }
         else
         {
-            optionsTab.transform.position = new Vector3(-0.1282990276813507f, -48.866058349609378f, 90);
+            optionsTab.transform.position = new Vector3(-0.1282990276813507f, -61.3104362487793f, 90);
             for (int i = 0; i < exhibitionOptions.Length; i++)
             {
                 exhibitionOptions[i].SetActive(false);
             }
+            if (visitorSelected && homeSelected)
+                teamsSelected.SetActive(true);
         }
     }
 }
