@@ -851,12 +851,16 @@ public class GameManager : MonoBehaviour
     {
         homeSelected = true;
         //set up homestadium
-        for (int i = 0; i < stadiumGO.Length; i++)
+        if (!hogwartsSeason && !britishIslesSeason && !worldCupSeason)
         {
-            stadiumGO[i].transform.GetChild(1).gameObject.SetActive(false);
+            for (int i = 0; i < stadiumGO.Length; i++)
+            {
+                stadiumGO[i].transform.GetChild(1).gameObject.SetActive(false);
+            }
+
+            stadiumGO[seasonTeams[homeInt].GetComponent<SeasonTeam>().homeStadiumNum].transform.GetChild(1).gameObject.SetActive(true);
         }
-        
-        stadiumGO[seasonTeams[homeInt].GetComponent<SeasonTeam>().homeStadiumNum].transform.GetChild(1).gameObject.SetActive(true);
+        stadiumSelected = seasonTeams[homeInt].GetComponent<SeasonTeam>().homeStadiumNum;
 
         homeTeam = homeInt;
         players.SetLineUp();
