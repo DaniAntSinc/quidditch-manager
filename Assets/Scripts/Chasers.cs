@@ -236,8 +236,7 @@ public class Chasers : MonoBehaviour
             int whichSeeker2 = Random.Range(1, seekerTimeDuration);
             int whichSeeker3 = Random.Range(1, seekerTimeDuration);
             float avgseekerTime = (seekerTime1[whichSeeker1] + seekerTime2[whichSeeker2] + seekerTime3[whichSeeker3]) / 3;
-            print(seekerTime1[whichSeeker1] + " " + seekerTime2[whichSeeker2] + " " + seekerTime3[whichSeeker3]);
-            print(avgseekerTime);
+            print(seekerTime1[whichSeeker1] + " " + seekerTime2[whichSeeker2] + " " + seekerTime3[whichSeeker3] + " = Average time of: " + avgseekerTime + " until snitch is seen");
             StartCoroutine(StartSeeker(avgseekerTime));
         }
     }

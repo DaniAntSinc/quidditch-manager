@@ -22,8 +22,6 @@ public class Seekers : MonoBehaviour
 
     public bool gameStarted;
 
-    float snitchCountdownTest = 5;
-
     private void Start()
     {
         gameManager = GameObject.Find("Main Camera").GetComponent<GameManager>();

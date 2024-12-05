@@ -2721,11 +2721,11 @@ public class Players : MonoBehaviour
             tempTeam1 = 0;
             tempTeam2 = 0;
         }
-        print("Weather: " + tempTeam1 + " " + tempTeam2);
+        print("Weather: " + tempTeam1*100 + "% Visitor Boost " + tempTeam2*100 + "% Home Boost");
         if (homeTeamhomeField > 0)
-            print("Home Team Advantage: " + homeField + "%");
+            print("Home Team Advantage: " + (homeField*100) + "%");
         if (visitorTeamhomeField > 0)
-            print("Visitor Team Advantage: " + homeField + "%");
+            print("Visitor Team Advantage: " + (homeField*100) + "%");
         gameManager.StartGame();
     }
 
@@ -2794,7 +2794,6 @@ public class Players : MonoBehaviour
         else
         {
             float randWeather = Random.Range(0f, 1f);
-            print(randWeather);
             if (randWeather < gameManager.stadiumList[gameManager.stadiumSelected].hotChance)
                 Sunny();
             else if (randWeather >= gameManager.stadiumList[gameManager.stadiumSelected].hotChance && randWeather < gameManager.stadiumList[gameManager.stadiumSelected].clearChance)

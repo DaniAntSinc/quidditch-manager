@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text team2beater1NameText, team2beater2NameText, team2Beater1BludgerSentText, team2Beater2BludgerSentText, team2Beater1BludgerHitText, team2Beater2BludgerHitText;
     public TMP_Text team2seekerNameText, team2SeekerSnitchCaughtText, team2SeekerSawText, team2SeekerReachText;
 
-    public TMP_Text team1Final, team2Final, weather, weather2;
+    public TMP_Text team1Final, team2Final, weather, weather2, stadium;
     public string weatherTextToDisplay;
 
     public bool sun, rain, fog, snow, indoors;
@@ -200,7 +200,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < seasonTeams.Length; i++)
         {
             GameObject currentButton = Instantiate(buttonPrefab, teamNameHolder.transform.position, teamNameHolder.transform.rotation);
-            currentButton.transform.parent = teamNameHolder.transform;
+            currentButton.transform.SetParent(teamNameHolder.transform);
             currentButton.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
             currentButton.GetComponent<ButtonSetUp>().teamNumber = i;
             currentButton.transform.GetChild(1).GetComponent<Image>().sprite = seasonTeams[i].logo;
@@ -676,7 +676,7 @@ public class GameManager : MonoBehaviour
     public void CreateGameEvent(string messageForTextElement)
     {
         newTextLine = Instantiate(textElement, transform.position, transform.rotation);
-        newTextLine.transform.parent = textElementHolder.transform;
+        newTextLine.transform.SetParent(textElementHolder.transform);
         newTextLine.transform.localPosition = new Vector3(0, 0, 0);
         newTextLine.transform.localScale = new Vector3(1, 1, 1);
 
@@ -730,6 +730,7 @@ public class GameManager : MonoBehaviour
 
         team1NameText.text = players.team1;
         team2NameText.text = players.team2;
+        stadium.text = stadiumList[stadiumSelected].stadiumName;
 
         team1chaserName1Text.text = players.team1ChasersNames[0];
         team1chaserName2Text.text = players.team1ChasersNames[1];
