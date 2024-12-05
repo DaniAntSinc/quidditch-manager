@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text team2seekerNameText, team2SeekerSnitchCaughtText, team2SeekerSawText, team2SeekerReachText;
 
     public TMP_Text team1Final, team2Final, weather, weather2;
+    public string weatherTextToDisplay;
 
     public bool sun, rain, fog, snow, indoors;
 
@@ -253,7 +254,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        CreateGameEvent("Welcome to today's match between " + players.team1 + " and " + players.team2 + " at " + stadiumList[stadiumSelected].stadiumName);
+        CreateGameEvent("Welcome to today's match between " + players.team1 + " and " + players.team2);
+        CreateGameEvent("We are playing at " + stadiumList[stadiumSelected].stadiumName + " in " + weatherTextToDisplay + " weather.");
         team1Name.text = players.team1;
         team2Name.text = players.team2;
         StartCoroutine(WaitForKickOff());
@@ -806,15 +808,24 @@ public class GameManager : MonoBehaviour
         team2Final.text = team2Score.ToString();
 
         if (sun)
-            weather.text = "Hot";
+            weatherTextToDisplay = "Hot";
         else if (rain)
-            weather.text = "Rain";
+            weatherTextToDisplay = "Rainy";
         else if (fog)
-            weather.text = "Foggy";
+            weatherTextToDisplay = "Foggy";
         else if (snow)
-            weather.text = "Snow";
+            weatherTextToDisplay = "Snowy";
         else if (indoors)
-            weather.text = "Indoors";
+        {
+            if (stadiumSelected == 20)
+            {
+                weatherTextToDisplay = "Indoors";
+            }
+            else
+                weatherTextToDisplay = "Clear";
+        }
+
+        weather.text = weatherTextToDisplay;
     }
 
     public void CloseStatsPage()
@@ -872,7 +883,6 @@ public class GameManager : MonoBehaviour
 
     public void CheckWeather()
     {
-        print("here");
         //This calls out if the World Cup is selected, if so - set weather to 'dome' otherwise, prohibit the selection of 'dome' since that is the only indoor stadium
         if (stadiumSelected == 20)
         {
@@ -881,8 +891,8 @@ public class GameManager : MonoBehaviour
                 weatherButtons[i].SetActive(false);
             }
             weatherButtons[0].SetActive(true);
+            weatherButtons[0].transform.GetChild(2).GetComponent<TMP_Text>().text = "Dome";
             players.Indoor();
-            print("here2");
         }
         else
         {
@@ -890,9 +900,8 @@ public class GameManager : MonoBehaviour
             {
                 weatherButtons[i].SetActive(true);
             }
-            weatherButtons[0].SetActive(false);
+            weatherButtons[0].transform.GetChild(2).GetComponent<TMP_Text>().text = "Clear";
             players.RandomWeather();
-            print("here3");
         }
     }
 

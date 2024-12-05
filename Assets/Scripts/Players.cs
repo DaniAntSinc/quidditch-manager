@@ -2752,25 +2752,28 @@ public class Players : MonoBehaviour
         WeatherReset();
         gameManager.sun = true;
         weatherSelector.transform.position = weatherSelectorIcons[0].transform.position;
+        gameManager.weatherTextToDisplay = "Hot";
     }
     public void Rain()
     {
         WeatherReset();
         gameManager.rain = true;
-        print("here");
         weatherSelector.transform.position = weatherSelectorIcons[1].transform.position;
+        gameManager.weatherTextToDisplay = "Rainy";
     }
     public void Fog()
     {
         WeatherReset();
         gameManager.fog = true;
         weatherSelector.transform.position = weatherSelectorIcons[2].transform.position;
+        gameManager.weatherTextToDisplay = "Foggy";
     }
     public void Snow()
     {
         WeatherReset();
         gameManager.snow = true;
         weatherSelector.transform.position = weatherSelectorIcons[3].transform.position;
+        gameManager.weatherTextToDisplay = "Snowy";
     }
 
     public void Indoor()
@@ -2778,27 +2781,36 @@ public class Players : MonoBehaviour
         WeatherReset();
         gameManager.indoors = true;
         weatherSelector.transform.position = weatherSelectorIcons[4].transform.position;
+        if(gameManager.stadiumSelected == 20)
+            gameManager.weatherTextToDisplay = "Indoors";
+        else
+            gameManager.weatherTextToDisplay = "Clear";
     }
 
     public void RandomWeather()
     {
-
-        int randWeather = Random.Range(0, 5);
-        switch (randWeather) {
-            case 0: Sunny();
-                break;
-            case 1: Rain();
-                break;
-            case 2: Fog();
-                break;
-            case 3: Snow();
-                break;
-            case 4: Indoor();
-                break;
-            default: print("Invalid Weather");
-                break;
+        if (gameManager.stadiumSelected == 20)
+            Indoor();
+        else
+        {
+            float randWeather = Random.Range(0f, 1f);
+            print(randWeather);
+            if (randWeather < gameManager.stadiumList[gameManager.stadiumSelected].hotChance)
+                Sunny();
+            else if (randWeather >= gameManager.stadiumList[gameManager.stadiumSelected].hotChance && randWeather < gameManager.stadiumList[gameManager.stadiumSelected].clearChance)
+                Indoor();
+            else if (randWeather >= gameManager.stadiumList[gameManager.stadiumSelected].clearChance && randWeather < gameManager.stadiumList[gameManager.stadiumSelected].fogChance)
+                Fog();
+            else if (randWeather >= gameManager.stadiumList[gameManager.stadiumSelected].fogChance && randWeather < gameManager.stadiumList[gameManager.stadiumSelected].rainChange)
+                Rain();
+            else if (randWeather >= gameManager.stadiumList[gameManager.stadiumSelected].rainChange && randWeather < gameManager.stadiumList[gameManager.stadiumSelected].snowChance)
+                Snow();
+            else
+            {
+                print("Out of Bounds of Weather, defaulting to Clear");
+                Indoor();
+            }    
         }
         weatherSelector.transform.position = weatherSelectorIcons[5].transform.position;
-        print(randWeather);
     }
 }
