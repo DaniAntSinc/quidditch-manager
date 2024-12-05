@@ -3677,6 +3677,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90240505}
   m_CullTransparentMesh: 1
+--- !u!1 &94085696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1801616652007635231, guid: f29a12d45a2c5534fb288c234f4100a7, type: 3}
+  m_PrefabInstance: {fileID: 10199912}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &97596545
 GameObject:
   m_ObjectHideFlags: 0
@@ -22315,6 +22320,13 @@ MonoBehaviour:
   - {fileID: 354769821}
   - {fileID: 292144222}
   stadiumSelected: 0
+  weatherButtons:
+  - {fileID: 1215401697}
+  - {fileID: 976667697}
+  - {fileID: 134749723}
+  - {fileID: 94085696}
+  - {fileID: 1680956225}
+  - {fileID: 2056097610}
 --- !u!1 &523698849
 GameObject:
   m_ObjectHideFlags: 0
@@ -40475,6 +40487,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 358d6249713b7ab499144615158d8af2, type: 3}
+--- !u!1 &976667697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1801616652007635231, guid: f29a12d45a2c5534fb288c234f4100a7, type: 3}
+  m_PrefabInstance: {fileID: 273278061}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &977590687
 GameObject:
   m_ObjectHideFlags: 0
@@ -57433,6 +57450,11 @@ CanvasRenderer:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8383568317880357558, guid: f29a12d45a2c5534fb288c234f4100a7, type: 3}
   m_PrefabInstance: {fileID: 593191938}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1215401697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1801616652007635231, guid: f29a12d45a2c5534fb288c234f4100a7, type: 3}
+  m_PrefabInstance: {fileID: 1789766353}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1217263511
 GameObject:
@@ -76330,7 +76352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2776577117591453330, guid: f29a12d45a2c5534fb288c234f4100a7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 324.1762
+      value: 268
       objectReference: {fileID: 0}
     - target: {fileID: 2776577117591453330, guid: f29a12d45a2c5534fb288c234f4100a7, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -78175,6 +78197,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677967333}
   m_CullTransparentMesh: 1
+--- !u!1 &1680956225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1801616652007635231, guid: f29a12d45a2c5534fb288c234f4100a7, type: 3}
+  m_PrefabInstance: {fileID: 593191938}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1681262511 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5692690181924144823, guid: e7387ff1290d44e40bfd4866a440c728, type: 3}
@@ -82823,7 +82850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2776577117591453330, guid: f29a12d45a2c5534fb288c234f4100a7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 262.4
+      value: 319
       objectReference: {fileID: 0}
     - target: {fileID: 2776577117591453330, guid: f29a12d45a2c5534fb288c234f4100a7, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -92844,6 +92871,11 @@ RectTransform:
   m_AnchoredPosition: {x: 17.515, y: -1.5}
   m_SizeDelta: {x: 35.031, y: 31.928}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2056097610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1801616652007635231, guid: f29a12d45a2c5534fb288c234f4100a7, type: 3}
+  m_PrefabInstance: {fileID: 1642371684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2056783418
 GameObject:
   m_ObjectHideFlags: 0

@@ -181,6 +181,8 @@ public class GameManager : MonoBehaviour
     public Stadium[] stadiumList;
     public GameObject[] stadiumGO;
     public int stadiumSelected;
+
+    public GameObject[] weatherButtons;
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -861,11 +863,37 @@ public class GameManager : MonoBehaviour
             stadiumGO[seasonTeams[homeInt].GetComponent<SeasonTeam>().homeStadiumNum].transform.GetChild(1).gameObject.SetActive(true);
         }
         stadiumSelected = seasonTeams[homeInt].GetComponent<SeasonTeam>().homeStadiumNum;
-
+        CheckWeather();
         homeTeam = homeInt;
         players.SetLineUp();
         TurnOnLineUpHome();
         homeText.text = seasonTeams[homeInt].team;
+    }
+
+    public void CheckWeather()
+    {
+        print("here");
+        //This calls out if the World Cup is selected, if so - set weather to 'dome' otherwise, prohibit the selection of 'dome' since that is the only indoor stadium
+        if (stadiumSelected == 20)
+        {
+            for (int i = 0; i < weatherButtons.Length; i++)
+            {
+                weatherButtons[i].SetActive(false);
+            }
+            weatherButtons[0].SetActive(true);
+            players.Indoor();
+            print("here2");
+        }
+        else
+        {
+            for (int i = 0; i < weatherButtons.Length; i++)
+            {
+                weatherButtons[i].SetActive(true);
+            }
+            weatherButtons[0].SetActive(false);
+            players.RandomWeather();
+            print("here3");
+        }
     }
 
     public void UndoSelection()
@@ -1272,6 +1300,7 @@ public class GameManager : MonoBehaviour
         optionsMenu = !optionsMenu;
         if (optionsMenu)
         {
+            CheckWeather();
             optionsTab.transform.position = new Vector3(-0.1282990276813507f, -38.422922134399415f, 90);
             for (int i = 0; i < exhibitionOptions.Length; i++)
             {

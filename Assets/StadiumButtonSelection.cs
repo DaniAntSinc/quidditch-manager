@@ -23,5 +23,7 @@ public class StadiumButtonSelection : MonoBehaviour
         gameManager.stadiumGO[itemInStadiumList].transform.GetChild(1).gameObject.SetActive(true);
         gameManager.stadiumSelected = itemInStadiumList;
         print(gameManager.stadiumList[gameManager.stadiumSelected].stadiumName);
+
+        gameManager.CheckWeather();   
     }
 }
