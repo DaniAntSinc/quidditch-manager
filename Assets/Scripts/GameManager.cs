@@ -184,6 +184,8 @@ public class GameManager : MonoBehaviour
     public int stadiumSelected;
 
     public GameObject[] weatherButtons;
+
+    public GameObject managementMenu;
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -1024,6 +1026,18 @@ public class GameManager : MonoBehaviour
         seasonButton.SetActive(false);
         playoffButton.SetActive(false);
         seasonList.SetActive(true);
+    }
+
+    public void OpenManagementMenu()
+    {
+        simulationMenu.SetActive(false);
+        managementMenu.SetActive(true);
+    }
+
+    public void CloseManagementMenu()
+    {
+        simulationMenu.SetActive(true);
+        managementMenu.SetActive(false);
     }
 
     public void CloseExhib()
