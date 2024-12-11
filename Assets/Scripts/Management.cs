@@ -5,12 +5,11 @@ using UnityEngine;
 public class Management : MonoBehaviour
 {
     public SaveLoad saveLoad;
-    GameObject playersTeam;
     public GameObject FTUE;
-    public GameObject TeamCreationButtons, teamCreationMenu, MainManagementMenu;
-
+    public GameObject TeamCreationButtons, teamCreationMenu, MainManagementMenu, newLoad;
     bool nameCreated, logoCreated, stadiumCreated, LineupCreated;
     public GameObject beginButton;
+    GameObject playersTeam;
 
     public void NewTeam()
     {
@@ -18,7 +17,9 @@ public class Management : MonoBehaviour
         playersTeam = new GameObject("Players_Team");
         playersTeam.AddComponent<SeasonTeam>();
         playersTeam.transform.parent = GameObject.Find("Teams").transform;
+        teamCreationMenu.SetActive(true);
         FTUE.SetActive(true);
+        newLoad.SetActive(false);
     }
 
     public void LoadTeam()

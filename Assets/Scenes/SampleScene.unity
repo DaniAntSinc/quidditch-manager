@@ -4652,7 +4652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &114203842
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40315,6 +40315,7 @@ MonoBehaviour:
   TeamCreationButtons: {fileID: 1179838860}
   teamCreationMenu: {fileID: 2004259328}
   MainManagementMenu: {fileID: 672113760}
+  newLoad: {fileID: 114203841}
   beginButton: {fileID: 498712770}
 --- !u!1 &918957862
 GameObject:
@@ -96682,7 +96683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1995412260
 RectTransform:
   m_ObjectHideFlags: 0
@@ -97088,7 +97089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2004259329
 RectTransform:
   m_ObjectHideFlags: 0
