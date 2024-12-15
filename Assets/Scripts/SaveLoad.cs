@@ -5,6 +5,7 @@ using UnityEngine;
 public class SaveLoad : MonoBehaviour
 {
     public bool teamCreated;
+    public string playerTeamName;
     public void ClearTeam()
     {
         teamCreated = false;
@@ -15,7 +16,7 @@ public class SaveLoad : MonoBehaviour
 
     public void SaveTeam()
     {
-        teamCreated = true;
+        PlayerPrefs.SetString("PlayerTeamName", playerTeamName);
     }
 
     public void LoadTeam()
@@ -24,7 +25,7 @@ public class SaveLoad : MonoBehaviour
             return;
         else
         {
-            print("Load Team");
+            PlayerPrefs.GetString("PlayerTeamName");
         }
     }
 }

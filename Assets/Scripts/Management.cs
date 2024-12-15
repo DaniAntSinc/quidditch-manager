@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Management : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class Management : MonoBehaviour
     bool nameCreated, logoCreated, stadiumCreated, LineupCreated;
     public GameObject beginButton;
     GameObject playersTeam;
-
+    public TMP_InputField location, teamName;
+    public GameObject teamNameCreationScreen;
+    public TMP_Text UIteamName;
     public void NewTeam()
     {
         saveLoad.ClearTeam();
@@ -36,7 +39,8 @@ public class Management : MonoBehaviour
 
     public void NameMenu()
     {
-        print("Open Name Menu");
+        teamNameCreationScreen.SetActive(true);
+        TeamCreationButtons.SetActive(false);
     }
 
     public void LogoMenu()
@@ -64,5 +68,29 @@ public class Management : MonoBehaviour
     {
         MainManagementMenu.SetActive(true);
         teamCreationMenu.SetActive(false);
+        saveLoad.teamCreated = true;
+    }
+
+    public void SaveTeamName()
+    {
+        //SaveName - player pref
+        saveLoad.playerTeamName = location.text + " " + teamName.text;
+        saveLoad.SaveTeam();
+        //Close Menu
+        teamCreationMenu.SetActive(true);
+        TeamCreationButtons.SetActive(true);
+        teamNameCreationScreen.SetActive(false);
+        //Update on Team Create 
+        UIteamName.text = location.text + " " + teamName.text;
+        //Update 
+        playersTeam.GetComponent<SeasonTeam>().team = location.text + " " + teamName.text;
+    }
+
+    public void CloseSubMenu()
+    {
+        TeamCreationButtons.SetActive(true);
+        teamNameCreationScreen.SetActive(false);
+        //logo creation menu
+        //linup creation menu
     }
 }
