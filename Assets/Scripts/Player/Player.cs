@@ -8,4 +8,11 @@ public class Player : MonoBehaviour
     public int division;
     public string Name;
     public int salary;
+    public int age;
+
+    public Hat hat;
+    public Body body;
+    public Gloves gloves;
+    public Glasses glasses;
+    public Broom broom;
 }
