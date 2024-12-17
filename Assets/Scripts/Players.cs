@@ -1235,6 +1235,54 @@ public class Players : MonoBehaviour
                 team1fog = teams[23].teamFog;
                 team1snow = teams[23].teamSnow;
                 break;
+            case 24:
+                team1 = teams[24].team;
+                team1ChasersNames[0] = teams[24].chasers[0].Name;
+
+                team1ChasersNames[1] = teams[24].chasers[1].Name;
+                team1ChasersNames[2] = teams[24].chasers[2].Name;
+                team1ChasersIntercept[0] = teams[24].chasers[0].intercept + teams[24].chasers[0].hat.Intercept + teams[24].chasers[0].gloves.Intercept + teams[24].chasers[0].glasses.Intercept + teams[24].chasers[0].body.Intercept + teams[24].chasers[0].broom.Intercept;
+                team1ChasersIntercept[1] = teams[24].chasers[1].intercept + teams[24].chasers[1].hat.Intercept + teams[24].chasers[1].gloves.Intercept + teams[24].chasers[1].glasses.Intercept + teams[24].chasers[1].body.Intercept + teams[24].chasers[1].broom.Intercept;
+                team1ChasersIntercept[2] = teams[24].chasers[2].intercept + teams[24].chasers[2].hat.Intercept + teams[24].chasers[2].gloves.Intercept + teams[24].chasers[2].glasses.Intercept + teams[24].chasers[2].body.Intercept + teams[24].chasers[2].broom.Intercept;
+                team1ChasersPass[0] = teams[24].chasers[0].pass + teams[24].chasers[0].hat.Pass + teams[24].chasers[0].gloves.Pass + teams[24].chasers[0].glasses.Pass + teams[24].chasers[0].body.Pass + teams[24].chasers[0].broom.Pass;
+                team1ChasersPass[1] = teams[24].chasers[1].pass + teams[24].chasers[1].hat.Pass + teams[24].chasers[1].gloves.Pass + teams[24].chasers[1].glasses.Pass + teams[24].chasers[1].body.Pass + teams[24].chasers[1].broom.Pass;
+                team1ChasersPass[2] = teams[24].chasers[2].pass + teams[24].chasers[2].hat.Pass + teams[24].chasers[2].gloves.Pass + teams[24].chasers[2].glasses.Pass + teams[24].chasers[2].body.Pass + teams[24].chasers[2].broom.Pass;
+                team1ChaserTackle[0] = teams[24].chasers[0].tackle + teams[24].chasers[0].hat.Tackle + teams[24].chasers[0].gloves.Tackle + teams[24].chasers[0].glasses.Tackle + teams[24].chasers[0].body.Tackle + teams[24].chasers[0].broom.Tackle;
+                team1ChaserTackle[1] = teams[24].chasers[1].tackle + teams[24].chasers[1].hat.Tackle + teams[24].chasers[1].gloves.Tackle + teams[24].chasers[1].glasses.Tackle + teams[24].chasers[1].body.Tackle + teams[24].chasers[1].broom.Tackle;
+                team1ChaserTackle[2] = teams[24].chasers[2].tackle + teams[24].chasers[2].hat.Tackle + teams[24].chasers[2].gloves.Tackle + teams[24].chasers[2].glasses.Tackle + teams[24].chasers[2].body.Tackle + teams[24].chasers[2].broom.Tackle;
+                team1ChaserShooting[0] = teams[24].chasers[0].shooting + teams[24].chasers[0].hat.Shooting + teams[24].chasers[0].gloves.Shooting + teams[24].chasers[0].glasses.Shooting + teams[24].chasers[0].body.Shooting + teams[24].chasers[0].broom.Shooting;
+                team1ChaserShooting[1] = teams[24].chasers[1].shooting + teams[24].chasers[1].hat.Shooting + teams[24].chasers[1].gloves.Shooting + teams[24].chasers[1].glasses.Shooting + teams[24].chasers[1].body.Shooting + teams[24].chasers[1].broom.Shooting;
+                team1ChaserShooting[2] = teams[24].chasers[2].shooting + teams[24].chasers[2].hat.Shooting + teams[24].chasers[2].gloves.Shooting + teams[24].chasers[2].glasses.Shooting + teams[24].chasers[2].body.Shooting + teams[24].chasers[2].broom.Shooting;
+                team1ChaserDodge[0] = teams[24].chasers[0].dodge + teams[24].chasers[0].hat.Dodge + teams[24].chasers[0].gloves.Dodge + teams[24].chasers[0].glasses.Dodge + teams[24].chasers[0].body.Dodge + teams[24].chasers[0].broom.Dodge;
+                team1ChaserDodge[1] = teams[24].chasers[1].dodge + teams[24].chasers[1].hat.Dodge + teams[24].chasers[1].gloves.Dodge + teams[24].chasers[1].glasses.Dodge + teams[24].chasers[1].body.Dodge + teams[24].chasers[1].broom.Dodge;
+                team1ChaserDodge[2] = teams[24].chasers[2].dodge + teams[24].chasers[2].hat.Dodge + teams[24].chasers[2].gloves.Dodge + teams[24].chasers[2].glasses.Dodge + teams[24].chasers[2].body.Dodge + teams[24].chasers[2].broom.Dodge;
+                team1ChaserSpeed[0] = teams[24].chasers[0].speed + teams[24].chasers[0].hat.Speed + teams[24].chasers[0].gloves.Speed + teams[24].chasers[0].glasses.Speed + teams[24].chasers[0].body.Speed + teams[24].chasers[0].broom.Speed;
+                team1ChaserSpeed[1] = teams[24].chasers[1].speed + teams[24].chasers[1].hat.Speed + teams[24].chasers[1].gloves.Speed + teams[24].chasers[1].glasses.Speed + teams[24].chasers[1].body.Speed + teams[24].chasers[1].broom.Speed;
+                team1ChaserSpeed[2] = teams[24].chasers[2].speed + teams[24].chasers[2].hat.Speed + teams[24].chasers[2].gloves.Speed + teams[24].chasers[2].glasses.Speed + teams[24].chasers[2].body.Speed + teams[24].chasers[2].broom.Speed;
+
+                team1Beaters[0] = teams[24].beaters[0].Name;
+                team1Beaters[1] = teams[24].beaters[1].Name;
+                team1BeaterLocateBludgerSpeed[0] = teams[24].beaters[0].locateSpeed + teams[24].beaters[0].hat.LocateSpeed + teams[24].beaters[0].gloves.LocateSpeed + teams[24].beaters[0].glasses.LocateSpeed + teams[24].beaters[0].body.LocateSpeed + teams[24].beaters[0].broom.LocateSpeed;
+                team1BeaterLocateBludgerSpeed[1] = teams[24].beaters[1].locateSpeed + teams[24].beaters[1].hat.LocateSpeed + teams[24].beaters[1].gloves.LocateSpeed + teams[24].beaters[1].glasses.LocateSpeed + teams[24].beaters[1].body.LocateSpeed + teams[24].beaters[1].broom.LocateSpeed;
+                team1BeaterDodge[0] = teams[24].beaters[0].dodge + teams[24].beaters[0].hat.Dodge + teams[24].beaters[0].gloves.Dodge + teams[24].beaters[0].glasses.Dodge + teams[24].beaters[0].body.Dodge + teams[24].beaters[0].broom.Dodge;
+                team1BeaterDodge[1] = teams[24].beaters[1].dodge + teams[24].beaters[1].hat.Dodge + teams[24].beaters[1].gloves.Dodge + teams[24].beaters[1].glasses.Dodge + teams[24].beaters[1].body.Dodge + teams[24].beaters[1].broom.Dodge;
+
+                team1Keeper = teams[24].keeper[0].Name;
+                team1KeeperDodge = teams[24].keeper[0].dodge + teams[24].keeper[0].hat.Dodge + teams[24].keeper[0].gloves.Dodge + teams[24].keeper[0].glasses.Dodge + teams[24].keeper[0].body.Dodge + teams[24].keeper[0].broom.Dodge;
+                team1KeeperBlock = teams[24].keeper[0].block + teams[24].keeper[0].hat.Block + teams[24].keeper[0].gloves.Block + teams[24].keeper[0].glasses.Block + teams[24].keeper[0].body.Block + teams[24].keeper[0].broom.Block;
+
+                team1Seeker = teams[24].seeker[0].Name;
+                team1SeekerDodge = teams[24].seeker[0].dodge + teams[24].seeker[0].hat.Dodge + teams[24].seeker[0].gloves.Dodge + teams[24].seeker[0].glasses.Dodge + teams[24].seeker[0].body.Dodge + teams[24].seeker[0].broom.Dodge;
+                team1SeekerSight = teams[24].seeker[0].sight + teams[24].seeker[0].hat.Sight + teams[24].seeker[0].gloves.Sight + teams[24].seeker[0].glasses.Sight + teams[24].seeker[0].body.Sight + teams[24].seeker[0].broom.Sight;
+                team1SeekerSpeed = teams[24].seeker[0].speed + teams[24].seeker[0].hat.Speed + teams[24].seeker[0].gloves.Speed + teams[24].seeker[0].glasses.Speed + teams[24].seeker[0].body.Speed + teams[24].seeker[0].broom.Speed;
+                team1SeekerReach = teams[24].seeker[0].reach + teams[24].seeker[0].hat.Reach + teams[24].seeker[0].gloves.Reach + teams[24].seeker[0].glasses.Reach + teams[24].seeker[0].body.Reach + teams[24].seeker[0].broom.Reach;
+                team1SeekerGrabRange = teams[24].seeker[0].grab + teams[24].seeker[0].hat.Grab + teams[24].seeker[0].gloves.Grab + teams[24].seeker[0].glasses.Grab + teams[24].seeker[0].body.Grab + teams[24].seeker[0].broom.Grab;
+
+                team1sun = teams[24].teamSun;
+                team1rain = teams[24].teamRain;
+                team1fog = teams[24].teamFog;
+                team1snow = teams[24].teamSnow;
+                break;
             default:
                 print("Unable to find visitor team");
                 break;
@@ -2393,6 +2441,54 @@ public class Players : MonoBehaviour
                 team2rain = teams[23].teamRain;
                 team2fog = teams[23].teamFog;
                 team2snow = teams[23].teamSnow;
+                break;
+            case 24:
+                team2 = teams[24].team;
+                team2ChasersNames[0] = teams[24].chasers[0].Name;
+
+                team2ChasersNames[1] = teams[24].chasers[1].Name;
+                team2ChasersNames[2] = teams[24].chasers[2].Name;
+                team2ChasersIntercept[0] = teams[24].chasers[0].intercept + teams[24].chasers[0].hat.Intercept + teams[24].chasers[0].gloves.Intercept + teams[24].chasers[0].glasses.Intercept + teams[24].chasers[0].body.Intercept + teams[24].chasers[0].broom.Intercept;
+                team2ChasersIntercept[1] = teams[24].chasers[1].intercept + teams[24].chasers[1].hat.Intercept + teams[24].chasers[1].gloves.Intercept + teams[24].chasers[1].glasses.Intercept + teams[24].chasers[1].body.Intercept + teams[24].chasers[1].broom.Intercept;
+                team2ChasersIntercept[2] = teams[24].chasers[2].intercept + teams[24].chasers[2].hat.Intercept + teams[24].chasers[2].gloves.Intercept + teams[24].chasers[2].glasses.Intercept + teams[24].chasers[2].body.Intercept + teams[24].chasers[2].broom.Intercept;
+                team2ChasersPass[0] = teams[24].chasers[0].pass + teams[24].chasers[0].hat.Pass + teams[24].chasers[0].gloves.Pass + teams[24].chasers[0].glasses.Pass + teams[24].chasers[0].body.Pass + teams[24].chasers[0].broom.Pass;
+                team2ChasersPass[1] = teams[24].chasers[1].pass + teams[24].chasers[1].hat.Pass + teams[24].chasers[1].gloves.Pass + teams[24].chasers[1].glasses.Pass + teams[24].chasers[1].body.Pass + teams[24].chasers[1].broom.Pass;
+                team2ChasersPass[2] = teams[24].chasers[2].pass + teams[24].chasers[2].hat.Pass + teams[24].chasers[2].gloves.Pass + teams[24].chasers[2].glasses.Pass + teams[24].chasers[2].body.Pass + teams[24].chasers[2].broom.Pass;
+                team2ChaserTackle[0] = teams[24].chasers[0].tackle + teams[24].chasers[0].hat.Tackle + teams[24].chasers[0].gloves.Tackle + teams[24].chasers[0].glasses.Tackle + teams[24].chasers[0].body.Tackle + teams[24].chasers[0].broom.Tackle;
+                team2ChaserTackle[1] = teams[24].chasers[1].tackle + teams[24].chasers[1].hat.Tackle + teams[24].chasers[1].gloves.Tackle + teams[24].chasers[1].glasses.Tackle + teams[24].chasers[1].body.Tackle + teams[24].chasers[1].broom.Tackle;
+                team2ChaserTackle[2] = teams[24].chasers[2].tackle + teams[24].chasers[2].hat.Tackle + teams[24].chasers[2].gloves.Tackle + teams[24].chasers[2].glasses.Tackle + teams[24].chasers[2].body.Tackle + teams[24].chasers[2].broom.Tackle;
+                team2ChaserShooting[0] = teams[24].chasers[0].shooting + teams[24].chasers[0].hat.Shooting + teams[24].chasers[0].gloves.Shooting + teams[24].chasers[0].glasses.Shooting + teams[24].chasers[0].body.Shooting + teams[24].chasers[0].broom.Shooting;
+                team2ChaserShooting[1] = teams[24].chasers[1].shooting + teams[24].chasers[1].hat.Shooting + teams[24].chasers[1].gloves.Shooting + teams[24].chasers[1].glasses.Shooting + teams[24].chasers[1].body.Shooting + teams[24].chasers[1].broom.Shooting;
+                team2ChaserShooting[2] = teams[24].chasers[2].shooting + teams[24].chasers[2].hat.Shooting + teams[24].chasers[2].gloves.Shooting + teams[24].chasers[2].glasses.Shooting + teams[24].chasers[2].body.Shooting + teams[24].chasers[2].broom.Shooting;
+                team2ChaserDodge[0] = teams[24].chasers[0].dodge + teams[24].chasers[0].hat.Dodge + teams[24].chasers[0].gloves.Dodge + teams[24].chasers[0].glasses.Dodge + teams[24].chasers[0].body.Dodge + teams[24].chasers[0].broom.Dodge;
+                team2ChaserDodge[1] = teams[24].chasers[1].dodge + teams[24].chasers[1].hat.Dodge + teams[24].chasers[1].gloves.Dodge + teams[24].chasers[1].glasses.Dodge + teams[24].chasers[1].body.Dodge + teams[24].chasers[1].broom.Dodge;
+                team2ChaserDodge[2] = teams[24].chasers[2].dodge + teams[24].chasers[2].hat.Dodge + teams[24].chasers[2].gloves.Dodge + teams[24].chasers[2].glasses.Dodge + teams[24].chasers[2].body.Dodge + teams[24].chasers[2].broom.Dodge;
+                team2ChaserSpeed[0] = teams[24].chasers[0].speed + teams[24].chasers[0].hat.Speed + teams[24].chasers[0].gloves.Speed + teams[24].chasers[0].glasses.Speed + teams[24].chasers[0].body.Speed + teams[24].chasers[0].broom.Speed;
+                team2ChaserSpeed[1] = teams[24].chasers[1].speed + teams[24].chasers[1].hat.Speed + teams[24].chasers[1].gloves.Speed + teams[24].chasers[1].glasses.Speed + teams[24].chasers[1].body.Speed + teams[24].chasers[1].broom.Speed;
+                team2ChaserSpeed[2] = teams[24].chasers[2].speed + teams[24].chasers[2].hat.Speed + teams[24].chasers[2].gloves.Speed + teams[24].chasers[2].glasses.Speed + teams[24].chasers[2].body.Speed + teams[24].chasers[2].broom.Speed;
+
+                team2Beaters[0] = teams[24].beaters[0].Name;
+                team2Beaters[1] = teams[24].beaters[1].Name;
+                team2BeaterLocateBludgerSpeed[0] = teams[24].beaters[0].locateSpeed + teams[24].beaters[0].hat.LocateSpeed + teams[24].beaters[0].gloves.LocateSpeed + teams[24].beaters[0].glasses.LocateSpeed + teams[24].beaters[0].body.LocateSpeed + teams[24].beaters[0].broom.LocateSpeed;
+                team2BeaterLocateBludgerSpeed[1] = teams[24].beaters[1].locateSpeed + teams[24].beaters[1].hat.LocateSpeed + teams[24].beaters[1].gloves.LocateSpeed + teams[24].beaters[1].glasses.LocateSpeed + teams[24].beaters[1].body.LocateSpeed + teams[24].beaters[1].broom.LocateSpeed;
+                team2BeaterDodge[0] = teams[24].beaters[0].dodge + teams[24].beaters[0].hat.Dodge + teams[24].beaters[0].gloves.Dodge + teams[24].beaters[0].glasses.Dodge + teams[24].beaters[0].body.Dodge + teams[24].beaters[0].broom.Dodge;
+                team2BeaterDodge[1] = teams[24].beaters[1].dodge + teams[24].beaters[1].hat.Dodge + teams[24].beaters[1].gloves.Dodge + teams[24].beaters[1].glasses.Dodge + teams[24].beaters[1].body.Dodge + teams[24].beaters[1].broom.Dodge;
+
+                team2Keeper = teams[24].keeper[0].Name;
+                team2KeeperDodge = teams[24].keeper[0].dodge + teams[24].keeper[0].hat.Dodge + teams[24].keeper[0].gloves.Dodge + teams[24].keeper[0].glasses.Dodge + teams[24].keeper[0].body.Dodge + teams[24].keeper[0].broom.Dodge;
+                team2KeeperBlock = teams[24].keeper[0].block + teams[24].keeper[0].hat.Block + teams[24].keeper[0].gloves.Block + teams[24].keeper[0].glasses.Block + teams[24].keeper[0].body.Block + teams[24].keeper[0].broom.Block;
+
+                team2Seeker = teams[24].seeker[0].Name;
+                team2SeekerDodge = teams[24].seeker[0].dodge + teams[24].seeker[0].hat.Dodge + teams[24].seeker[0].gloves.Dodge + teams[24].seeker[0].glasses.Dodge + teams[24].seeker[0].body.Dodge + teams[24].seeker[0].broom.Dodge;
+                team2SeekerSight = teams[24].seeker[0].sight + teams[24].seeker[0].hat.Sight + teams[24].seeker[0].gloves.Sight + teams[24].seeker[0].glasses.Sight + teams[24].seeker[0].body.Sight + teams[24].seeker[0].broom.Sight;
+                team2SeekerSpeed = teams[24].seeker[0].speed + teams[24].seeker[0].hat.Speed + teams[24].seeker[0].gloves.Speed + teams[24].seeker[0].glasses.Speed + teams[24].seeker[0].body.Speed + teams[24].seeker[0].broom.Speed;
+                team2SeekerReach = teams[24].seeker[0].reach + teams[24].seeker[0].hat.Reach + teams[24].seeker[0].gloves.Reach + teams[24].seeker[0].glasses.Reach + teams[24].seeker[0].body.Reach + teams[24].seeker[0].broom.Reach;
+                team2SeekerGrabRange = teams[24].seeker[0].grab + teams[24].seeker[0].hat.Grab + teams[24].seeker[0].gloves.Grab + teams[24].seeker[0].glasses.Grab + teams[24].seeker[0].body.Grab + teams[24].seeker[0].broom.Grab;
+
+                team2sun = teams[24].teamSun;
+                team2rain = teams[24].teamRain;
+                team2fog = teams[24].teamFog;
+                team2snow = teams[24].teamSnow;
                 break;
             default:
                 print("Unable to find home team");
