@@ -47574,8 +47574,9 @@ MonoBehaviour:
   baseHat: {fileID: 8832717943591112764}
   baseBody: {fileID: 626376227282565300}
   baseGlasses: {fileID: 5952818616976007642}
+  baseGloves: {fileID: 6901371773881281782}
   baseBroom: {fileID: 6840980265218637005}
-  nameGeneration: {fileID: 0}
+  nameGeneration: {fileID: 2067417419}
   freeAgentsCollection: {fileID: 1223350470}
 --- !u!1 &918957862
 GameObject:
@@ -113942,6 +113943,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2067417418}
+  - component: {fileID: 2067417419}
   m_Layer: 0
   m_Name: FirstLastNames
   m_TagString: Untagged
@@ -113964,6 +113966,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2067417419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067417417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16d22c62901309418bd2be7b1154685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameCreated: 
 --- !u!1001 &2068989879
 PrefabInstance:
   m_ObjectHideFlags: 0

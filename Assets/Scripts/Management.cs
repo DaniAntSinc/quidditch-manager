@@ -15,7 +15,7 @@ public class Management : MonoBehaviour
     public GameObject teamNameCreationScreen;
     public GameObject lineupGO;
     public TMP_Text UIteamName;
-    public int teamBudget = 200000;
+    public int teamBudget = 175000;
 
     #region freeagent generation
     int chasersToCreate = 20;
@@ -25,6 +25,7 @@ public class Management : MonoBehaviour
     public Hat baseHat;
     public Body baseBody;
     public Glasses baseGlasses;
+    public Gloves baseGloves;
     public Broom baseBroom;
     public FirstLastNames nameGeneration;
     public GameObject freeAgentsCollection;
@@ -125,7 +126,8 @@ public class Management : MonoBehaviour
             newChaser.AddComponent<Chaser>();
             newChaser.GetComponent<Chaser>().isFreeAgent = true;
             newChaser.GetComponent<Chaser>().age = Random.Range(17, 40);
-        //    newChaser.GetComponent<Chaser>().Name = nameGeneration.firstNames[Random.Range(0, nameGeneration.firstNames.Count)] + " " + nameGeneration.lastNames[Random.Range(0, nameGeneration.lastNames.Count)];
+            nameGeneration.GenerateName();
+            newChaser.GetComponent<Chaser>().Name = nameGeneration.nameCreated;
             newChaser.GetComponent<Chaser>().dodge = Random.Range(30,60);
             newChaser.GetComponent<Chaser>().intercept = Random.Range(25, 60);
             newChaser.GetComponent<Chaser>().pass = Random.Range(20, 60);
@@ -133,8 +135,35 @@ public class Management : MonoBehaviour
             newChaser.GetComponent<Chaser>().speed = Random.Range(20, 60);
             newChaser.GetComponent<Chaser>().tackle = Random.Range(25, 65);
             newChaser.GetComponent<Chaser>().CalculateSalary();
-            
+
+            newChaser.GetComponent<Chaser>().hat = baseHat;
+            newChaser.GetComponent<Chaser>().body = baseBody;
+            newChaser.GetComponent<Chaser>().glasses = baseGlasses;
+            newChaser.GetComponent<Chaser>().gloves = baseGloves;
+            newChaser.GetComponent<Chaser>().broom = baseBroom;
+
             newChaser.transform.parent = freeAgentsCollection.transform;
+        }
+
+        for (int i = 0; i < beatersToCreate; i++)
+        {
+            GameObject newBeater = new GameObject("BeaterFreeAgent");
+            newBeater.AddComponent<Beater>();
+            newBeater.GetComponent<Beater>().isFreeAgent = true;
+            newBeater.GetComponent<Beater>().age = Random.Range(17, 40);
+            nameGeneration.GenerateName();
+            newBeater.GetComponent<Beater>().Name = nameGeneration.nameCreated;
+            newBeater.GetComponent<Beater>().dodge = Random.Range(2, 20);
+            newBeater.GetComponent<Beater>().locateSpeed = Random.Range(15, 70);
+            newBeater.GetComponent<Beater>().CalculateSalary();
+
+            newBeater.GetComponent<Beater>().hat = baseHat;
+            newBeater.GetComponent<Beater>().body = baseBody;
+            newBeater.GetComponent<Beater>().glasses = baseGlasses;
+            newBeater.GetComponent<Beater>().gloves = baseGloves;
+            newBeater.GetComponent<Beater>().broom = baseBroom;
+
+            newBeater.transform.parent = freeAgentsCollection.transform;
         }
     }
 }
