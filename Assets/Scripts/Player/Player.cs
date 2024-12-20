@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public string Name;
     public int salary;
     public int age;
+    public bool isFreeAgent;
 
     public Hat hat;
     public Body body;
