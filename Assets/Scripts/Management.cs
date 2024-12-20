@@ -29,6 +29,12 @@ public class Management : MonoBehaviour
     public Broom baseBroom;
     public FirstLastNames nameGeneration;
     public GameObject freeAgentsCollection;
+
+    public GameObject keeperFAPrefab;
+    public GameObject beaterFAPrefab;
+    public GameObject seekerFAPrefab;
+    public GameObject chaserFAPrefab;
+    public GameObject keeperPlayerHolder, beaterPlayerHolder, seekerPlayerHolder, chaserPlayerHolder;
     #endregion
     public void NewTeam()
     {
@@ -185,6 +191,15 @@ public class Management : MonoBehaviour
             newKeeper.GetComponent<Keeper>().broom = baseBroom;
 
             newKeeper.transform.parent = freeAgentsCollection.transform;
+
+            GameObject newlyCreatedKeeper = Instantiate(keeperFAPrefab, keeperPlayerHolder.transform.position, transform.rotation);
+            newlyCreatedKeeper.transform.SetParent(keeperPlayerHolder.transform);
+            newlyCreatedKeeper.transform.localScale = new Vector3(1, 1, 1);
+            newlyCreatedKeeper.transform.GetChild(1).GetComponent<TMP_Text>().text = newKeeper.GetComponent<Keeper>().Name;
+            newlyCreatedKeeper.transform.GetChild(2).GetComponent<TMP_Text>().text = newKeeper.GetComponent<Keeper>().block.ToString();
+            newlyCreatedKeeper.transform.GetChild(3).GetComponent<TMP_Text>().text = newKeeper.GetComponent<Keeper>().dodge.ToString();
+            newlyCreatedKeeper.transform.GetChild(4).GetComponent<TMP_Text>().text = newKeeper.GetComponent<Keeper>().age.ToString();
+            newlyCreatedKeeper.transform.GetChild(5).GetComponent<TMP_Text>().text = newKeeper.GetComponent<Keeper>().salary.ToString("n2");
         }
 
         for (int i = 0; i < seekersToCreate; i++)
