@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FirstLastNames : MonoBehaviour
 {
-    List<string> firstNames = new List<string>(){
+    public List<string> firstNames = new List<string>(){
         "Aaron",
 "Aarika",
 "Abagael",
@@ -4952,7 +4952,7 @@ public class FirstLastNames : MonoBehaviour
 "Zuzana"
 };
 
-    List<string> lastNames = new List<string>()
+    public List<string> lastNames = new List<string>()
     {
 "Johnson",
 "Williams",

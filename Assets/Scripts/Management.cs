@@ -13,7 +13,22 @@ public class Management : MonoBehaviour
     GameObject playersTeam;
     public TMP_InputField location, teamName;
     public GameObject teamNameCreationScreen;
+    public GameObject lineupGO;
     public TMP_Text UIteamName;
+    public int teamBudget = 200000;
+
+    #region freeagent generation
+    int chasersToCreate = 20;
+    int beatersToCreate = 12;
+    int keepersToCreate = 10;
+    int seekersToCreate = 8;
+    public Hat baseHat;
+    public Body baseBody;
+    public Glasses baseGlasses;
+    public Broom baseBroom;
+    public FirstLastNames nameGeneration;
+    public GameObject freeAgentsCollection;
+    #endregion
     public void NewTeam()
     {
         saveLoad.ClearTeam();
@@ -23,6 +38,13 @@ public class Management : MonoBehaviour
         teamCreationMenu.SetActive(true);
         FTUE.SetActive(true);
         newLoad.SetActive(false);
+        GenerateFreeAgents();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+            GenerateFreeAgents();
     }
 
     public void LoadTeam()
@@ -54,7 +76,8 @@ public class Management : MonoBehaviour
 
     public void LineupMenu()
     {
-        print("Open Lineup Menu");
+        lineupGO.SetActive(true);
+        TeamCreationButtons.SetActive(false);
     }
 
     public void CheckIfAllFieldsEntered()
@@ -91,6 +114,27 @@ public class Management : MonoBehaviour
         TeamCreationButtons.SetActive(true);
         teamNameCreationScreen.SetActive(false);
         //logo creation menu
-        //linup creation menu
+        lineupGO.SetActive(false);
+    }
+
+    public void GenerateFreeAgents()
+    {
+        for (int i = 0; i < chasersToCreate; i++)
+        {
+            GameObject newChaser = new GameObject("ChaserFreeAgent");
+            newChaser.AddComponent<Chaser>();
+            newChaser.GetComponent<Chaser>().isFreeAgent = true;
+            newChaser.GetComponent<Chaser>().age = Random.Range(17, 40);
+        //    newChaser.GetComponent<Chaser>().Name = nameGeneration.firstNames[Random.Range(0, nameGeneration.firstNames.Count)] + " " + nameGeneration.lastNames[Random.Range(0, nameGeneration.lastNames.Count)];
+            newChaser.GetComponent<Chaser>().dodge = Random.Range(30,60);
+            newChaser.GetComponent<Chaser>().intercept = Random.Range(25, 60);
+            newChaser.GetComponent<Chaser>().pass = Random.Range(20, 60);
+            newChaser.GetComponent<Chaser>().shooting = Random.Range(20, 60);
+            newChaser.GetComponent<Chaser>().speed = Random.Range(20, 60);
+            newChaser.GetComponent<Chaser>().tackle = Random.Range(25, 65);
+            newChaser.GetComponent<Chaser>().CalculateSalary();
+            
+            newChaser.transform.parent = freeAgentsCollection.transform;
+        }
     }
 }
