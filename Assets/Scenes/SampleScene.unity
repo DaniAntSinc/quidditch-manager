@@ -10610,8 +10610,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.45, y: -0.000015258789}
-  m_SizeDelta: {x: 387.389, y: 416.81}
+  m_AnchoredPosition: {x: 4.45, y: -0.0000076293945}
+  m_SizeDelta: {x: 387.389, y: 446.839}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &196948236
 MonoBehaviour:
@@ -11407,7 +11407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &214195178
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13563,7 +13563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
+  m_Color: {r: 0, g: 0.050980397, b: 0.08627451, a: 0.003921569}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -20386,7 +20386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &403906153
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29560,7 +29560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &543249662
 RectTransform:
   m_ObjectHideFlags: 0
@@ -43657,7 +43657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
+  m_Color: {r: 0, g: 0.050980397, b: 0.08627451, a: 0.003921569}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -48098,9 +48098,9 @@ MonoBehaviour:
   seekerFAPrefab: {fileID: 8551834535795381169, guid: 812527174a3cc3a4a9e05df3a5d9d24a, type: 3}
   chaserFAPrefab: {fileID: 2120608589957182243, guid: c4d4c34149f976f4a9cd668edfb400a6, type: 3}
   keeperPlayerHolder: {fileID: 899668131}
-  beaterPlayerHolder: {fileID: 0}
-  seekerPlayerHolder: {fileID: 0}
-  chaserPlayerHolder: {fileID: 0}
+  beaterPlayerHolder: {fileID: 1841332194}
+  seekerPlayerHolder: {fileID: 196948234}
+  chaserPlayerHolder: {fileID: 1841358566}
 --- !u!1 &918957862
 GameObject:
   m_ObjectHideFlags: 0
@@ -86675,7 +86675,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1525143768
 RectTransform:
   m_ObjectHideFlags: 0
@@ -92350,7 +92350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
+  m_Color: {r: 0, g: 0.050980397, b: 0.08627451, a: 0.003921569}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -106232,7 +106232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
+  m_Color: {r: 0, g: 0.050980397, b: 0.08627451, a: 0.003921569}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

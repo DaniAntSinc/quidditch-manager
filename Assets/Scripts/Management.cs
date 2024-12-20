@@ -149,6 +149,18 @@ public class Management : MonoBehaviour
             newChaser.GetComponent<Chaser>().broom = baseBroom;
 
             newChaser.transform.parent = freeAgentsCollection.transform;
+
+            GameObject newlyCreatedChaser = Instantiate(chaserFAPrefab, chaserPlayerHolder.transform.position, transform.rotation);
+            newlyCreatedChaser.transform.SetParent(chaserPlayerHolder.transform);
+            newlyCreatedChaser.transform.localScale = new Vector3(1, 1, 1);
+            newlyCreatedChaser.transform.GetChild(1).GetComponent<TMP_Text>().text = newChaser.GetComponent<Chaser>().Name;
+            newlyCreatedChaser.transform.GetChild(2).GetComponent<TMP_Text>().text = newChaser.GetComponent<Chaser>().intercept.ToString();
+            newlyCreatedChaser.transform.GetChild(3).GetComponent<TMP_Text>().text = newChaser.GetComponent<Chaser>().pass.ToString();
+            newlyCreatedChaser.transform.GetChild(4).GetComponent<TMP_Text>().text = newChaser.GetComponent<Chaser>().shooting.ToString();
+            newlyCreatedChaser.transform.GetChild(5).GetComponent<TMP_Text>().text = newChaser.GetComponent<Chaser>().speed.ToString();
+            newlyCreatedChaser.transform.GetChild(6).GetComponent<TMP_Text>().text = newChaser.GetComponent<Chaser>().tackle.ToString();
+            newlyCreatedChaser.transform.GetChild(7).GetComponent<TMP_Text>().text = newChaser.GetComponent<Chaser>().age.ToString();
+            newlyCreatedChaser.transform.GetChild(8).GetComponent<TMP_Text>().text = newChaser.GetComponent<Chaser>().salary.ToString("n2");
         }
 
         for (int i = 0; i < beatersToCreate; i++)
@@ -170,6 +182,15 @@ public class Management : MonoBehaviour
             newBeater.GetComponent<Beater>().broom = baseBroom;
 
             newBeater.transform.parent = freeAgentsCollection.transform;
+
+            GameObject newlyCreatedBeater = Instantiate(beaterFAPrefab, beaterPlayerHolder.transform.position, transform.rotation);
+            newlyCreatedBeater.transform.SetParent(beaterPlayerHolder.transform);
+            newlyCreatedBeater.transform.localScale = new Vector3(1, 1, 1);
+            newlyCreatedBeater.transform.GetChild(1).GetComponent<TMP_Text>().text = newBeater.GetComponent<Beater>().Name;
+            newlyCreatedBeater.transform.GetChild(2).GetComponent<TMP_Text>().text = newBeater.GetComponent<Beater>().locateSpeed.ToString();
+            newlyCreatedBeater.transform.GetChild(3).GetComponent<TMP_Text>().text = newBeater.GetComponent<Beater>().dodge.ToString();
+            newlyCreatedBeater.transform.GetChild(4).GetComponent<TMP_Text>().text = newBeater.GetComponent<Beater>().age.ToString();
+            newlyCreatedBeater.transform.GetChild(5).GetComponent<TMP_Text>().text = newBeater.GetComponent<Beater>().salary.ToString("n2");
         }
 
         for (int i = 0; i < keepersToCreate; i++)
@@ -224,6 +245,18 @@ public class Management : MonoBehaviour
             newSeeker.GetComponent<Seeker>().broom = baseBroom;
 
             newSeeker.transform.parent = freeAgentsCollection.transform;
+
+            GameObject newlyCreatedSeeker = Instantiate(seekerFAPrefab, seekerPlayerHolder.transform.position, transform.rotation);
+            newlyCreatedSeeker.transform.SetParent(seekerPlayerHolder.transform);
+            newlyCreatedSeeker.transform.localScale = new Vector3(1, 1, 1);
+            newlyCreatedSeeker.transform.GetChild(1).GetComponent<TMP_Text>().text = newSeeker.GetComponent<Seeker>().Name;
+            newlyCreatedSeeker.transform.GetChild(2).GetComponent<TMP_Text>().text = newSeeker.GetComponent<Seeker>().sight.ToString();
+            newlyCreatedSeeker.transform.GetChild(3).GetComponent<TMP_Text>().text = newSeeker.GetComponent<Seeker>().speed.ToString();
+            newlyCreatedSeeker.transform.GetChild(4).GetComponent<TMP_Text>().text = newSeeker.GetComponent<Seeker>().reach.ToString();
+            newlyCreatedSeeker.transform.GetChild(5).GetComponent<TMP_Text>().text = newSeeker.GetComponent<Seeker>().grab.ToString();
+            newlyCreatedSeeker.transform.GetChild(6).GetComponent<TMP_Text>().text = newSeeker.GetComponent<Seeker>().dodge.ToString();
+            newlyCreatedSeeker.transform.GetChild(7).GetComponent<TMP_Text>().text = newSeeker.GetComponent<Seeker>().age.ToString();
+            newlyCreatedSeeker.transform.GetChild(8).GetComponent<TMP_Text>().text = newSeeker.GetComponent<Seeker>().salary.ToString("n2");
         }
     }
 }
