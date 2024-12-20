@@ -15,7 +15,7 @@ public class Management : MonoBehaviour
     public GameObject teamNameCreationScreen;
     public GameObject lineupGO;
     public TMP_Text UIteamName;
-    public int teamBudget = 175000;
+    public int teamBudget = 250000;
 
     #region freeagent generation
     int chasersToCreate = 20;
@@ -164,6 +164,51 @@ public class Management : MonoBehaviour
             newBeater.GetComponent<Beater>().broom = baseBroom;
 
             newBeater.transform.parent = freeAgentsCollection.transform;
+        }
+
+        for (int i = 0; i < keepersToCreate; i++)
+        {
+            GameObject newKeeper = new GameObject("KeeperFreeAgent");
+            newKeeper.AddComponent<Keeper>();
+            newKeeper.GetComponent<Keeper>().isFreeAgent = true;
+            newKeeper.GetComponent<Keeper>().age = Random.Range(17, 40);
+            nameGeneration.GenerateName();
+            newKeeper.GetComponent<Keeper>().Name = nameGeneration.nameCreated;
+            newKeeper.GetComponent<Keeper>().dodge = Random.Range(10, 50);
+            newKeeper.GetComponent<Keeper>().block = Random.Range(30, 80);
+            newKeeper.GetComponent<Keeper>().CalculateSalary();
+
+            newKeeper.GetComponent<Keeper>().hat = baseHat;
+            newKeeper.GetComponent<Keeper>().body = baseBody;
+            newKeeper.GetComponent<Keeper>().glasses = baseGlasses;
+            newKeeper.GetComponent<Keeper>().gloves = baseGloves;
+            newKeeper.GetComponent<Keeper>().broom = baseBroom;
+
+            newKeeper.transform.parent = freeAgentsCollection.transform;
+        }
+
+        for (int i = 0; i < seekersToCreate; i++)
+        {
+            GameObject newSeeker = new GameObject("SeekerFreeAgent");
+            newSeeker.AddComponent<Seeker>();
+            newSeeker.GetComponent<Seeker>().isFreeAgent = true;
+            newSeeker.GetComponent<Seeker>().age = Random.Range(17, 40);
+            nameGeneration.GenerateName();
+            newSeeker.GetComponent<Seeker>().Name = nameGeneration.nameCreated;
+            newSeeker.GetComponent<Seeker>().dodge = Random.Range(15, 30);
+            newSeeker.GetComponent<Seeker>().sight = Random.Range(15, 55);
+            newSeeker.GetComponent<Seeker>().speed = Random.Range(20, 50);
+            newSeeker.GetComponent<Seeker>().reach = Random.Range(15, 25);
+            newSeeker.GetComponent<Seeker>().grab = Random.Range(2, 5);
+            newSeeker.GetComponent<Seeker>().CalculateSalary();
+
+            newSeeker.GetComponent<Seeker>().hat = baseHat;
+            newSeeker.GetComponent<Seeker>().body = baseBody;
+            newSeeker.GetComponent<Seeker>().glasses = baseGlasses;
+            newSeeker.GetComponent<Seeker>().gloves = baseGloves;
+            newSeeker.GetComponent<Seeker>().broom = baseBroom;
+
+            newSeeker.transform.parent = freeAgentsCollection.transform;
         }
     }
 }
