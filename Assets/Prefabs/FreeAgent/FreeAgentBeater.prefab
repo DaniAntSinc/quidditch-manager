@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5580679551349472866}
+  - component: {fileID: 5840913318742988886}
   m_Layer: 5
   m_Name: FreeAgentBeater
   m_TagString: Untagged
@@ -43,6 +44,24 @@ RectTransform:
   m_AnchoredPosition: {x: 2.6727, y: 24.999998}
   m_SizeDelta: {x: 379.48, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5840913318742988886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310154923872258232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d821145f3d00cf642bd040284a97ad8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonText: {fileID: 55697264868949142}
+  isChaser: 0
+  isBeater: 0
+  isKeeper: 0
+  isSeeker: 0
+  playerNumberFromFreeAgentList: 0
 --- !u!1 &374382147984113656
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,12 +425,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14.6
+  m_fontSize: 10
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 5
-  m_fontSizeMax: 72
+  m_fontSizeMax: 10
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -780,7 +799,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2474572788886836945}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5840913318742988886}
+        m_TargetAssemblyTypeName: SignFreeAgent, Assembly-CSharp
+        m_MethodName: SignPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4347287134673913305
 GameObject:
   m_ObjectHideFlags: 0

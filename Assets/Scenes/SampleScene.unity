@@ -48354,7 +48354,7 @@ MonoBehaviour:
   teamNameCreationScreen: {fileID: 1916185230}
   lineupGO: {fileID: 16354957}
   UIteamName: {fileID: 1784727734}
-  teamBudget: 200000
+  teamBudget: 250000
   baseHat: {fileID: 8832717943591112764}
   baseBody: {fileID: 626376227282565300}
   baseGlasses: {fileID: 5952818616976007642}
@@ -48394,6 +48394,11 @@ MonoBehaviour:
   BeaterPosRemain: {fileID: 1184792849}
   KeeperPosRemain: {fileID: 471162604}
   SeekerPosRemain: {fileID: 178788841}
+  TeamBudgetFromLineUp: {fileID: 764830752}
+  chaserHolderForReference: []
+  beaterHolderForReference: []
+  keeperHolderForReference: []
+  seekerHolderForReference: []
 --- !u!1 &918957862
 GameObject:
   m_ObjectHideFlags: 0

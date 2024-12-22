@@ -169,12 +169,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14.6
+  m_fontSize: 10
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 5
-  m_fontSizeMax: 72
+  m_fontSizeMax: 10
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -332,7 +332,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8534713853531795853}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2620316702769307507}
+        m_TargetAssemblyTypeName: SignFreeAgent, Assembly-CSharp
+        m_MethodName: SignPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3322490204993570127
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6818475564124197565}
+  - component: {fileID: 2620316702769307507}
   m_Layer: 5
   m_Name: FreeAgentKeeper
   m_TagString: Untagged
@@ -646,6 +659,24 @@ RectTransform:
   m_AnchoredPosition: {x: 2.6727, y: 24.999998}
   m_SizeDelta: {x: 379.48, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2620316702769307507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5049434447848158932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d821145f3d00cf642bd040284a97ad8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonText: {fileID: 489546431697900174}
+  isChaser: 0
+  isBeater: 0
+  isKeeper: 0
+  isSeeker: 0
+  playerNumberFromFreeAgentList: 0
 --- !u!1 &5803281900033663965
 GameObject:
   m_ObjectHideFlags: 0
