@@ -50,9 +50,16 @@ public class Management : MonoBehaviour
         GenerateFreeAgents();
     }
 
+    public void CloseNewTeamMenu()
+    {
+
+        TeamCreationButtons.SetActive(false);
+        newLoad.SetActive(true);
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && GameObject.Find("Main Camera").GetComponent<GameManager>().cheats)
             GenerateFreeAgents();
     }
 
@@ -86,6 +93,7 @@ public class Management : MonoBehaviour
     public void LineupMenu()
     {
         lineupGO.SetActive(true);
+        ToggleChaser();
         TeamCreationButtons.SetActive(false);
     }
 
