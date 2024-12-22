@@ -37,6 +37,8 @@ public class Management : MonoBehaviour
     public GameObject keeperPlayerHolder, beaterPlayerHolder, seekerPlayerHolder, chaserPlayerHolder;
 
     public GameObject[] ChaserHeaderFAandButton, BeaterHeaderFAandButton, KeeperHeaderFAandButton, SeekerHeaderFAandButton;
+
+    public TMP_Text ChaserPosRemain, BeaterPosRemain, KeeperPosRemain, SeekerPosRemain;
     #endregion
     public void NewTeam()
     {
@@ -60,7 +62,12 @@ public class Management : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && GameObject.Find("Main Camera").GetComponent<GameManager>().cheats)
+        {
+            playersTeam = new GameObject("Players_Team");
+            playersTeam.AddComponent<SeasonTeam>();
+            playersTeam.transform.parent = GameObject.Find("Teams").transform;
             GenerateFreeAgents();
+        }
     }
 
     public void LoadTeam()
@@ -94,6 +101,7 @@ public class Management : MonoBehaviour
     {
         lineupGO.SetActive(true);
         ToggleChaser();
+        UpdatePosNumbers();
         TeamCreationButtons.SetActive(false);
     }
 
@@ -332,4 +340,27 @@ public class Management : MonoBehaviour
         KeeperHeaderFAandButton[3].GetComponent<TMP_Text>().color = Color.grey;
     }
     #endregion
+
+    public void UpdatePosNumbers()
+    {
+        if(playersTeam.GetComponent<SeasonTeam>().chasers == null)
+            ChaserPosRemain.text = "3";
+        else
+            ChaserPosRemain.text = (3 - playersTeam.GetComponent<SeasonTeam>().chasers.Count).ToString();
+
+        if (playersTeam.GetComponent<SeasonTeam>().beaters == null)
+            BeaterPosRemain.text = "2";
+        else
+            BeaterPosRemain.text = (2 - playersTeam.GetComponent<SeasonTeam>().beaters.Count).ToString();
+
+        if (playersTeam.GetComponent<SeasonTeam>().keeper == null)
+            KeeperPosRemain.text = "1";
+        else
+            KeeperPosRemain.text = (1 - playersTeam.GetComponent<SeasonTeam>().keeper.Count).ToString();
+
+        if (playersTeam.GetComponent<SeasonTeam>().seeker == null)
+            SeekerPosRemain.text = "1";
+        else
+            SeekerPosRemain.text = (1 - playersTeam.GetComponent<SeasonTeam>().seeker.Count).ToString();
+    }
 }

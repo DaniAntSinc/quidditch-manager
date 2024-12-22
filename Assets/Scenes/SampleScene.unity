@@ -944,7 +944,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &16354958
 RectTransform:
   m_ObjectHideFlags: 0
@@ -48390,6 +48390,10 @@ MonoBehaviour:
   - {fileID: 214195177}
   - {fileID: 1952678889}
   - {fileID: 1601506500}
+  ChaserPosRemain: {fileID: 1388759301}
+  BeaterPosRemain: {fileID: 1184792849}
+  KeeperPosRemain: {fileID: 471162604}
+  SeekerPosRemain: {fileID: 178788841}
 --- !u!1 &918957862
 GameObject:
   m_ObjectHideFlags: 0
@@ -64136,7 +64140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1179838861
 RectTransform:
   m_ObjectHideFlags: 0
