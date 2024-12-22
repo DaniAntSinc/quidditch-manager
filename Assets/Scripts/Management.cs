@@ -35,6 +35,8 @@ public class Management : MonoBehaviour
     public GameObject seekerFAPrefab;
     public GameObject chaserFAPrefab;
     public GameObject keeperPlayerHolder, beaterPlayerHolder, seekerPlayerHolder, chaserPlayerHolder;
+
+    public GameObject[] ChaserHeaderFAandButton, BeaterHeaderFAandButton, KeeperHeaderFAandButton, SeekerHeaderFAandButton;
     #endregion
     public void NewTeam()
     {
@@ -259,4 +261,67 @@ public class Management : MonoBehaviour
             newlyCreatedSeeker.transform.GetChild(8).GetComponent<TMP_Text>().text = newSeeker.GetComponent<Seeker>().salary.ToString("n2");
         }
     }
+
+    #region ToggleLineupsOnAndOffDuringFA
+    public void CloseAllOtherLineUpWindows()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            ChaserHeaderFAandButton[i].SetActive(false);
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            BeaterHeaderFAandButton[i].SetActive(false);
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            SeekerHeaderFAandButton[i].SetActive(false);
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            KeeperHeaderFAandButton[i].SetActive(false);
+        }
+
+        ChaserHeaderFAandButton[3].GetComponent<TMP_Text>().color = Color.white;
+        BeaterHeaderFAandButton[3].GetComponent<TMP_Text>().color = Color.white;
+        KeeperHeaderFAandButton[3].GetComponent<TMP_Text>().color = Color.white;
+        SeekerHeaderFAandButton[3].GetComponent<TMP_Text>().color = Color.white;
+    }
+    public void ToggleChaser()
+    {
+        CloseAllOtherLineUpWindows();
+        for (int i = 0; i < ChaserHeaderFAandButton.Length; i++)
+        {
+            ChaserHeaderFAandButton[i].SetActive(true);
+        }
+        ChaserHeaderFAandButton[3].GetComponent<TMP_Text>().color = Color.grey;
+    }
+    public void ToggleBeater()
+    {
+        CloseAllOtherLineUpWindows();
+        for (int i = 0; i < BeaterHeaderFAandButton.Length; i++)
+        {
+            BeaterHeaderFAandButton[i].SetActive(true);
+        }
+        BeaterHeaderFAandButton[3].GetComponent<TMP_Text>().color = Color.grey;
+    }
+    public void ToggleSeeker()
+    {
+        CloseAllOtherLineUpWindows();
+        for (int i = 0; i < SeekerHeaderFAandButton.Length; i++)
+        {
+            SeekerHeaderFAandButton[i].SetActive(true);
+        }
+        SeekerHeaderFAandButton[3].GetComponent<TMP_Text>().color = Color.grey;
+    }
+    public void ToggleKeeper()
+    {
+        CloseAllOtherLineUpWindows();
+        for (int i = 0; i < KeeperHeaderFAandButton.Length; i++)
+        {
+            KeeperHeaderFAandButton[i].SetActive(true);
+        }
+        KeeperHeaderFAandButton[3].GetComponent<TMP_Text>().color = Color.grey;
+    }
+    #endregion
 }

@@ -6085,7 +6085,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2843204469085645473, guid: 1610284de3380054bb34e2067d27fad1, type: 3}
       propertyPath: m_Name
-      value: Broom (2)
+      value: CavalierSaber
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11407,7 +11407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &214195178
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13011,7 +13011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4524696879855151286, guid: 8af22c5933d076f449edf1db6e1c5ac1, type: 3}
       propertyPath: m_Name
-      value: Hat (5)
+      value: FortuneTellingHat
       objectReference: {fileID: 0}
     - target: {fileID: 5480580243407548582, guid: 8af22c5933d076f449edf1db6e1c5ac1, type: 3}
       propertyPath: objName
@@ -19536,7 +19536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3249880644224591781, guid: d025f74937e741044993aa9d9f2ed02c, type: 3}
       propertyPath: m_Name
-      value: Gloves (4)
+      value: EnforcedGloves
       objectReference: {fileID: 0}
     - target: {fileID: 6893971020943919081, guid: d025f74937e741044993aa9d9f2ed02c, type: 3}
       propertyPath: objName
@@ -19562,7 +19562,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 386584106274563075, guid: fbfb1704743ae3144aff5615c5a2dbf3, type: 3}
       propertyPath: m_Name
-      value: Glasses (1)
+      value: MagnifyingSpecs
       objectReference: {fileID: 0}
     - target: {fileID: 4728181757638428501, guid: fbfb1704743ae3144aff5615c5a2dbf3, type: 3}
       propertyPath: m_RootOrder
@@ -21467,13 +21467,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 913911918}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 913911920}
+        m_TargetAssemblyTypeName: Management, Assembly-CSharp
+        m_MethodName: ToggleChaser
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -22735,7 +22735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4524696879855151286, guid: 8af22c5933d076f449edf1db6e1c5ac1, type: 3}
       propertyPath: m_Name
-      value: Hat (4)
+      value: ArmouredHat
       objectReference: {fileID: 0}
     - target: {fileID: 5480580243407548582, guid: 8af22c5933d076f449edf1db6e1c5ac1, type: 3}
       propertyPath: objName
@@ -26360,7 +26360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2843204469085645473, guid: 1610284de3380054bb34e2067d27fad1, type: 3}
       propertyPath: m_Name
-      value: Broom (4)
+      value: Comet290
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36594,7 +36594,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 386584106274563075, guid: fbfb1704743ae3144aff5615c5a2dbf3, type: 3}
       propertyPath: m_Name
-      value: Glasses (5)
+      value: FocusingSpecs
       objectReference: {fileID: 0}
     - target: {fileID: 4728181757638428501, guid: fbfb1704743ae3144aff5615c5a2dbf3, type: 3}
       propertyPath: m_RootOrder
@@ -45052,7 +45052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2843204469085645473, guid: 1610284de3380054bb34e2067d27fad1, type: 3}
       propertyPath: m_Name
-      value: Broom (8)
+      value: StarsweeperXXI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -45291,7 +45291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2843204469085645473, guid: 1610284de3380054bb34e2067d27fad1, type: 3}
       propertyPath: m_Name
-      value: Broom (7)
+      value: ShootingStar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -48101,6 +48101,26 @@ MonoBehaviour:
   beaterPlayerHolder: {fileID: 1841332194}
   seekerPlayerHolder: {fileID: 196948234}
   chaserPlayerHolder: {fileID: 1841358566}
+  ChaserHeaderFAandButton:
+  - {fileID: 672112061}
+  - {fileID: 1604831299}
+  - {fileID: 430270549}
+  - {fileID: 1303524531}
+  BeaterHeaderFAandButton:
+  - {fileID: 141389169}
+  - {fileID: 1851548903}
+  - {fileID: 1182867552}
+  - {fileID: 773165696}
+  KeeperHeaderFAandButton:
+  - {fileID: 403906152}
+  - {fileID: 543249661}
+  - {fileID: 1509013078}
+  - {fileID: 1197050935}
+  SeekerHeaderFAandButton:
+  - {fileID: 1525143767}
+  - {fileID: 214195177}
+  - {fileID: 1952678889}
+  - {fileID: 1601506500}
 --- !u!1 &918957862
 GameObject:
   m_ObjectHideFlags: 0
@@ -52419,7 +52439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2843204469085645473, guid: 1610284de3380054bb34e2067d27fad1, type: 3}
       propertyPath: m_Name
-      value: Broom (6)
+      value: Nimbus2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -52624,7 +52644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2843204469085645473, guid: 1610284de3380054bb34e2067d27fad1, type: 3}
       propertyPath: m_Name
-      value: Broom (10)
+      value: Twigger90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -54204,7 +54224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4524696879855151286, guid: 8af22c5933d076f449edf1db6e1c5ac1, type: 3}
       propertyPath: m_Name
-      value: Hat (1)
+      value: LeatherCap
       objectReference: {fileID: 0}
     - target: {fileID: 5480580243407548582, guid: 8af22c5933d076f449edf1db6e1c5ac1, type: 3}
       propertyPath: objName
@@ -57801,7 +57821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3249880644224591781, guid: d025f74937e741044993aa9d9f2ed02c, type: 3}
       propertyPath: m_Name
-      value: Gloves (2)
+      value: LeatherGloves
       objectReference: {fileID: 0}
     - target: {fileID: 6893971020943919081, guid: d025f74937e741044993aa9d9f2ed02c, type: 3}
       propertyPath: objName
@@ -59610,7 +59630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4524696879855151286, guid: 8af22c5933d076f449edf1db6e1c5ac1, type: 3}
       propertyPath: m_Name
-      value: Hat (2)
+      value: ReinforcedHat
       objectReference: {fileID: 0}
     - target: {fileID: 5480580243407548582, guid: 8af22c5933d076f449edf1db6e1c5ac1, type: 3}
       propertyPath: objName
@@ -72204,7 +72224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4524696879855151286, guid: 8af22c5933d076f449edf1db6e1c5ac1, type: 3}
       propertyPath: m_Name
-      value: Hat (3)
+      value: EnchantedHat
       objectReference: {fileID: 0}
     - target: {fileID: 5480580243407548582, guid: 8af22c5933d076f449edf1db6e1c5ac1, type: 3}
       propertyPath: objName
@@ -72814,7 +72834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3249880644224591781, guid: d025f74937e741044993aa9d9f2ed02c, type: 3}
       propertyPath: m_Name
-      value: Gloves (3)
+      value: MagneticGloves
       objectReference: {fileID: 0}
     - target: {fileID: 6893971020943919081, guid: d025f74937e741044993aa9d9f2ed02c, type: 3}
       propertyPath: objName
@@ -74544,7 +74564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2843204469085645473, guid: 1610284de3380054bb34e2067d27fad1, type: 3}
       propertyPath: m_Name
-      value: Broom (1)
+      value: Bluebottle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -75670,7 +75690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3249880644224591781, guid: d025f74937e741044993aa9d9f2ed02c, type: 3}
       propertyPath: m_Name
-      value: Gloves (1)
+      value: Gauntlets
       objectReference: {fileID: 0}
     - target: {fileID: 6893971020943919081, guid: d025f74937e741044993aa9d9f2ed02c, type: 3}
       propertyPath: objName
@@ -75879,7 +75899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2843204469085645473, guid: 1610284de3380054bb34e2067d27fad1, type: 3}
       propertyPath: m_Name
-      value: Broom (5)
+      value: Firebolt
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -76448,7 +76468,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 386584106274563075, guid: fbfb1704743ae3144aff5615c5a2dbf3, type: 3}
       propertyPath: m_Name
-      value: Glasses (4)
+      value: SportingGlasses
       objectReference: {fileID: 0}
     - target: {fileID: 4728181757638428501, guid: fbfb1704743ae3144aff5615c5a2dbf3, type: 3}
       propertyPath: m_RootOrder
@@ -85798,7 +85818,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 386584106274563075, guid: fbfb1704743ae3144aff5615c5a2dbf3, type: 3}
       propertyPath: m_Name
-      value: Glasses (3)
+      value: StandardGlasses
       objectReference: {fileID: 0}
     - target: {fileID: 4728181757638428501, guid: fbfb1704743ae3144aff5615c5a2dbf3, type: 3}
       propertyPath: m_RootOrder
@@ -86675,7 +86695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1525143768
 RectTransform:
   m_ObjectHideFlags: 0
@@ -94044,7 +94064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3249880644224591781, guid: d025f74937e741044993aa9d9f2ed02c, type: 3}
       propertyPath: m_Name
-      value: Gloves (5)
+      value: ThiefsMitts
       objectReference: {fileID: 0}
     - target: {fileID: 6893971020943919081, guid: d025f74937e741044993aa9d9f2ed02c, type: 3}
       propertyPath: objName
@@ -104313,8 +104333,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.45, y: -157.76074}
-  m_SizeDelta: {x: 387.389, y: 764.074}
+  m_AnchoredPosition: {x: 4.45, y: -112.369}
+  m_SizeDelta: {x: 387.389, y: 673.291}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1841332196
 MonoBehaviour:
@@ -107410,7 +107430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2843204469085645473, guid: 1610284de3380054bb34e2067d27fad1, type: 3}
       propertyPath: m_Name
-      value: Broom (3)
+      value: CleansweepEleven
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -112055,7 +112075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2843204469085645473, guid: 1610284de3380054bb34e2067d27fad1, type: 3}
       propertyPath: m_Name
-      value: Broom (9)
+      value: TurboXXIX
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -114489,7 +114509,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 386584106274563075, guid: fbfb1704743ae3144aff5615c5a2dbf3, type: 3}
       propertyPath: m_Name
-      value: Glasses (2)
+      value: WeatherGoggles
       objectReference: {fileID: 0}
     - target: {fileID: 4728181757638428501, guid: fbfb1704743ae3144aff5615c5a2dbf3, type: 3}
       propertyPath: m_RootOrder
@@ -120555,7 +120575,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 386584106274563075, guid: fbfb1704743ae3144aff5615c5a2dbf3, type: 3}
       propertyPath: m_Name
-      value: Glasses
+      value: BaseGlasses
       objectReference: {fileID: 0}
     - target: {fileID: 4728181757638428501, guid: fbfb1704743ae3144aff5615c5a2dbf3, type: 3}
       propertyPath: m_RootOrder
@@ -120846,7 +120866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2843204469085645473, guid: 1610284de3380054bb34e2067d27fad1, type: 3}
       propertyPath: m_Name
-      value: Broom
+      value: BaseBroom
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -121036,7 +121056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3249880644224591781, guid: d025f74937e741044993aa9d9f2ed02c, type: 3}
       propertyPath: m_Name
-      value: Gloves
+      value: BaseGloves
       objectReference: {fileID: 0}
     - target: {fileID: 6893971020943919081, guid: d025f74937e741044993aa9d9f2ed02c, type: 3}
       propertyPath: objName
@@ -121480,7 +121500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4524696879855151286, guid: 8af22c5933d076f449edf1db6e1c5ac1, type: 3}
       propertyPath: m_Name
-      value: Hat
+      value: BaseHat
       objectReference: {fileID: 0}
     - target: {fileID: 5480580243407548582, guid: 8af22c5933d076f449edf1db6e1c5ac1, type: 3}
       propertyPath: objName
