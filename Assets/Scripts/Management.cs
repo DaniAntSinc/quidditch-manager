@@ -44,6 +44,9 @@ public class Management : MonoBehaviour
     public List<Beater> beaterHolderForReference;
     public List<Keeper> keeperHolderForReference;
     public List<Seeker> seekerHolderForReference;
+
+    public GameObject signAllPlayersGO;
+    public List<TMP_Text> playerTeamCreationLineUpText;
     #endregion
     public void Start()
     {
@@ -157,6 +160,24 @@ public class Management : MonoBehaviour
         UIteamName.text = location.text + " " + teamName.text;
         //Update 
         playersTeam.GetComponent<SeasonTeam>().team = location.text + " " + teamName.text;
+    }
+
+    public void SaveLineUp()
+    {
+        //SaveTeam - player pref
+        print("Player Pref - Save Line Up needed");
+        //Assign Team overview players
+        playerTeamCreationLineUpText[0].text = playersTeam.GetComponent<SeasonTeam>().keeper[0].Name;
+        playerTeamCreationLineUpText[1].text = playersTeam.GetComponent<SeasonTeam>().beaters[0].Name;
+        playerTeamCreationLineUpText[2].text = playersTeam.GetComponent<SeasonTeam>().beaters[1].Name;
+        playerTeamCreationLineUpText[3].text = playersTeam.GetComponent<SeasonTeam>().chasers[0].Name;
+        playerTeamCreationLineUpText[4].text = playersTeam.GetComponent<SeasonTeam>().chasers[1].Name;
+        playerTeamCreationLineUpText[5].text = playersTeam.GetComponent<SeasonTeam>().chasers[2].Name;
+        playerTeamCreationLineUpText[6].text = playersTeam.GetComponent<SeasonTeam>().seeker[0].Name;
+        //Close Menus
+        teamCreationMenu.SetActive(true);
+        TeamCreationButtons.SetActive(true);
+        lineupGO.SetActive(false);
     }
 
     public void CloseSubMenu()
@@ -405,6 +426,11 @@ public class Management : MonoBehaviour
             SeekerPosRemain.text = (1 - playersTeam.GetComponent<SeasonTeam>().seeker.Count).ToString();
 
         TeamBudgetFromLineUp.text = "Team Budget: " + teamBudget.ToString("n0") + " G";
+
+        if ((3 - playersTeam.GetComponent<SeasonTeam>().chasers.Count) == 0 && (2 - playersTeam.GetComponent<SeasonTeam>().beaters.Count) == 0 && (1 - playersTeam.GetComponent<SeasonTeam>().keeper.Count) == 0 && (1 - playersTeam.GetComponent<SeasonTeam>().seeker.Count) == 0)
+            signAllPlayersGO.SetActive(true);
+        else
+            signAllPlayersGO.SetActive(false);
     }
 
     public bool CheckIfPlayerCanBeSigned(int playerToSign, bool Chaser, bool Beater, bool Keeper, bool Seeker)

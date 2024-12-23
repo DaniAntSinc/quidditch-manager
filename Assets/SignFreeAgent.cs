@@ -13,18 +13,23 @@ public class SignFreeAgent : MonoBehaviour
 
     public void SignPlayer()
     {
-        if (GameObject.Find("Management").GetComponent<Management>().CheckIfPlayerCanBeSigned(playerNumberFromFreeAgentList, isChaser, isBeater, isKeeper, isSeeker))
+        playerSigned = !playerSigned;
+
+        if (!playerSigned)
         {
-            playerSigned = !playerSigned;
-            if (playerSigned)
+            buttonText.text = "Sign";
+            GameObject.Find("Management").GetComponent<Management>().UnSignPlayer(playerNumberFromFreeAgentList, isChaser, isBeater, isKeeper, isSeeker);
+        }
+        else
+        {
+            if (GameObject.Find("Management").GetComponent<Management>().CheckIfPlayerCanBeSigned(playerNumberFromFreeAgentList, isChaser, isBeater, isKeeper, isSeeker))
             {
                 buttonText.text = "Undo";
                 GameObject.Find("Management").GetComponent<Management>().SignPlayer(playerNumberFromFreeAgentList, isChaser, isBeater, isKeeper, isSeeker);
             }
             else
             {
-                buttonText.text = "Sign";
-                GameObject.Find("Management").GetComponent<Management>().UnSignPlayer(playerNumberFromFreeAgentList, isChaser, isBeater, isKeeper, isSeeker);
+                playerSigned = false;
             }
         }
     }
