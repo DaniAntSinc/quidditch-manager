@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Management : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Management : MonoBehaviour
     public TMP_InputField location, teamName;
     public GameObject teamNameCreationScreen;
     public GameObject lineupGO;
+    public GameObject logoSelectGO;
     public TMP_Text UIteamName;
     public int teamBudget = 250000;
 
@@ -47,6 +49,12 @@ public class Management : MonoBehaviour
 
     public GameObject signAllPlayersGO;
     public List<TMP_Text> playerTeamCreationLineUpText;
+
+    public List<Sprite> logoSelectionList;
+    public GameObject logoPrefab;
+    public int logoNumSelected;
+    public GameObject logoHolder;
+    public GameObject logoSelectedButton;
     #endregion
     public void Start()
     {
@@ -118,7 +126,9 @@ public class Management : MonoBehaviour
 
     public void LogoMenu()
     {
-        print("Open Logo Menu");
+        logoSelectGO.SetActive(true);
+        TeamCreationButtons.SetActive(false);
+        CreateLogos();
     }
     public void StadiumMenu()
     {
@@ -184,7 +194,8 @@ public class Management : MonoBehaviour
     {
         TeamCreationButtons.SetActive(true);
         teamNameCreationScreen.SetActive(false);
-        //logo creation menu
+        logoSelectGO.SetActive(false);
+        //stadium select menu
         lineupGO.SetActive(false);
     }
 
@@ -509,5 +520,17 @@ public class Management : MonoBehaviour
         else if (Seeker)
             teamBudget += seekerHolderForReference[playerToUnsign].GetComponent<Seeker>().salary;
         UpdatePosNumbers();
+    }
+
+    public void CreateLogos()
+    {
+        for (int i = 0; i < logoSelectionList.Count; i++)
+        {
+            GameObject newlyCreatedLogo = Instantiate(logoPrefab, logoHolder.transform.position, transform.rotation);
+            newlyCreatedLogo.transform.SetParent(logoHolder.transform);
+            newlyCreatedLogo.transform.localScale = new Vector3(1, 1, 1);
+            newlyCreatedLogo.transform.GetChild(0).GetComponent<Image>().sprite = logoSelectionList[i];
+            newlyCreatedLogo.GetComponent<TeamLogoSelected>().logoNumInList = i;
+        }
     }
 }
