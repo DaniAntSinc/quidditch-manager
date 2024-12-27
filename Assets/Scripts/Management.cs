@@ -104,6 +104,8 @@ public class Management : MonoBehaviour
             playersTeam.GetComponent<SeasonTeam>().seeker = new List<Seeker>();
             playersTeam.GetComponent<SeasonTeam>().keeper = new List<Keeper>();
 
+            saveLoad.AssignSeasonTeamToSaveLoad(playersTeam.GetComponent<SeasonTeam>());
+
             playersTeam.transform.parent = GameObject.Find("Teams").transform;
             GenerateFreeAgents();
         }
@@ -112,7 +114,6 @@ public class Management : MonoBehaviour
     public void LoadTeam()
     {
         saveLoad.LoadTeam();
-        print("This is where I'd load a team if i had one");
     }
 
     public void CloseFTUE()
@@ -148,7 +149,8 @@ public class Management : MonoBehaviour
 
     public void CheckIfAllFieldsEntered()
     {
-        saveLoad.SaveTeam();
+       // saveLoad.SaveTeam();
+
         if (nameCreated && logoCreated && stadiumCreated && LineupCreated)
             beginButton.SetActive(true);
     }
@@ -162,9 +164,6 @@ public class Management : MonoBehaviour
 
     public void SaveTeamName()
     {
-        //SaveName - player pref
-        saveLoad.playerTeamName = location.text + " " + teamName.text;
-        saveLoad.SaveTeam();
         //Close Menu
         teamCreationMenu.SetActive(true);
         TeamCreationButtons.SetActive(true);
@@ -173,12 +172,16 @@ public class Management : MonoBehaviour
         UIteamName.text = location.text + " " + teamName.text;
         //Update 
         playersTeam.GetComponent<SeasonTeam>().team = location.text + " " + teamName.text;
+        //SaveName - player pref
+        saveLoad.AssignSeasonTeamToSaveLoad(playersTeam.GetComponent<SeasonTeam>());
+        saveLoad.SaveTeamName(playersTeam.GetComponent<SeasonTeam>().team);
     }
 
     public void SaveLineUp()
     {
         //SaveTeam - player pref
-        print("Player Pref - Save Line Up needed");
+        saveLoad.AssignSeasonTeamToSaveLoad(playersTeam.GetComponent<SeasonTeam>());
+        saveLoad.SaveLineUp();
         //Assign Team overview players
         playerTeamCreationLineUpText[0].text = playersTeam.GetComponent<SeasonTeam>().keeper[0].Name;
         playerTeamCreationLineUpText[1].text = playersTeam.GetComponent<SeasonTeam>().beaters[0].Name;
@@ -196,6 +199,9 @@ public class Management : MonoBehaviour
     public void SaveTeamLogo()
     {
         //store player pref
+        saveLoad.AssignSeasonTeamToSaveLoad(playersTeam.GetComponent<SeasonTeam>());
+        saveLoad.logoNumber = logoNumSelected;
+        saveLoad.SaveLogo();
         //update teamcreate page
         teamOverviewLogoSelected.sprite = logoSelectionList[logoNumSelected];
         //update in player_teams
