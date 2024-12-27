@@ -55,6 +55,8 @@ public class Management : MonoBehaviour
     public int logoNumSelected;
     public GameObject logoHolder;
     public GameObject logoSelectedButton;
+    public Image teamOverviewLogoSelected;
+    List<GameObject> logoGOHolder;
     #endregion
     public void Start()
     {
@@ -62,6 +64,7 @@ public class Management : MonoBehaviour
         beaterHolderForReference = new List<Beater>();
         keeperHolderForReference = new List<Keeper>();
         seekerHolderForReference = new List<Seeker>();
+        logoGOHolder = new List<GameObject>();
     }
 
     public void NewTeam()
@@ -188,6 +191,18 @@ public class Management : MonoBehaviour
         teamCreationMenu.SetActive(true);
         TeamCreationButtons.SetActive(true);
         lineupGO.SetActive(false);
+    }
+
+    public void SaveTeamLogo()
+    {
+        //store player pref
+        //update teamcreate page
+        teamOverviewLogoSelected.sprite = logoSelectionList[logoNumSelected];
+        //update in player_teams
+        playersTeam.GetComponent<SeasonTeam>().logo = logoSelectionList[logoNumSelected];
+        //close menu
+        TeamCreationButtons.SetActive(true);
+        logoSelectGO.SetActive(false);
     }
 
     public void CloseSubMenu()
@@ -531,6 +546,14 @@ public class Management : MonoBehaviour
             newlyCreatedLogo.transform.localScale = new Vector3(1, 1, 1);
             newlyCreatedLogo.transform.GetChild(0).GetComponent<Image>().sprite = logoSelectionList[i];
             newlyCreatedLogo.GetComponent<TeamLogoSelected>().logoNumInList = i;
+            logoGOHolder.Add(newlyCreatedLogo);
+        }
+    }
+    public void ClearLogoSelection()
+    {
+        for (int i = 0; i < logoGOHolder.Count; i++)
+        {
+            logoGOHolder[i].transform.GetChild(1).gameObject.SetActive(false);
         }
     }
 }

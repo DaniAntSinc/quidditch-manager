@@ -9,5 +9,7 @@ public class TeamLogoSelected : MonoBehaviour
     {
         GameObject.Find("Management").GetComponent<Management>().logoNumSelected = logoNumInList;
         GameObject.Find("Management").GetComponent<Management>().logoSelectedButton.SetActive(true);
+        GameObject.Find("Management").GetComponent<Management>().ClearLogoSelection();
+        this.transform.GetChild(1).gameObject.SetActive(true);
     }
 }
