@@ -5871,7 +5871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &114203842
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19282,6 +19282,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 357843447}
   m_CullTransparentMesh: 1
+--- !u!114 &358723757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1890391913729560097, guid: 4181641a89405414e8d47a6a80aab929, type: 3}
+  m_PrefabInstance: {fileID: 1334032729}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &360522292
 GameObject:
   m_ObjectHideFlags: 0
@@ -46062,7 +46073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 382815007175235297, guid: af493f208bda98243a10000a191f8a19, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1251936700859083278, guid: af493f208bda98243a10000a191f8a19, type: 3}
       propertyPath: m_SizeDelta.x
@@ -53812,6 +53823,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3211244960566890504, guid: 4181641a89405414e8d47a6a80aab929, type: 3}
   m_PrefabInstance: {fileID: 1334032729}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1001765318 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2420458054583638300, guid: 4181641a89405414e8d47a6a80aab929, type: 3}
+  m_PrefabInstance: {fileID: 1334032729}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1006743022
 GameObject:
   m_ObjectHideFlags: 0
@@ -64883,7 +64905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1179838861
 RectTransform:
   m_ObjectHideFlags: 0
@@ -85370,7 +85392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1479779430
 RectTransform:
   m_ObjectHideFlags: 0
@@ -87418,7 +87440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1513471249
 RectTransform:
   m_ObjectHideFlags: 0
@@ -112732,8 +112754,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75edaef327701694186cc0f1bb89e403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playersTeam: {fileID: 0}
   teamCreated: 0
-  playerTeamName: 
+  logoNumber: 0
+  stadiumNumber: 0
+  loadButton: {fileID: 1001765318}
+  loadText: {fileID: 358723757}
 --- !u!4 &1986127209
 Transform:
   m_ObjectHideFlags: 0

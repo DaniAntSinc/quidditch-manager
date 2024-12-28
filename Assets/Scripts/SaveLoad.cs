@@ -135,6 +135,7 @@ public class SaveLoad : MonoBehaviour
 
     public void SaveLogo()
     {
+        logoNumber = GameObject.Find("Management").GetComponent<Management>().logoNumSelected;
         PlayerPrefs.SetInt("LogoSelected", logoNumber);
         teamLogoCreated = 1;
         PlayerPrefs.SetInt("logoCreated", teamLogoCreated);
@@ -172,25 +173,31 @@ public class SaveLoad : MonoBehaviour
             GameObject newChaser = new GameObject("Chaser");
             newChaser.AddComponent<Chaser>();
             playerTeamLoad.GetComponent<SeasonTeam>().chasers.Add(newChaser.GetComponent<Chaser>());
+            newChaser.transform.SetParent(playerTeamLoad.transform);
         }
         for (int i = 0; i < 2; i++)
         {
             GameObject newBeater = new GameObject("Beater");
             newBeater.AddComponent<Beater>();
             playerTeamLoad.GetComponent<SeasonTeam>().beaters.Add(newBeater.GetComponent<Beater>());
+            newBeater.transform.SetParent(playerTeamLoad.transform);
         }
         for (int i = 0; i < 1; i++)
         {
             GameObject newKeeper = new GameObject("Keeper");
             newKeeper.AddComponent<Keeper>();
             playerTeamLoad.GetComponent<SeasonTeam>().keeper.Add(newKeeper.GetComponent<Keeper>());
+            newKeeper.transform.SetParent(playerTeamLoad.transform);
         }
         for (int i = 0; i < 1; i++)
         {
             GameObject newSeeker = new GameObject("Seeker");
             newSeeker.AddComponent<Seeker>();
             playerTeamLoad.GetComponent<SeasonTeam>().seeker.Add(newSeeker.GetComponent<Seeker>());
+            newSeeker.transform.SetParent(playerTeamLoad.transform);
         }
+
+        playerTeamLoad.gameObject.transform.SetParent(GameObject.Find("Teams").transform);
 
         playersTeam = playerTeamLoad.GetComponent<SeasonTeam>();
 
@@ -261,6 +268,7 @@ public class SaveLoad : MonoBehaviour
         playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].salary = PlayerPrefs.GetInt("seekerSalary");
         #endregion
         logoNumber = PlayerPrefs.GetInt("LogoSelected");
+        playerTeamLoad.GetComponent<SeasonTeam>().logo = GameObject.Find("Management").GetComponent<Management>().logoSelectionList[logoNumber];
 
         //parent this to the correct places (here and management) and in heirarchy
         //add this to Management
