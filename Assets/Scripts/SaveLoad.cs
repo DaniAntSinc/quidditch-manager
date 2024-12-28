@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class SaveLoad : MonoBehaviour
 {
@@ -8,15 +10,41 @@ public class SaveLoad : MonoBehaviour
     GameObject playerTeamLoad;
 
     public bool teamCreated;
+    int teamNameCreated, teamLogoCreated, teamLineupCreated, teamStadiumCreated;
     string playerTeamName;
     public int logoNumber;
+    public int stadiumNumber;
     //player equipment still needed
     //team budget
     //stadium selection
+    public Button loadButton;
+    public TMP_Text loadText;
+    private void Start()
+    {
+        teamStadiumCreated = PlayerPrefs.GetInt("stadiumCreated");
+        teamLogoCreated = PlayerPrefs.GetInt("logoCreated");
+        teamNameCreated = PlayerPrefs.GetInt("nameCreated");
+        teamLineupCreated = PlayerPrefs.GetInt("lineupCreated");
+
+        if (teamStadiumCreated == 1 && teamLogoCreated == 1 && teamNameCreated == 1 && teamLineupCreated == 1)
+        {
+            loadButton.interactable = true;
+            loadText.color = Color.white;
+        }
+        else
+        {
+            loadButton.interactable = false;
+            loadText.color = Color.grey;
+        }
+    }
     public void ClearTeam()
     {
         teamCreated = false;
         PlayerPrefs.DeleteAll();
+        teamNameCreated = 0;
+        teamLineupCreated = 0;
+        teamLogoCreated = 0;
+        teamStadiumCreated = 0;
     }
 
     public void AssignSeasonTeamToSaveLoad(SeasonTeam teamCreated)
@@ -28,6 +56,8 @@ public class SaveLoad : MonoBehaviour
     {
         PlayerPrefs.SetString("PlayerTeamName", teamName);
         PlayerPrefs.Save();
+        teamNameCreated = 1;
+        PlayerPrefs.SetInt("nameCreated", teamNameCreated);
     }
 
     public void SaveLineUp()
@@ -98,18 +128,25 @@ public class SaveLoad : MonoBehaviour
 
         print(PlayerPrefs.GetInt("Chaser1Salary"));
 
+        teamLineupCreated = 1;
+        PlayerPrefs.SetInt("lineupCreated", teamLineupCreated);
         PlayerPrefs.Save();
     }
 
     public void SaveLogo()
     {
         PlayerPrefs.SetInt("LogoSelected", logoNumber);
+        teamLogoCreated = 1;
+        PlayerPrefs.SetInt("logoCreated", teamLogoCreated);
         PlayerPrefs.Save();
     }
 
     public void SaveStadium()
-    { 
-    
+    {
+        PlayerPrefs.SetInt("StadiumSelected", stadiumNumber);
+        teamLogoCreated = 1;
+        PlayerPrefs.SetInt("stadiumCreated", teamStadiumCreated);
+        PlayerPrefs.Save();
     }
 
     public void LoadTeam()
@@ -117,7 +154,11 @@ public class SaveLoad : MonoBehaviour
         if (GameObject.Find("Players_Team") != null)
             Destroy(GameObject.Find("Players_Team"));
 
-        
+        teamStadiumCreated = PlayerPrefs.GetInt("stadiumCreated");
+        teamLogoCreated = PlayerPrefs.GetInt("logoCreated");
+        teamNameCreated = PlayerPrefs.GetInt("nameCreated");
+        teamLineupCreated = PlayerPrefs.GetInt("lineupCreated");
+
         playerTeamLoad = new GameObject("Players_Team");
         playerTeamLoad.AddComponent<SeasonTeam>();
 
