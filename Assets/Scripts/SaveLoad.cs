@@ -26,6 +26,11 @@ public class SaveLoad : MonoBehaviour
         teamNameCreated = PlayerPrefs.GetInt("nameCreated");
         teamLineupCreated = PlayerPrefs.GetInt("lineupCreated");
 
+        print(teamStadiumCreated);
+        print(teamLogoCreated);
+        print(teamNameCreated);
+        print(teamLineupCreated);
+
         if (teamStadiumCreated == 1 && teamLogoCreated == 1 && teamNameCreated == 1 && teamLineupCreated == 1)
         {
             loadButton.interactable = true;
@@ -145,7 +150,7 @@ public class SaveLoad : MonoBehaviour
     public void SaveStadium()
     {
         PlayerPrefs.SetInt("StadiumSelected", stadiumNumber);
-        teamLogoCreated = 1;
+        teamStadiumCreated = 1;
         PlayerPrefs.SetInt("stadiumCreated", teamStadiumCreated);
         PlayerPrefs.Save();
     }
@@ -270,7 +275,9 @@ public class SaveLoad : MonoBehaviour
         logoNumber = PlayerPrefs.GetInt("LogoSelected");
         playerTeamLoad.GetComponent<SeasonTeam>().logo = GameObject.Find("Management").GetComponent<Management>().logoSelectionList[logoNumber];
 
-        //parent this to the correct places (here and management) and in heirarchy
-        //add this to Management
+        stadiumNumber = PlayerPrefs.GetInt("StadiumSelected");
+        playerTeamLoad.GetComponent<SeasonTeam>().homeStadium = GameObject.Find("Management").GetComponent<Management>().stadiums[stadiumNumber];
+
+        print(playerTeamLoad.GetComponent<SeasonTeam>().homeStadium.stadiumName);
     }
 }

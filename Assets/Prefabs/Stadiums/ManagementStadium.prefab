@@ -257,9 +257,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2543296000625981347}
-        m_TargetAssemblyTypeName: SignFreeAgent, Assembly-CSharp
-        m_MethodName: SignPlayer
+      - m_Target: {fileID: 4288480986329151800}
+        m_TargetAssemblyTypeName: SelectStadium, Assembly-CSharp
+        m_MethodName: StadiumSelected
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -818,7 +818,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2099080177178574799}
-  - component: {fileID: 2543296000625981347}
+  - component: {fileID: 4288480986329151800}
   m_Layer: 5
   m_Name: ManagementStadium
   m_TagString: Untagged
@@ -861,7 +861,7 @@ RectTransform:
   m_AnchoredPosition: {x: 1.786, y: 0.598}
   m_SizeDelta: {x: 374.161, y: 98.804}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2543296000625981347
+--- !u!114 &4288480986329151800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -870,15 +870,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 3453952027238539232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d821145f3d00cf642bd040284a97ad8e, type: 3}
+  m_Script: {fileID: 11500000, guid: 92da3eedfa47fcd43b61479f29887f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonText: {fileID: 3736794533638207453}
-  isChaser: 0
-  isBeater: 0
-  isKeeper: 0
-  isSeeker: 0
-  playerNumberFromFreeAgentList: 0
+  stadiumNumber: 0
+  stadiumName: {fileID: 178826235711134652}
+  rain: {fileID: 6290956100011470351}
+  snow: {fileID: 6406103948928872214}
+  hot: {fileID: 4717662430389445016}
+  fog: {fileID: 7120582754048053379}
+  clear: {fileID: 7837358480356831096}
+  indoor: {fileID: 4965227315720702650}
+  rainPer: {fileID: 4511994104785752267}
+  snowPer: {fileID: 2442265374674483576}
+  hotPer: {fileID: 9166808418869924114}
+  fogPer: {fileID: 4069983866060245924}
+  clearPer: {fileID: 3533246242466695835}
+  indoorPer: {fileID: 4824906426856117913}
+  button: {fileID: 2442954088271175558}
 --- !u!1 &3777225421619041297
 GameObject:
   m_ObjectHideFlags: 0

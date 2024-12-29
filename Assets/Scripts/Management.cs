@@ -59,6 +59,14 @@ public class Management : MonoBehaviour
     List<GameObject> logoGOHolder;
 
     public GameObject stadiumSelectMenu;
+
+    public List<Stadium> stadiums;
+    public GameObject stadiumPrefab;
+    public GameObject stadiumHolder;
+    List<GameObject> stadiumGOHolder;
+    public GameObject StadiumSelectedButton;
+    public int stadiumChosen;
+    public TMP_Text stadiumChosenText;
     #endregion
     public void Start()
     {
@@ -67,6 +75,7 @@ public class Management : MonoBehaviour
         keeperHolderForReference = new List<Keeper>();
         seekerHolderForReference = new List<Seeker>();
         logoGOHolder = new List<GameObject>();
+        stadiumGOHolder = new List<GameObject>();
     }
 
     public void NewTeam()
@@ -140,7 +149,7 @@ public class Management : MonoBehaviour
     {
         stadiumSelectMenu.SetActive(true);
         TeamCreationButtons.SetActive(false);
-        //Create Stadiums
+        StadiumGeneration();
     }
 
     public void LineupMenu()
@@ -213,6 +222,20 @@ public class Management : MonoBehaviour
         //close menu
         TeamCreationButtons.SetActive(true);
         logoSelectGO.SetActive(false);
+    }
+    public void SaveStadium()
+    {
+        //store player pref
+        saveLoad.AssignSeasonTeamToSaveLoad(playersTeam.GetComponent<SeasonTeam>());
+        saveLoad.stadiumNumber = stadiumChosen;
+        saveLoad.SaveStadium();
+        //update teamcreate page
+        stadiumChosenText.text = stadiums[stadiumChosen].stadiumName;
+        //update player_teams
+        playersTeam.GetComponent<SeasonTeam>().homeStadium = stadiums[stadiumChosen];
+        //close menu
+        TeamCreationButtons.SetActive(true);
+        stadiumSelectMenu.SetActive(false);
     }
 
     public void CloseSubMenu()
@@ -565,5 +588,28 @@ public class Management : MonoBehaviour
         {
             logoGOHolder[i].transform.GetChild(1).gameObject.SetActive(false);
         }
+    }
+
+    public void StadiumGeneration()
+    {
+        for (int i = 0; i < stadiums.Count; i++)
+        {
+            GameObject newlyCreatedStadium = Instantiate(stadiumPrefab, stadiumHolder.transform.position, transform.rotation);
+            newlyCreatedStadium.transform.SetParent(stadiumHolder.transform);
+            newlyCreatedStadium.transform.localScale = new Vector3(1, 1, 1);
+            newlyCreatedStadium.GetComponent<SelectStadium>().stadiumNumber = i;
+            stadiumGOHolder.Add(newlyCreatedStadium);
+        }
+    }
+    public void UnselectStadium()
+    {
+        for (int i = 0; i < stadiumGOHolder.Count; i++)
+        {
+            stadiumGOHolder[i].transform.GetChild(2).gameObject.SetActive(true);
+        }
+    }
+    public void StadiumSelected()
+    {
+        StadiumSelectedButton.SetActive(true);
     }
 }
