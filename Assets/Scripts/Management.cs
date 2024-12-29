@@ -176,12 +176,12 @@ public class Management : MonoBehaviour
             beginButton.SetActive(true);
     }
 
-    public void BeginButton()
+   /* public void BeginButton()
     {
         MainManagementMenu.SetActive(true);
         teamCreationMenu.SetActive(false);
         saveLoad.teamCreated = true;
-    }
+    }*/
 
     public void SaveTeamName()
     {
@@ -196,6 +196,7 @@ public class Management : MonoBehaviour
         //SaveName - player pref
         saveLoad.AssignSeasonTeamToSaveLoad(playersTeam.GetComponent<SeasonTeam>());
         saveLoad.SaveTeamName(playersTeam.GetComponent<SeasonTeam>().team);
+        CheckIfAllFieldsEnteredForProgressingOnNewTeam();
     }
 
     public void SaveLineUp()
@@ -216,6 +217,7 @@ public class Management : MonoBehaviour
         teamCreationMenu.SetActive(true);
         TeamCreationButtons.SetActive(true);
         lineupGO.SetActive(false);
+        CheckIfAllFieldsEnteredForProgressingOnNewTeam();
     }
 
     public void SaveTeamLogo()
@@ -231,6 +233,7 @@ public class Management : MonoBehaviour
         //close menu
         TeamCreationButtons.SetActive(true);
         logoSelectGO.SetActive(false);
+        CheckIfAllFieldsEnteredForProgressingOnNewTeam();
     }
     public void SaveStadium()
     {
@@ -245,6 +248,7 @@ public class Management : MonoBehaviour
         //close menu
         TeamCreationButtons.SetActive(true);
         stadiumSelectMenu.SetActive(false);
+        CheckIfAllFieldsEnteredForProgressingOnNewTeam();
     }
 
     public void CloseSubMenu()
@@ -626,7 +630,8 @@ public class Management : MonoBehaviour
     {
         //closeALlOther management menus
         managementHomeMenu.SetActive(true);
-        playersTeam = saveLoad.playerTeamLoad;
+        if(playersTeam == null)
+            playersTeam = saveLoad.playerTeamLoad;
         teamMainName.text = playersTeam.GetComponent<SeasonTeam>().team;
         teamStadium.text = playersTeam.GetComponent<SeasonTeam>().homeStadium.stadiumName.ToString();
         keeper.text = playersTeam.GetComponent<SeasonTeam>().keeper[0].Name;
@@ -638,5 +643,13 @@ public class Management : MonoBehaviour
         chaser3.text = playersTeam.GetComponent<SeasonTeam>().chasers[2].Name;
         logoSprite.sprite = logoSelectionList[logoNumSelected];
         teamBudgetText.text = "Team Budget: " + saveLoad.teamBudget.ToString("F0");
+    }
+
+    public void CheckIfAllFieldsEnteredForProgressingOnNewTeam()
+    {
+        if (saveLoad.teamNameCreated == 1 && saveLoad.teamLineupCreated == 1 && saveLoad.teamLogoCreated == 1 && saveLoad.teamStadiumCreated == 1)
+        {
+            beginButton.SetActive(true);
+        }
     }
 }

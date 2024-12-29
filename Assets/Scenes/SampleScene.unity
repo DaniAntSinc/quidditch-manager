@@ -21271,7 +21271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &408958931
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28017,7 +28017,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 913911920}
         m_TargetAssemblyTypeName: Management, Assembly-CSharp
-        m_MethodName: BeginButton
+        m_MethodName: ManagementHomePage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -50313,6 +50313,7 @@ MonoBehaviour:
   StadiumSelectedButton: {fileID: 1329589773}
   stadiumChosen: 0
   stadiumChosenText: {fileID: 1746806273}
+  teamBudgetText: {fileID: 1307315239}
   managementHomeMenu: {fileID: 1382053744}
   teamMainName: {fileID: 226928059}
   teamStadium: {fileID: 2123530685}
@@ -117497,9 +117498,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playersTeam: {fileID: 0}
+  playerTeamLoad: {fileID: 0}
   teamCreated: 0
+  teamNameCreated: 0
+  teamLogoCreated: 0
+  teamLineupCreated: 0
+  teamStadiumCreated: 0
   logoNumber: 0
   stadiumNumber: 0
+  teamBudget: 0
   loadButton: {fileID: 1001765318}
   loadText: {fileID: 358723757}
 --- !u!4 &1986127209

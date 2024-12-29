@@ -10,7 +10,7 @@ public class SaveLoad : MonoBehaviour
     public GameObject playerTeamLoad;
 
     public bool teamCreated;
-    int teamNameCreated, teamLogoCreated, teamLineupCreated, teamStadiumCreated;
+    public int teamNameCreated, teamLogoCreated, teamLineupCreated, teamStadiumCreated;
     string playerTeamName;
     public int logoNumber;
     public int stadiumNumber;
