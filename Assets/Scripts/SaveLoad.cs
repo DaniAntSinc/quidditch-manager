@@ -14,6 +14,7 @@ public class SaveLoad : MonoBehaviour
     string playerTeamName;
     public int logoNumber;
     public int stadiumNumber;
+    public int teamBudget;
     //player equipment still needed
     //team budget
     //stadium selection
@@ -67,6 +68,7 @@ public class SaveLoad : MonoBehaviour
 
     public void SaveLineUp()
     {
+        PlayerPrefs.SetInt("TeamBudget", teamBudget);
         PlayerPrefs.SetString("Chaser1Name", playersTeam.chasers[0].Name);
         PlayerPrefs.SetInt("Chaser1Age", playersTeam.chasers[0].age);
         PlayerPrefs.SetFloat("Chaser1AgeMultiplier", playersTeam.chasers[0].ageMultiplier);
@@ -273,10 +275,13 @@ public class SaveLoad : MonoBehaviour
         playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].salary = PlayerPrefs.GetInt("seekerSalary");
         #endregion
         logoNumber = PlayerPrefs.GetInt("LogoSelected");
-        playerTeamLoad.GetComponent<SeasonTeam>().logo = GameObject.Find("Management").GetComponent<Management>().logoSelectionList[logoNumber];
+        GameObject.Find("Management").GetComponent<Management>().logoNumSelected = logoNumber;
+        playerTeamLoad.GetComponent<SeasonTeam>().logo = GameObject.Find("Management").GetComponent<Management>().logoSelectionList[GameObject.Find("Management").GetComponent<Management>().logoNumSelected];
 
         stadiumNumber = PlayerPrefs.GetInt("StadiumSelected");
         playerTeamLoad.GetComponent<SeasonTeam>().homeStadium = GameObject.Find("Management").GetComponent<Management>().stadiums[stadiumNumber];
+
+        teamBudget = PlayerPrefs.GetInt("TeamBudget");
 
         print(playerTeamLoad.GetComponent<SeasonTeam>().homeStadium.stadiumName);
 

@@ -67,6 +67,8 @@ public class Management : MonoBehaviour
     public GameObject StadiumSelectedButton;
     public int stadiumChosen;
     public TMP_Text stadiumChosenText;
+
+    public TMP_Text teamBudgetText;
     #endregion
 
     #region ManagementHome
@@ -200,6 +202,7 @@ public class Management : MonoBehaviour
     {
         //SaveTeam - player pref
         saveLoad.AssignSeasonTeamToSaveLoad(playersTeam.GetComponent<SeasonTeam>());
+        saveLoad.teamBudget = teamBudget;
         saveLoad.SaveLineUp();
         //Assign Team overview players
         playerTeamCreationLineUpText[0].text = playersTeam.GetComponent<SeasonTeam>().keeper[0].Name;
@@ -624,7 +627,6 @@ public class Management : MonoBehaviour
         //closeALlOther management menus
         managementHomeMenu.SetActive(true);
         playersTeam = saveLoad.playerTeamLoad;
-        print(playersTeam.GetComponent<SeasonTeam>().team);
         teamMainName.text = playersTeam.GetComponent<SeasonTeam>().team;
         teamStadium.text = playersTeam.GetComponent<SeasonTeam>().homeStadium.stadiumName.ToString();
         keeper.text = playersTeam.GetComponent<SeasonTeam>().keeper[0].Name;
@@ -635,5 +637,6 @@ public class Management : MonoBehaviour
         chaser2.text = playersTeam.GetComponent<SeasonTeam>().chasers[1].Name;
         chaser3.text = playersTeam.GetComponent<SeasonTeam>().chasers[2].Name;
         logoSprite.sprite = logoSelectionList[logoNumSelected];
+        teamBudgetText.text = "Team Budget: " + saveLoad.teamBudget.ToString("F0");
     }
 }
