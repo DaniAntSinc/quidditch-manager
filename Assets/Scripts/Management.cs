@@ -57,6 +57,8 @@ public class Management : MonoBehaviour
     public GameObject logoSelectedButton;
     public Image teamOverviewLogoSelected;
     List<GameObject> logoGOHolder;
+
+    public GameObject stadiumSelectMenu;
     #endregion
     public void Start()
     {
@@ -136,7 +138,9 @@ public class Management : MonoBehaviour
     }
     public void StadiumMenu()
     {
-        print("Open Stadium Menu");
+        stadiumSelectMenu.SetActive(true);
+        TeamCreationButtons.SetActive(false);
+        //Create Stadiums
     }
 
     public void LineupMenu()
@@ -216,7 +220,7 @@ public class Management : MonoBehaviour
         TeamCreationButtons.SetActive(true);
         teamNameCreationScreen.SetActive(false);
         logoSelectGO.SetActive(false);
-        //stadium select menu
+        stadiumSelectMenu.SetActive(false);
         lineupGO.SetActive(false);
     }
 
