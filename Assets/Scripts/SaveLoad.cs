@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SaveLoad : MonoBehaviour
 {
     public SeasonTeam playersTeam;
-    GameObject playerTeamLoad;
+    public GameObject playerTeamLoad;
 
     public bool teamCreated;
     int teamNameCreated, teamLogoCreated, teamLineupCreated, teamStadiumCreated;
@@ -279,5 +279,8 @@ public class SaveLoad : MonoBehaviour
         playerTeamLoad.GetComponent<SeasonTeam>().homeStadium = GameObject.Find("Management").GetComponent<Management>().stadiums[stadiumNumber];
 
         print(playerTeamLoad.GetComponent<SeasonTeam>().homeStadium.stadiumName);
+
+        //save team currency
+        GameObject.Find("Management").GetComponent<Management>().ManagementHomePage();
     }
 }

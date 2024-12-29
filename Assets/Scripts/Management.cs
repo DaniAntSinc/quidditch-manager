@@ -68,6 +68,12 @@ public class Management : MonoBehaviour
     public int stadiumChosen;
     public TMP_Text stadiumChosenText;
     #endregion
+
+    #region ManagementHome
+    public GameObject managementHomeMenu;
+    public TMP_Text teamMainName, teamStadium, keeper, seeker, beater1, beater2, chaser1, chaser2, chaser3;
+    public Image logoSprite;
+    #endregion
     public void Start()
     {
         chaserHolderForReference = new List<Chaser>();
@@ -611,5 +617,23 @@ public class Management : MonoBehaviour
     public void StadiumSelected()
     {
         StadiumSelectedButton.SetActive(true);
+    }
+
+    public void ManagementHomePage()
+    {
+        //closeALlOther management menus
+        managementHomeMenu.SetActive(true);
+        playersTeam = saveLoad.playerTeamLoad;
+        print(playersTeam.GetComponent<SeasonTeam>().team);
+        teamMainName.text = playersTeam.GetComponent<SeasonTeam>().team;
+        teamStadium.text = playersTeam.GetComponent<SeasonTeam>().homeStadium.stadiumName.ToString();
+        keeper.text = playersTeam.GetComponent<SeasonTeam>().keeper[0].Name;
+        beater1.text = playersTeam.GetComponent<SeasonTeam>().beaters[0].Name;
+        beater2.text = playersTeam.GetComponent<SeasonTeam>().beaters[1].Name;
+        seeker.text = playersTeam.GetComponent<SeasonTeam>().seeker[0].Name;
+        chaser1.text = playersTeam.GetComponent<SeasonTeam>().chasers[0].Name;
+        chaser2.text = playersTeam.GetComponent<SeasonTeam>().chasers[1].Name;
+        chaser3.text = playersTeam.GetComponent<SeasonTeam>().chasers[2].Name;
+        logoSprite.sprite = logoSelectionList[logoNumSelected];
     }
 }
