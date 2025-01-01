@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Management : MonoBehaviour
 {
+    public GameManager gameManager;
     public SaveLoad saveLoad;
     public GameObject FTUE;
     public GameObject TeamCreationButtons, teamCreationMenu, MainManagementMenu, newLoad;
@@ -89,6 +90,7 @@ public class Management : MonoBehaviour
     public void NewTeam()
     {
         saveLoad.ClearTeam();
+        gameManager.managementMode = true;
         playersTeam = new GameObject("Players_Team");
         playersTeam.AddComponent<SeasonTeam>();
 
@@ -115,6 +117,7 @@ public class Management : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && GameObject.Find("Main Camera").GetComponent<GameManager>().cheats)
         {
+            gameManager.managementMode = true;
             playersTeam = new GameObject("Players_Team");
             playersTeam.AddComponent<SeasonTeam>();
 
@@ -132,6 +135,7 @@ public class Management : MonoBehaviour
 
     public void LoadTeam()
     {
+        gameManager.managementMode = true;
         saveLoad.LoadTeam();
     }
 

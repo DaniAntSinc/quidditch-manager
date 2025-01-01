@@ -185,7 +185,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] weatherButtons;
 
+    public GameObject managementStatsButton, managementStatsMenu;
+
     public GameObject managementMenu;
+    public bool managementMode;
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -221,6 +224,8 @@ public class GameManager : MonoBehaviour
         matchStatsMenu.SetActive(true);
         matchMomentumMenu.SetActive(false);
         matchStandingsMenu.SetActive(false);
+        if (managementMode)
+            managementStatsMenu.SetActive(false);
     }
 
     public void TurnOnMomentum()
@@ -228,6 +233,8 @@ public class GameManager : MonoBehaviour
         matchStatsMenu.SetActive(false);
         matchStandingsMenu.SetActive(false);
         matchMomentumMenu.SetActive(true);
+        if (managementMode)
+            managementStatsMenu.SetActive(false);
         team1Momentum.text = players.team1;
         team2Momentum.text = players.team2;
         windowGraph.GetComponent<WindowGraph>().ToggleMomentum();
@@ -246,6 +253,16 @@ public class GameManager : MonoBehaviour
             worldCupStandings.SetActive(true);
 
         matchStandingsMenu.SetActive(true);
+        if (managementMode)
+            managementStatsMenu.SetActive(false);
+    }
+
+    public void TurnOnManagement()
+    {
+        matchStatsMenu.SetActive(false);
+        matchStandingsMenu.SetActive(false);
+        matchMomentumMenu.SetActive(false);
+        managementStatsMenu.SetActive(true);
     }
 
     public void SetLineUp()
@@ -726,6 +743,8 @@ public class GameManager : MonoBehaviour
         statsPostGame.SetActive(true);
         matchStatsMenu.SetActive(true);
         matchMomentumMenu.SetActive(false);
+        if (managementMode)
+            managementStatsButton.SetActive(true);
 
         TimeSpan timeSpan = TimeSpan.FromSeconds(duration);
         durationText.text = string.Format("{0:D2}:{1:D2}:{2:D2}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
@@ -1038,6 +1057,7 @@ public class GameManager : MonoBehaviour
     {
         simulationMenu.SetActive(true);
         managementMenu.SetActive(false);
+        managementMode = false;
     }
 
     public void CloseExhib()
