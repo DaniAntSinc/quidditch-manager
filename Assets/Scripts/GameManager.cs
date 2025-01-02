@@ -273,8 +273,10 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        CreateGameEvent("Welcome to today's match between " + players.team1 + " and " + players.team2);
-        CreateGameEvent("We are playing at " + stadiumList[stadiumSelected].stadiumName + " in " + weatherTextToDisplay + " weather.");
+        CreateGameEvent("Welcome to today's match between:");
+        CreateGameEvent(players.team1 + " and " + players.team2);
+        CreateGameEvent("We are playing at " + stadiumList[stadiumSelected].stadiumName);
+        CreateGameEvent("The weather is " + weatherTextToDisplay + ".");
         team1Name.text = players.team1;
         team2Name.text = players.team2;
         StartCoroutine(WaitForKickOff());
@@ -702,7 +704,7 @@ public class GameManager : MonoBehaviour
         newTextLine.transform.SetAsFirstSibling();
 
         newTextLine.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().text = messageForTextElement;
-        if (messageForTextElement.Contains(":"))
+        if (messageForTextElement.Contains(":") || messageForTextElement.Contains("playing at") || messageForTextElement.Contains("weather") || messageForTextElement.Contains(" and "))
         {
             newTextLine.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().color = Color.yellow;
         }

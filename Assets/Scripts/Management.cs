@@ -76,6 +76,8 @@ public class Management : MonoBehaviour
     public GameObject managementHomeMenu;
     public TMP_Text teamMainName, teamStadium, keeper, seeker, beater1, beater2, chaser1, chaser2, chaser3;
     public Image logoSprite;
+
+    public GameObject startingPageMenu, playersSubMenu, equipmentSubMenu, transactSubMenu, calendarSubMenu, strategySubMenu, standingsSubMenu; 
     #endregion
     public void Start()
     {
@@ -647,6 +649,48 @@ public class Management : MonoBehaviour
         chaser3.text = playersTeam.GetComponent<SeasonTeam>().chasers[2].Name;
         logoSprite.sprite = logoSelectionList[logoNumSelected];
         teamBudgetText.text = "Team Budget: " + saveLoad.teamBudget.ToString("F0");
+    }
+
+    public void ReturnToManagementHomePage()
+    {
+        startingPageMenu.SetActive(true);
+        playersSubMenu.SetActive(false);
+        equipmentSubMenu.SetActive(false);
+        transactSubMenu.SetActive(false);
+        calendarSubMenu.SetActive(false);
+        strategySubMenu.SetActive(false);
+        standingsSubMenu.SetActive(false);
+    }
+
+    public void OpenPlayersSubMenu()
+    {
+        startingPageMenu.SetActive(false);
+        playersSubMenu.SetActive(true);
+    }
+    public void OpenEquipmentSubMenu()
+    {
+        startingPageMenu.SetActive(false);
+        equipmentSubMenu.SetActive(true);
+    }
+    public void OpenTransactSubMenu()
+    {
+        startingPageMenu.SetActive(false);
+        transactSubMenu.SetActive(true);
+    }
+    public void OpenCalendarSubMenu()
+    {
+        startingPageMenu.SetActive(false);
+        calendarSubMenu.SetActive(true);
+    }
+    public void OpenStrategySubMenu()
+    {
+        startingPageMenu.SetActive(false);
+        strategySubMenu.SetActive(true);
+    }
+    public void OpenStandingsSubMenu()
+    {
+        startingPageMenu.SetActive(false);
+        standingsSubMenu.SetActive(true);
     }
 
     public void CheckIfAllFieldsEnteredForProgressingOnNewTeam()
