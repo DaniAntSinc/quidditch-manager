@@ -189,6 +189,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject managementMenu;
     public bool managementMode;
+    public GameObject managementNewLoad, managementTeamCreation, managementHome, managementBaseMenu;
+    public GameObject managementPostGameButton;
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -318,6 +320,11 @@ public class GameManager : MonoBehaviour
                 CreateGameEvent("It is a tie! " + players.team1 + ": " + team1Score + "to" + players.team2 + ": " + team2Score);
             }
             winnerChosen = true;
+            if (managementMode)
+            {
+                managementPostGameButton.SetActive(true);
+                newGameButton.SetActive(false);
+            }
             if (hogwartsSeason)
             {
                 if (seasonGameCount <= hogwartsTeam1.Length - 2)
@@ -1217,6 +1224,15 @@ public class GameManager : MonoBehaviour
         players.RandomWeather();
         players.BeginMatch();
     }
+    //turn button on correctly
+    public void OpenManagementMenuAfterAGame()
+    {
+        managementMenu.SetActive(true);
+       managementNewLoad.SetActive(false);
+       managementTeamCreation.SetActive(false);
+       managementHome.SetActive(true);
+       managementBaseMenu.SetActive(true);
+}
 
     public void ClearStats()
     {
