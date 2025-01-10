@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ManagementSeasonTracker : MonoBehaviour
 {
@@ -9,9 +10,12 @@ public class ManagementSeasonTracker : MonoBehaviour
 
     //this is how many days are in the season - 4 months, 28 days, starting at 0 = max of 111
     int dayOfSeason;
+    int placeInList;
     public List<int> matchDays = new List<int> { 2, 5, 10, 13, 18, 22, 24, 33, 35, 38, 44, 48, 50, 53, 60, 64, 66, 70, 75, 79, 83, 86, 89, 94, 98, 102 };
     public List<int> visitorTeams = new List<int> { 5, 3, 9, 9, 5, 4, 9, 9, 9, 8, 9, 9, 9, 8, 6, 9, 9, 0, 7, 9, 1, 2, 9, 9, 7, 6 };
     public List<int> homeTeams = new List<int> { 9, 9, 7, 5, 9, 9, 3, 4, 7, 9, 8, 2, 0, 9, 9, 6, 5, 9, 9, 1, 9, 9, 6, 8, 9, 9 };
+
+    public TMP_Text dayActivitiesText;
 
     //if calendar date = list, choose team 1 and team 2
     //pass into management
@@ -21,4 +25,20 @@ public class ManagementSeasonTracker : MonoBehaviour
     //if it matches the list 3 - say 'match' otherwise say 'train' 
 
     //League Structure
+
+    public void AdvanceDay()
+    {
+        dayOfSeason++;
+        if (dayOfSeason == matchDays[placeInList])
+        {
+            dayActivitiesText.text = "Match Day";
+            print("Match: " + teamsInLeague[visitorTeams[placeInList]].team + " at " + teamsInLeague[homeTeams[placeInList]].team);
+            placeInList++;
+        }
+        else
+            dayActivitiesText.text = "Train";
+
+        if (dayOfSeason > 111)
+            dayOfSeason = 0;
+    }
 }

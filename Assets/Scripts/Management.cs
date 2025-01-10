@@ -650,6 +650,7 @@ public class Management : MonoBehaviour
         chaser3.text = playersTeam.GetComponent<SeasonTeam>().chasers[2].Name;
         logoSprite.sprite = logoSelectionList[logoNumSelected];
         teamBudgetText.text = "Team Budget: " + saveLoad.teamBudget.ToString("F0");
+        print("Here");
         seasonTracker.teamsInLeague.Add(playersTeam.GetComponent<SeasonTeam>());
     }
 
