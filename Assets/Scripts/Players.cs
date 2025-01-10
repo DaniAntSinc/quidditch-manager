@@ -79,106 +79,110 @@ public class Players : MonoBehaviour
     {
         gameManager = GameObject.Find("Main Camera").GetComponent<GameManager>();
     }
-    public void SetLineUp()
+
+    public void SetLineUp(SeasonTeam visitor, SeasonTeam home)
     {
-        team1 = teams[gameManager.visitorTeam].team;
-        team1ChasersNames[0] = teams[gameManager.visitorTeam].chasers[0].Name;
+        team1 = visitor.team;
+        team1ChasersNames[0] = visitor.chasers[0].Name;
 
-        team1ChasersNames[1] = teams[gameManager.visitorTeam].chasers[1].Name;
-        team1ChasersNames[2] = teams[gameManager.visitorTeam].chasers[2].Name;
-        team1ChasersIntercept[0] = teams[gameManager.visitorTeam].chasers[0].intercept + teams[gameManager.visitorTeam].chasers[0].hat.Intercept + teams[gameManager.visitorTeam].chasers[0].gloves.Intercept + teams[gameManager.visitorTeam].chasers[0].glasses.Intercept + teams[gameManager.visitorTeam].chasers[0].body.Intercept + teams[gameManager.visitorTeam].chasers[0].broom.Intercept;
-        team1ChasersIntercept[1] = teams[gameManager.visitorTeam].chasers[1].intercept + teams[gameManager.visitorTeam].chasers[1].hat.Intercept + teams[gameManager.visitorTeam].chasers[1].gloves.Intercept + teams[gameManager.visitorTeam].chasers[1].glasses.Intercept + teams[gameManager.visitorTeam].chasers[1].body.Intercept + teams[gameManager.visitorTeam].chasers[1].broom.Intercept;
-        team1ChasersIntercept[2] = teams[gameManager.visitorTeam].chasers[2].intercept + teams[gameManager.visitorTeam].chasers[2].hat.Intercept + teams[gameManager.visitorTeam].chasers[2].gloves.Intercept + teams[gameManager.visitorTeam].chasers[2].glasses.Intercept + teams[gameManager.visitorTeam].chasers[2].body.Intercept + teams[gameManager.visitorTeam].chasers[2].broom.Intercept;
-        team1ChasersPass[0] = teams[gameManager.visitorTeam].chasers[0].pass + teams[gameManager.visitorTeam].chasers[0].hat.Pass + teams[gameManager.visitorTeam].chasers[0].gloves.Pass + teams[gameManager.visitorTeam].chasers[0].glasses.Pass + teams[gameManager.visitorTeam].chasers[0].body.Pass + teams[gameManager.visitorTeam].chasers[0].broom.Pass;
-        team1ChasersPass[1] = teams[gameManager.visitorTeam].chasers[1].pass + teams[gameManager.visitorTeam].chasers[1].hat.Pass + teams[gameManager.visitorTeam].chasers[1].gloves.Pass + teams[gameManager.visitorTeam].chasers[1].glasses.Pass + teams[gameManager.visitorTeam].chasers[1].body.Pass + teams[gameManager.visitorTeam].chasers[1].broom.Pass;
-        team1ChasersPass[2] = teams[gameManager.visitorTeam].chasers[2].pass + teams[gameManager.visitorTeam].chasers[2].hat.Pass + teams[gameManager.visitorTeam].chasers[2].gloves.Pass + teams[gameManager.visitorTeam].chasers[2].glasses.Pass + teams[gameManager.visitorTeam].chasers[2].body.Pass + teams[gameManager.visitorTeam].chasers[2].broom.Pass;
-        team1ChaserTackle[0] = teams[gameManager.visitorTeam].chasers[0].tackle + teams[gameManager.visitorTeam].chasers[0].hat.Tackle + teams[gameManager.visitorTeam].chasers[0].gloves.Tackle + teams[gameManager.visitorTeam].chasers[0].glasses.Tackle + teams[gameManager.visitorTeam].chasers[0].body.Tackle + teams[gameManager.visitorTeam].chasers[0].broom.Tackle;
-        team1ChaserTackle[1] = teams[gameManager.visitorTeam].chasers[1].tackle + teams[gameManager.visitorTeam].chasers[1].hat.Tackle + teams[gameManager.visitorTeam].chasers[1].gloves.Tackle + teams[gameManager.visitorTeam].chasers[1].glasses.Tackle + teams[gameManager.visitorTeam].chasers[1].body.Tackle + teams[gameManager.visitorTeam].chasers[1].broom.Tackle;
-        team1ChaserTackle[2] = teams[gameManager.visitorTeam].chasers[2].tackle + teams[gameManager.visitorTeam].chasers[2].hat.Tackle + teams[gameManager.visitorTeam].chasers[2].gloves.Tackle + teams[gameManager.visitorTeam].chasers[2].glasses.Tackle + teams[gameManager.visitorTeam].chasers[2].body.Tackle + teams[gameManager.visitorTeam].chasers[2].broom.Tackle;
-        team1ChaserShooting[0] = teams[gameManager.visitorTeam].chasers[0].shooting + teams[gameManager.visitorTeam].chasers[0].hat.Shooting + teams[gameManager.visitorTeam].chasers[0].gloves.Shooting + teams[gameManager.visitorTeam].chasers[0].glasses.Shooting + teams[gameManager.visitorTeam].chasers[0].body.Shooting + teams[gameManager.visitorTeam].chasers[0].broom.Shooting;
-        team1ChaserShooting[1] = teams[gameManager.visitorTeam].chasers[1].shooting + teams[gameManager.visitorTeam].chasers[1].hat.Shooting + teams[gameManager.visitorTeam].chasers[1].gloves.Shooting + teams[gameManager.visitorTeam].chasers[1].glasses.Shooting + teams[gameManager.visitorTeam].chasers[1].body.Shooting + teams[gameManager.visitorTeam].chasers[1].broom.Shooting;
-        team1ChaserShooting[2] = teams[gameManager.visitorTeam].chasers[2].shooting + teams[gameManager.visitorTeam].chasers[2].hat.Shooting + teams[gameManager.visitorTeam].chasers[2].gloves.Shooting + teams[gameManager.visitorTeam].chasers[2].glasses.Shooting + teams[gameManager.visitorTeam].chasers[2].body.Shooting + teams[gameManager.visitorTeam].chasers[2].broom.Shooting;
-        team1ChaserDodge[0] = teams[gameManager.visitorTeam].chasers[0].dodge + teams[gameManager.visitorTeam].chasers[0].hat.Dodge + teams[gameManager.visitorTeam].chasers[0].gloves.Dodge + teams[gameManager.visitorTeam].chasers[0].glasses.Dodge + teams[gameManager.visitorTeam].chasers[0].body.Dodge + teams[gameManager.visitorTeam].chasers[0].broom.Dodge;
-        team1ChaserDodge[1] = teams[gameManager.visitorTeam].chasers[1].dodge + teams[gameManager.visitorTeam].chasers[1].hat.Dodge + teams[gameManager.visitorTeam].chasers[1].gloves.Dodge + teams[gameManager.visitorTeam].chasers[1].glasses.Dodge + teams[gameManager.visitorTeam].chasers[1].body.Dodge + teams[gameManager.visitorTeam].chasers[1].broom.Dodge;
-        team1ChaserDodge[2] = teams[gameManager.visitorTeam].chasers[2].dodge + teams[gameManager.visitorTeam].chasers[2].hat.Dodge + teams[gameManager.visitorTeam].chasers[2].gloves.Dodge + teams[gameManager.visitorTeam].chasers[2].glasses.Dodge + teams[gameManager.visitorTeam].chasers[2].body.Dodge + teams[gameManager.visitorTeam].chasers[2].broom.Dodge;
-        team1ChaserSpeed[0] = teams[gameManager.visitorTeam].chasers[0].speed + teams[gameManager.visitorTeam].chasers[0].hat.Speed + teams[gameManager.visitorTeam].chasers[0].gloves.Speed + teams[gameManager.visitorTeam].chasers[0].glasses.Speed + teams[gameManager.visitorTeam].chasers[0].body.Speed + teams[gameManager.visitorTeam].chasers[0].broom.Speed;
-        team1ChaserSpeed[1] = teams[gameManager.visitorTeam].chasers[1].speed + teams[gameManager.visitorTeam].chasers[1].hat.Speed + teams[gameManager.visitorTeam].chasers[1].gloves.Speed + teams[gameManager.visitorTeam].chasers[1].glasses.Speed + teams[gameManager.visitorTeam].chasers[1].body.Speed + teams[gameManager.visitorTeam].chasers[1].broom.Speed;
-        team1ChaserSpeed[2] = teams[gameManager.visitorTeam].chasers[2].speed + teams[gameManager.visitorTeam].chasers[2].hat.Speed + teams[gameManager.visitorTeam].chasers[2].gloves.Speed + teams[gameManager.visitorTeam].chasers[2].glasses.Speed + teams[gameManager.visitorTeam].chasers[2].body.Speed + teams[gameManager.visitorTeam].chasers[2].broom.Speed;
+        team1ChasersNames[1] = visitor.chasers[1].Name;
+        team1ChasersNames[2] = visitor.chasers[2].Name;
+        team1ChasersIntercept[0] = visitor.chasers[0].intercept + visitor.chasers[0].hat.Intercept + visitor.chasers[0].gloves.Intercept + visitor.chasers[0].glasses.Intercept + visitor.chasers[0].body.Intercept + visitor.chasers[0].broom.Intercept;
+        team1ChasersIntercept[1] = visitor.chasers[1].intercept + visitor.chasers[1].hat.Intercept + visitor.chasers[1].gloves.Intercept + visitor.chasers[1].glasses.Intercept + visitor.chasers[1].body.Intercept + visitor.chasers[1].broom.Intercept;
+        team1ChasersIntercept[2] = visitor.chasers[2].intercept + visitor.chasers[2].hat.Intercept + visitor.chasers[2].gloves.Intercept + visitor.chasers[2].glasses.Intercept + visitor.chasers[2].body.Intercept + visitor.chasers[2].broom.Intercept;
+        team1ChasersPass[0] = visitor.chasers[0].pass + visitor.chasers[0].hat.Pass + visitor.chasers[0].gloves.Pass + visitor.chasers[0].glasses.Pass + visitor.chasers[0].body.Pass + visitor.chasers[0].broom.Pass;
+        team1ChasersPass[1] = visitor.chasers[1].pass + visitor.chasers[1].hat.Pass + visitor.chasers[1].gloves.Pass + visitor.chasers[1].glasses.Pass + visitor.chasers[1].body.Pass + visitor.chasers[1].broom.Pass;
+        team1ChasersPass[2] = visitor.chasers[2].pass + visitor.chasers[2].hat.Pass + visitor.chasers[2].gloves.Pass + visitor.chasers[2].glasses.Pass + visitor.chasers[2].body.Pass + visitor.chasers[2].broom.Pass;
+        team1ChaserTackle[0] = visitor.chasers[0].tackle + visitor.chasers[0].hat.Tackle + visitor.chasers[0].gloves.Tackle + visitor.chasers[0].glasses.Tackle + visitor.chasers[0].body.Tackle + visitor.chasers[0].broom.Tackle;
+        team1ChaserTackle[1] = visitor.chasers[1].tackle + visitor.chasers[1].hat.Tackle + visitor.chasers[1].gloves.Tackle + visitor.chasers[1].glasses.Tackle + visitor.chasers[1].body.Tackle + visitor.chasers[1].broom.Tackle;
+        team1ChaserTackle[2] = visitor.chasers[2].tackle + visitor.chasers[2].hat.Tackle + visitor.chasers[2].gloves.Tackle + visitor.chasers[2].glasses.Tackle + visitor.chasers[2].body.Tackle + visitor.chasers[2].broom.Tackle;
+        team1ChaserShooting[0] = visitor.chasers[0].shooting + visitor.chasers[0].hat.Shooting + visitor.chasers[0].gloves.Shooting + visitor.chasers[0].glasses.Shooting + visitor.chasers[0].body.Shooting + visitor.chasers[0].broom.Shooting;
+        team1ChaserShooting[1] = visitor.chasers[1].shooting + visitor.chasers[1].hat.Shooting + visitor.chasers[1].gloves.Shooting + visitor.chasers[1].glasses.Shooting + visitor.chasers[1].body.Shooting + visitor.chasers[1].broom.Shooting;
+        team1ChaserShooting[2] = visitor.chasers[2].shooting + visitor.chasers[2].hat.Shooting + visitor.chasers[2].gloves.Shooting + visitor.chasers[2].glasses.Shooting + visitor.chasers[2].body.Shooting + visitor.chasers[2].broom.Shooting;
+        team1ChaserDodge[0] = visitor.chasers[0].dodge + visitor.chasers[0].hat.Dodge + visitor.chasers[0].gloves.Dodge + visitor.chasers[0].glasses.Dodge + visitor.chasers[0].body.Dodge + visitor.chasers[0].broom.Dodge;
+        team1ChaserDodge[1] = visitor.chasers[1].dodge + visitor.chasers[1].hat.Dodge + visitor.chasers[1].gloves.Dodge + visitor.chasers[1].glasses.Dodge + visitor.chasers[1].body.Dodge + visitor.chasers[1].broom.Dodge;
+        team1ChaserDodge[2] = visitor.chasers[2].dodge + visitor.chasers[2].hat.Dodge + visitor.chasers[2].gloves.Dodge + visitor.chasers[2].glasses.Dodge + visitor.chasers[2].body.Dodge + visitor.chasers[2].broom.Dodge;
+        team1ChaserSpeed[0] = visitor.chasers[0].speed + visitor.chasers[0].hat.Speed + visitor.chasers[0].gloves.Speed + visitor.chasers[0].glasses.Speed + visitor.chasers[0].body.Speed + visitor.chasers[0].broom.Speed;
+        team1ChaserSpeed[1] = visitor.chasers[1].speed + visitor.chasers[1].hat.Speed + visitor.chasers[1].gloves.Speed + visitor.chasers[1].glasses.Speed + visitor.chasers[1].body.Speed + visitor.chasers[1].broom.Speed;
+        team1ChaserSpeed[2] = visitor.chasers[2].speed + visitor.chasers[2].hat.Speed + visitor.chasers[2].gloves.Speed + visitor.chasers[2].glasses.Speed + visitor.chasers[2].body.Speed + visitor.chasers[2].broom.Speed;
 
-        team1Beaters[0] = teams[gameManager.visitorTeam].beaters[0].Name;
-        team1Beaters[1] = teams[gameManager.visitorTeam].beaters[1].Name;
-        team1BeaterLocateBludgerSpeed[0] = teams[gameManager.visitorTeam].beaters[0].locateSpeed + teams[gameManager.visitorTeam].beaters[0].hat.LocateSpeed + teams[gameManager.visitorTeam].beaters[0].gloves.LocateSpeed + teams[gameManager.visitorTeam].beaters[0].glasses.LocateSpeed + teams[gameManager.visitorTeam].beaters[0].body.LocateSpeed + teams[gameManager.visitorTeam].beaters[0].broom.LocateSpeed;
-        team1BeaterLocateBludgerSpeed[1] = teams[gameManager.visitorTeam].beaters[1].locateSpeed + teams[gameManager.visitorTeam].beaters[1].hat.LocateSpeed + teams[gameManager.visitorTeam].beaters[1].gloves.LocateSpeed + teams[gameManager.visitorTeam].beaters[1].glasses.LocateSpeed + teams[gameManager.visitorTeam].beaters[1].body.LocateSpeed + teams[gameManager.visitorTeam].beaters[1].broom.LocateSpeed;
-        team1BeaterDodge[0] = teams[gameManager.visitorTeam].beaters[0].dodge + teams[gameManager.visitorTeam].beaters[0].hat.Dodge + teams[gameManager.visitorTeam].beaters[0].gloves.Dodge + teams[gameManager.visitorTeam].beaters[0].glasses.Dodge + teams[gameManager.visitorTeam].beaters[0].body.Dodge + teams[gameManager.visitorTeam].beaters[0].broom.Dodge;
-        team1BeaterDodge[1] = teams[gameManager.visitorTeam].beaters[1].dodge + teams[gameManager.visitorTeam].beaters[1].hat.Dodge + teams[gameManager.visitorTeam].beaters[1].gloves.Dodge + teams[gameManager.visitorTeam].beaters[1].glasses.Dodge + teams[gameManager.visitorTeam].beaters[1].body.Dodge + teams[gameManager.visitorTeam].beaters[1].broom.Dodge;
+        team1Beaters[0] = visitor.beaters[0].Name;
+        team1Beaters[1] = visitor.beaters[1].Name;
+        team1BeaterLocateBludgerSpeed[0] = visitor.beaters[0].locateSpeed + visitor.beaters[0].hat.LocateSpeed + visitor.beaters[0].gloves.LocateSpeed + visitor.beaters[0].glasses.LocateSpeed + visitor.beaters[0].body.LocateSpeed + visitor.beaters[0].broom.LocateSpeed;
+        team1BeaterLocateBludgerSpeed[1] = visitor.beaters[1].locateSpeed + visitor.beaters[1].hat.LocateSpeed + visitor.beaters[1].gloves.LocateSpeed + visitor.beaters[1].glasses.LocateSpeed + visitor.beaters[1].body.LocateSpeed + visitor.beaters[1].broom.LocateSpeed;
+        team1BeaterDodge[0] = visitor.beaters[0].dodge + visitor.beaters[0].hat.Dodge + visitor.beaters[0].gloves.Dodge + visitor.beaters[0].glasses.Dodge + visitor.beaters[0].body.Dodge + visitor.beaters[0].broom.Dodge;
+        team1BeaterDodge[1] = visitor.beaters[1].dodge + visitor.beaters[1].hat.Dodge + visitor.beaters[1].gloves.Dodge + visitor.beaters[1].glasses.Dodge + visitor.beaters[1].body.Dodge + visitor.beaters[1].broom.Dodge;
 
-        team1Keeper = teams[gameManager.visitorTeam].keeper[0].Name;
-        team1KeeperDodge = teams[gameManager.visitorTeam].keeper[0].dodge + teams[gameManager.visitorTeam].keeper[0].hat.Dodge + teams[gameManager.visitorTeam].keeper[0].gloves.Dodge + teams[gameManager.visitorTeam].keeper[0].glasses.Dodge + teams[gameManager.visitorTeam].keeper[0].body.Dodge + teams[gameManager.visitorTeam].keeper[0].broom.Dodge;
-        team1KeeperBlock = teams[gameManager.visitorTeam].keeper[0].block + teams[gameManager.visitorTeam].keeper[0].hat.Block + teams[gameManager.visitorTeam].keeper[0].gloves.Block + teams[gameManager.visitorTeam].keeper[0].glasses.Block + teams[gameManager.visitorTeam].keeper[0].body.Block + teams[gameManager.visitorTeam].keeper[0].broom.Block;
+        team1Keeper = visitor.keeper[0].Name;
+        team1KeeperDodge = visitor.keeper[0].dodge + visitor.keeper[0].hat.Dodge + visitor.keeper[0].gloves.Dodge + visitor.keeper[0].glasses.Dodge + visitor.keeper[0].body.Dodge + visitor.keeper[0].broom.Dodge;
+        team1KeeperBlock = visitor.keeper[0].block + visitor.keeper[0].hat.Block + visitor.keeper[0].gloves.Block + visitor.keeper[0].glasses.Block + visitor.keeper[0].body.Block + visitor.keeper[0].broom.Block;
 
-        team1Seeker = teams[gameManager.visitorTeam].seeker[0].Name;
-        team1SeekerDodge = teams[gameManager.visitorTeam].seeker[0].dodge + teams[gameManager.visitorTeam].seeker[0].hat.Dodge + teams[gameManager.visitorTeam].seeker[0].gloves.Dodge + teams[gameManager.visitorTeam].seeker[0].glasses.Dodge + teams[gameManager.visitorTeam].seeker[0].body.Dodge + teams[gameManager.visitorTeam].seeker[0].broom.Dodge;
-        team1SeekerSight = teams[gameManager.visitorTeam].seeker[0].sight + teams[gameManager.visitorTeam].seeker[0].hat.Sight + teams[gameManager.visitorTeam].seeker[0].gloves.Sight + teams[gameManager.visitorTeam].seeker[0].glasses.Sight + teams[gameManager.visitorTeam].seeker[0].body.Sight + teams[gameManager.visitorTeam].seeker[0].broom.Sight;
-        team1SeekerSpeed = teams[gameManager.visitorTeam].seeker[0].speed + teams[gameManager.visitorTeam].seeker[0].hat.Speed + teams[gameManager.visitorTeam].seeker[0].gloves.Speed + teams[gameManager.visitorTeam].seeker[0].glasses.Speed + teams[gameManager.visitorTeam].seeker[0].body.Speed + teams[gameManager.visitorTeam].seeker[0].broom.Speed;
-        team1SeekerReach = teams[gameManager.visitorTeam].seeker[0].reach + teams[gameManager.visitorTeam].seeker[0].hat.Reach + teams[gameManager.visitorTeam].seeker[0].gloves.Reach + teams[gameManager.visitorTeam].seeker[0].glasses.Reach + teams[gameManager.visitorTeam].seeker[0].body.Reach + teams[gameManager.visitorTeam].seeker[0].broom.Reach;
-        team1SeekerGrabRange = teams[gameManager.visitorTeam].seeker[0].grab + teams[gameManager.visitorTeam].seeker[0].hat.Grab + teams[gameManager.visitorTeam].seeker[0].gloves.Grab + teams[gameManager.visitorTeam].seeker[0].glasses.Grab + teams[gameManager.visitorTeam].seeker[0].body.Grab + teams[gameManager.visitorTeam].seeker[0].broom.Grab;
+        team1Seeker = visitor.seeker[0].Name;
+        team1SeekerDodge = visitor.seeker[0].dodge + visitor.seeker[0].hat.Dodge + visitor.seeker[0].gloves.Dodge + visitor.seeker[0].glasses.Dodge + visitor.seeker[0].body.Dodge + visitor.seeker[0].broom.Dodge;
+        team1SeekerSight = visitor.seeker[0].sight + visitor.seeker[0].hat.Sight + visitor.seeker[0].gloves.Sight + visitor.seeker[0].glasses.Sight + visitor.seeker[0].body.Sight + visitor.seeker[0].broom.Sight;
+        team1SeekerSpeed = visitor.seeker[0].speed + visitor.seeker[0].hat.Speed + visitor.seeker[0].gloves.Speed + visitor.seeker[0].glasses.Speed + visitor.seeker[0].body.Speed + visitor.seeker[0].broom.Speed;
+        team1SeekerReach = visitor.seeker[0].reach + visitor.seeker[0].hat.Reach + visitor.seeker[0].gloves.Reach + visitor.seeker[0].glasses.Reach + visitor.seeker[0].body.Reach + visitor.seeker[0].broom.Reach;
+        team1SeekerGrabRange = visitor.seeker[0].grab + visitor.seeker[0].hat.Grab + visitor.seeker[0].gloves.Grab + visitor.seeker[0].glasses.Grab + visitor.seeker[0].body.Grab + visitor.seeker[0].broom.Grab;
 
-        team1sun = teams[gameManager.visitorTeam].teamSun;
-        team1rain = teams[gameManager.visitorTeam].teamRain;
-        team1fog = teams[gameManager.visitorTeam].teamFog;
-        team1snow = teams[gameManager.visitorTeam].teamSnow;
+        team1sun = visitor.teamSun;
+        team1rain = visitor.teamRain;
+        team1fog = visitor.teamFog;
+        team1snow = visitor.teamSnow;
 
-        team2 = teams[gameManager.homeTeam].team;
-        team2ChasersNames[0] = teams[gameManager.homeTeam].chasers[0].Name;
+        if (home != null)
+        {
+            team2 = home.team;
+            team2ChasersNames[0] = home.chasers[0].Name;
 
-        team2ChasersNames[1] = teams[gameManager.homeTeam].chasers[1].Name;
-        team2ChasersNames[2] = teams[gameManager.homeTeam].chasers[2].Name;
-        team2ChasersIntercept[0] = teams[gameManager.homeTeam].chasers[0].intercept + teams[gameManager.homeTeam].chasers[0].hat.Intercept + teams[gameManager.homeTeam].chasers[0].gloves.Intercept + teams[gameManager.homeTeam].chasers[0].glasses.Intercept + teams[gameManager.homeTeam].chasers[0].body.Intercept + teams[gameManager.homeTeam].chasers[0].broom.Intercept;
-        team2ChasersIntercept[1] = teams[gameManager.homeTeam].chasers[1].intercept + teams[gameManager.homeTeam].chasers[1].hat.Intercept + teams[gameManager.homeTeam].chasers[1].gloves.Intercept + teams[gameManager.homeTeam].chasers[1].glasses.Intercept + teams[gameManager.homeTeam].chasers[1].body.Intercept + teams[gameManager.homeTeam].chasers[1].broom.Intercept;
-        team2ChasersIntercept[2] = teams[gameManager.homeTeam].chasers[2].intercept + teams[gameManager.homeTeam].chasers[2].hat.Intercept + teams[gameManager.homeTeam].chasers[2].gloves.Intercept + teams[gameManager.homeTeam].chasers[2].glasses.Intercept + teams[gameManager.homeTeam].chasers[2].body.Intercept + teams[gameManager.homeTeam].chasers[2].broom.Intercept;
-        team2ChasersPass[0] = teams[gameManager.homeTeam].chasers[0].pass + teams[gameManager.homeTeam].chasers[0].hat.Pass + teams[gameManager.homeTeam].chasers[0].gloves.Pass + teams[gameManager.homeTeam].chasers[0].glasses.Pass + teams[gameManager.homeTeam].chasers[0].body.Pass + teams[gameManager.homeTeam].chasers[0].broom.Pass;
-        team2ChasersPass[1] = teams[gameManager.homeTeam].chasers[1].pass + teams[gameManager.homeTeam].chasers[1].hat.Pass + teams[gameManager.homeTeam].chasers[1].gloves.Pass + teams[gameManager.homeTeam].chasers[1].glasses.Pass + teams[gameManager.homeTeam].chasers[1].body.Pass + teams[gameManager.homeTeam].chasers[1].broom.Pass;
-        team2ChasersPass[2] = teams[gameManager.homeTeam].chasers[2].pass + teams[gameManager.homeTeam].chasers[2].hat.Pass + teams[gameManager.homeTeam].chasers[2].gloves.Pass + teams[gameManager.homeTeam].chasers[2].glasses.Pass + teams[gameManager.homeTeam].chasers[2].body.Pass + teams[gameManager.homeTeam].chasers[2].broom.Pass;
-        team2ChaserTackle[0] = teams[gameManager.homeTeam].chasers[0].tackle + teams[gameManager.homeTeam].chasers[0].hat.Tackle + teams[gameManager.homeTeam].chasers[0].gloves.Tackle + teams[gameManager.homeTeam].chasers[0].glasses.Tackle + teams[gameManager.homeTeam].chasers[0].body.Tackle + teams[gameManager.homeTeam].chasers[0].broom.Tackle;
-        team2ChaserTackle[1] = teams[gameManager.homeTeam].chasers[1].tackle + teams[gameManager.homeTeam].chasers[1].hat.Tackle + teams[gameManager.homeTeam].chasers[1].gloves.Tackle + teams[gameManager.homeTeam].chasers[1].glasses.Tackle + teams[gameManager.homeTeam].chasers[1].body.Tackle + teams[gameManager.homeTeam].chasers[1].broom.Tackle;
-        team2ChaserTackle[2] = teams[gameManager.homeTeam].chasers[2].tackle + teams[gameManager.homeTeam].chasers[2].hat.Tackle + teams[gameManager.homeTeam].chasers[2].gloves.Tackle + teams[gameManager.homeTeam].chasers[2].glasses.Tackle + teams[gameManager.homeTeam].chasers[2].body.Tackle + teams[gameManager.homeTeam].chasers[2].broom.Tackle;
-        team2ChaserShooting[0] = teams[gameManager.homeTeam].chasers[0].shooting + teams[gameManager.homeTeam].chasers[0].hat.Shooting + teams[gameManager.homeTeam].chasers[0].gloves.Shooting + teams[gameManager.homeTeam].chasers[0].glasses.Shooting + teams[gameManager.homeTeam].chasers[0].body.Shooting + teams[gameManager.homeTeam].chasers[0].broom.Shooting;
-        team2ChaserShooting[1] = teams[gameManager.homeTeam].chasers[1].shooting + teams[gameManager.homeTeam].chasers[1].hat.Shooting + teams[gameManager.homeTeam].chasers[1].gloves.Shooting + teams[gameManager.homeTeam].chasers[1].glasses.Shooting + teams[gameManager.homeTeam].chasers[1].body.Shooting + teams[gameManager.homeTeam].chasers[1].broom.Shooting;
-        team2ChaserShooting[2] = teams[gameManager.homeTeam].chasers[2].shooting + teams[gameManager.homeTeam].chasers[2].hat.Shooting + teams[gameManager.homeTeam].chasers[2].gloves.Shooting + teams[gameManager.homeTeam].chasers[2].glasses.Shooting + teams[gameManager.homeTeam].chasers[2].body.Shooting + teams[gameManager.homeTeam].chasers[2].broom.Shooting;
-        team2ChaserDodge[0] = teams[gameManager.homeTeam].chasers[0].dodge + teams[gameManager.homeTeam].chasers[0].hat.Dodge + teams[gameManager.homeTeam].chasers[0].gloves.Dodge + teams[gameManager.homeTeam].chasers[0].glasses.Dodge + teams[gameManager.homeTeam].chasers[0].body.Dodge + teams[gameManager.homeTeam].chasers[0].broom.Dodge;
-        team2ChaserDodge[1] = teams[gameManager.homeTeam].chasers[1].dodge + teams[gameManager.homeTeam].chasers[1].hat.Dodge + teams[gameManager.homeTeam].chasers[1].gloves.Dodge + teams[gameManager.homeTeam].chasers[1].glasses.Dodge + teams[gameManager.homeTeam].chasers[1].body.Dodge + teams[gameManager.homeTeam].chasers[1].broom.Dodge;
-        team2ChaserDodge[2] = teams[gameManager.homeTeam].chasers[2].dodge + teams[gameManager.homeTeam].chasers[2].hat.Dodge + teams[gameManager.homeTeam].chasers[2].gloves.Dodge + teams[gameManager.homeTeam].chasers[2].glasses.Dodge + teams[gameManager.homeTeam].chasers[2].body.Dodge + teams[gameManager.homeTeam].chasers[2].broom.Dodge;
-        team2ChaserSpeed[0] = teams[gameManager.homeTeam].chasers[0].speed + teams[gameManager.homeTeam].chasers[0].hat.Speed + teams[gameManager.homeTeam].chasers[0].gloves.Speed + teams[gameManager.homeTeam].chasers[0].glasses.Speed + teams[gameManager.homeTeam].chasers[0].body.Speed + teams[gameManager.homeTeam].chasers[0].broom.Speed;
-        team2ChaserSpeed[1] = teams[gameManager.homeTeam].chasers[1].speed + teams[gameManager.homeTeam].chasers[1].hat.Speed + teams[gameManager.homeTeam].chasers[1].gloves.Speed + teams[gameManager.homeTeam].chasers[1].glasses.Speed + teams[gameManager.homeTeam].chasers[1].body.Speed + teams[gameManager.homeTeam].chasers[1].broom.Speed;
-        team2ChaserSpeed[2] = teams[gameManager.homeTeam].chasers[2].speed + teams[gameManager.homeTeam].chasers[2].hat.Speed + teams[gameManager.homeTeam].chasers[2].gloves.Speed + teams[gameManager.homeTeam].chasers[2].glasses.Speed + teams[gameManager.homeTeam].chasers[2].body.Speed + teams[gameManager.homeTeam].chasers[2].broom.Speed;
+            team2ChasersNames[1] = home.chasers[1].Name;
+            team2ChasersNames[2] = home.chasers[2].Name;
+            team2ChasersIntercept[0] = home.chasers[0].intercept + home.chasers[0].hat.Intercept + home.chasers[0].gloves.Intercept + home.chasers[0].glasses.Intercept + home.chasers[0].body.Intercept + home.chasers[0].broom.Intercept;
+            team2ChasersIntercept[1] = home.chasers[1].intercept + home.chasers[1].hat.Intercept + home.chasers[1].gloves.Intercept + home.chasers[1].glasses.Intercept + home.chasers[1].body.Intercept + home.chasers[1].broom.Intercept;
+            team2ChasersIntercept[2] = home.chasers[2].intercept + home.chasers[2].hat.Intercept + home.chasers[2].gloves.Intercept + home.chasers[2].glasses.Intercept + home.chasers[2].body.Intercept + home.chasers[2].broom.Intercept;
+            team2ChasersPass[0] = home.chasers[0].pass + home.chasers[0].hat.Pass + home.chasers[0].gloves.Pass + home.chasers[0].glasses.Pass + home.chasers[0].body.Pass + home.chasers[0].broom.Pass;
+            team2ChasersPass[1] = home.chasers[1].pass + home.chasers[1].hat.Pass + home.chasers[1].gloves.Pass + home.chasers[1].glasses.Pass + home.chasers[1].body.Pass + home.chasers[1].broom.Pass;
+            team2ChasersPass[2] = home.chasers[2].pass + home.chasers[2].hat.Pass + home.chasers[2].gloves.Pass + home.chasers[2].glasses.Pass + home.chasers[2].body.Pass + home.chasers[2].broom.Pass;
+            team2ChaserTackle[0] = home.chasers[0].tackle + home.chasers[0].hat.Tackle + home.chasers[0].gloves.Tackle + home.chasers[0].glasses.Tackle + home.chasers[0].body.Tackle + home.chasers[0].broom.Tackle;
+            team2ChaserTackle[1] = home.chasers[1].tackle + home.chasers[1].hat.Tackle + home.chasers[1].gloves.Tackle + home.chasers[1].glasses.Tackle + home.chasers[1].body.Tackle + home.chasers[1].broom.Tackle;
+            team2ChaserTackle[2] = home.chasers[2].tackle + home.chasers[2].hat.Tackle + home.chasers[2].gloves.Tackle + home.chasers[2].glasses.Tackle + home.chasers[2].body.Tackle + home.chasers[2].broom.Tackle;
+            team2ChaserShooting[0] = home.chasers[0].shooting + home.chasers[0].hat.Shooting + home.chasers[0].gloves.Shooting + home.chasers[0].glasses.Shooting + home.chasers[0].body.Shooting + home.chasers[0].broom.Shooting;
+            team2ChaserShooting[1] = home.chasers[1].shooting + home.chasers[1].hat.Shooting + home.chasers[1].gloves.Shooting + home.chasers[1].glasses.Shooting + home.chasers[1].body.Shooting + home.chasers[1].broom.Shooting;
+            team2ChaserShooting[2] = home.chasers[2].shooting + home.chasers[2].hat.Shooting + home.chasers[2].gloves.Shooting + home.chasers[2].glasses.Shooting + home.chasers[2].body.Shooting + home.chasers[2].broom.Shooting;
+            team2ChaserDodge[0] = home.chasers[0].dodge + home.chasers[0].hat.Dodge + home.chasers[0].gloves.Dodge + home.chasers[0].glasses.Dodge + home.chasers[0].body.Dodge + home.chasers[0].broom.Dodge;
+            team2ChaserDodge[1] = home.chasers[1].dodge + home.chasers[1].hat.Dodge + home.chasers[1].gloves.Dodge + home.chasers[1].glasses.Dodge + home.chasers[1].body.Dodge + home.chasers[1].broom.Dodge;
+            team2ChaserDodge[2] = home.chasers[2].dodge + home.chasers[2].hat.Dodge + home.chasers[2].gloves.Dodge + home.chasers[2].glasses.Dodge + home.chasers[2].body.Dodge + home.chasers[2].broom.Dodge;
+            team2ChaserSpeed[0] = home.chasers[0].speed + home.chasers[0].hat.Speed + home.chasers[0].gloves.Speed + home.chasers[0].glasses.Speed + home.chasers[0].body.Speed + home.chasers[0].broom.Speed;
+            team2ChaserSpeed[1] = home.chasers[1].speed + home.chasers[1].hat.Speed + home.chasers[1].gloves.Speed + home.chasers[1].glasses.Speed + home.chasers[1].body.Speed + home.chasers[1].broom.Speed;
+            team2ChaserSpeed[2] = home.chasers[2].speed + home.chasers[2].hat.Speed + home.chasers[2].gloves.Speed + home.chasers[2].glasses.Speed + home.chasers[2].body.Speed + home.chasers[2].broom.Speed;
 
-        team2Beaters[0] = teams[gameManager.homeTeam].beaters[0].Name;
-        team2Beaters[1] = teams[gameManager.homeTeam].beaters[1].Name;
-        team2BeaterLocateBludgerSpeed[0] = teams[gameManager.homeTeam].beaters[0].locateSpeed + teams[gameManager.homeTeam].beaters[0].hat.LocateSpeed + teams[gameManager.homeTeam].beaters[0].gloves.LocateSpeed + teams[gameManager.homeTeam].beaters[0].glasses.LocateSpeed + teams[gameManager.homeTeam].beaters[0].body.LocateSpeed + teams[gameManager.homeTeam].beaters[0].broom.LocateSpeed;
-        team2BeaterLocateBludgerSpeed[1] = teams[gameManager.homeTeam].beaters[1].locateSpeed + teams[gameManager.homeTeam].beaters[1].hat.LocateSpeed + teams[gameManager.homeTeam].beaters[1].gloves.LocateSpeed + teams[gameManager.homeTeam].beaters[1].glasses.LocateSpeed + teams[gameManager.homeTeam].beaters[1].body.LocateSpeed + teams[gameManager.homeTeam].beaters[1].broom.LocateSpeed;
-        team2BeaterDodge[0] = teams[gameManager.homeTeam].beaters[0].dodge + teams[gameManager.homeTeam].beaters[0].hat.Dodge + teams[gameManager.homeTeam].beaters[0].gloves.Dodge + teams[gameManager.homeTeam].beaters[0].glasses.Dodge + teams[gameManager.homeTeam].beaters[0].body.Dodge + teams[gameManager.homeTeam].beaters[0].broom.Dodge;
-        team2BeaterDodge[1] = teams[gameManager.homeTeam].beaters[1].dodge + teams[gameManager.homeTeam].beaters[1].hat.Dodge + teams[gameManager.homeTeam].beaters[1].gloves.Dodge + teams[gameManager.homeTeam].beaters[1].glasses.Dodge + teams[gameManager.homeTeam].beaters[1].body.Dodge + teams[gameManager.homeTeam].beaters[1].broom.Dodge;
+            team2Beaters[0] = home.beaters[0].Name;
+            team2Beaters[1] = home.beaters[1].Name;
+            team2BeaterLocateBludgerSpeed[0] = home.beaters[0].locateSpeed + home.beaters[0].hat.LocateSpeed + home.beaters[0].gloves.LocateSpeed + home.beaters[0].glasses.LocateSpeed + home.beaters[0].body.LocateSpeed + home.beaters[0].broom.LocateSpeed;
+            team2BeaterLocateBludgerSpeed[1] = home.beaters[1].locateSpeed + home.beaters[1].hat.LocateSpeed + home.beaters[1].gloves.LocateSpeed + home.beaters[1].glasses.LocateSpeed + home.beaters[1].body.LocateSpeed + home.beaters[1].broom.LocateSpeed;
+            team2BeaterDodge[0] = home.beaters[0].dodge + home.beaters[0].hat.Dodge + home.beaters[0].gloves.Dodge + home.beaters[0].glasses.Dodge + home.beaters[0].body.Dodge + home.beaters[0].broom.Dodge;
+            team2BeaterDodge[1] = home.beaters[1].dodge + home.beaters[1].hat.Dodge + home.beaters[1].gloves.Dodge + home.beaters[1].glasses.Dodge + home.beaters[1].body.Dodge + home.beaters[1].broom.Dodge;
 
-        team2Keeper = teams[gameManager.homeTeam].keeper[0].Name;
-        team2KeeperDodge = teams[gameManager.homeTeam].keeper[0].dodge + teams[gameManager.homeTeam].keeper[0].hat.Dodge + teams[gameManager.homeTeam].keeper[0].gloves.Dodge + teams[gameManager.homeTeam].keeper[0].glasses.Dodge + teams[gameManager.homeTeam].keeper[0].body.Dodge + teams[gameManager.homeTeam].keeper[0].broom.Dodge;
-        team2KeeperBlock = teams[gameManager.homeTeam].keeper[0].block + teams[gameManager.homeTeam].keeper[0].hat.Block + teams[gameManager.homeTeam].keeper[0].gloves.Block + teams[gameManager.homeTeam].keeper[0].glasses.Block + teams[gameManager.homeTeam].keeper[0].body.Block + teams[gameManager.homeTeam].keeper[0].broom.Block;
+            team2Keeper = home.keeper[0].Name;
+            team2KeeperDodge = home.keeper[0].dodge + home.keeper[0].hat.Dodge + home.keeper[0].gloves.Dodge + home.keeper[0].glasses.Dodge + home.keeper[0].body.Dodge + home.keeper[0].broom.Dodge;
+            team2KeeperBlock = home.keeper[0].block + home.keeper[0].hat.Block + home.keeper[0].gloves.Block + home.keeper[0].glasses.Block + home.keeper[0].body.Block + home.keeper[0].broom.Block;
 
-        team2Seeker = teams[gameManager.homeTeam].seeker[0].Name;
-        team2SeekerDodge = teams[gameManager.homeTeam].seeker[0].dodge + teams[gameManager.homeTeam].seeker[0].hat.Dodge + teams[gameManager.homeTeam].seeker[0].gloves.Dodge + teams[gameManager.homeTeam].seeker[0].glasses.Dodge + teams[gameManager.homeTeam].seeker[0].body.Dodge + teams[gameManager.homeTeam].seeker[0].broom.Dodge;
-        team2SeekerSight = teams[gameManager.homeTeam].seeker[0].sight + teams[gameManager.homeTeam].seeker[0].hat.Sight + teams[gameManager.homeTeam].seeker[0].gloves.Sight + teams[gameManager.homeTeam].seeker[0].glasses.Sight + teams[gameManager.homeTeam].seeker[0].body.Sight + teams[gameManager.homeTeam].seeker[0].broom.Sight;
-        team2SeekerSpeed = teams[gameManager.homeTeam].seeker[0].speed + teams[gameManager.homeTeam].seeker[0].hat.Speed + teams[gameManager.homeTeam].seeker[0].gloves.Speed + teams[gameManager.homeTeam].seeker[0].glasses.Speed + teams[gameManager.homeTeam].seeker[0].body.Speed + teams[gameManager.homeTeam].seeker[0].broom.Speed;
-        team2SeekerReach = teams[gameManager.homeTeam].seeker[0].reach + teams[gameManager.homeTeam].seeker[0].hat.Reach + teams[gameManager.homeTeam].seeker[0].gloves.Reach + teams[gameManager.homeTeam].seeker[0].glasses.Reach + teams[gameManager.homeTeam].seeker[0].body.Reach + teams[gameManager.homeTeam].seeker[0].broom.Reach;
-        team2SeekerGrabRange = teams[gameManager.homeTeam].seeker[0].grab + teams[gameManager.homeTeam].seeker[0].hat.Grab + teams[gameManager.homeTeam].seeker[0].gloves.Grab + teams[gameManager.homeTeam].seeker[0].glasses.Grab + teams[gameManager.homeTeam].seeker[0].body.Grab + teams[gameManager.homeTeam].seeker[0].broom.Grab;
+            team2Seeker = home.seeker[0].Name;
+            team2SeekerDodge = home.seeker[0].dodge + home.seeker[0].hat.Dodge + home.seeker[0].gloves.Dodge + home.seeker[0].glasses.Dodge + home.seeker[0].body.Dodge + home.seeker[0].broom.Dodge;
+            team2SeekerSight = home.seeker[0].sight + home.seeker[0].hat.Sight + home.seeker[0].gloves.Sight + home.seeker[0].glasses.Sight + home.seeker[0].body.Sight + home.seeker[0].broom.Sight;
+            team2SeekerSpeed = home.seeker[0].speed + home.seeker[0].hat.Speed + home.seeker[0].gloves.Speed + home.seeker[0].glasses.Speed + home.seeker[0].body.Speed + home.seeker[0].broom.Speed;
+            team2SeekerReach = home.seeker[0].reach + home.seeker[0].hat.Reach + home.seeker[0].gloves.Reach + home.seeker[0].glasses.Reach + home.seeker[0].body.Reach + home.seeker[0].broom.Reach;
+            team2SeekerGrabRange = home.seeker[0].grab + home.seeker[0].hat.Grab + home.seeker[0].gloves.Grab + home.seeker[0].glasses.Grab + home.seeker[0].body.Grab + home.seeker[0].broom.Grab;
 
-        team2sun = teams[gameManager.homeTeam].teamSun;
-        team2rain = teams[gameManager.homeTeam].teamRain;
-        team2fog = teams[gameManager.homeTeam].teamFog;
-        team2snow = teams[gameManager.homeTeam].teamSnow;
+            team2sun = home.teamSun;
+            team2rain = home.teamRain;
+            team2fog = home.teamFog;
+            team2snow = home.teamSnow;
+        }
     }
 
-    public void BeginMatch()
+    public void BeginMatch(SeasonTeam visitor, SeasonTeam home)
     {
-        SetLineUp();
+        SetLineUp(visitor, home);
         visitorTeamhomeField = 0;
         homeTeamhomeField = 0;
         // variable to determine if they get a boost for home field advantage

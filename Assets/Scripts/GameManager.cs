@@ -270,7 +270,7 @@ public class GameManager : MonoBehaviour
     public void SetLineUp()
     {
         teamsUI.SetActive(false);
-        players.BeginMatch();
+        players.BeginMatch(seasonTeams[visitorInt], seasonTeams[homeInt]);
     }
 
     public void StartGame()
@@ -873,20 +873,20 @@ public class GameManager : MonoBehaviour
     }
 
     #region TeamChoice
-    public void Visitor0()
+  /*  public void Visitor0()
     {
         visitorTeam = 0;
         players.SetLineUp();
         TurnOnLineUpVisitor();
         visitorText.text = "Gryffindor";
-    }
+    }*/
 
     public void SetUpVisitor()
     {
         undoButtonExhibition.SetActive(true);
         visitorSelected = true;
         visitorTeam = visitorInt;
-        players.SetLineUp();
+        players.SetLineUp(seasonTeams[visitorInt], null);
         TurnOnLineUpVisitor();
         visitorText.text = seasonTeams[visitorInt].team;
     }
@@ -907,7 +907,7 @@ public class GameManager : MonoBehaviour
         stadiumSelected = seasonTeams[homeInt].GetComponent<SeasonTeam>().homeStadiumNum;
         CheckWeather();
         homeTeam = homeInt;
-        players.SetLineUp();
+        players.SetLineUp(seasonTeams[visitorInt], seasonTeams[homeInt]);
         TurnOnLineUpHome();
         homeText.text = seasonTeams[homeInt].team;
     }
@@ -1188,7 +1188,7 @@ public class GameManager : MonoBehaviour
         exhibSeasonMenu.SetActive(false);
 
         players.RandomWeather();
-        players.BeginMatch();
+        players.BeginMatch(seasonTeams[visitorTeam], seasonTeams[homeTeam]);
 
         spotter.SetActive(false);
     }
@@ -1222,7 +1222,7 @@ public class GameManager : MonoBehaviour
         ClearStats();
 
         players.RandomWeather();
-        players.BeginMatch();
+        players.BeginMatch(seasonTeams[visitorTeam], seasonTeams[homeTeam]);
     }
     //turn button on correctly
     public void OpenManagementMenuAfterAGame()
