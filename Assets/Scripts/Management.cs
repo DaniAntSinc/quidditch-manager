@@ -77,7 +77,8 @@ public class Management : MonoBehaviour
     public TMP_Text teamMainName, teamStadium, keeper, seeker, beater1, beater2, chaser1, chaser2, chaser3;
     public Image logoSprite;
 
-    public GameObject startingPageMenu, playersSubMenu, equipmentSubMenu, transactSubMenu, calendarSubMenu, strategySubMenu, standingsSubMenu; 
+    public GameObject startingPageMenu, playersSubMenu, equipmentSubMenu, transactSubMenu, calendarSubMenu, strategySubMenu, standingsSubMenu;
+    public ManagementSeasonTracker seasonTracker;
     #endregion
     public void Start()
     {
@@ -649,6 +650,7 @@ public class Management : MonoBehaviour
         chaser3.text = playersTeam.GetComponent<SeasonTeam>().chasers[2].Name;
         logoSprite.sprite = logoSelectionList[logoNumSelected];
         teamBudgetText.text = "Team Budget: " + saveLoad.teamBudget.ToString("F0");
+        seasonTracker.teamsInLeague.Add(playersTeam.GetComponent<SeasonTeam>());
     }
 
     public void ReturnToManagementHomePage()
