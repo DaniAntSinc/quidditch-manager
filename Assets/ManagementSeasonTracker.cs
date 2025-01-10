@@ -9,7 +9,7 @@ public class ManagementSeasonTracker : MonoBehaviour
     public GameObject matchPreviewMenu;
     public GameObject managementMenu;
     public Players matchStart;
-    public GameObject startingPage, ExhibOrSeason, TeamSelection;
+    public GameObject startingPage, ExhibOrSeason, TeamSelection, startingMenu;
     //add player's team to this
 
     //this is how many days are in the season - 4 months, 28 days, starting at 0 = max of 111
@@ -20,6 +20,7 @@ public class ManagementSeasonTracker : MonoBehaviour
     public List<int> homeTeams = new List<int> { 9, 9, 7, 5, 9, 9, 3, 4, 7, 9, 8, 2, 0, 9, 9, 6, 5, 9, 9, 1, 9, 9, 6, 8, 9, 9 };
 
     public TMP_Text dayActivitiesText;
+    public Players players;
 
     //if calendar date = list, choose team 1 and team 2
     //pass into management
@@ -33,6 +34,11 @@ public class ManagementSeasonTracker : MonoBehaviour
     public void AdvanceDay()
     {
         dayOfSeason++;
+        CheckSchedule();
+    }
+
+    void CheckSchedule()
+    {
         if (dayOfSeason == matchDays[placeInList])
         {
             dayActivitiesText.text = "Match Day";
@@ -56,9 +62,13 @@ public class ManagementSeasonTracker : MonoBehaviour
 
     public void MatchDayGame()
     {
-        matchStart.BeginMatch(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]]);
+        GameObject.Find("Main Camera").GetComponent<GameManager>().ClearStats();
+        players.RandomWeather(teamsInLeague[homeTeams[placeInList]].homeStadium);
+        matchStart.BeginMatch(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[homeTeams[placeInList]].homeStadium);
         managementMenu.SetActive(false);
         ExhibOrSeason.SetActive(false);
         TeamSelection.SetActive(false);
+        startingMenu.SetActive(true);
+        matchPreviewMenu.SetActive(false);
     }
 }

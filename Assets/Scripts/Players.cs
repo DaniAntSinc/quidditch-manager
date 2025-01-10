@@ -180,18 +180,23 @@ public class Players : MonoBehaviour
         }
     }
 
-    public void BeginMatch(SeasonTeam visitor, SeasonTeam home)
+    public void BeginMatch(SeasonTeam visitor, SeasonTeam home, Stadium stadium)
     {
         SetLineUp(visitor, home);
         visitorTeamhomeField = 0;
         homeTeamhomeField = 0;
         // variable to determine if they get a boost for home field advantage
         float homeField = Random.Range(0.025f, 0.05f);
-        if (gameManager.stadiumSelected == gameManager.seasonTeams[gameManager.visitorInt].GetComponent<SeasonTeam>().homeStadiumNum)
+        if(visitor.homeStadium == stadium)
+            visitorTeamhomeField += homeField;
+        if (home.homeStadium == stadium)
+            homeTeamhomeField += homeField;
+
+        /*if (gameManager.stadiumSelected == gameManager.seasonTeams[gameManager.visitorInt].GetComponent<SeasonTeam>().homeStadiumNum)
             visitorTeamhomeField += homeField;
         if (gameManager.stadiumSelected == gameManager.seasonTeams[gameManager.homeInt].GetComponent<SeasonTeam>().homeStadiumNum)
             homeTeamhomeField += homeField;
-
+        */
         //    variance variable for players and weather
         int varianceAmt = Random.Range(0,4);
     //    Slight Variance to players to indicate 'Good Days' versus 'Bad Days'
@@ -506,7 +511,7 @@ public class Players : MonoBehaviour
             print("Home Team Advantage: " + (homeField*100) + "%");
         if (visitorTeamhomeField > 0)
             print("Visitor Team Advantage: " + (homeField*100) + "%");
-        gameManager.StartGame();
+        gameManager.StartGame(visitor, home, stadium);
     }
 
     public void WeatherReset()
@@ -567,22 +572,22 @@ public class Players : MonoBehaviour
             gameManager.weatherTextToDisplay = "Clear";
     }
 
-    public void RandomWeather()
+    public void RandomWeather(Stadium stadium)
     {
-        if (gameManager.stadiumSelected == 20)
+        if (stadium.stadiumName == "World Cup Dome" || stadium.stadiumName == "Springfield Arena")
             Indoor();
         else
         {
             float randWeather = Random.Range(0f, 1f);
-            if (randWeather < gameManager.stadiumList[gameManager.stadiumSelected].hotChance)
+            if (randWeather < stadium.hotChance)
                 Sunny();
-            else if (randWeather >= gameManager.stadiumList[gameManager.stadiumSelected].hotChance && randWeather < gameManager.stadiumList[gameManager.stadiumSelected].clearChance)
+            else if (randWeather >= stadium.hotChance && randWeather < stadium.clearChance)
                 Indoor();
-            else if (randWeather >= gameManager.stadiumList[gameManager.stadiumSelected].clearChance && randWeather < gameManager.stadiumList[gameManager.stadiumSelected].fogChance)
+            else if (randWeather >= stadium.clearChance && randWeather < stadium.fogChance)
                 Fog();
-            else if (randWeather >= gameManager.stadiumList[gameManager.stadiumSelected].fogChance && randWeather < gameManager.stadiumList[gameManager.stadiumSelected].rainChange)
+            else if (randWeather >= stadium.fogChance && randWeather < stadium.rainChange)
                 Rain();
-            else if (randWeather >= gameManager.stadiumList[gameManager.stadiumSelected].rainChange && randWeather < gameManager.stadiumList[gameManager.stadiumSelected].snowChance)
+            else if (randWeather >= stadium.rainChange && randWeather < stadium.snowChance)
                 Snow();
             else
             {

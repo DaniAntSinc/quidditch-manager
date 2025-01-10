@@ -191,6 +191,7 @@ public class GameManager : MonoBehaviour
     public bool managementMode;
     public GameObject managementNewLoad, managementTeamCreation, managementHome, managementBaseMenu;
     public GameObject managementPostGameButton;
+    public ManagementSeasonTracker seasonTracker;
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -270,14 +271,15 @@ public class GameManager : MonoBehaviour
     public void SetLineUp()
     {
         teamsUI.SetActive(false);
-        players.BeginMatch(seasonTeams[visitorInt], seasonTeams[homeInt]);
+        ClearStats();
+        players.BeginMatch(seasonTeams[visitorInt], seasonTeams[homeInt], stadiumList[stadiumSelected]);
     }
 
-    public void StartGame()
+    public void StartGame(SeasonTeam visitor, SeasonTeam home, Stadium stadium)
     {
         CreateGameEvent("Welcome to today's match between:");
-        CreateGameEvent(players.team1 + " and " + players.team2);
-        CreateGameEvent("We are playing at " + stadiumList[stadiumSelected].stadiumName);
+        CreateGameEvent(visitor.team + " and " + home.team);
+        CreateGameEvent("We are playing at " + stadium.stadiumName);
         CreateGameEvent("The weather is " + weatherTextToDisplay + ".");
         team1Name.text = players.team1;
         team2Name.text = players.team2;
@@ -290,10 +292,10 @@ public class GameManager : MonoBehaviour
         {
             cheatsGO.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.O))
+           /* if (Input.GetKeyDown(KeyCode.O))
             {
                 StartGame();
-            }
+            }*/
             if (Input.GetKeyDown(KeyCode.R))
                 ReloadScene();
         }
@@ -932,7 +934,7 @@ public class GameManager : MonoBehaviour
                 weatherButtons[i].SetActive(true);
             }
             weatherButtons[0].transform.GetChild(2).GetComponent<TMP_Text>().text = "Clear";
-            players.RandomWeather();
+            players.RandomWeather(stadiumList[stadiumSelected]);
         }
     }
 
@@ -1058,8 +1060,11 @@ public class GameManager : MonoBehaviour
 
     public void OpenManagementMenu()
     {
+        ClearStats();
+
         simulationMenu.SetActive(false);
         managementMenu.SetActive(true);
+        seasonTracker.AdvanceDay();
     }
 
     public void CloseManagementMenu()
@@ -1067,6 +1072,8 @@ public class GameManager : MonoBehaviour
         simulationMenu.SetActive(true);
         managementMenu.SetActive(false);
         managementMode = false;
+        exhibSeasonMenu.SetActive(true);
+        teamsUI.SetActive(true);
     }
 
     public void CloseExhib()
@@ -1187,8 +1194,8 @@ public class GameManager : MonoBehaviour
         teamsUI.SetActive(false);
         exhibSeasonMenu.SetActive(false);
 
-        players.RandomWeather();
-        players.BeginMatch(seasonTeams[visitorTeam], seasonTeams[homeTeam]);
+        players.RandomWeather(seasonTeams[homeTeam].homeStadium);
+        players.BeginMatch(seasonTeams[visitorTeam], seasonTeams[homeTeam], seasonTeams[homeTeam].homeStadium);
 
         spotter.SetActive(false);
     }
@@ -1221,8 +1228,8 @@ public class GameManager : MonoBehaviour
 
         ClearStats();
 
-        players.RandomWeather();
-        players.BeginMatch(seasonTeams[visitorTeam], seasonTeams[homeTeam]);
+        players.RandomWeather(seasonTeams[homeTeam].homeStadium);
+        players.BeginMatch(seasonTeams[visitorTeam], seasonTeams[homeTeam], seasonTeams[homeTeam].homeStadium);
     }
     //turn button on correctly
     public void OpenManagementMenuAfterAGame()
@@ -1266,6 +1273,8 @@ public class GameManager : MonoBehaviour
         chasers.KickOff();
         matchStatsButton.SetActive(false);
         nextGame.SetActive(false);
+        managementPostGameButton.SetActive(false);
+        newGameButton.SetActive(false);
         team1ScoreText.text = "0";
         team2ScoreText.text = "0";
         windowGraph.GetComponent<WindowGraph>().ToggleMomentum();
