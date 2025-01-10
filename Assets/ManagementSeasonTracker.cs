@@ -6,6 +6,10 @@ using TMPro;
 public class ManagementSeasonTracker : MonoBehaviour
 {
     public List<SeasonTeam> teamsInLeague;
+    public GameObject matchPreviewMenu;
+    public GameObject managementMenu;
+    public Players matchStart;
+    public GameObject startingPage, ExhibOrSeason, TeamSelection;
     //add player's team to this
 
     //this is how many days are in the season - 4 months, 28 days, starting at 0 = max of 111
@@ -32,6 +36,8 @@ public class ManagementSeasonTracker : MonoBehaviour
         if (dayOfSeason == matchDays[placeInList])
         {
             dayActivitiesText.text = "Match Day";
+            matchPreviewMenu.SetActive(true);
+            SetUIForMatchPreview();
             print("Match: " + teamsInLeague[visitorTeams[placeInList]].team + " at " + teamsInLeague[homeTeams[placeInList]].team);
             placeInList++;
         }
@@ -40,5 +46,19 @@ public class ManagementSeasonTracker : MonoBehaviour
 
         if (dayOfSeason > 111)
             dayOfSeason = 0;
+    }
+
+    void SetUIForMatchPreview()
+    {
+        startingPage.SetActive(false);
+    //logo, standings, players at each position, ratings at each position
+    }
+
+    public void MatchDayGame()
+    {
+        matchStart.BeginMatch(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]]);
+        managementMenu.SetActive(false);
+        ExhibOrSeason.SetActive(false);
+        TeamSelection.SetActive(false);
     }
 }
