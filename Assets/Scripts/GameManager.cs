@@ -361,7 +361,7 @@ public class GameManager : MonoBehaviour
         C1Sp.value = 0.5f;
         C2Sp.value = 0.5f;
         C3Sp.value = 0.5f;
-        C1T.value = 0.5f
+        C1T.value = 0.5f;
         C2T.value = 0.5f;
         C3T.value = 0.5f;
 
