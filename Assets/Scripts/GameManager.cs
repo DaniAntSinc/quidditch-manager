@@ -192,6 +192,21 @@ public class GameManager : MonoBehaviour
     public GameObject managementNewLoad, managementTeamCreation, managementHome, managementBaseMenu;
     public GameObject managementPostGameButton;
     public ManagementSeasonTracker seasonTracker;
+
+    public TMP_Text ticketSales, concessions, souvenirs, leagueDispursement, total;
+    public TMP_Text C1N, C2N, C3N, B1N, B2N, K1N, S1N;
+    public TMP_Text C1Min, C1Max, C1PMin, C1PMax, C1SMin, C1SMax, C1SpMin, C1SpMax, C1TMin, C1TMax;
+    public TMP_Text C2IMin, C2IMax, C2PMin, C2PMax, C2SMin, C2SMax, C2SpMin, C2SpMax, C2TMin, C2TMax;
+    public TMP_Text C3IMin, C3IMax, C3PMin, C3PMax, C3SMin, C3SMax, C3SpMin, C3SpMax, C3TMin, C3TMax;
+    public TMP_Text B1LSMin, B1LSMax;
+    public TMP_Text B2LSMin, B2LSMax;
+    public TMP_Text KBMin, KBMax;
+    public TMP_Text S1SMin, S1SMax, S1SpMin, S1SpMax, S1RMin, S1RMax, S1GMin, S1GMax;
+    public Slider C1I, C2I, C3I, C1P, C2P, C3P, C1S, C2S, C3S, C1Sp, C2Sp, C3Sp, C1T, C2T, C3T;
+    public Slider B1L, B2L;
+    public Slider K1B;
+    public Slider SS, SSp, SR, SG;
+
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -266,7 +281,101 @@ public class GameManager : MonoBehaviour
         matchStandingsMenu.SetActive(false);
         matchMomentumMenu.SetActive(false);
         managementStatsMenu.SetActive(true);
-    }
+
+        #region PostGameManagementUI
+        //Revenue
+        ticketSales.text = "0";
+        concessions.text = "0";
+        souvenirs.text = "0";
+        leagueDispursement.text = "0";
+        total.text = "0";
+        //PlayerStats
+        C1N.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].Name;
+        C2N.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].Name;
+        C3N.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].Name;
+        B1N.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].Name;
+        B2N.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].Name;
+        K1N.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].Name;
+        S1N.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].Name;
+
+        C1Min.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].intercept.ToString();
+        C1Max.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].intercept + 1).ToString();
+        C1PMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].pass.ToString();
+        C1PMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].pass + 1).ToString();
+        C1SMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].shooting.ToString();
+        C1SMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].shooting + 1).ToString();
+        C1SpMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].speed.ToString();
+        C1SpMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].speed + 1).ToString();
+        C1TMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].tackle.ToString();
+        C1TMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].tackle + 1).ToString();
+
+        C2IMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].intercept.ToString();
+        C2IMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].intercept + 1).ToString();
+        C2PMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].pass.ToString();
+        C2PMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].pass + 1).ToString();
+        C2SMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].shooting.ToString();
+        C2SMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].shooting + 1).ToString();
+        C2SpMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].speed.ToString();
+        C2SpMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].speed + 1).ToString();
+        C2TMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].tackle.ToString();
+        C2TMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].tackle + 1).ToString();
+
+        C3IMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].intercept.ToString();
+        C3IMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].intercept + 1).ToString();
+        C3PMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].pass.ToString();
+        C3PMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].pass + 1).ToString();
+        C3SMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].shooting.ToString();
+        C3SMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].shooting + 1).ToString();
+        C3SpMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].speed.ToString();
+        C3SpMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].speed + 1).ToString();
+        C3TMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].tackle.ToString();
+        C3TMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].tackle + 1).ToString();
+
+        B1LSMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].locateSpeed.ToString();
+        B1LSMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].locateSpeed + 1).ToString();
+
+        B2LSMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].locateSpeed.ToString();
+        B2LSMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].locateSpeed + 1).ToString();
+
+        KBMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].block.ToString();
+        KBMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].block + 1).ToString();
+
+        S1SMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].sight.ToString();
+        S1SMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].sight + 1).ToString();
+        S1SpMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].speed.ToString();
+        S1SpMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].speed + 1).ToString();
+        S1RMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].reach.ToString();
+        S1RMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].reach + 1).ToString();
+        S1GMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].grab.ToString();
+        S1GMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].grab + 1).ToString();
+
+        C1I.value = 0.5f;
+        C2I.value = 0.5f;
+        C3I.value = 0.5f;
+        C1P.value = 0.5f;
+        C2P.value = 0.5f;
+        C3P.value = 0.5f;
+        C1S.value = 0.5f;
+        C2S.value = 0.5f;
+        C3S.value = 0.5f;
+        C1Sp.value = 0.5f;
+        C2Sp.value = 0.5f;
+        C3Sp.value = 0.5f;
+        C1T.value = 0.5f
+        C2T.value = 0.5f;
+        C3T.value = 0.5f;
+
+        B1L.value = 0.5f;
+        B2L.value = 0.5f;
+
+        K1B.value = 0.5f;
+
+        SS.value = 0.5f;
+        SSp.value = 0.5f;
+        SR.value = 0.5f;
+        SG.value = 0.5f;
+    #endregion
+}
 
     public void SetLineUp()
     {
