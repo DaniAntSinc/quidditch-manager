@@ -281,7 +281,9 @@ public class GameManager : MonoBehaviour
         matchStandingsMenu.SetActive(false);
         matchMomentumMenu.SetActive(false);
         managementStatsMenu.SetActive(true);
-
+}
+    public void CheckSliders()
+    {
         #region PostGameManagementUI
         //Revenue
         ticketSales.text = "0";
@@ -349,33 +351,39 @@ public class GameManager : MonoBehaviour
         S1GMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].grab.ToString();
         S1GMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].grab + 1).ToString();
 
-        C1I.value = 0.5f;
-        C2I.value = 0.5f;
-        C3I.value = 0.5f;
-        C1P.value = 0.5f;
-        C2P.value = 0.5f;
-        C3P.value = 0.5f;
-        C1S.value = 0.5f;
-        C2S.value = 0.5f;
-        C3S.value = 0.5f;
-        C1Sp.value = 0.5f;
-        C2Sp.value = 0.5f;
-        C3Sp.value = 0.5f;
-        C1T.value = 0.5f;
-        C2T.value = 0.5f;
-        C3T.value = 0.5f;
 
-        B1L.value = 0.5f;
-        B2L.value = 0.5f;
+        C1I.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentIExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].IExperienceCap);
+        C2I.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentIExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].IExperienceCap);
+        C3I.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentIExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].IExperienceCap);
+        float temp;
+        print(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentPExperience);
+        print(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].PExperienceCap);
+        temp = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].PExperienceCap / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].PExperienceCap;
+        print(temp);
+        C1P.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentPExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].PExperienceCap);
+        C2P.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentPExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].PExperienceCap);
+        C3P.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentPExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].PExperienceCap);
+        C1S.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentSExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].SExperienceCap);
+        C2S.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentSExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].SExperienceCap);
+        C3S.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentSExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].SExperienceCap);
+        C1Sp.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentSpExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].SpExperienceCap);
+        C2Sp.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentSpExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].SpExperienceCap);
+        C3Sp.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentSpExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].SpExperienceCap);
+        C1T.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentTExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].TExperienceCap);
+        C2T.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentTExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].TExperienceCap);
+        C3T.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentTExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].TExperienceCap);
 
-        K1B.value = 0.5f;
+        B1L.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].currentLSExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].LSExperienceCap);
+        B2L.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].currentLSExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].LSExperienceCap);
 
-        SS.value = 0.5f;
-        SSp.value = 0.5f;
-        SR.value = 0.5f;
-        SG.value = 0.5f;
-    #endregion
-}
+        K1B.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].currentBExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].BExperienceCap);
+
+        SS.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentSExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].SExperienceCap);
+        SSp.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentSpExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].SpExperienceCap);
+        SR.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentRExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].RExperienceCap);
+        SG.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentGExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].GExperienceCap);
+        #endregion
+    }
 
     public void SetLineUp()
     {
@@ -1173,6 +1181,9 @@ public class GameManager : MonoBehaviour
 
         simulationMenu.SetActive(false);
         managementMenu.SetActive(true);
+        UpdateManagementExperience(seasonTeams[visitorTeam], seasonTeams[homeTeam]);
+
+        //does this belong here? 
         seasonTracker.AdvanceDay();
     }
 
@@ -1498,6 +1509,383 @@ public class GameManager : MonoBehaviour
             if (visitorSelected && homeSelected)
                 teamsSelected.SetActive(true);
         }
+    }
+
+    public void UpdateManagementExperience(SeasonTeam visitor, SeasonTeam home)
+    {
+        //Fetch Current Exp Level
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].EvaluateExpNeeded();
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].EvaluateExpNeeded();
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].EvaluateExpNeeded();
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].EvaluateExpNeeded();
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].EvaluateExpNeeded();
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].EvaluateExpNeeded();
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].EvaluateExpNeeded();
+
+        //Chaser
+        if (visitor.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+        {
+            //chaser1
+            //intercept
+            if (team1Chaser1Intercepts > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentIExperience += 2;
+                for (int i = 0; i < team1Chaser1Intercepts; i++)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentIExperience += 1;
+                }
+            }
+            //pass
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentPExperience += 3;
+            //shooting
+            if (team1Chaser1Shot > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentSExperience += 1;
+                //shooting negative
+                if ((team1Chaser1Shot + team1Chaser2Shot + team1Chaser3Shot) / (team2KeeperSaves + 1) < 0.5f)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentSExperience -= 3;
+                }
+                //shooting bonus
+                if ((team1Chaser1Shot + team1Chaser2Shot + team1Chaser3Shot) / (team2KeeperSaves + 1) > 0.75f)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentSExperience += 6;
+                }
+            }
+            //speed
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentSpExperience += 2;
+            //tackle
+            if (team1Chaser1Tackles > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentTExperience += 2;
+                for (int i = 0; i < team1Chaser1Tackles; i++)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentTExperience += 1;
+                }
+            }
+            //chaser2
+            //intercept
+            if (team1Chaser2Intercepts > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentIExperience += 2;
+                for (int i = 0; i < team1Chaser2Intercepts; i++)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentIExperience += 1;
+                }
+            }
+            //pass
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentPExperience += 3;
+            //shooting
+            if (team1Chaser2Shot > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentSExperience += 1;
+                //shooting negative
+                if ((team1Chaser1Shot + team1Chaser2Shot + team1Chaser3Shot) / (team2KeeperSaves + 1)< 0.5f)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentSExperience -= 3;
+                }
+                //shooting bonus
+                if ((team1Chaser1Shot + team1Chaser2Shot + team1Chaser3Shot) / (team2KeeperSaves + 1) > 0.75f)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentSExperience += 6;
+                }
+            }
+            //speed
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentSpExperience += 2;
+            //tackle
+            if (team1Chaser2Tackles > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentTExperience += 2;
+                for (int i = 0; i < team1Chaser2Tackles; i++)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentTExperience += 1;
+                }
+            }
+            //chaser3
+            //intercept
+            if (team1Chaser3Intercepts > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentIExperience += 2;
+                for (int i = 0; i < team1Chaser2Intercepts; i++)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentIExperience += 1;
+                }
+            }
+            //pass
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentPExperience += 3;
+            //shooting
+            if (team1Chaser3Shot > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentSExperience += 1;
+                //shooting negative
+                if ((team1Chaser1Shot + team1Chaser2Shot + team1Chaser3Shot) / (team2KeeperSaves + 1) < 0.5f)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentSExperience -= 3;
+                }
+                //shooting bonus
+                if ((team1Chaser1Shot + team1Chaser2Shot + team1Chaser3Shot) / (team2KeeperSaves + 1)> 0.75f )
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentSExperience += 6;
+                }
+            }
+            //speed
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentSpExperience += 2;
+            //tackle
+            if (team1Chaser3Tackles > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentTExperience += 2;
+                for (int i = 0; i < team1Chaser2Tackles; i++)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentTExperience += 1;
+                }
+            }
+        }
+        else
+        {
+            //chaser1
+            //intercept
+            if (team2Chaser1Intercepts > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentIExperience += 2;
+                for (int i = 0; i < team2Chaser1Intercepts; i++)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentIExperience += 1;
+                }
+            }
+            //pass
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentPExperience += 3;
+            //shooting
+            if (team2Chaser1Shot > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentSExperience += 1;
+                //shooting negative
+                if ((team2Chaser1Shot + team2Chaser2Shot + team2Chaser3Shot) / (team2KeeperSaves + 1) < 0.5f)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentSExperience -= 3;
+                }
+                //shooting bonus
+                if ((team2Chaser1Shot + team2Chaser2Shot + team2Chaser3Shot) / (team2KeeperSaves + 1) > 0.75f)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentSExperience += 6;
+                }
+            }
+            //speed
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentSpExperience += 2;
+            //tackle
+            if (team2Chaser1Tackles > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentTExperience += 2;
+                for (int i = 0; i < team2Chaser1Tackles; i++)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentTExperience += 1;
+                }
+            }
+            //chaser2
+            //intercept
+            if (team2Chaser2Intercepts > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentIExperience += 2;
+                for (int i = 0; i < team2Chaser2Intercepts; i++)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentIExperience += 1;
+                }
+            }
+            //pass
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentPExperience += 3;
+            //shooting
+            if (team2Chaser2Shot > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentSExperience += 1;
+                //shooting negative
+                if ((team2Chaser1Shot + team2Chaser2Shot + team2Chaser3Shot) / (team2KeeperSaves + 1)< 0.5f)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentSExperience -= 3;
+                }
+                //shooting bonus
+                if ((team2Chaser1Shot + team2Chaser2Shot + team2Chaser3Shot) / (team2KeeperSaves + 1) > 0.75f)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentSExperience += 6;
+                }
+            }
+            //speed
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentSpExperience += 2;
+            //tackle
+            if (team2Chaser2Tackles > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentTExperience += 2;
+                for (int i = 0; i < team2Chaser2Tackles; i++)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentTExperience += 1;
+                }
+            }
+            //chaser3
+            //intercept
+            if (team2Chaser3Intercepts > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentIExperience += 2;
+                for (int i = 0; i < team2Chaser2Intercepts; i++)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentIExperience += 1;
+                }
+            }
+            //pass
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentPExperience += 3;
+            //shooting
+            if (team2Chaser3Shot > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentSExperience += 1;
+                //shooting negative
+                if ((team2Chaser1Shot + team2Chaser2Shot + team2Chaser3Shot) / (team2KeeperSaves + 1) < 0.5f)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentSExperience -= 3;
+                }
+                //shooting bonus
+                if ((team2Chaser1Shot + team2Chaser2Shot + team2Chaser3Shot) / (team2KeeperSaves + 1 )> 0.75f)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentSExperience += 6;
+                }
+            }
+            //speed
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentSpExperience += 2;
+            //tackle
+            if (team2Chaser3Tackles > 0)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentTExperience += 2;
+                for (int i = 0; i < team2Chaser2Tackles; i++)
+                {
+                    GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentTExperience += 1;
+                }
+            }
+        }
+
+        //Beater
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].currentLSExperience += 2;
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].currentLSExperience += 2;
+
+        if (visitor.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+        {
+            for (int i = 0; i < team1Beater1BludgerHit; i++)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].currentLSExperience += 1;
+            }
+            if (team1Beater1BludgerHit / (team1Beater1BludgerSent + 1) <= 0.5f)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].currentLSExperience -= 3;
+            }
+            else if (team1Beater1BludgerHit / (team1Beater1BludgerSent + 1) >= 0.8f)
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].currentLSExperience += 6;
+
+            for (int i = 0; i < team1Beater2BludgerHit; i++)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].currentLSExperience += 1;
+            }
+            if (team1Beater2BludgerHit / (team1Beater2BludgerSent + 1) <= 0.5f)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].currentLSExperience -= 3;
+            }
+            else if (team1Beater2BludgerHit / (team1Beater2BludgerSent + 1) >= 0.8f)
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].currentLSExperience += 6;
+        }
+        else
+        {
+            for (int i = 0; i < team2Beater1BludgerHit; i++)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].currentLSExperience += 1;
+            }
+            if (team2Beater1BludgerHit / (team2Beater1BludgerSent + 1) <= 0.5f)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].currentLSExperience -= 3;
+            }
+            else if (team2Beater1BludgerHit / (team2Beater1BludgerSent + 1) >= 0.8f)
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].currentLSExperience += 6;
+
+            for (int i = 0; i < team2Beater2BludgerHit; i++)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].currentLSExperience += 1;
+            }
+            if (team2Beater2BludgerHit / (team2Beater2BludgerSent + 1) <= 0.5f)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].currentLSExperience -= 3;
+            }
+            else if (team2Beater2BludgerHit / (team2Beater2BludgerSent + 1) >= 0.8f )
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].currentLSExperience += 6;
+        }
+        //Seeker
+
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentDExperience += 3;
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentSExperience += 1;
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentSpExperience += 2;
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentRExperience += 1;
+
+        if (visitor.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+        {
+            for (int i = 0; i < team1SeekerSaw; i++)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentSExperience += 2;
+            }
+            for (int i = 0; i < team1SeekerReach; i++)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentRExperience += 2;
+            }
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentGExperience += team1SeekerSnitchCaught;
+            if(duration <= 180)
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentSpExperience += 2;
+        }
+        else
+        {
+            for (int i = 0; i < team2SeekerSaw; i++)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentSExperience += 2;
+            }
+            for (int i = 0; i < team2SeekerReach; i++)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentRExperience += 2;
+            }
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentGExperience += team1SeekerSnitchCaught;
+            if (duration <= 180)
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentSpExperience += 2;
+        }
+        //Keeper
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].currentBExperience += 5;
+        if (visitor.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+        {
+            for (int i = 0; i < team1KeeperSaves; i++)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].currentBExperience += 1;
+            }
+            if (team1KeeperSaves / (team2Chaser1Shot + team2Chaser2Shot + team2Chaser3Shot) <= 0.5f)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].currentBExperience -= 3;
+            }
+            else if (team1KeeperSaves / (team2Chaser1Shot + team2Chaser2Shot + team2Chaser3Shot + 1) >= 0.8f )
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].currentBExperience += 6;
+        }
+        else
+        {
+            for (int i = 0; i < team2KeeperSaves; i++)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].currentBExperience += 1;
+            }
+            if (team2KeeperSaves / (team1Chaser1Shot + team1Chaser2Shot + team1Chaser3Shot +1) <= 0.5f)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].currentBExperience -= 3;
+            }
+            else if (team2KeeperSaves / (team1Chaser1Shot + team1Chaser2Shot + team1Chaser3Shot + 1) >= 0.8f)
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].currentBExperience += 6;
+        }
+
+        //Update points if exceeded
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].CheckIfOverflow();
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].CheckIfOverflow();
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].CheckIfOverflow();
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].CheckIfOverflow();
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].CheckIfOverflow();
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].CheckIfOverflow();
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].CheckIfOverflow();
+  
+        //save game (exp and exp cap) 
+
+        CheckSliders();
     }
 }
 

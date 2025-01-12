@@ -96,6 +96,7 @@ public class Seekers : MonoBehaviour
 
                     if (Vector3.Distance(seeker1.position, snitch.position) <= players.team1SeekerGrabRange && !reachingCooldown1 && !seeker1Stunned)
                     {
+                        gameManager.team1SeekerReach += 1;
                         StartCoroutine(waitForUpdate(players.team1Seeker + " is reaching for the Snitch!", 0.01f));
                         int randomChance = Random.Range(0, 100);
                         if (randomChance <= (players.team1SeekerReach + players.team1SeekerSight))
@@ -110,6 +111,7 @@ public class Seekers : MonoBehaviour
                     }
                     else if (Vector3.Distance(seeker2.position, snitch.position) <= players.team2SeekerGrabRange && !reachingCooldown2 && !seeker2stunned)
                     {
+                        gameManager.team2SeekerReach += 1;
                         StartCoroutine(waitForUpdate(players.team2Seeker + " is reaching for the Snitch!", 0.01f));
                         int randomChance = Random.Range(0, 100);
                         if (randomChance <= (players.team2SeekerReach + players.team2SeekerSight))
@@ -202,6 +204,7 @@ public class Seekers : MonoBehaviour
         gameManager.UpdateTeamScore();
         gameManager.team1SeekerSnitchCaught += 1;
         gameManager.matchOver = true;
+        gameManager.UpdateManagementExperience(gameManager.seasonTeams[gameManager.visitorTeam], gameManager.seasonTeams[gameManager.homeTeam]);
     }
     void Team2Caught()
     {
@@ -211,6 +214,7 @@ public class Seekers : MonoBehaviour
         gameManager.team2SeekerSnitchCaught += 1;
         gameManager.matchOver = true;
         beaters.gameStarted = false;
+        gameManager.UpdateManagementExperience(gameManager.seasonTeams[gameManager.visitorTeam], gameManager.seasonTeams[gameManager.homeTeam]);
     }
 
     void UpdateMomentum()

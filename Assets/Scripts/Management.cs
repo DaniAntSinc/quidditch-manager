@@ -701,6 +701,14 @@ public class Management : MonoBehaviour
         playersTeam.GetComponent<SeasonTeam>().keeper[0].broom = broom;
         playersTeam.GetComponent<SeasonTeam>().seeker[0].broom = broom;
 
+        playersTeam.GetComponent<SeasonTeam>().chasers[0].EvaluateExpNeeded();
+        playersTeam.GetComponent<SeasonTeam>().chasers[1].EvaluateExpNeeded();
+        playersTeam.GetComponent<SeasonTeam>().chasers[2].EvaluateExpNeeded();
+        playersTeam.GetComponent<SeasonTeam>().beaters[0].EvaluateExpNeeded();
+        playersTeam.GetComponent<SeasonTeam>().beaters[1].EvaluateExpNeeded();
+        playersTeam.GetComponent<SeasonTeam>().keeper[0].EvaluateExpNeeded();
+        playersTeam.GetComponent<SeasonTeam>().seeker[0].EvaluateExpNeeded();
+
         #endregion
     }
 
