@@ -74,6 +74,7 @@ public class Players : MonoBehaviour
     float team2sun, team2rain, team2fog, team2snow;
 
     float tempTeam1, tempTeam2;
+    public ManagementSeasonTracker managementSeasonTracker;
     #endregion
     private void Start()
     {
@@ -538,6 +539,8 @@ public class Players : MonoBehaviour
         gameManager.sun = true;
         weatherSelector.transform.position = weatherSelectorIcons[0].transform.position;
         gameManager.weatherTextToDisplay = "Hot";
+        if (gameManager.managementMode)
+            managementSeasonTracker.UpdateWeatherText(gameManager.weatherTextToDisplay);
     }
     public void Rain()
     {
@@ -545,6 +548,8 @@ public class Players : MonoBehaviour
         gameManager.rain = true;
         weatherSelector.transform.position = weatherSelectorIcons[1].transform.position;
         gameManager.weatherTextToDisplay = "Rainy";
+        if (gameManager.managementMode)
+            managementSeasonTracker.UpdateWeatherText(gameManager.weatherTextToDisplay);
     }
     public void Fog()
     {
@@ -552,6 +557,8 @@ public class Players : MonoBehaviour
         gameManager.fog = true;
         weatherSelector.transform.position = weatherSelectorIcons[2].transform.position;
         gameManager.weatherTextToDisplay = "Foggy";
+        if (gameManager.managementMode)
+            managementSeasonTracker.UpdateWeatherText(gameManager.weatherTextToDisplay);
     }
     public void Snow()
     {
@@ -559,6 +566,8 @@ public class Players : MonoBehaviour
         gameManager.snow = true;
         weatherSelector.transform.position = weatherSelectorIcons[3].transform.position;
         gameManager.weatherTextToDisplay = "Snowy";
+        if (gameManager.managementMode)
+            managementSeasonTracker.UpdateWeatherText(gameManager.weatherTextToDisplay);
     }
 
     public void Indoor()
@@ -566,10 +575,14 @@ public class Players : MonoBehaviour
         WeatherReset();
         gameManager.indoors = true;
         weatherSelector.transform.position = weatherSelectorIcons[4].transform.position;
-        if(gameManager.stadiumSelected == 20)
+        if (gameManager.stadiumSelected == 20)
             gameManager.weatherTextToDisplay = "Indoors";
         else
+        {
             gameManager.weatherTextToDisplay = "Clear";
+            if (gameManager.managementMode)
+                managementSeasonTracker.UpdateWeatherText(gameManager.weatherTextToDisplay);
+        }
     }
 
     public void RandomWeather(Stadium stadium)

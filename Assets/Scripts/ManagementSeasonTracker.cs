@@ -11,6 +11,7 @@ public class ManagementSeasonTracker : MonoBehaviour
     public GameObject managementMenu;
     public Players matchStart;
     public GameObject startingPage, ExhibOrSeason, TeamSelection, startingMenu;
+    public Players playersManager;
     //add player's team to this
 
     //this is how many days are in the season - 4 months, 28 days, starting at 0 = max of 111
@@ -113,7 +114,6 @@ public class ManagementSeasonTracker : MonoBehaviour
         visitorTeamName.text = visitor.team;
         homeTeamName.text = home.team;
 
-        weather.text = "Weather Go Brrrrr";
         location.text = home.homeStadium.stadiumName;
 
         vKeeper.text = visitor.keeper[0].Name;
@@ -131,12 +131,18 @@ public class ManagementSeasonTracker : MonoBehaviour
         hChaser2.text = home.chasers[1].Name;
         hChaser3.text = home.chasers[2].Name;
         hSeeker.text = home.seeker[0].Name;
+
+        playersManager.RandomWeather(home.homeStadium);
+    }
+    public void UpdateWeatherText(string weatherText)
+    {
+        weather.text = weatherText;
     }
 
     public void MatchDayGame()
     {
         GameObject.Find("Main Camera").GetComponent<GameManager>().ClearStats();
-        players.RandomWeather(teamsInLeague[homeTeams[placeInList]].homeStadium);
+        //players.RandomWeather(teamsInLeague[homeTeams[placeInList]].homeStadium);
         matchStart.BeginMatch(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[homeTeams[placeInList]].homeStadium);
         managementMenu.SetActive(false);
         ExhibOrSeason.SetActive(false);
