@@ -352,36 +352,31 @@ public class GameManager : MonoBehaviour
         S1GMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].grab + 1).ToString();
 
 
-        C1I.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentIExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].IExperienceCap);
-        C2I.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentIExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].IExperienceCap);
-        C3I.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentIExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].IExperienceCap);
-        float temp;
-        print(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentPExperience);
-        print(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].PExperienceCap);
-        temp = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].PExperienceCap / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].PExperienceCap;
-        print(temp);
-        C1P.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentPExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].PExperienceCap);
-        C2P.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentPExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].PExperienceCap);
-        C3P.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentPExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].PExperienceCap);
-        C1S.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentSExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].SExperienceCap);
-        C2S.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentSExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].SExperienceCap);
-        C3S.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentSExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].SExperienceCap);
-        C1Sp.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentSpExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].SpExperienceCap);
-        C2Sp.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentSpExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].SpExperienceCap);
-        C3Sp.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentSpExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].SpExperienceCap);
-        C1T.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentTExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].TExperienceCap);
-        C2T.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentTExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].TExperienceCap);
-        C3T.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentTExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].TExperienceCap);
+        C1I.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentIExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].IExperienceCap);
+        C2I.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentIExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].IExperienceCap);
+        C3I.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentIExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].IExperienceCap);
+        C1P.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentPExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].PExperienceCap);
+        C2P.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentPExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].PExperienceCap);
+        C3P.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentPExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].PExperienceCap);
+        C1S.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentSExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].SExperienceCap);
+        C2S.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentSExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].SExperienceCap);
+        C3S.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentSExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].SExperienceCap);
+        C1Sp.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentSpExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].SpExperienceCap);
+        C2Sp.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentSpExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].SpExperienceCap);
+        C3Sp.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentSpExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].SpExperienceCap);
+        C1T.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentTExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].TExperienceCap);
+        C2T.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentTExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].TExperienceCap);
+        C3T.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentTExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].TExperienceCap);
 
-        B1L.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].currentLSExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].LSExperienceCap);
-        B2L.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].currentLSExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].LSExperienceCap);
+        B1L.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].currentLSExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].LSExperienceCap);
+        B2L.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].currentLSExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].LSExperienceCap);
 
-        K1B.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].currentBExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].BExperienceCap);
+        K1B.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].currentBExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].BExperienceCap);
 
-        SS.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentSExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].SExperienceCap);
-        SSp.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentSpExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].SpExperienceCap);
-        SR.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentRExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].RExperienceCap);
-        SG.value = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentGExperience / GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].GExperienceCap);
+        SS.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentSExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].SExperienceCap);
+        SSp.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentSpExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].SpExperienceCap);
+        SR.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentRExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].RExperienceCap);
+        SG.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentGExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].GExperienceCap);
         #endregion
     }
 
