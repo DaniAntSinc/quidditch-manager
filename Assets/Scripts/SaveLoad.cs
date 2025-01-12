@@ -133,7 +133,7 @@ public class SaveLoad : MonoBehaviour
         PlayerPrefs.SetInt("seekerGrab", playersTeam.seeker[0].grab);
         PlayerPrefs.SetInt("seekerSalary", playersTeam.seeker[0].salary);
 
-        print(PlayerPrefs.GetInt("Chaser1Salary"));
+        
 
         teamLineupCreated = 1;
         PlayerPrefs.SetInt("lineupCreated", teamLineupCreated);
@@ -155,6 +155,68 @@ public class SaveLoad : MonoBehaviour
         teamStadiumCreated = 1;
         PlayerPrefs.SetInt("stadiumCreated", teamStadiumCreated);
         PlayerPrefs.Save();
+    }
+
+    public void SaveExperience()
+    {
+        PlayerPrefs.SetInt("Chaser1CurrentDExp", playersTeam.chasers[0].currentDExperience);
+        PlayerPrefs.SetInt("Chaser1DExperienceCap", playersTeam.chasers[0].DExperienceCap);
+        PlayerPrefs.SetInt("Chaser1CurrentIExp", playersTeam.chasers[0].currentIExperience);
+        PlayerPrefs.SetInt("Chaser1IExperienceCap", playersTeam.chasers[0].IExperienceCap);
+        PlayerPrefs.SetInt("Chaser1CurrentPExp", playersTeam.chasers[0].currentPExperience);
+        PlayerPrefs.SetInt("Chaser1PExperienceCap", playersTeam.chasers[0].PExperienceCap);
+        PlayerPrefs.SetInt("Chaser1CurrentSExp", playersTeam.chasers[0].currentSExperience);
+        PlayerPrefs.SetInt("Chaser1SExperienceCap", playersTeam.chasers[0].SExperienceCap);
+        PlayerPrefs.SetInt("Chaser1CurrentSpExp", playersTeam.chasers[0].currentSpExperience);
+        PlayerPrefs.SetInt("Chaser1SpExperienceCap", playersTeam.chasers[0].SpExperienceCap);
+        PlayerPrefs.SetInt("Chaser1CurrentTExp", playersTeam.chasers[0].currentTExperience);
+        PlayerPrefs.SetInt("Chaser1TExperienceCap", playersTeam.chasers[0].TExperienceCap);
+
+        PlayerPrefs.SetInt("Chaser2CurrentDExp", playersTeam.chasers[1].currentDExperience);
+        PlayerPrefs.SetInt("Chaser2DExperienceCap", playersTeam.chasers[1].DExperienceCap);
+        PlayerPrefs.SetInt("Chaser2CurrentIExp", playersTeam.chasers[1].currentIExperience);
+        PlayerPrefs.SetInt("Chaser2IExperienceCap", playersTeam.chasers[1].IExperienceCap);
+        PlayerPrefs.SetInt("Chaser2CurrentPExp", playersTeam.chasers[1].currentPExperience);
+        PlayerPrefs.SetInt("Chaser2PExperienceCap", playersTeam.chasers[1].PExperienceCap);
+        PlayerPrefs.SetInt("Chaser2CurrentSExp", playersTeam.chasers[1].currentSExperience);
+        PlayerPrefs.SetInt("Chaser2SExperienceCap", playersTeam.chasers[1].SExperienceCap);
+        PlayerPrefs.SetInt("Chaser2CurrentSpExp", playersTeam.chasers[1].currentSpExperience);
+        PlayerPrefs.SetInt("Chaser2SpExperienceCap", playersTeam.chasers[1].SpExperienceCap);
+        PlayerPrefs.SetInt("Chaser2CurrentTExp", playersTeam.chasers[1].currentTExperience);
+        PlayerPrefs.SetInt("Chaser2TExperienceCap", playersTeam.chasers[1].TExperienceCap);
+
+        PlayerPrefs.SetInt("Chaser3CurrentDExp", playersTeam.chasers[2].currentDExperience);
+        PlayerPrefs.SetInt("Chaser3DExperienceCap", playersTeam.chasers[2].DExperienceCap);
+        PlayerPrefs.SetInt("Chaser3CurrentIExp", playersTeam.chasers[2].currentIExperience);
+        PlayerPrefs.SetInt("Chaser3IExperienceCap", playersTeam.chasers[2].IExperienceCap);
+        PlayerPrefs.SetInt("Chaser3CurrentPExp", playersTeam.chasers[2].currentPExperience);
+        PlayerPrefs.SetInt("Chaser3PExperienceCap", playersTeam.chasers[2].PExperienceCap);
+        PlayerPrefs.SetInt("Chaser3CurrentSExp", playersTeam.chasers[2].currentSExperience);
+        PlayerPrefs.SetInt("Chaser3SExperienceCap", playersTeam.chasers[2].SExperienceCap);
+        PlayerPrefs.SetInt("Chaser3CurrentSpExp", playersTeam.chasers[2].currentSpExperience);
+        PlayerPrefs.SetInt("Chaser3SpExperienceCap", playersTeam.chasers[2].SpExperienceCap);
+        PlayerPrefs.SetInt("Chaser3CurrentTExp", playersTeam.chasers[2].currentTExperience);
+        PlayerPrefs.SetInt("Chaser3TExperienceCap", playersTeam.chasers[2].TExperienceCap);
+
+        PlayerPrefs.SetInt("Beater1CurrentLSExp", playersTeam.beaters[0].currentLSExperience);
+        PlayerPrefs.SetInt("Beater1LSExperienceCap", playersTeam.beaters[0].LSExperienceCap);
+
+        PlayerPrefs.SetInt("Beater2CurrentLSExp", playersTeam.beaters[1].currentLSExperience);
+        PlayerPrefs.SetInt("Beater2LSExperienceCap", playersTeam.beaters[1].LSExperienceCap);
+
+        PlayerPrefs.SetInt("KeeperCurrentBExp", playersTeam.keeper[0].currentBExperience);
+        PlayerPrefs.SetInt("KeeperBExperienceCap", playersTeam.keeper[0].BExperienceCap);
+
+        PlayerPrefs.SetInt("SeekerCurrentDExp", playersTeam.seeker[0].currentDExperience);
+        PlayerPrefs.SetInt("SeekerDExperienceCap", playersTeam.seeker[0].DExperienceCap);
+        PlayerPrefs.SetInt("SeekerCurrentSExp", playersTeam.seeker[0].currentSExperience);
+        PlayerPrefs.SetInt("SeekerSExperienceCap", playersTeam.seeker[0].SExperienceCap);
+        PlayerPrefs.SetInt("SeekerCurrentSpExp", playersTeam.seeker[0].currentSpExperience);
+        PlayerPrefs.SetInt("SeekerSpExperienceCap", playersTeam.seeker[0].SpExperienceCap);
+        PlayerPrefs.SetInt("SeekerCurrentRExp", playersTeam.seeker[0].currentRExperience);
+        PlayerPrefs.SetInt("SeekerRExperienceCap", playersTeam.seeker[0].RExperienceCap);
+        PlayerPrefs.SetInt("SeekerCurrentGExp", playersTeam.seeker[0].currentGExperience);
+        PlayerPrefs.SetInt("SeekerGExperienceCap", playersTeam.seeker[0].GExperienceCap);
     }
 
     public void LoadTeam()
@@ -273,6 +335,71 @@ public class SaveLoad : MonoBehaviour
         playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].grab = PlayerPrefs.GetInt("seekerGrab");
         playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].reach = PlayerPrefs.GetInt("seekerReach");
         playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].salary = PlayerPrefs.GetInt("seekerSalary");
+        #endregion
+        #region Experience
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].currentDExperience = PlayerPrefs.GetInt("Chaser1CurrentDExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].DExperienceCap = PlayerPrefs.GetInt("Chaser1DExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].currentIExperience = PlayerPrefs.GetInt("Chaser1CurrentIExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].IExperienceCap = PlayerPrefs.GetInt("Chaser1IExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].currentPExperience = PlayerPrefs.GetInt("Chaser1CurrentPExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].PExperienceCap = PlayerPrefs.GetInt("Chaser1PExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].currentSExperience = PlayerPrefs.GetInt("Chaser1CurrentSExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].SExperienceCap = PlayerPrefs.GetInt("Chaser1SExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].currentSpExperience = PlayerPrefs.GetInt("Chaser1CurrentSpExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].SpExperienceCap = PlayerPrefs.GetInt("Chaser1SpExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].currentTExperience = PlayerPrefs.GetInt("Chaser1CurrentTExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].TExperienceCap = PlayerPrefs.GetInt("Chaser1TExperienceCap");
+
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].currentDExperience = PlayerPrefs.GetInt("Chaser2CurrentDExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].DExperienceCap = PlayerPrefs.GetInt("Chaser2DExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].currentIExperience = PlayerPrefs.GetInt("Chaser2CurrentIExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].IExperienceCap = PlayerPrefs.GetInt("Chaser2IExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].currentPExperience = PlayerPrefs.GetInt("Chaser2CurrentPExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].PExperienceCap = PlayerPrefs.GetInt("Chaser2PExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].currentSExperience = PlayerPrefs.GetInt("Chaser2CurrentSExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].SExperienceCap = PlayerPrefs.GetInt("Chaser2SExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].currentSpExperience = PlayerPrefs.GetInt("Chaser2CurrentSpExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].SpExperienceCap = PlayerPrefs.GetInt("Chaser2SpExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].currentTExperience = PlayerPrefs.GetInt("Chaser2CurrentTExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].TExperienceCap = PlayerPrefs.GetInt("Chaser2TExperienceCap");
+
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].currentDExperience = PlayerPrefs.GetInt("Chaser3CurrentDExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].DExperienceCap = PlayerPrefs.GetInt("Chaser3DExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].currentIExperience = PlayerPrefs.GetInt("Chaser3CurrentIExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].IExperienceCap = PlayerPrefs.GetInt("Chaser3IExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].currentPExperience = PlayerPrefs.GetInt("Chaser3CurrentPExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].PExperienceCap = PlayerPrefs.GetInt("Chaser3PExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].currentSExperience = PlayerPrefs.GetInt("Chaser3CurrentSExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].SExperienceCap = PlayerPrefs.GetInt("Chaser3SExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].currentSpExperience = PlayerPrefs.GetInt("Chaser3CurrentSpExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].SpExperienceCap = PlayerPrefs.GetInt("Chaser3SpExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].currentTExperience = PlayerPrefs.GetInt("Chaser3CurrentTExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].TExperienceCap = PlayerPrefs.GetInt("Chaser3TExperienceCap");
+
+        playerTeamLoad.GetComponent<SeasonTeam>().beaters[0].currentLSExperience = PlayerPrefs.GetInt("Beater1CurrentLSExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().beaters[0].LSExperienceCap = PlayerPrefs.GetInt("Beater1LSExperienceCap");
+
+        playerTeamLoad.GetComponent<SeasonTeam>().beaters[1].currentLSExperience = PlayerPrefs.GetInt("Beater2CurrentLSExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().beaters[1].LSExperienceCap = PlayerPrefs.GetInt("Beater2LSExperienceCap");
+
+        playerTeamLoad.GetComponent<SeasonTeam>().keeper[0].currentBExperience = PlayerPrefs.GetInt("KeeperCurrentBExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().keeper[0].BExperienceCap = PlayerPrefs.GetInt("KeeperBExperienceCap");
+
+        playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].currentDExperience = PlayerPrefs.GetInt("SeekerCurrentDExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].DExperienceCap = PlayerPrefs.GetInt("SeekerDExperienceCap");
+
+        playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].currentSExperience = PlayerPrefs.GetInt("SeekerCurrentSExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].SExperienceCap = PlayerPrefs.GetInt("SeekerSExperienceCap");
+
+        playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].currentSpExperience = PlayerPrefs.GetInt("SeekerCurrentSpExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].SpExperienceCap = PlayerPrefs.GetInt("SpExperienceCap");
+
+        playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].currentRExperience = PlayerPrefs.GetInt("SeekerCurrentRExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].RExperienceCap = PlayerPrefs.GetInt("SeekerRExperienceCap");
+
+        playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].currentGExperience = PlayerPrefs.GetInt("SeekerCurrentGExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].GExperienceCap = PlayerPrefs.GetInt("SeekerGExperienceCap");
+
         #endregion
         logoNumber = PlayerPrefs.GetInt("LogoSelected");
         GameObject.Find("Management").GetComponent<Management>().logoNumSelected = logoNumber;
