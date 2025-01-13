@@ -175,6 +175,8 @@ public class GameManager : MonoBehaviour
     public GameObject[] spotterTarget;
     public GameObject spotter2;
     public GameObject[] spotterTarget2;
+    public GameObject spotter3;
+    public GameObject[] spotterTargetManagement;
 
     public GameObject visitorChaser1icon, visitorChaser2icon, visitorChaser3icon, visitorBeater1icon, visitorBeater2icon, visitorKeepericon, visitorSeekericon;
     public GameObject homeChaser1icon, homeChaser2icon, homeChaser3icon, homeBeater1icon, homeBeater2icon, homeKeepericon, homeSeekericon;
@@ -1452,29 +1454,59 @@ public class GameManager : MonoBehaviour
     public void FastSnitch()
     {
         chasers.seekerTimeDuration = chasers.fastTime;
-        players.snitchSelector.transform.position = players.snitchSelectorIcons[0].transform.position;
-        spotter2.transform.position = spotterTarget2[0].transform.position;
+        if (managementMode)
+        {
+            spotter3.transform.position = spotterTargetManagement[0].transform.position;
+        }
+        else
+        {
+            players.snitchSelector.transform.position = players.snitchSelectorIcons[0].transform.position;
+            spotter2.transform.position = spotterTarget2[0].transform.position;
+        }
     }
 
     public void MediumTime()
     {
         chasers.seekerTimeDuration = chasers.mediumTime;
-        players.snitchSelector.transform.position = players.snitchSelectorIcons[1].transform.position;
-        spotter2.transform.position = spotterTarget2[1].transform.position;
+        if (managementMode)
+        {
+            spotter3.transform.position = spotterTargetManagement[1].transform.position;
+        }
+        else
+        {
+
+            players.snitchSelector.transform.position = players.snitchSelectorIcons[1].transform.position;
+            spotter2.transform.position = spotterTarget2[1].transform.position;
+        }
     }
 
     public void DefaultSnitch()
     {
         chasers.seekerTimeDuration = chasers.defaultTime;
-        players.snitchSelector.transform.position = players.snitchSelectorIcons[2].transform.position;
-        spotter2.transform.position = spotterTarget2[2].transform.position;
+        if (managementMode)
+        {
+            spotter3.transform.position = spotterTargetManagement[2].transform.position;
+        }
+        else
+        {
+
+            players.snitchSelector.transform.position = players.snitchSelectorIcons[2].transform.position;
+            spotter2.transform.position = spotterTarget2[2].transform.position;
+        }
     }
 
     public void LongSnitch()
     {
         chasers.seekerTimeDuration = chasers.longTime;
-        players.snitchSelector.transform.position = players.snitchSelectorIcons[3].transform.position;
-        spotter2.transform.position = spotterTarget2[3].transform.position;
+        if (managementMode)
+        {
+            spotter3.transform.position = spotterTargetManagement[3].transform.position;
+        }
+        else
+        {
+            players.snitchSelector.transform.position = players.snitchSelectorIcons[3].transform.position;
+            spotter2.transform.position = spotterTarget2[3].transform.position;
+        }
     }
 
     public void TogglePlayoffPage()
