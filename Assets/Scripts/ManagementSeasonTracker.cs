@@ -190,9 +190,9 @@ public class ManagementSeasonTracker : MonoBehaviour
             ticketSales = thisGameCapacity * Random.Range(1, 3);
 
             //concessions
-            concessions = Mathf.RoundToInt((float)thisGameCapacity * Random.Range(0.6f, .7f) *  Random.Range(0.75f, 1.25f));
+            concessions = Mathf.RoundToInt((float)thisGameCapacity * Random.Range(0.6f, .7f) *  Random.Range(0.6f, 1f));
             //souvenirs
-            souvenirs = Mathf.RoundToInt((float)thisGameCapacity * Random.Range(0.2f, .4f) * Random.Range(1.25f, 2.5f));
+            souvenirs = Mathf.RoundToInt((float)thisGameCapacity * Random.Range(0.2f, .4f) * Random.Range(1f, 1.75f));
         }
         GameObject.Find("Main Camera").GetComponent<GameManager>().CheckManagementRevenue(ticketSales, concessions, souvenirs, leagueDistribution);
     }
