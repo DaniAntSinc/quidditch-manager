@@ -32,12 +32,16 @@ public class ManagementSeasonTracker : MonoBehaviour
     public TMP_Text visitorTeamName, homeTeamName, weather, location;
     public TMP_Text vKeeper, vBeater1, vBeater2, vCvaser1, vCvaser2, vCvaser3, vSeeker;
     public TMP_Text hKeeper, hBeater1, hBeater2, hChaser1, hChaser2, hChaser3, hSeeker;
+
+    public int ticketSales, concessions, souvenirs, leagueDistribution;
+    int thisGameCapacity;
     #endregion
 
     public void AdvanceDay()
     {
         dayOfSeason++;
         CheckSchedule();
+        managementMenu.GetComponent<Management>().UpdateManagementUI();
     }
 
     void CheckSchedule()
@@ -149,5 +153,47 @@ public class ManagementSeasonTracker : MonoBehaviour
         TeamSelection.SetActive(false);
         startingMenu.SetActive(true);
         matchPreviewMenu.SetActive(false);
+        CalculateGameRevenue(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[homeTeams[placeInList]].homeStadium);
+    }
+
+    public void CalculateGameRevenue(SeasonTeam visitor, SeasonTeam home, Stadium stadium)
+    {
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().homeStadium != home.homeStadium)
+        {
+            ticketSales = 0;
+            concessions = 0;
+            souvenirs = 0;
+            //league distribution
+            //formula of 75% capacity for each game for every team, average ticket around 3 gold, split between 260 games
+            leagueDistribution = 2600;
+        }
+        else
+        {
+            leagueDistribution = 2600;
+            //calculate capacity
+            if (dayOfSeason < 10)
+            {
+                thisGameCapacity = Mathf.RoundToInt(stadium.capacity * Random.Range(.85f, 1));
+            }
+            else if (home.win / (home.win + home.loss + 1) > 0.75f)
+            {
+                thisGameCapacity = Mathf.RoundToInt(stadium.capacity * Random.Range(.75f, 1));
+            }
+            else if (home.win / (home.win + home.loss + 1) > 0.4f && home.win / (home.win + home.loss + 1) <= 0.75f)
+            {
+                thisGameCapacity = Mathf.RoundToInt(stadium.capacity * Random.Range(.5f, .75f));
+            }
+            else
+                thisGameCapacity = Mathf.RoundToInt(stadium.capacity * Random.Range(.3f, .5f));
+
+            //ticket sales
+            ticketSales = thisGameCapacity * Random.Range(1, 3);
+
+            //concessions
+            concessions = Mathf.RoundToInt((float)thisGameCapacity * Random.Range(0.6f, .7f) *  Random.Range(0.75f, 1.25f));
+            //souvenirs
+            souvenirs = Mathf.RoundToInt((float)thisGameCapacity * Random.Range(0.2f, .4f) * Random.Range(1.25f, 2.5f));
+        }
+        GameObject.Find("Main Camera").GetComponent<GameManager>().CheckManagementRevenue(ticketSales, concessions, souvenirs, leagueDistribution);
     }
 }

@@ -761,4 +761,9 @@ public class Management : MonoBehaviour
             beginButton.SetActive(true);
         }
     }
+    public void UpdateManagementUI()
+    { 
+        teamBudgetText.text = "Team Budget: " + saveLoad.teamBudget.ToString("n0") + " G";
+        //update standings
+    }
 }

@@ -207,6 +207,8 @@ public class GameManager : MonoBehaviour
     public Slider K1B;
     public Slider SS, SSp, SR, SG;
 
+    int thisGameTicket, thisGameConcession, thisGameSouvenir, thisGameLeagueDist;
+
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -282,15 +284,23 @@ public class GameManager : MonoBehaviour
         matchMomentumMenu.SetActive(false);
         managementStatsMenu.SetActive(true);
 }
+    public void CheckManagementRevenue(int ticketSalesRev, int concessionsRev, int souvenirsRev, int leagueDistRev)
+    {
+        thisGameTicket = ticketSalesRev;
+        thisGameConcession = concessionsRev;
+        thisGameSouvenir = souvenirsRev;
+        thisGameLeagueDist = leagueDistRev;
+    }
     public void CheckSliders()
     {
         #region PostGameManagementUI
         //Revenue
-        ticketSales.text = "0";
-        concessions.text = "0";
-        souvenirs.text = "0";
-        leagueDispursement.text = "0";
-        total.text = "0";
+        ticketSales.text = thisGameTicket.ToString("n0") + " G";
+        concessions.text = thisGameConcession.ToString("n0") + " G";
+        souvenirs.text = thisGameSouvenir.ToString("n0") + " G";
+        leagueDispursement.text = thisGameLeagueDist.ToString("n0") + " G";
+        total.text = (thisGameTicket + thisGameConcession + thisGameSouvenir + thisGameLeagueDist).ToString("n0") + " G";
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget += (thisGameTicket + thisGameConcession + thisGameSouvenir + thisGameLeagueDist);
         //PlayerStats
         C1N.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].Name;
         C2N.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].Name;
