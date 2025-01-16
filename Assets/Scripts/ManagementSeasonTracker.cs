@@ -29,6 +29,29 @@ public class ManagementSeasonTracker : MonoBehaviour
     int monthActive;
 
     public GameObject[] marchCal, aprCal, mayCal, juneCal;
+    public GameObject todayTracker;
+    List<GameObject> combinedCalendar;
+
+    private void Start()
+    {
+        combinedCalendar = new List<GameObject>();
+        for (int i = 0; i < marchCal.Length; i++)
+        {
+            combinedCalendar.Add(marchCal[i]);
+        }
+        for (int i = 0; i < aprCal.Length; i++)
+        {
+            combinedCalendar.Add(aprCal[i]);
+        }
+        for (int i = 0; i < mayCal.Length; i++)
+        {
+            combinedCalendar.Add(mayCal[i]);
+        }
+        for (int i = 0; i < juneCal.Length; i++)
+        {
+            combinedCalendar.Add(juneCal[i]);
+        }
+    }
 
     #region UI for Match Prep
     public Image visitorLogo, homeLogo;
@@ -212,34 +235,38 @@ public class ManagementSeasonTracker : MonoBehaviour
                 month.text = "March";
                 for (int i = 0; i < marchCal.Length; i++)
                 {
-                    marchCal[i].GetComponent<CalendarDayInfo>().DateCheck(dayOfSeason + i, matchDays, visitorTeams, homeTeams);
+                    marchCal[i].GetComponent<CalendarDayInfo>().DateCheck(i, matchDays, visitorTeams, homeTeams);
                 }
                 break;
             case 1:
                 month.text = "April";
                 for (int i = 0; i < aprCal.Length; i++)
                 {
-                    aprCal[i].GetComponent<CalendarDayInfo>().DateCheck(dayOfSeason + i + 29, matchDays, visitorTeams, homeTeams);
+                    aprCal[i].GetComponent<CalendarDayInfo>().DateCheck(i + 29, matchDays, visitorTeams, homeTeams);
                 }
                 break;
             case 2:
                 month.text = "May";
                 for (int i = 0; i < mayCal.Length; i++)
                 {
-                    mayCal[i].GetComponent<CalendarDayInfo>().DateCheck(dayOfSeason + i + 58, matchDays, visitorTeams, homeTeams);
+                    mayCal[i].GetComponent<CalendarDayInfo>().DateCheck(i + 58, matchDays, visitorTeams, homeTeams);
                 }
                 break;
             case 3:
                 month.text = "June";
                 for (int i = 0; i < juneCal.Length; i++)
                 {
-                    juneCal[i].GetComponent<CalendarDayInfo>().DateCheck(dayOfSeason + i + 87, matchDays, visitorTeams, homeTeams);
+                    juneCal[i].GetComponent<CalendarDayInfo>().DateCheck(i + 87, matchDays, visitorTeams, homeTeams);
                 }
                 break;
             default:
                 print("Incorrect month.");
                 break;
         }
+        print(dayOfSeason);
+        print(combinedCalendar[dayOfSeason].name);
+        todayTracker.transform.SetParent(combinedCalendar[dayOfSeason].transform);
+        todayTracker.transform.localPosition = new Vector3(0, 0, 0);
     }
 
     public void IncreaseMonth()
