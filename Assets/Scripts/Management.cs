@@ -742,6 +742,7 @@ public class Management : MonoBehaviour
     {
         startingPageMenu.SetActive(false);
         calendarSubMenu.SetActive(true);
+        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().DateCheck();
     }
     public void OpenStrategySubMenu()
     {
