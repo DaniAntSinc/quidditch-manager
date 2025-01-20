@@ -449,7 +449,7 @@ public class GameManager : MonoBehaviour
             }
             winnerChosen = true;
             if (managementMode)
-            {
+            { 
                 managementPostGameButton.SetActive(true);
                 newGameButton.SetActive(false);
             }

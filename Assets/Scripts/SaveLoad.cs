@@ -217,6 +217,9 @@ public class SaveLoad : MonoBehaviour
         PlayerPrefs.SetInt("SeekerRExperienceCap", playersTeam.seeker[0].RExperienceCap);
         PlayerPrefs.SetInt("SeekerCurrentGExp", playersTeam.seeker[0].currentGExperience);
         PlayerPrefs.SetInt("SeekerGExperienceCap", playersTeam.seeker[0].GExperienceCap);
+
+        PlayerPrefs.SetInt("Wins", playersTeam.win);
+        PlayerPrefs.SetInt("Losses", playersTeam.loss);
     }
 
     public void LoadTeam()
@@ -401,6 +404,13 @@ public class SaveLoad : MonoBehaviour
         playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].GExperienceCap = PlayerPrefs.GetInt("SeekerGExperienceCap");
 
         #endregion
+
+        int tempWin = PlayerPrefs.GetInt("Wins");
+        int tempLoss = PlayerPrefs.GetInt("Losses");
+
+        playerTeamLoad.GetComponent<SeasonTeam>().win = tempWin;
+        playerTeamLoad.GetComponent<SeasonTeam>().loss = tempLoss;
+
         logoNumber = PlayerPrefs.GetInt("LogoSelected");
         GameObject.Find("Management").GetComponent<Management>().logoNumSelected = logoNumber;
         playerTeamLoad.GetComponent<SeasonTeam>().logo = GameObject.Find("Management").GetComponent<Management>().logoSelectionList[GameObject.Find("Management").GetComponent<Management>().logoNumSelected];

@@ -84,8 +84,10 @@ public class Management : MonoBehaviour
     public TMP_Text teamMainName, teamStadium, keeper, seeker, beater1, beater2, chaser1, chaser2, chaser3;
     public Image logoSprite;
 
-    public GameObject startingPageMenu, playersSubMenu, equipmentSubMenu, transactSubMenu, calendarSubMenu, strategySubMenu, standingsSubMenu;
+    public GameObject startingPageMenu, playersSubMenu, equipmentSubMenu, transactSubMenu, calendarSubMenu, strategySubMenu, standingsSubMenu, stadiumSubMenu;
     public ManagementSeasonTracker seasonTracker;
+
+    public TMP_Text teamRecord;
     #endregion
     public void Start()
     {
@@ -659,6 +661,8 @@ public class Management : MonoBehaviour
         teamBudgetText.text = "Team Budget: " + saveLoad.teamBudget.ToString("F0");
         print("Here");
         seasonTracker.teamsInLeague.Add(playersTeam.GetComponent<SeasonTeam>());
+        teamRecord.text = "Team Record: " + playersTeam.GetComponent<SeasonTeam>().win + " - " + playersTeam.GetComponent<SeasonTeam>().loss;
+
 
         #region Equipment Set Up - TEMPORARY
         playersTeam.GetComponent<SeasonTeam>().chasers[0].hat = hat;
@@ -721,6 +725,7 @@ public class Management : MonoBehaviour
         calendarSubMenu.SetActive(false);
         strategySubMenu.SetActive(false);
         standingsSubMenu.SetActive(false);
+        stadiumSubMenu.SetActive(false);
     }
 
     public void OpenPlayersSubMenu()
@@ -737,6 +742,11 @@ public class Management : MonoBehaviour
     {
         startingPageMenu.SetActive(false);
         transactSubMenu.SetActive(true);
+    }
+    public void OpenStadiumSubMenu()
+    {
+        startingPageMenu.SetActive(false);
+        stadiumSubMenu.SetActive(true);
     }
     public void OpenCalendarSubMenu()
     {
