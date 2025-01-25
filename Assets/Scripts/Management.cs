@@ -88,6 +88,8 @@ public class Management : MonoBehaviour
     public ManagementSeasonTracker seasonTracker;
 
     public TMP_Text teamRecord;
+
+    public GameObject capacityScroll, conessionsScroll, souvenirsScroll;
     #endregion
     public void Start()
     {
@@ -747,6 +749,7 @@ public class Management : MonoBehaviour
     {
         startingPageMenu.SetActive(false);
         stadiumSubMenu.SetActive(true);
+        OpenCapacity();
     }
     public void OpenCalendarSubMenu()
     {
@@ -776,5 +779,24 @@ public class Management : MonoBehaviour
     { 
         teamBudgetText.text = "Team Budget: " + saveLoad.teamBudget.ToString("n0") + " G";
         //update standings
+    }
+
+    public void OpenCapacity()
+    {
+        capacityScroll.SetActive(true);
+        conessionsScroll.SetActive(false);
+        souvenirsScroll.SetActive(false);
+    }
+    public void OpenConcessions()
+    {
+        capacityScroll.SetActive(false);
+        conessionsScroll.SetActive(true);
+        souvenirsScroll.SetActive(false);
+    }
+    public void OpenSouvenirs()
+    {
+        capacityScroll.SetActive(false);
+        conessionsScroll.SetActive(false);
+        souvenirsScroll.SetActive(true);
     }
 }
