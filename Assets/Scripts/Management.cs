@@ -783,6 +783,7 @@ public class Management : MonoBehaviour
 
     public void OpenCapacity()
     {
+        seasonTracker.PostStadiumPurchase(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().homeStadium);
         capacityScroll.SetActive(true);
         conessionsScroll.SetActive(false);
         souvenirsScroll.SetActive(false);

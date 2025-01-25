@@ -38,7 +38,7 @@ public class StadiumElement : MonoBehaviour
                 GameObject.Find("Players_Team").GetComponent<SeasonTeam>().homeStadium.souvenirRangeMax += percentSouvenirToAdd;
             }
 
-            //update text at bottom of the screen
+            GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().PostStadiumPurchase(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().homeStadium);
 
             Destroy(this.gameObject);
         }

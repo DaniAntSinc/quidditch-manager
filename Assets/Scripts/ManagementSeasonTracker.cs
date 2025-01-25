@@ -32,6 +32,8 @@ public class ManagementSeasonTracker : MonoBehaviour
     public GameObject todayTracker;
     List<GameObject> combinedCalendar;
 
+    public TMP_Text baseTeamBudget, stadiumTeamBudget, stadiumCapacity, stadiumAvgConcession, stadiumConcessionPercent, stadiumAvgSouvenir, stadiumSouvenirPercent;
+
     private void Start()
     {
         combinedCalendar = new List<GameObject>();
@@ -296,5 +298,18 @@ public class ManagementSeasonTracker : MonoBehaviour
         {
             months[i].SetActive(false);
         }
+    }
+
+    public void PostStadiumPurchase(Stadium stadium)
+    {
+        stadiumTeamBudget.text = GameObject.Find("Management").GetComponent<Management>().teamBudget.ToString() + "G";
+
+        stadiumCapacity.text = stadium.capacity.ToString();
+        stadiumAvgConcession.text = stadium.consessionPrice.ToString() + "G";
+        stadiumConcessionPercent.text = (stadium.consessionRangeMin * 100).ToString() + "%";
+        stadiumAvgSouvenir.text = stadium.souvenirPrice.ToString() + "G";
+        stadiumSouvenirPercent.text = (stadium.souvenirRangeMin * 100).ToString() + "%";
+        //home menu
+        baseTeamBudget.text = "Team Budget: " + GameObject.Find("Management").GetComponent<Management>().teamBudget.ToString("n0") + " G";
     }
 }
