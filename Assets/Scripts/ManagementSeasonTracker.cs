@@ -34,6 +34,8 @@ public class ManagementSeasonTracker : MonoBehaviour
 
     public TMP_Text baseTeamBudget, stadiumTeamBudget, stadiumCapacity, stadiumAvgConcession, stadiumConcessionPercent, stadiumAvgSouvenir, stadiumSouvenirPercent;
 
+    public List<GameObject> allStadiumImprovments;
+
     private void Start()
     {
         combinedCalendar = new List<GameObject>();

@@ -15,6 +15,7 @@ public class StadiumElement : MonoBehaviour
     public float percentSouvenirToAdd;
 
     public string saveElementTrigger;
+
     //put a string in here that matches the save_load component. if the bool = 1 on load, destroy this. 
 
     public void UpdatePlayersStadiumStats()
@@ -39,6 +40,7 @@ public class StadiumElement : MonoBehaviour
             }
 
             GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().PostStadiumPurchase(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().homeStadium);
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveStadiumEnhancement(saveElementTrigger);
 
             Destroy(this.gameObject);
         }

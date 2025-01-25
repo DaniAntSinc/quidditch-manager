@@ -66,6 +66,11 @@ public class SaveLoad : MonoBehaviour
         PlayerPrefs.SetInt("nameCreated", teamNameCreated);
     }
 
+    public void SaveStadiumEnhancement(string SaveNumber)
+    {
+        PlayerPrefs.SetString("StadiumSaveElement" + SaveNumber, SaveNumber);
+    }
+
     public void SaveLineUp()
     {
         PlayerPrefs.SetInt("TeamBudget", teamBudget);
@@ -405,6 +410,7 @@ public class SaveLoad : MonoBehaviour
 
         #endregion
 
+
         int tempWin = PlayerPrefs.GetInt("Wins");
         int tempLoss = PlayerPrefs.GetInt("Losses");
 
@@ -417,6 +423,25 @@ public class SaveLoad : MonoBehaviour
 
         stadiumNumber = PlayerPrefs.GetInt("StadiumSelected");
         playerTeamLoad.GetComponent<SeasonTeam>().homeStadium = GameObject.Find("Management").GetComponent<Management>().stadiums[stadiumNumber];
+
+        #region Stadium Improvements
+
+        for (int i = 0; i < GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().allStadiumImprovments.Count; i++)
+        {
+            if (PlayerPrefs.HasKey("StadiumSaveElement" + i))
+            {
+                playerTeamLoad.GetComponent<SeasonTeam>().homeStadium.capacity += GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().allStadiumImprovments[i].GetComponent<StadiumElement>().capacityToAdd;
+                playerTeamLoad.GetComponent<SeasonTeam>().homeStadium.consessionRangeMin += GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().allStadiumImprovments[i].GetComponent<StadiumElement>().percentConcessionsToAdd;
+                playerTeamLoad.GetComponent<SeasonTeam>().homeStadium.concessionRangeMax += GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().allStadiumImprovments[i].GetComponent<StadiumElement>().percentConcessionsToAdd;
+                playerTeamLoad.GetComponent<SeasonTeam>().homeStadium.souvenirRangeMin += GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().allStadiumImprovments[i].GetComponent<StadiumElement>().percentSouvenirToAdd;
+                playerTeamLoad.GetComponent<SeasonTeam>().homeStadium.souvenirRangeMax += GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().allStadiumImprovments[i].GetComponent<StadiumElement>().percentSouvenirToAdd;
+                playerTeamLoad.GetComponent<SeasonTeam>().homeStadium.consessionPrice += GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().allStadiumImprovments[i].GetComponent<StadiumElement>().concessionsToAdd;
+                playerTeamLoad.GetComponent<SeasonTeam>().homeStadium.souvenirPrice += GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().allStadiumImprovments[i].GetComponent<StadiumElement>().souvenirToAdd;
+
+                Destroy(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().allStadiumImprovments[i].gameObject);
+            }           
+        }
+        #endregion
 
         teamBudget = PlayerPrefs.GetInt("TeamBudget");
 
