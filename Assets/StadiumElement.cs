@@ -19,9 +19,9 @@ public class StadiumElement : MonoBehaviour
 
     public void UpdatePlayersStadiumStats()
     {
-        if (GameObject.Find("Management").GetComponent<Management>().teamBudget >= cost)
+        if (GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget >= cost)
         {
-            GameObject.Find("Management").GetComponent<Management>().teamBudget -= cost;
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget -= cost;
 
             if (capacity)
                 GameObject.Find("Players_Team").GetComponent<SeasonTeam>().homeStadium.capacity += capacityToAdd;

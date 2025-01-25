@@ -302,7 +302,7 @@ public class ManagementSeasonTracker : MonoBehaviour
 
     public void PostStadiumPurchase(Stadium stadium)
     {
-        stadiumTeamBudget.text = GameObject.Find("Management").GetComponent<Management>().teamBudget.ToString() + "G";
+        stadiumTeamBudget.text = GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget.ToString("n0") + "G";
 
         stadiumCapacity.text = stadium.capacity.ToString();
         stadiumAvgConcession.text = stadium.consessionPrice.ToString() + "G";
@@ -310,6 +310,6 @@ public class ManagementSeasonTracker : MonoBehaviour
         stadiumAvgSouvenir.text = stadium.souvenirPrice.ToString() + "G";
         stadiumSouvenirPercent.text = (stadium.souvenirRangeMin * 100).ToString() + "%";
         //home menu
-        baseTeamBudget.text = "Team Budget: " + GameObject.Find("Management").GetComponent<Management>().teamBudget.ToString("n0") + " G";
+        baseTeamBudget.text = "Team Budget: " + GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget.ToString("n0") + " G";
     }
 }
