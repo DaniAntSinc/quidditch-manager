@@ -5,7 +5,7 @@ using TMPro;
 
 public class EquipmentElement : MonoBehaviour
 {
-    public int price;
+    int price;
     public bool bodyBool;
     public Body body;
     public bool hatBool;
@@ -44,6 +44,8 @@ public class EquipmentElement : MonoBehaviour
             sightNum.text = body.Sight.ToString();
             reachNum.text = body.Reach.ToString();
             grabNum.text = body.Grab.ToString();
+            priceNum.text = "G " + body.cost.ToString("F0");
+            price = body.cost;
             //ownedNum.text = 
         }
         else if (hat)
@@ -60,6 +62,8 @@ public class EquipmentElement : MonoBehaviour
             sightNum.text = hat.Sight.ToString();
             reachNum.text = hat.Reach.ToString();
             grabNum.text = hat.Grab.ToString();
+            priceNum.text = "G " + hat.cost.ToString("F0");
+            price = hat.cost;
             //ownedNum.text = 
         }
         else if (glasses)
@@ -76,6 +80,8 @@ public class EquipmentElement : MonoBehaviour
             sightNum.text = glasses.Sight.ToString();
             reachNum.text = glasses.Reach.ToString();
             grabNum.text = glasses.Grab.ToString();
+            priceNum.text = "G " + glasses.cost.ToString("F0");
+            price = glasses.cost;
             //ownedNum.text = 
         }
         else if (gloves)
@@ -92,6 +98,8 @@ public class EquipmentElement : MonoBehaviour
             sightNum.text = gloves.Sight.ToString();
             reachNum.text = gloves.Reach.ToString();
             grabNum.text = gloves.Grab.ToString();
+            priceNum.text = "G " + gloves.cost.ToString("F0");
+            price = gloves.cost;
             //ownedNum.text = 
         }
         else if (broom)
@@ -108,9 +116,10 @@ public class EquipmentElement : MonoBehaviour
             sightNum.text = broom.Sight.ToString();
             reachNum.text = broom.Reach.ToString();
             grabNum.text = broom.Grab.ToString();
+            priceNum.text = "G " + broom.cost.ToString("F0");
+            price = broom.cost;
             //ownedNum.text = 
         }
-        priceNum.text = "G " + price.ToString("F0");
         #endregion
     }
     public void EquipmentPurchased()
