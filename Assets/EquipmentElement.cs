@@ -29,6 +29,8 @@ public class EquipmentElement : MonoBehaviour
 
     public void Start()
     {
+       // GameObject.Find("Management").GetComponent<Management>().OpenEquipBody();
+       // GameObject.Find("Management").GetComponent<Management>().OpenEquipBody();
         #region SettingUp UI
         if (body)
         {

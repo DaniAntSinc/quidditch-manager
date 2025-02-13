@@ -77,6 +77,7 @@ public class Management : MonoBehaviour
     public Glasses glasses;
     public Gloves gloves;
     public Broom broom;
+
     #endregion
 
     #region ManagementHome
@@ -90,6 +91,9 @@ public class Management : MonoBehaviour
     public TMP_Text teamRecord;
 
     public GameObject capacityScroll, conessionsScroll, souvenirsScroll;
+
+    public GameObject equipmentBody, equipmentGlasses, equipmentGloves, equipmentHat, equipmentBroom;
+    public TMP_Text equipmentBodyText, equipmentGlassesText, equipmentGlovesText, equipmentHatText, equipmentBroomText;
     #endregion
     public void Start()
     {
@@ -799,5 +803,59 @@ public class Management : MonoBehaviour
         capacityScroll.SetActive(false);
         conessionsScroll.SetActive(false);
         souvenirsScroll.SetActive(true);
+    }
+
+    public void OpenEquipBody()
+    {
+        ResetEquipmentUI();
+        equipmentBodyText.color = Color.grey;
+        TurnOffOtherEquipMenus();
+        equipmentBody.SetActive(true);
+    }
+    public void OpenEquipHat()
+    {
+        ResetEquipmentUI();
+        equipmentHatText.color = Color.grey;
+        TurnOffOtherEquipMenus();
+        equipmentHat.SetActive(true);
+    }
+    public void OpenEquipGlasses()
+    {
+        ResetEquipmentUI();
+        equipmentGlassesText.color = Color.grey;
+        TurnOffOtherEquipMenus();
+        equipmentGlasses.SetActive(true);
+    }
+    public void OpenEquipGloves()
+    {
+        ResetEquipmentUI();
+        equipmentGlovesText.color = Color.grey;
+        TurnOffOtherEquipMenus();
+        equipmentGloves.SetActive(true);
+    }
+    public void OpenEquipBroom()
+    {
+        ResetEquipmentUI();
+        equipmentBroomText.color = Color.grey;
+        TurnOffOtherEquipMenus();
+        equipmentBroom.SetActive(true);
+    }
+
+    public void ResetEquipmentUI()
+    {
+        equipmentBodyText.color = Color.white;
+        equipmentHatText.color = Color.white;
+        equipmentGlovesText.color = Color.white;
+        equipmentGlassesText.color = Color.white;
+        equipmentBroomText.color = Color.white;
+    }
+
+    public void TurnOffOtherEquipMenus()
+    {
+        equipmentBody.SetActive(false);
+        equipmentGlasses.SetActive(false);
+        equipmentHat.SetActive(false);
+        equipmentGloves.SetActive(false);
+        equipmentBroom.SetActive(false);
     }
 }
