@@ -94,6 +94,7 @@ public class Management : MonoBehaviour
 
     public GameObject equipmentBody, equipmentGlasses, equipmentGloves, equipmentHat, equipmentBroom;
     public TMP_Text equipmentBodyText, equipmentGlassesText, equipmentGlovesText, equipmentHatText, equipmentBroomText;
+    public TMP_Text equipmentBudget;
     #endregion
     public void Start()
     {
@@ -743,6 +744,7 @@ public class Management : MonoBehaviour
     {
         startingPageMenu.SetActive(false);
         equipmentSubMenu.SetActive(true);
+        equipmentBudget.text = GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget.ToString("n0") + "G";
     }
     public void OpenTransactSubMenu()
     {

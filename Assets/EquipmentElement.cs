@@ -29,8 +29,6 @@ public class EquipmentElement : MonoBehaviour
 
     public void Start()
     {
-       // GameObject.Find("Management").GetComponent<Management>().OpenEquipBody();
-       // GameObject.Find("Management").GetComponent<Management>().OpenEquipBody();
         #region SettingUp UI
         if (body)
         {
@@ -79,7 +77,7 @@ public class EquipmentElement : MonoBehaviour
             sightNum.text = body.Sight.ToString();
             reachNum.text = body.Reach.ToString();
             grabNum.text = body.Grab.ToString();
-            priceNum.text = "G " + body.cost.ToString("F0");
+            priceNum.text = body.cost.ToString("n0") + "G";
             price = body.cost;
             //ownedNum.text = 
         }
@@ -130,7 +128,7 @@ public class EquipmentElement : MonoBehaviour
             sightNum.text = hat.Sight.ToString();
             reachNum.text = hat.Reach.ToString();
             grabNum.text = hat.Grab.ToString();
-            priceNum.text = "G " + hat.cost.ToString("F0");
+            priceNum.text = hat.cost.ToString("n0") + "G";
             price = hat.cost;
             //ownedNum.text = 
         }
@@ -181,7 +179,7 @@ public class EquipmentElement : MonoBehaviour
             sightNum.text = glasses.Sight.ToString();
             reachNum.text = glasses.Reach.ToString();
             grabNum.text = glasses.Grab.ToString();
-            priceNum.text = "G " + glasses.cost.ToString("F0");
+            priceNum.text = glasses.cost.ToString("n0") + "G";
             price = glasses.cost;
             //ownedNum.text = 
         }
@@ -232,7 +230,7 @@ public class EquipmentElement : MonoBehaviour
             sightNum.text = gloves.Sight.ToString();
             reachNum.text = gloves.Reach.ToString();
             grabNum.text = gloves.Grab.ToString();
-            priceNum.text = "G " + gloves.cost.ToString("F0");
+            priceNum.text = gloves.cost.ToString("n0") + "G";
             price = gloves.cost;
             //ownedNum.text = 
         }
@@ -283,7 +281,7 @@ public class EquipmentElement : MonoBehaviour
             sightNum.text = broom.Sight.ToString();
             reachNum.text = broom.Reach.ToString();
             grabNum.text = broom.Grab.ToString();
-            priceNum.text = "G " + broom.cost.ToString("F0");
+            priceNum.text = broom.cost.ToString("n0") + "G";
             price = broom.cost;
             //ownedNum.text = 
         }
@@ -304,6 +302,9 @@ public class EquipmentElement : MonoBehaviour
                 inventory.glovesInventory.Add(gloves);
             if (broomBool)
                 inventory.broomInventory.Add(broom);
+
+            //Update UI for SaveLoad price  
+            GameObject.Find("equipmentTeamBudget").GetComponent<TMP_Text>().text = GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget.ToString("n0") + "G";
         }
     }
 
