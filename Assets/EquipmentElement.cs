@@ -32,6 +32,39 @@ public class EquipmentElement : MonoBehaviour
         #region SettingUp UI
         if (body)
         {
+            if (body.Dodge > 0)                dodgeNum.color = Color.green;
+            if (body.Dodge < 0)                dodgeNum.color = Color.red;
+
+            if (body.Speed > 0) speedNum.color = Color.green;
+            if (body.Speed < 0) speedNum.color = Color.red;
+
+            if (body.Intercept > 0) interceptNum.color = Color.green;
+            if (body.Intercept < 0) interceptNum.color = Color.red;
+
+            if (body.Pass > 0) passingNum.color = Color.green;
+            if (body.Pass < 0) passingNum.color = Color.red;
+
+            if (body.Shooting > 0) shootingNum.color = Color.green;
+            if (body.Shooting < 0) shootingNum.color = Color.red;
+
+            if (body.Tackle > 0) tackleNum.color = Color.green;
+            if (body.Tackle < 0) tackleNum.color = Color.red;
+
+            if (body.LocateSpeed > 0) locateNum.color = Color.green;
+            if (body.LocateSpeed < 0) locateNum.color = Color.red;
+
+            if (body.Block > 0) blockNum.color = Color.green;
+            if (body.Block < 0) blockNum.color = Color.red;
+
+            if (body.Sight > 0) sightNum.color = Color.green;
+            if (body.Sight < 0) sightNum.color = Color.red;
+
+            if (body.Reach > 0) reachNum.color = Color.green;
+            if (body.Reach < 0) reachNum.color = Color.red;
+
+            if (body.Grab > 0) grabNum.color = Color.green;
+            if (body.Grab < 0) grabNum.color = Color.red;
+
             nameOfEquip.text = body.objName.ToString();
             dodgeNum.text = body.Dodge.ToString();
             speedNum.text = body.Speed.ToString();
@@ -50,6 +83,39 @@ public class EquipmentElement : MonoBehaviour
         }
         else if (hat)
         {
+            if (hat.Dodge > 0) dodgeNum.color = Color.green;
+            if (hat.Dodge < 0) dodgeNum.color = Color.red;
+
+            if (hat.Speed > 0) speedNum.color = Color.green;
+            if (hat.Speed < 0) speedNum.color = Color.red;
+
+            if (hat.Intercept > 0) interceptNum.color = Color.green;
+            if (hat.Intercept < 0) interceptNum.color = Color.red;
+
+            if (hat.Pass > 0) passingNum.color = Color.green;
+            if (hat.Pass < 0) passingNum.color = Color.red;
+
+            if (hat.Shooting > 0) shootingNum.color = Color.green;
+            if (hat.Shooting < 0) shootingNum.color = Color.red;
+
+            if (hat.Tackle > 0) tackleNum.color = Color.green;
+            if (hat.Tackle < 0) tackleNum.color = Color.red;
+
+            if (hat.LocateSpeed > 0) locateNum.color = Color.green;
+            if (hat.LocateSpeed < 0) locateNum.color = Color.red;
+
+            if (hat.Block > 0) blockNum.color = Color.green;
+            if (hat.Block < 0) blockNum.color = Color.red;
+
+            if (hat.Sight > 0) sightNum.color = Color.green;
+            if (hat.Sight < 0) sightNum.color = Color.red;
+
+            if (hat.Reach > 0) reachNum.color = Color.green;
+            if (hat.Reach < 0) reachNum.color = Color.red;
+
+            if (hat.Grab > 0) grabNum.color = Color.green;
+            if (hat.Grab < 0) grabNum.color = Color.red;
+
             nameOfEquip.text = hat.objName.ToString();
             dodgeNum.text = hat.Dodge.ToString();
             speedNum.text = hat.Speed.ToString();
@@ -68,6 +134,39 @@ public class EquipmentElement : MonoBehaviour
         }
         else if (glasses)
         {
+            if (glasses.Dodge > 0) dodgeNum.color = Color.green;
+            if (glasses.Dodge < 0) dodgeNum.color = Color.red;
+
+            if (glasses.Speed > 0) speedNum.color = Color.green;
+            if (glasses.Speed < 0) speedNum.color = Color.red;
+
+            if (glasses.Intercept > 0) interceptNum.color = Color.green;
+            if (glasses.Intercept < 0) interceptNum.color = Color.red;
+
+            if (glasses.Pass > 0) passingNum.color = Color.green;
+            if (glasses.Pass < 0) passingNum.color = Color.red;
+
+            if (glasses.Shooting > 0) shootingNum.color = Color.green;
+            if (glasses.Shooting < 0) shootingNum.color = Color.red;
+
+            if (glasses.Tackle > 0) tackleNum.color = Color.green;
+            if (glasses.Tackle < 0) tackleNum.color = Color.red;
+
+            if (glasses.LocateSpeed > 0) locateNum.color = Color.green;
+            if (glasses.LocateSpeed < 0) locateNum.color = Color.red;
+
+            if (glasses.Block > 0) blockNum.color = Color.green;
+            if (glasses.Block < 0) blockNum.color = Color.red;
+
+            if (glasses.Sight > 0) sightNum.color = Color.green;
+            if (glasses.Sight < 0) sightNum.color = Color.red;
+
+            if (glasses.Reach > 0) reachNum.color = Color.green;
+            if (glasses.Reach < 0) reachNum.color = Color.red;
+
+            if (glasses.Grab > 0) grabNum.color = Color.green;
+            if (glasses.Grab < 0) grabNum.color = Color.red;
+
             nameOfEquip.text = glasses.objName.ToString();
             dodgeNum.text = glasses.Dodge.ToString();
             speedNum.text = glasses.Speed.ToString();
@@ -86,6 +185,39 @@ public class EquipmentElement : MonoBehaviour
         }
         else if (gloves)
         {
+            if (gloves.Dodge > 0) dodgeNum.color = Color.green;
+            if (gloves.Dodge < 0) dodgeNum.color = Color.red;
+
+            if (gloves.Speed > 0) speedNum.color = Color.green;
+            if (gloves.Speed < 0) speedNum.color = Color.red;
+
+            if (gloves.Intercept > 0) interceptNum.color = Color.green;
+            if (gloves.Intercept < 0) interceptNum.color = Color.red;
+
+            if (gloves.Pass > 0) passingNum.color = Color.green;
+            if (gloves.Pass < 0) passingNum.color = Color.red;
+
+            if (gloves.Shooting > 0) shootingNum.color = Color.green;
+            if (gloves.Shooting < 0) shootingNum.color = Color.red;
+
+            if (gloves.Tackle > 0) tackleNum.color = Color.green;
+            if (gloves.Tackle < 0) tackleNum.color = Color.red;
+
+            if (gloves.LocateSpeed > 0) locateNum.color = Color.green;
+            if (gloves.LocateSpeed < 0) locateNum.color = Color.red;
+
+            if (gloves.Block > 0) blockNum.color = Color.green;
+            if (gloves.Block < 0) blockNum.color = Color.red;
+
+            if (gloves.Sight > 0) sightNum.color = Color.green;
+            if (gloves.Sight < 0) sightNum.color = Color.red;
+
+            if (gloves.Reach > 0) reachNum.color = Color.green;
+            if (gloves.Reach < 0) reachNum.color = Color.red;
+
+            if (gloves.Grab > 0) grabNum.color = Color.green;
+            if (gloves.Grab < 0) grabNum.color = Color.red;
+
             nameOfEquip.text = gloves.objName.ToString();
             dodgeNum.text = gloves.Dodge.ToString();
             speedNum.text = gloves.Speed.ToString();
@@ -104,6 +236,39 @@ public class EquipmentElement : MonoBehaviour
         }
         else if (broom)
         {
+            if (broom.Dodge > 0) dodgeNum.color = Color.green;
+            if (broom.Dodge < 0) dodgeNum.color = Color.red;
+
+            if (broom.Speed > 0) speedNum.color = Color.green;
+            if (broom.Speed < 0) speedNum.color = Color.red;
+
+            if (broom.Intercept > 0) interceptNum.color = Color.green;
+            if (broom.Intercept < 0) interceptNum.color = Color.red;
+
+            if (broom.Pass > 0) passingNum.color = Color.green;
+            if (broom.Pass < 0) passingNum.color = Color.red;
+
+            if (broom.Shooting > 0) shootingNum.color = Color.green;
+            if (broom.Shooting < 0) shootingNum.color = Color.red;
+
+            if (broom.Tackle > 0) tackleNum.color = Color.green;
+            if (broom.Tackle < 0) tackleNum.color = Color.red;
+
+            if (broom.LocateSpeed > 0) locateNum.color = Color.green;
+            if (broom.LocateSpeed < 0) locateNum.color = Color.red;
+
+            if (broom.Block > 0) blockNum.color = Color.green;
+            if (broom.Block < 0) blockNum.color = Color.red;
+
+            if (broom.Sight > 0) sightNum.color = Color.green;
+            if (broom.Sight < 0) sightNum.color = Color.red;
+
+            if (broom.Reach > 0) reachNum.color = Color.green;
+            if (broom.Reach < 0) reachNum.color = Color.red;
+
+            if (broom.Grab > 0) grabNum.color = Color.green;
+            if (broom.Grab < 0) grabNum.color = Color.red;
+
             nameOfEquip.text = broom.objName.ToString();
             dodgeNum.text = broom.Dodge.ToString();
             speedNum.text = broom.Speed.ToString();
