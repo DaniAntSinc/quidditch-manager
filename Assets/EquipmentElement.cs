@@ -312,26 +312,15 @@ public class EquipmentElement : MonoBehaviour
         }
     }
 
-    //turn red negative, green positive
-    //display how many player has (on start)
-    //on purchase, update quantity player has [ui]
-    //on purchase, add to player inventory
-    //on purchase, save
-    //check to see if player has enough 
-
     public void UpdateAmountElement()
     {
         if (bodyBool)
         {
             bodyCount = 0;
             for (int i = 0; i < inventory.bodyInventory.Count; i++)
-            {
                 if (inventory.bodyInventory[i].objName == body.objName)
-                {
-                    print(inventory.bodyInventory[i].objName +  " " +body.objName);
                     bodyCount++;
-                }
-            }
+
             ownedNum.text = "X" + bodyCount.ToString();
         }
 
@@ -339,13 +328,9 @@ public class EquipmentElement : MonoBehaviour
         {
             hatCount = 0;
             for (int i = 0; i < inventory.hatInventory.Count; i++)
-            {
                 if (inventory.hatInventory[i].objName == hat.objName)
-                {
-                    print(inventory.hatInventory[i].objName + " " + hat.objName);
                     hatCount++;
-                }
-            }
+
             ownedNum.text = "X" + hatCount.ToString();
         }
 
@@ -353,13 +338,9 @@ public class EquipmentElement : MonoBehaviour
         {
             glassesCount = 0;
             for (int i = 0; i < inventory.glassesInventory.Count; i++)
-            {
                 if (inventory.glassesInventory[i].objName == glasses.objName)
-                {
-                    print(inventory.glassesInventory[i].objName + " " + glasses.objName);
                     glassesCount++;
-                }
-            }
+
             ownedNum.text = "X" + glassesCount.ToString();
         }
 
@@ -367,13 +348,9 @@ public class EquipmentElement : MonoBehaviour
         {
             glovesCount = 0;
             for (int i = 0; i < inventory.glovesInventory.Count; i++)
-            {
                 if (inventory.glovesInventory[i].objName == gloves.objName)
-                {
-                    print(inventory.glovesInventory[i].objName + " " + gloves.objName);
                     glovesCount++;
-                }
-            }
+
             ownedNum.text = "X" + glovesCount.ToString();
         }
 
@@ -381,13 +358,9 @@ public class EquipmentElement : MonoBehaviour
         {
             broomCount = 0;
             for (int i = 0; i < inventory.broomInventory.Count; i++)
-            {
                 if (inventory.broomInventory[i].objName == broom.objName)
-                {
-                    print(inventory.broomInventory[i].objName + " " + broom.objName);
                     broomCount++;
-                }
-            }
+
             ownedNum.text = "X" + broomCount.ToString();
         }
     }
