@@ -334,5 +334,61 @@ public class EquipmentElement : MonoBehaviour
             }
             ownedNum.text = "X" + bodyCount.ToString();
         }
+
+        if (hatBool)
+        {
+            hatCount = 0;
+            for (int i = 0; i < inventory.hatInventory.Count; i++)
+            {
+                if (inventory.hatInventory[i].objName == hat.objName)
+                {
+                    print(inventory.hatInventory[i].objName + " " + hat.objName);
+                    hatCount++;
+                }
+            }
+            ownedNum.text = "X" + hatCount.ToString();
+        }
+
+        if (glassesBool)
+        {
+            glassesCount = 0;
+            for (int i = 0; i < inventory.glassesInventory.Count; i++)
+            {
+                if (inventory.glassesInventory[i].objName == glasses.objName)
+                {
+                    print(inventory.glassesInventory[i].objName + " " + glasses.objName);
+                    glassesCount++;
+                }
+            }
+            ownedNum.text = "X" + glassesCount.ToString();
+        }
+
+        if (glovesBool)
+        {
+            glovesCount = 0;
+            for (int i = 0; i < inventory.glovesInventory.Count; i++)
+            {
+                if (inventory.glovesInventory[i].objName == gloves.objName)
+                {
+                    print(inventory.glovesInventory[i].objName + " " + gloves.objName);
+                    glovesCount++;
+                }
+            }
+            ownedNum.text = "X" + glovesCount.ToString();
+        }
+
+        if (broomBool)
+        {
+            broomCount = 0;
+            for (int i = 0; i < inventory.broomInventory.Count; i++)
+            {
+                if (inventory.broomInventory[i].objName == broom.objName)
+                {
+                    print(inventory.broomInventory[i].objName + " " + broom.objName);
+                    broomCount++;
+                }
+            }
+            ownedNum.text = "X" + broomCount.ToString();
+        }
     }
 }
