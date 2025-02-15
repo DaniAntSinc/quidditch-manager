@@ -309,6 +309,7 @@ public class EquipmentElement : MonoBehaviour
             UpdateAmountElement();
             //Update UI for SaveLoad price  
             GameObject.Find("equipmentTeamBudget").GetComponent<TMP_Text>().text = GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget.ToString("n0") + "G";
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SavePlayerInventory();
         }
     }
 

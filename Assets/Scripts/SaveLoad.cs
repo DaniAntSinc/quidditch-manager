@@ -16,10 +16,17 @@ public class SaveLoad : MonoBehaviour
     public int stadiumNumber;
     public int teamBudget;
     //player equipment still needed
-    //team budget
-    //stadium selection
     public Button loadButton;
     public TMP_Text loadText;
+
+    #region EquipmentVariables
+    public PlayerInventory playerInventory;
+    int body, body1, body2, body3, body4, body5;
+    int hat, hat1, hat2, hat3, hat4, hat5;
+    int glasses, glasses1, glasses2, glasses3, glasses4, glasses5;
+    int gloves, gloves1, gloves2, gloves3, gloves4, gloves5;
+    int broom, broom1, broom2, broom3, broom4, broom5, broom6, broom7, broom8, broom9, broom10;
+    #endregion
     private void Start()
     {
         teamStadiumCreated = PlayerPrefs.GetInt("stadiumCreated");
@@ -225,6 +232,143 @@ public class SaveLoad : MonoBehaviour
 
         PlayerPrefs.SetInt("Wins", playersTeam.win);
         PlayerPrefs.SetInt("Losses", playersTeam.loss);
+    }
+
+    public void SavePlayerInventory()
+    {
+        body = 0;
+        body1 = 0;
+        body2 = 0;
+        body3 = 0;
+        body4 = 0;
+        body5 = 0;
+
+        for (int i = 0; i < playerInventory.bodyInventory.Count; i++)
+        {
+            if (playerInventory.bodyInventory[i].objName == "None")
+                body++;
+            else if (playerInventory.bodyInventory[i].objName == "Chest Protector")
+                body1++;
+            else if (playerInventory.bodyInventory[i].objName == "Cape")
+                body2++;
+            else if (playerInventory.bodyInventory[i].objName == "Knight's Armour")
+                body3++;
+            else if (playerInventory.bodyInventory[i].objName == "Merlin's Cloak")
+                body4++;
+            else if (playerInventory.bodyInventory[i].objName == "Team Sweater")
+                body5++;
+        }
+
+        hat = 0;
+        hat1 = 0;
+        hat2 = 0;
+        hat3 = 0;
+        hat4 = 0;
+        hat5 = 0;
+
+        for (int i = 0; i < playerInventory.hatInventory.Count; i++)
+        {
+            if (playerInventory.hatInventory[i].objName == "None")
+                hat++;
+            else if (playerInventory.hatInventory[i].objName == "Leather Cap")
+                hat1++;
+            else if (playerInventory.hatInventory[i].objName == "Reinforced Hat")
+                hat2++;
+            else if (playerInventory.hatInventory[i].objName == "Enchanted Hat")
+                hat3++;
+            else if (playerInventory.hatInventory[i].objName == "Armoured Hat")
+                hat4++;
+            else if (playerInventory.hatInventory[i].objName == "Fortune Telling Hat")
+                hat5++;
+        }
+
+        glasses = 0;
+        glasses1 = 0;
+        glasses2 = 0;
+        glasses3 = 0;
+        glasses4 = 0;
+        glasses5 = 0;
+
+        for (int i = 0; i < playerInventory.glassesInventory.Count; i++)
+        {
+            if (playerInventory.glassesInventory[i].objName == "None")
+                glasses++;
+            else if (playerInventory.glassesInventory[i].objName == "Magnifying Specs")
+                glasses1++;
+            else if (playerInventory.glassesInventory[i].objName == "Weather Goggles")
+                glasses2++;
+            else if (playerInventory.glassesInventory[i].objName == "Standard Glasses")
+                glasses3++;
+            else if (playerInventory.glassesInventory[i].objName == "Sporting Glasses")
+                glasses4++;
+            else if (playerInventory.glassesInventory[i].objName == "Focusing Specs")
+                glasses5++;
+        }
+
+        gloves = 0;
+        gloves1 = 0;
+        gloves2 = 0;
+        gloves3 = 0;
+        gloves4 = 0;
+        gloves5 = 0;
+
+        for (int i = 0; i < playerInventory.glovesInventory.Count; i++)
+        {
+            if (playerInventory.glovesInventory[i].objName == "None")
+                gloves++;
+            else if (playerInventory.glovesInventory[i].objName == "Gauntlets")
+                gloves1++;
+            else if (playerInventory.glovesInventory[i].objName == "Leather Gloves")
+                gloves2++;
+            else if (playerInventory.glovesInventory[i].objName == "Magnetic Gloves")
+                gloves3++;
+            else if (playerInventory.glovesInventory[i].objName == "Enforced Gloves")
+                gloves4++;
+            else if (playerInventory.glovesInventory[i].objName == "Thief's Mitts")
+                gloves5++;
+        }
+
+        broom = 0;
+        broom1 = 0;
+        broom2 = 0;
+        broom3 = 0;
+        broom4 = 0;
+        broom5 = 0;
+        broom6 = 0;
+        broom7 = 0;
+        broom8 = 0;
+        broom9 = 0;
+        broom10 = 0;
+
+        for (int i = 0; i < playerInventory.broomInventory.Count; i++)
+        {
+            if (playerInventory.broomInventory[i].objName == "None")
+                broom++;
+            else if (playerInventory.broomInventory[i].objName == "Bluebottle")
+                broom1++;
+            else if (playerInventory.broomInventory[i].objName == "Cavalier Saber")
+                broom2++;
+            else if (playerInventory.broomInventory[i].objName == "Cleansweep Eleven")
+                broom3++;
+            else if (playerInventory.broomInventory[i].objName == "Comet 290")
+                broom4++;
+            else if (playerInventory.broomInventory[i].objName == "Firebolt")
+                broom5++;
+            else if (playerInventory.broomInventory[i].objName == "Numbus 2000")
+                broom6++;
+            else if (playerInventory.broomInventory[i].objName == "Shooting Star")
+                broom7++;
+            else if (playerInventory.broomInventory[i].objName == "Starsweeper XXI")
+                broom8++;
+            else if (playerInventory.broomInventory[i].objName == "Turbo XXIX")
+                broom9++;
+            else if (playerInventory.broomInventory[i].objName == "Twigger 90")
+                broom10++;
+        }
+
+        print(broom10);
+
+        //PlayerPrefs.SetInt("Body", body0);
     }
 
     public void LoadTeam()
