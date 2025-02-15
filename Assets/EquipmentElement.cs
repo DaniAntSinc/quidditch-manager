@@ -25,6 +25,8 @@ public class EquipmentElement : MonoBehaviour
     grabNum, ownedNum,
     nameOfEquip,    priceNum;
 
+    int bodyCount, hatCount, glassesCount, glovesCount, broomCount;
+
     public PlayerInventory inventory;
 
     public void Start()
@@ -285,6 +287,7 @@ public class EquipmentElement : MonoBehaviour
             price = broom.cost;
             //ownedNum.text = 
         }
+        UpdateAmountElement();
         #endregion
     }
     public void EquipmentPurchased()
@@ -303,6 +306,7 @@ public class EquipmentElement : MonoBehaviour
             if (broomBool)
                 inventory.broomInventory.Add(broom);
 
+            UpdateAmountElement();
             //Update UI for SaveLoad price  
             GameObject.Find("equipmentTeamBudget").GetComponent<TMP_Text>().text = GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget.ToString("n0") + "G";
         }
@@ -314,4 +318,21 @@ public class EquipmentElement : MonoBehaviour
     //on purchase, add to player inventory
     //on purchase, save
     //check to see if player has enough 
+
+    public void UpdateAmountElement()
+    {
+        if (bodyBool)
+        {
+            bodyCount = 0;
+            for (int i = 0; i < inventory.bodyInventory.Count; i++)
+            {
+                if (inventory.bodyInventory[i].objName == body.objName)
+                {
+                    print(inventory.bodyInventory[i].objName +  " " +body.objName);
+                    bodyCount++;
+                }
+            }
+            ownedNum.text = "X" + bodyCount.ToString();
+        }
+    }
 }
