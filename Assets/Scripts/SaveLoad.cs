@@ -236,6 +236,8 @@ public class SaveLoad : MonoBehaviour
 
     public void SavePlayerInventory()
     {
+        PlayerPrefs.SetInt("TeamBudget", teamBudget);
+
         body = 0;
         body1 = 0;
         body2 = 0;

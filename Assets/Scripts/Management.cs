@@ -665,7 +665,7 @@ public class Management : MonoBehaviour
         chaser2.text = playersTeam.GetComponent<SeasonTeam>().chasers[1].Name;
         chaser3.text = playersTeam.GetComponent<SeasonTeam>().chasers[2].Name;
         logoSprite.sprite = logoSelectionList[logoNumSelected];
-        teamBudgetText.text = "Team Budget: " + saveLoad.teamBudget.ToString("F0");
+        teamBudgetText.text = "Team Budget: " + saveLoad.teamBudget.ToString("n0") + "G" ;
         print("Here");
         seasonTracker.teamsInLeague.Add(playersTeam.GetComponent<SeasonTeam>());
         teamRecord.text = "Team Record: " + playersTeam.GetComponent<SeasonTeam>().win + " - " + playersTeam.GetComponent<SeasonTeam>().loss;
@@ -725,6 +725,8 @@ public class Management : MonoBehaviour
 
     public void ReturnToManagementHomePage()
     {
+        teamBudgetText.text = "Team Budget: " + saveLoad.teamBudget.ToString("n0") + "G";
+
         startingPageMenu.SetActive(true);
         playersSubMenu.SetActive(false);
         equipmentSubMenu.SetActive(false);
