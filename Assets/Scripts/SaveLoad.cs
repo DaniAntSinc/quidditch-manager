@@ -368,7 +368,46 @@ public class SaveLoad : MonoBehaviour
 
         print(broom10);
 
-        //PlayerPrefs.SetInt("Body", body0);
+        PlayerPrefs.SetInt("Equipbody", body);
+        PlayerPrefs.SetInt("Equipbody1", body1);
+        PlayerPrefs.SetInt("Equipbody2", body2);
+        PlayerPrefs.SetInt("Equipbody3", body3);
+        PlayerPrefs.SetInt("Equipbody4", body4);
+        PlayerPrefs.SetInt("Equipbody5", body5);
+
+        PlayerPrefs.SetInt("Equiphat", hat);
+        PlayerPrefs.SetInt("Equiphat1", hat1);
+        PlayerPrefs.SetInt("Equiphat2", hat2);
+        PlayerPrefs.SetInt("Equiphat3", hat3);
+        PlayerPrefs.SetInt("Equiphat4", hat4);
+        PlayerPrefs.SetInt("Equiphat5", hat5);
+
+        PlayerPrefs.SetInt("Equipgloves", gloves);
+        PlayerPrefs.SetInt("Equipgloves1", gloves1);
+        PlayerPrefs.SetInt("Equipgloves2", gloves2);
+        PlayerPrefs.SetInt("Equipgloves3", gloves3);
+        PlayerPrefs.SetInt("Equipgloves4", gloves4);
+        PlayerPrefs.SetInt("Equipgloves5", gloves5);
+
+        PlayerPrefs.SetInt("Equipglasses", glasses);
+        PlayerPrefs.SetInt("Equipglasses1", glasses1);
+        PlayerPrefs.SetInt("Equipglasses2", glasses2);
+        PlayerPrefs.SetInt("Equipglasses3", glasses3);
+        PlayerPrefs.SetInt("Equipglasses4", glasses4);
+        PlayerPrefs.SetInt("Equipglasses5", glasses5);
+
+        PlayerPrefs.SetInt("Equipbroom", broom);
+        PlayerPrefs.SetInt("Equipbroom1", broom1);
+        PlayerPrefs.SetInt("Equipbroom2", broom2);
+        PlayerPrefs.SetInt("Equipbroom3", broom3);
+        PlayerPrefs.SetInt("Equipbroom4", broom4);
+        PlayerPrefs.SetInt("Equipbroom5", broom5);
+        PlayerPrefs.SetInt("Equipbroom6", broom6);
+        PlayerPrefs.SetInt("Equipbroom7", broom7);
+        PlayerPrefs.SetInt("Equipbroom8", broom8);
+        PlayerPrefs.SetInt("Equipbroom9", broom9);
+        PlayerPrefs.SetInt("Equipbroom10", broom10);
+
     }
 
     public void LoadTeam()
@@ -553,7 +592,124 @@ public class SaveLoad : MonoBehaviour
         playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].GExperienceCap = PlayerPrefs.GetInt("SeekerGExperienceCap");
 
         #endregion
+        #region Equipment / Player Inventory
+        body = PlayerPrefs.GetInt("Equipbody");
+        body1 = PlayerPrefs.GetInt("Equipbody1");
+        body2 = PlayerPrefs.GetInt("Equipbody2");
+        body3 = PlayerPrefs.GetInt("Equipbody3");
+        body4 = PlayerPrefs.GetInt("Equipbody4");
+        body5 = PlayerPrefs.GetInt("Equipbody5");
 
+        for (int i = 0; i < body; i++)
+            playerInventory.bodyInventory.Add(GameObject.Find("BodyEquip").transform.GetChild(0).GetComponent<Body>());
+        for (int i = 0; i < body1; i++)
+            playerInventory.bodyInventory.Add(GameObject.Find("BodyEquip").transform.GetChild(1).GetComponent<Body>());
+        for (int i = 0; i < body2; i++)
+            playerInventory.bodyInventory.Add(GameObject.Find("BodyEquip").transform.GetChild(2).GetComponent<Body>());
+        for (int i = 0; i < body3; i++)
+            playerInventory.bodyInventory.Add(GameObject.Find("BodyEquip").transform.GetChild(3).GetComponent<Body>());
+        for (int i = 0; i < body4; i++)
+            playerInventory.bodyInventory.Add(GameObject.Find("BodyEquip").transform.GetChild(4).GetComponent<Body>());
+        for (int i = 0; i < body5; i++)
+            playerInventory.bodyInventory.Add(GameObject.Find("BodyEquip").transform.GetChild(5).GetComponent<Body>());
+
+        hat = PlayerPrefs.GetInt("Equiphat");
+        hat1 = PlayerPrefs.GetInt("Equiphat1");
+        hat2 = PlayerPrefs.GetInt("Equiphat2");
+        hat3 = PlayerPrefs.GetInt("Equiphat3");
+        hat4 = PlayerPrefs.GetInt("Equiphat4");
+        hat5 = PlayerPrefs.GetInt("Equiphat5");
+
+        for (int i = 0; i < hat; i++)
+            playerInventory.hatInventory.Add(GameObject.Find("Hat").transform.GetChild(0).GetComponent<Hat>());
+        for (int i = 0; i < hat1; i++)
+            playerInventory.hatInventory.Add(GameObject.Find("Hat").transform.GetChild(1).GetComponent<Hat>());
+        for (int i = 0; i < hat2; i++)
+            playerInventory.hatInventory.Add(GameObject.Find("Hat").transform.GetChild(2).GetComponent<Hat>());
+        for (int i = 0; i < hat3; i++)
+            playerInventory.hatInventory.Add(GameObject.Find("Hat").transform.GetChild(3).GetComponent<Hat>());
+        for (int i = 0; i < hat4; i++)
+            playerInventory.hatInventory.Add(GameObject.Find("Hat").transform.GetChild(4).GetComponent<Hat>());
+        for (int i = 0; i < hat5; i++)
+            playerInventory.hatInventory.Add(GameObject.Find("Hat").transform.GetChild(5).GetComponent<Hat>());
+
+        gloves = PlayerPrefs.GetInt("Equipgloves");
+        gloves1 = PlayerPrefs.GetInt("Equipgloves1");
+        gloves2 = PlayerPrefs.GetInt("Equipgloves2");
+        gloves3 = PlayerPrefs.GetInt("Equipgloves3");
+        gloves4 = PlayerPrefs.GetInt("Equipgloves4");
+        gloves5 = PlayerPrefs.GetInt("Equipgloves5");
+
+        for (int i = 0; i < gloves; i++)
+            playerInventory.glovesInventory.Add(GameObject.Find("Gloves").transform.GetChild(0).GetComponent<Gloves>());
+        for (int i = 0; i < gloves1; i++)
+            playerInventory.glovesInventory.Add(GameObject.Find("Gloves").transform.GetChild(1).GetComponent<Gloves>());
+        for (int i = 0; i < gloves2; i++)
+            playerInventory.glovesInventory.Add(GameObject.Find("Gloves").transform.GetChild(2).GetComponent<Gloves>());
+        for (int i = 0; i < gloves3; i++)
+            playerInventory.glovesInventory.Add(GameObject.Find("Gloves").transform.GetChild(3).GetComponent<Gloves>());
+        for (int i = 0; i < gloves4; i++)
+            playerInventory.glovesInventory.Add(GameObject.Find("Gloves").transform.GetChild(4).GetComponent<Gloves>());
+        for (int i = 0; i < gloves5; i++)
+            playerInventory.glovesInventory.Add(GameObject.Find("Gloves").transform.GetChild(5).GetComponent<Gloves>());
+
+
+        glasses = PlayerPrefs.GetInt("Equipglasses");
+        glasses1 = PlayerPrefs.GetInt("Equipglasses1");
+        glasses2 = PlayerPrefs.GetInt("Equipglasses2");
+        glasses3 = PlayerPrefs.GetInt("Equipglasses3");
+        glasses4 = PlayerPrefs.GetInt("Equipglasses4");
+        glasses5 = PlayerPrefs.GetInt("Equipglasses5");
+
+        for (int i = 0; i < glasses; i++)
+            playerInventory.glassesInventory.Add(GameObject.Find("Glasses").transform.GetChild(0).GetComponent<Glasses>());
+        for (int i = 0; i < glasses1; i++)
+            playerInventory.glassesInventory.Add(GameObject.Find("Glasses").transform.GetChild(1).GetComponent<Glasses>());
+        for (int i = 0; i < glasses2; i++)
+            playerInventory.glassesInventory.Add(GameObject.Find("Glasses").transform.GetChild(2).GetComponent<Glasses>());
+        for (int i = 0; i < glasses3; i++)
+            playerInventory.glassesInventory.Add(GameObject.Find("Glasses").transform.GetChild(3).GetComponent<Glasses>());
+        for (int i = 0; i < glasses4; i++)
+            playerInventory.glassesInventory.Add(GameObject.Find("Glasses").transform.GetChild(4).GetComponent<Glasses>());
+        for (int i = 0; i < glasses5; i++)
+            playerInventory.glassesInventory.Add(GameObject.Find("Glasses").transform.GetChild(5).GetComponent<Glasses>());
+
+
+        broom = PlayerPrefs.GetInt("Equipbroom");
+        broom1 = PlayerPrefs.GetInt("Equipbroom1");
+        broom2 = PlayerPrefs.GetInt("Equipbroom2");
+        broom3 = PlayerPrefs.GetInt("Equipbroom3");
+        broom4 = PlayerPrefs.GetInt("Equipbroom4");
+        broom5 = PlayerPrefs.GetInt("Equipbroom5");
+        broom6 = PlayerPrefs.GetInt("Equipbroom6");
+        broom7 = PlayerPrefs.GetInt("Equipbroom7");
+        broom8 = PlayerPrefs.GetInt("Equipbroom8");
+        broom9 = PlayerPrefs.GetInt("Equipbroom9");
+        broom10 = PlayerPrefs.GetInt("Equipbroom10");
+
+        for (int i = 0; i < broom; i++)
+            playerInventory.broomInventory.Add(GameObject.Find("Broom").transform.GetChild(0).GetComponent<Broom>());
+        for (int i = 0; i < broom1; i++)
+            playerInventory.broomInventory.Add(GameObject.Find("Broom").transform.GetChild(1).GetComponent<Broom>());
+        for (int i = 0; i < broom2; i++)
+            playerInventory.broomInventory.Add(GameObject.Find("Broom").transform.GetChild(2).GetComponent<Broom>());
+        for (int i = 0; i < broom3; i++)
+            playerInventory.broomInventory.Add(GameObject.Find("Broom").transform.GetChild(3).GetComponent<Broom>());
+        for (int i = 0; i < broom4; i++)
+            playerInventory.broomInventory.Add(GameObject.Find("Broom").transform.GetChild(4).GetComponent<Broom>());
+        for (int i = 0; i < broom5; i++)
+            playerInventory.broomInventory.Add(GameObject.Find("Broom").transform.GetChild(5).GetComponent<Broom>());
+        for (int i = 0; i < broom6; i++)
+            playerInventory.broomInventory.Add(GameObject.Find("Broom").transform.GetChild(6).GetComponent<Broom>());
+        for (int i = 0; i < broom7; i++)
+            playerInventory.broomInventory.Add(GameObject.Find("Broom").transform.GetChild(7).GetComponent<Broom>());
+        for (int i = 0; i < broom8; i++)
+            playerInventory.broomInventory.Add(GameObject.Find("Broom").transform.GetChild(8).GetComponent<Broom>());
+        for (int i = 0; i < broom9; i++)
+            playerInventory.broomInventory.Add(GameObject.Find("Broom").transform.GetChild(9).GetComponent<Broom>());
+        for (int i = 0; i < broom10; i++)
+            playerInventory.broomInventory.Add(GameObject.Find("Broom").transform.GetChild(10).GetComponent<Broom>());
+        #endregion
 
         int tempWin = PlayerPrefs.GetInt("Wins");
         int tempLoss = PlayerPrefs.GetInt("Losses");
