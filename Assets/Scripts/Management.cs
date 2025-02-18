@@ -95,6 +95,8 @@ public class Management : MonoBehaviour
     public GameObject equipmentBody, equipmentGlasses, equipmentGloves, equipmentHat, equipmentBroom;
     public TMP_Text equipmentBodyText, equipmentGlassesText, equipmentGlovesText, equipmentHatText, equipmentBroomText;
     public TMP_Text equipmentBudget;
+
+    public GameObject individualPlayerPage;
     #endregion
     public void Start()
     {
@@ -861,5 +863,16 @@ public class Management : MonoBehaviour
         equipmentHat.SetActive(false);
         equipmentGloves.SetActive(false);
         equipmentBroom.SetActive(false);
+    }
+
+    public void OpenIndividualPage()
+    {
+        individualPlayerPage.SetActive(true);
+        //seasonal team player
+    }
+
+    public void CloseIndividualPage()
+    {
+        individualPlayerPage.SetActive(false);
     }
 }
