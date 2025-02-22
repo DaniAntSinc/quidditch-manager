@@ -97,6 +97,7 @@ public class Management : MonoBehaviour
     public TMP_Text equipmentBudget;
 
     public GameObject individualPlayerPage;
+    public GameObject individualEquipmentPage;
     #endregion
     public void Start()
     {
@@ -874,5 +875,10 @@ public class Management : MonoBehaviour
     public void CloseIndividualPage()
     {
         individualPlayerPage.SetActive(false);
+    }
+
+    public void CloseIndividualEquipmentPage()
+    {
+        individualEquipmentPage.SetActive(false);
     }
 }
