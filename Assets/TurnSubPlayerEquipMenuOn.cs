@@ -70,54 +70,51 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedInventory.transform.SetParent(EquipmentHolderViewWindow.transform);
             instantiatedInventory.transform.localScale = new Vector3(1, 1, 1);
 
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(1).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].objName.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Dodge.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].LocateSpeed.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Speed.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Intercept.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Pass.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Sight.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Block.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Reach.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Grab.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Shooting.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Tackle.ToString();
+            instantiatedInventory.transform.GetChild(1).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].objName.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Dodge.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].LocateSpeed.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Speed.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Intercept.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Pass.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Sight.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Block.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Reach.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Grab.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Shooting.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Tackle.ToString();
 
-            print("Mark:" + EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().text);
-            print("Mark:" + playerInventory.bodyInventory[i].Tackle.ToString());
+            if (playerInventory.bodyInventory[i].Dodge > 0) instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.bodyInventory[i].Dodge < 0) instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.bodyInventory[i].Dodge > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.bodyInventory[i].Dodge < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.bodyInventory[i].LocateSpeed > 0) instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.bodyInventory[i].LocateSpeed < 0) instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.bodyInventory[i].LocateSpeed > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.bodyInventory[i].LocateSpeed < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.bodyInventory[i].Speed > 0) instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.bodyInventory[i].Speed < 0) instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.bodyInventory[i].Speed > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.bodyInventory[i].Speed < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.bodyInventory[i].Intercept > 0) instantiatedInventory.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.bodyInventory[i].Intercept < 0) instantiatedInventory.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.bodyInventory[i].Intercept > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.bodyInventory[i].Intercept < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.bodyInventory[i].Pass > 0) instantiatedInventory.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.bodyInventory[i].Pass < 0) instantiatedInventory.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.bodyInventory[i].Pass > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.bodyInventory[i].Pass < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.bodyInventory[i].Sight > 0) instantiatedInventory.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.bodyInventory[i].Sight < 0) instantiatedInventory.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.bodyInventory[i].Sight > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.bodyInventory[i].Sight < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.bodyInventory[i].Block > 0) instantiatedInventory.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.bodyInventory[i].Block < 0) instantiatedInventory.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.bodyInventory[i].Block > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.bodyInventory[i].Block < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.bodyInventory[i].Reach > 0) instantiatedInventory.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.bodyInventory[i].Reach < 0) instantiatedInventory.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.bodyInventory[i].Reach > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.bodyInventory[i].Reach < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.bodyInventory[i].Grab > 0) instantiatedInventory.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.bodyInventory[i].Grab < 0) instantiatedInventory.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.bodyInventory[i].Grab > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.bodyInventory[i].Grab < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.bodyInventory[i].Shooting > 0) instantiatedInventory.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.bodyInventory[i].Shooting < 0) instantiatedInventory.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.bodyInventory[i].Shooting > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.bodyInventory[i].Shooting < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
-
-            if (playerInventory.bodyInventory[i].Tackle > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.bodyInventory[i].Tackle < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.bodyInventory[i].Tackle > 0) instantiatedInventory.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.bodyInventory[i].Tackle < 0) instantiatedInventory.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
         }
         AddExistingBodyEquipItem();
     }
@@ -131,51 +128,51 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedInventory.transform.SetParent(EquipmentHolderViewWindow.transform);
             instantiatedInventory.transform.localScale = new Vector3(1, 1, 1);
 
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(1).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].objName.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Dodge.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].LocateSpeed.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Speed.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Intercept.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Pass.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Sight.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Block.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Reach.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Grab.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Shooting.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Tackle.ToString();
+            instantiatedInventory.transform.GetChild(1).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].objName.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Dodge.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].LocateSpeed.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Speed.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Intercept.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Pass.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Sight.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Block.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Reach.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Grab.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Shooting.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Tackle.ToString();
 
-            if (playerInventory.glassesInventory[i].Dodge > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glassesInventory[i].Dodge < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glassesInventory[i].Dodge > 0) instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glassesInventory[i].Dodge < 0) instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glassesInventory[i].LocateSpeed > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glassesInventory[i].LocateSpeed < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glassesInventory[i].LocateSpeed > 0) instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glassesInventory[i].LocateSpeed < 0) instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glassesInventory[i].Speed > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glassesInventory[i].Speed < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glassesInventory[i].Speed > 0) instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glassesInventory[i].Speed < 0) instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glassesInventory[i].Intercept > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glassesInventory[i].Intercept < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glassesInventory[i].Intercept > 0) instantiatedInventory.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glassesInventory[i].Intercept < 0) instantiatedInventory.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glassesInventory[i].Pass > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glassesInventory[i].Pass < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glassesInventory[i].Pass > 0) instantiatedInventory.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glassesInventory[i].Pass < 0) instantiatedInventory.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glassesInventory[i].Sight > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glassesInventory[i].Sight < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glassesInventory[i].Sight > 0) instantiatedInventory.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glassesInventory[i].Sight < 0) instantiatedInventory.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glassesInventory[i].Block > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glassesInventory[i].Block < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glassesInventory[i].Block > 0) instantiatedInventory.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glassesInventory[i].Block < 0) instantiatedInventory.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glassesInventory[i].Reach > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glassesInventory[i].Reach < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glassesInventory[i].Reach > 0) instantiatedInventory.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glassesInventory[i].Reach < 0) instantiatedInventory.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glassesInventory[i].Grab > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glassesInventory[i].Grab < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glassesInventory[i].Grab > 0) instantiatedInventory.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glassesInventory[i].Grab < 0) instantiatedInventory.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glassesInventory[i].Shooting > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glassesInventory[i].Shooting < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glassesInventory[i].Shooting > 0) instantiatedInventory.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glassesInventory[i].Shooting < 0) instantiatedInventory.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glassesInventory[i].Tackle > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glassesInventory[i].Tackle < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glassesInventory[i].Tackle > 0) instantiatedInventory.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glassesInventory[i].Tackle < 0) instantiatedInventory.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
         }
         AddExistingGlassesEquipItem();
     }
@@ -189,51 +186,51 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedInventory.transform.SetParent(EquipmentHolderViewWindow.transform);
             instantiatedInventory.transform.localScale = new Vector3(1, 1, 1);
 
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(1).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].objName.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Dodge.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].LocateSpeed.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Speed.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Intercept.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Pass.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Sight.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Block.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Reach.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Grab.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Shooting.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Tackle.ToString();
+            instantiatedInventory.transform.GetChild(1).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].objName.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Dodge.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].LocateSpeed.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Speed.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Intercept.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Pass.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Sight.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Block.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Reach.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Grab.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Shooting.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Tackle.ToString();
 
-            if (playerInventory.glovesInventory[i].Dodge > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glovesInventory[i].Dodge < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glovesInventory[i].Dodge > 0) instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glovesInventory[i].Dodge < 0) instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glovesInventory[i].LocateSpeed > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glovesInventory[i].LocateSpeed < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glovesInventory[i].LocateSpeed > 0) instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glovesInventory[i].LocateSpeed < 0) instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glovesInventory[i].Speed > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glovesInventory[i].Speed < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glovesInventory[i].Speed > 0) instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glovesInventory[i].Speed < 0) instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glovesInventory[i].Intercept > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glovesInventory[i].Intercept < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glovesInventory[i].Intercept > 0) instantiatedInventory.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glovesInventory[i].Intercept < 0) instantiatedInventory.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glovesInventory[i].Pass > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glovesInventory[i].Pass < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glovesInventory[i].Pass > 0) instantiatedInventory.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glovesInventory[i].Pass < 0) instantiatedInventory.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glovesInventory[i].Sight > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glovesInventory[i].Sight < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glovesInventory[i].Sight > 0) instantiatedInventory.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glovesInventory[i].Sight < 0) instantiatedInventory.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glovesInventory[i].Block > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glovesInventory[i].Block < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glovesInventory[i].Block > 0) instantiatedInventory.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glovesInventory[i].Block < 0) instantiatedInventory.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glovesInventory[i].Reach > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glovesInventory[i].Reach < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glovesInventory[i].Reach > 0) instantiatedInventory.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glovesInventory[i].Reach < 0) instantiatedInventory.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glovesInventory[i].Grab > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glovesInventory[i].Grab < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glovesInventory[i].Grab > 0) instantiatedInventory.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glovesInventory[i].Grab < 0) instantiatedInventory.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glovesInventory[i].Shooting > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glovesInventory[i].Shooting < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glovesInventory[i].Shooting > 0) instantiatedInventory.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glovesInventory[i].Shooting < 0) instantiatedInventory.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.glovesInventory[i].Tackle > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.glovesInventory[i].Tackle < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.glovesInventory[i].Tackle > 0) instantiatedInventory.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.glovesInventory[i].Tackle < 0) instantiatedInventory.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
         }
         AddExistingGlovesEquipItem();
     }
@@ -247,51 +244,51 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedInventory.transform.SetParent(EquipmentHolderViewWindow.transform);
             instantiatedInventory.transform.localScale = new Vector3(1, 1, 1);
 
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(1).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].objName.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Dodge.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].LocateSpeed.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Speed.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Intercept.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Pass.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Sight.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Block.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Reach.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Grab.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Shooting.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Tackle.ToString();
+            instantiatedInventory.transform.GetChild(1).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].objName.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Dodge.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].LocateSpeed.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Speed.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Intercept.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Pass.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Sight.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Block.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Reach.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Grab.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Shooting.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Tackle.ToString();
 
-            if (playerInventory.hatInventory[i].Dodge > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.hatInventory[i].Dodge < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.hatInventory[i].Dodge > 0) instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.hatInventory[i].Dodge < 0) instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.hatInventory[i].LocateSpeed > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.hatInventory[i].LocateSpeed < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.hatInventory[i].LocateSpeed > 0) instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.hatInventory[i].LocateSpeed < 0) instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.hatInventory[i].Speed > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.hatInventory[i].Speed < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.hatInventory[i].Speed > 0) instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.hatInventory[i].Speed < 0) instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.hatInventory[i].Intercept > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.hatInventory[i].Intercept < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.hatInventory[i].Intercept > 0) instantiatedInventory.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.hatInventory[i].Intercept < 0) instantiatedInventory.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.hatInventory[i].Pass > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.hatInventory[i].Pass < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.hatInventory[i].Pass > 0) instantiatedInventory.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.hatInventory[i].Pass < 0) instantiatedInventory.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.hatInventory[i].Sight > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.hatInventory[i].Sight < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.hatInventory[i].Sight > 0) instantiatedInventory.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.hatInventory[i].Sight < 0) instantiatedInventory.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.hatInventory[i].Block > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.hatInventory[i].Block < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.hatInventory[i].Block > 0) instantiatedInventory.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.hatInventory[i].Block < 0) instantiatedInventory.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.hatInventory[i].Reach > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.hatInventory[i].Reach < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.hatInventory[i].Reach > 0) instantiatedInventory.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.hatInventory[i].Reach < 0) instantiatedInventory.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.hatInventory[i].Grab > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.hatInventory[i].Grab < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.hatInventory[i].Grab > 0) instantiatedInventory.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.hatInventory[i].Grab < 0) instantiatedInventory.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.hatInventory[i].Shooting > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.hatInventory[i].Shooting < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.hatInventory[i].Shooting > 0) instantiatedInventory.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.hatInventory[i].Shooting < 0) instantiatedInventory.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.hatInventory[i].Tackle > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.hatInventory[i].Tackle < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.hatInventory[i].Tackle > 0) instantiatedInventory.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.hatInventory[i].Tackle < 0) instantiatedInventory.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
         }
         AddExistingHatEquipItem();
     }
@@ -305,51 +302,51 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedInventory.transform.SetParent(EquipmentHolderViewWindow.transform);
             instantiatedInventory.transform.localScale = new Vector3(1, 1, 1);
 
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(1).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].objName.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Dodge.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].LocateSpeed.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Speed.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Intercept.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Pass.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Sight.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Block.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Reach.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Grab.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Shooting.ToString();
-            EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Tackle.ToString();
+            instantiatedInventory.transform.GetChild(1).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].objName.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Dodge.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].LocateSpeed.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Speed.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Intercept.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Pass.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Sight.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Block.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Reach.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Grab.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Shooting.ToString();
+            instantiatedInventory.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Tackle.ToString();
 
-            if (playerInventory.broomInventory[i].Dodge > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.broomInventory[i].Dodge < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.broomInventory[i].Dodge > 0) instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.broomInventory[i].Dodge < 0) instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.broomInventory[i].LocateSpeed > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.broomInventory[i].LocateSpeed < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.broomInventory[i].LocateSpeed > 0) instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.broomInventory[i].LocateSpeed < 0) instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.broomInventory[i].Speed > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.broomInventory[i].Speed < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.broomInventory[i].Speed > 0) instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.broomInventory[i].Speed < 0) instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.broomInventory[i].Intercept > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.broomInventory[i].Intercept < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.broomInventory[i].Intercept > 0) instantiatedInventory.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.broomInventory[i].Intercept < 0) instantiatedInventory.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.broomInventory[i].Pass > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.broomInventory[i].Pass < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.broomInventory[i].Pass > 0) instantiatedInventory.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.broomInventory[i].Pass < 0) instantiatedInventory.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.broomInventory[i].Sight > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.broomInventory[i].Sight < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.broomInventory[i].Sight > 0) instantiatedInventory.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.broomInventory[i].Sight < 0) instantiatedInventory.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.broomInventory[i].Block > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.broomInventory[i].Block < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.broomInventory[i].Block > 0) instantiatedInventory.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.broomInventory[i].Block < 0) instantiatedInventory.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.broomInventory[i].Reach > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.broomInventory[i].Reach < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.broomInventory[i].Reach > 0) instantiatedInventory.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.broomInventory[i].Reach < 0) instantiatedInventory.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.broomInventory[i].Grab > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.broomInventory[i].Grab < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.broomInventory[i].Grab > 0) instantiatedInventory.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.broomInventory[i].Grab < 0) instantiatedInventory.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.broomInventory[i].Shooting > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.broomInventory[i].Shooting < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.broomInventory[i].Shooting > 0) instantiatedInventory.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.broomInventory[i].Shooting < 0) instantiatedInventory.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
 
-            if (playerInventory.broomInventory[i].Tackle > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
-            if (playerInventory.broomInventory[i].Tackle < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
+            if (playerInventory.broomInventory[i].Tackle > 0) instantiatedInventory.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
+            if (playerInventory.broomInventory[i].Tackle < 0) instantiatedInventory.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
         }
         AddExistingBroomEquipItem();
     }
