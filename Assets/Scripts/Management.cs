@@ -20,6 +20,11 @@ public class Management : MonoBehaviour
     public TMP_Text UIteamName;
     public int teamBudget = 250000;
 
+    public Chaser tempHolderChaserEquipment;
+    public Beater tempHolderBeaterEquipment;
+    public Seeker tempHolderSeekerEquipment;
+    public Keeper tempHolderKeeperEquipment;
+
     #region freeagent generation
     int chasersToCreate = 20;
     int beatersToCreate = 12;
