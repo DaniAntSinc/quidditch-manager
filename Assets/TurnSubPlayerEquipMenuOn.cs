@@ -47,20 +47,6 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
 
     void CheckPosition()
     {
-        if(currentlyOpenedPosition != null)
-            currentlyOpenedPosition.GetComponent<OpenPlayerPage>().ClearGOToEquipSubMenu();
-
-        playerEquipPrefab.GetComponent<PlayerEquipmentMenu>().AllTextColor();
-
-        if (currentlyOpenedPosition.GetComponent<OpenPlayerPage>().chaser)
-            playerEquipPrefab.GetComponent<PlayerEquipmentMenu>().ChaserTextColor();
-        else if (currentlyOpenedPosition.GetComponent<OpenPlayerPage>().beater)
-            playerEquipPrefab.GetComponent<PlayerEquipmentMenu>().BeaterTextColor();
-        else if (currentlyOpenedPosition.GetComponent<OpenPlayerPage>().keeper)
-            playerEquipPrefab.GetComponent<PlayerEquipmentMenu>().KeeperTextColor();
-        else if (currentlyOpenedPosition.GetComponent<OpenPlayerPage>().seeker)
-            playerEquipPrefab.GetComponent<PlayerEquipmentMenu>().SeekerTextColor();
-
-        print(currentlyOpenedPosition.GetComponent<OpenPlayerPage>().chaser);
+        //this will be a check to highlight the colors based on the position so the player can more easily see what can be affected
     }
 }

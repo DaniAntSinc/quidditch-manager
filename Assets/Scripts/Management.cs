@@ -879,6 +879,7 @@ public class Management : MonoBehaviour
 
     public void CloseIndividualEquipmentPage()
     {
+        
         individualEquipmentPage.SetActive(false);
     }
 }

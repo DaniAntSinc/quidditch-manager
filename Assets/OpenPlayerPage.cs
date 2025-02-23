@@ -8,7 +8,6 @@ public class OpenPlayerPage : MonoBehaviour
 {
     public int childCount;
     public GameObject chaserSubMenu, beaterSubMenu, seekerSubMenu, keeperSubMenu;
-    public bool chaser, beater, seeker, keeper;
 
     public GameObject[] positionTrackerForEquipment;
     public void OpenIndividualPage()
@@ -20,7 +19,6 @@ public class OpenPlayerPage : MonoBehaviour
             chaserSubMenu.SetActive(true);
             GameObject.Find("LineUpName").GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().Name;
             GameObject.Find("LineUpPosition").GetComponent<TMP_Text>().text = "Chaser";
-            chaser = true;
             //slider - intercept
             chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
             chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
@@ -57,7 +55,6 @@ public class OpenPlayerPage : MonoBehaviour
             beaterSubMenu.SetActive(true);
             GameObject.Find("LineUpName").GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().Name;
             GameObject.Find("LineUpPosition").GetComponent<TMP_Text>().text = "Beater";
-            beater = true;
             //slider - locate speed
             beaterSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
             beaterSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
@@ -74,7 +71,6 @@ public class OpenPlayerPage : MonoBehaviour
             keeperSubMenu.SetActive(true);
             GameObject.Find("LineUpName").GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().Name;
             GameObject.Find("LineUpPosition").GetComponent<TMP_Text>().text = "Keeper";
-            keeper = true;
             //slider - block
             keeperSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
             keeperSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
@@ -91,7 +87,6 @@ public class OpenPlayerPage : MonoBehaviour
             seekerSubMenu.SetActive(true);
             GameObject.Find("LineUpName").GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().Name;
             GameObject.Find("LineUpPosition").GetComponent<TMP_Text>().text = "Seeker";
-            seeker = true;
             //slider - intercept
             seekerSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
             seekerSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
@@ -127,11 +122,6 @@ public class OpenPlayerPage : MonoBehaviour
         beaterSubMenu.SetActive(false);
         keeperSubMenu.SetActive(false);
         seekerSubMenu.SetActive(false);
-
-        keeper = false;
-        seeker = false;
-        beater = false;
-        chaser = false;
 
         ClearGOToEquipSubMenu();
     }
