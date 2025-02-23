@@ -83,6 +83,9 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Shooting.ToString();
             EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Tackle.ToString();
 
+            print("Mark:" + EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(26).GetComponent<TMP_Text>().text);
+            print("Mark:" + playerInventory.bodyInventory[i].Tackle.ToString());
+
             if (playerInventory.bodyInventory[i].Dodge > 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
             if (playerInventory.bodyInventory[i].Dodge < 0) EquipmentHolderViewWindow.transform.GetChild(i).GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
 
@@ -363,10 +366,17 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().body.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().body.Dodge.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().body.LocateSpeed.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().body.Speed.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().body.Intercept.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().body.Pass.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().body.Sight.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().body.Block.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().body.Reach.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().body.Grab.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().body.Shooting.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().body.Tackle.ToString();
 
@@ -409,8 +419,18 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.LocateSpeed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.Intercept.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.Pass.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.Sight.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.Block.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.Reach.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.Grab.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.Shooting.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.Tackle.ToString();
 
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
@@ -451,12 +471,19 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.Dodge.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.LocateSpeed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.Intercept.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.Pass.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.Sight.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.Block.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.Reach.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.Grab.ToString();
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.Speed.ToString();
-            
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.Shooting.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.Tackle.ToString();
+
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
 
@@ -496,9 +523,19 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.Dodge.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.LocateSpeed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.Intercept.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.Pass.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.Sight.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.Block.ToString();
-            
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.Reach.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.Grab.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.Shooting.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.Tackle.ToString();
+
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
 
@@ -546,10 +583,17 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat.Dodge.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat.LocateSpeed.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat.Speed.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat.Intercept.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat.Pass.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat.Sight.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat.Block.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat.Reach.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat.Grab.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat.Shooting.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat.Tackle.ToString();
 
@@ -589,8 +633,21 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.objName;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.LocateSpeed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.Intercept.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.Pass.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.Sight.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.Block.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.Reach.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.Grab.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.Shooting.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.Tackle.ToString();
 
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
@@ -628,11 +685,21 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.objName;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.Dodge.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.LocateSpeed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.Intercept.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.Pass.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.Sight.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.Block.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.Reach.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.Grab.ToString();
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.Shooting.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.Tackle.ToString();
 
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
@@ -670,8 +737,21 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.objName;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.Dodge.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.LocateSpeed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.Intercept.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.Pass.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.Sight.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.Block.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.Reach.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.Grab.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.Shooting.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.Tackle.ToString();
 
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
@@ -708,189 +788,6 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         }
     }
 
-    public void AddExistingGlassesEquipItem()
-    {
-        //Change word of 'Equip' to 'Active'
-        GameObject instantiatedCurrentlyEquiped = Instantiate(playerEquipPrefab, EquipmentHolderViewWindow.transform.position, EquipmentHolderViewWindow.transform.rotation);
-        instantiatedCurrentlyEquiped.transform.SetParent(EquipmentHolderViewWindow.transform);
-        instantiatedCurrentlyEquiped.transform.localScale = new Vector3(1, 1, 1);
-        if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment != null)
-        {
-            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Dodge.ToString();
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Speed.ToString();
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Intercept.ToString();
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Pass.ToString();
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Shooting.ToString();
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Tackle.ToString();
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.LocateSpeed > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.LocateSpeed < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Speed > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Speed < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Intercept > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Intercept < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Pass > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Pass < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Sight > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Sight < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Block > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Block < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Reach > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Reach < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Grab > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Grab < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Shooting > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Shooting < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Tackle > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Tackle < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
-        }
-        if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment != null)
-        {
-            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Dodge.ToString();
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.LocateSpeed.ToString();
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.LocateSpeed > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.LocateSpeed < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Speed > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Speed < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Intercept > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Intercept < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Pass > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Pass < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Sight > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Sight < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Block > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Block < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Reach > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Reach < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Grab > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Grab < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Shooting > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Shooting < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Tackle > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Tackle < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
-        }
-        if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment != null)
-        {
-            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Dodge.ToString();
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Sight.ToString();
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Reach.ToString();
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Grab.ToString();
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Speed.ToString();
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.LocateSpeed > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.LocateSpeed < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Speed > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Speed < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Intercept > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Intercept < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Pass > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Pass < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Sight > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Sight < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Block > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Block < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Reach > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Reach < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Grab > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Grab < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Shooting > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Shooting < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Tackle > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Tackle < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
-        }
-        if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment != null)
-        {
-            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Dodge.ToString();
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Block.ToString();
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.LocateSpeed > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.LocateSpeed < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Speed > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Speed < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Intercept > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Intercept < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Pass > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Pass < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Sight > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Sight < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Block > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Block < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Reach > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Reach < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Grab > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Grab < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Shooting > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Shooting < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
-
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Tackle > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
-            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Tackle < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
-        }
-    }
-
     public void AddExistingGlovesEquipItem()
     {
         //Change word of 'Equip' to 'Active'
@@ -903,10 +800,17 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves.Dodge.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves.LocateSpeed.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves.Speed.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves.Intercept.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves.Pass.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves.Sight.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves.Block.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves.Reach.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves.Grab.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves.Shooting.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves.Tackle.ToString();
 
@@ -949,8 +853,18 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.LocateSpeed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.Intercept.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.Pass.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.Sight.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.Block.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.Reach.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.Grab.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.Shooting.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.Tackle.ToString();
 
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
@@ -991,11 +905,18 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.Dodge.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.LocateSpeed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.Intercept.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.Pass.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.Sight.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.Block.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.Reach.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.Grab.ToString();
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.Shooting.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.Tackle.ToString();
 
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
@@ -1036,8 +957,18 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.Dodge.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.LocateSpeed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.Intercept.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.Pass.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.Sight.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.Block.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.Reach.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.Grab.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.Shooting.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.Tackle.ToString();
 
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
@@ -1074,6 +1005,223 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         }
     }
 
+    public void AddExistingGlassesEquipItem()
+    {
+        //Change word of 'Equip' to 'Active'
+        GameObject instantiatedCurrentlyEquiped = Instantiate(playerEquipPrefab, EquipmentHolderViewWindow.transform.position, EquipmentHolderViewWindow.transform.rotation);
+        instantiatedCurrentlyEquiped.transform.SetParent(EquipmentHolderViewWindow.transform);
+        instantiatedCurrentlyEquiped.transform.localScale = new Vector3(1, 1, 1);
+        if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment != null)
+        {
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.objName;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.objName.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Dodge.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.LocateSpeed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Intercept.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Pass.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Sight.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Block.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Reach.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Grab.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Shooting.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Tackle.ToString();
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.LocateSpeed > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.LocateSpeed < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Speed > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Speed < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Intercept > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Intercept < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Pass > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Pass < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Sight > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Sight < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Block > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Block < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Reach > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Reach < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Grab > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Grab < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Shooting > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Shooting < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Tackle > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Tackle < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
+        }
+        if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment != null)
+        {
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.objName;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.objName.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Dodge.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.LocateSpeed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Intercept.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Pass.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Sight.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Block.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Reach.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Grab.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Shooting.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Tackle.ToString();
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.LocateSpeed > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.LocateSpeed < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Speed > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Speed < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Intercept > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Intercept < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Pass > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Pass < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Sight > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Sight < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Block > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Block < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Reach > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Reach < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Grab > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Grab < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Shooting > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Shooting < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Tackle > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Tackle < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
+        }
+        if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment != null)
+        {
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.objName;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.objName.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Dodge.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.LocateSpeed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Intercept.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Pass.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Sight.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Block.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Reach.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Grab.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Shooting.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Tackle.ToString();
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.LocateSpeed > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.LocateSpeed < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Speed > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Speed < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Intercept > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Intercept < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Pass > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Pass < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Sight > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Sight < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Block > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Block < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Reach > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Reach < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Grab > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Grab < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Shooting > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Shooting < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Tackle > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Tackle < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
+        }
+        if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment != null)
+        {
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.objName;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.objName.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Dodge.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.LocateSpeed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Intercept.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Pass.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Sight.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Block.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Reach.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Grab.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Shooting.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Tackle.ToString();
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.LocateSpeed > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.LocateSpeed < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Speed > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Speed < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Intercept > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Intercept < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Pass > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Pass < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Sight > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Sight < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Block > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Block < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Reach > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Reach < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Grab > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Grab < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Shooting > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Shooting < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().color = Color.red;
+
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Tackle > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.green;
+            if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Tackle < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().color = Color.red;
+        }
+    }
+
     public void AddExistingBroomEquipItem()
     {
         //Change word of 'Equip' to 'Active'
@@ -1086,10 +1234,17 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom.Dodge.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom.LocateSpeed.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom.Speed.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom.Intercept.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom.Pass.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom.Sight.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom.Block.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom.Reach.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom.Grab.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom.Shooting.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom.Tackle.ToString();
 
@@ -1132,8 +1287,18 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.LocateSpeed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.Intercept.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.Pass.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.Sight.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.Block.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.Reach.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.Grab.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.Shooting.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.Tackle.ToString();
 
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
@@ -1174,11 +1339,18 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.Dodge.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.LocateSpeed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.Intercept.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.Pass.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.Sight.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.Block.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.Reach.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.Grab.ToString();
-            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.Shooting.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.Tackle.ToString();
 
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
@@ -1219,8 +1391,18 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.Dodge.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.LocateSpeed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.Speed.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(12).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.Intercept.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(14).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.Pass.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(16).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.Sight.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(18).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.Block.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(20).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.Reach.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(22).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.Grab.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(24).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.Shooting.ToString();
+            instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(26).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.Tackle.ToString();
 
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.Dodge > 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.green;
             if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.Dodge < 0) instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().color = Color.red;
