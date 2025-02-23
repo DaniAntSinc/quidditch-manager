@@ -113,7 +113,6 @@ public class OpenPlayerPage : MonoBehaviour
             seekerSubMenu.transform.GetChild(4).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().dodge / 100);//main
             seekerSubMenu.transform.GetChild(4).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().dodge.ToString();
         }
-        AddGOToEquipSubMenu();
     }
 
     void CloseAllSubMenus()
@@ -122,19 +121,5 @@ public class OpenPlayerPage : MonoBehaviour
         beaterSubMenu.SetActive(false);
         keeperSubMenu.SetActive(false);
         seekerSubMenu.SetActive(false);
-
-        ClearGOToEquipSubMenu();
-    }
-
-    public void AddGOToEquipSubMenu()
-    {
-        for (int i = 0; i < positionTrackerForEquipment.Length; i++)
-            positionTrackerForEquipment[i].GetComponent<TurnSubPlayerEquipMenuOn>().currentlyOpenedPosition = this.gameObject;
-    }
-
-    public void ClearGOToEquipSubMenu()
-    {
-        for (int i = 0; i < positionTrackerForEquipment.Length; i++)
-            positionTrackerForEquipment[i].GetComponent<TurnSubPlayerEquipMenuOn>().currentlyOpenedPosition = null;
     }
 }
