@@ -71,6 +71,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedInventory.transform.localScale = new Vector3(1, 1, 1);
 
             instantiatedInventory.transform.GetChild(1).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].objName.ToString();
+            instantiatedInventory.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().bodyBool = true;
+            instantiatedInventory.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisBody = playerInventory.bodyInventory[i];
             instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Dodge.ToString();
             instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].LocateSpeed.ToString();
             instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = playerInventory.bodyInventory[i].Speed.ToString();
@@ -129,6 +131,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedInventory.transform.localScale = new Vector3(1, 1, 1);
 
             instantiatedInventory.transform.GetChild(1).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].objName.ToString();
+            instantiatedInventory.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glassesBool = true;
+            instantiatedInventory.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisGlasses = playerInventory.glassesInventory[i];
             instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Dodge.ToString();
             instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].LocateSpeed.ToString();
             instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = playerInventory.glassesInventory[i].Speed.ToString();
@@ -187,6 +191,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedInventory.transform.localScale = new Vector3(1, 1, 1);
 
             instantiatedInventory.transform.GetChild(1).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].objName.ToString();
+            instantiatedInventory.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glovesBool = true;
+            instantiatedInventory.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisGloves = playerInventory.glovesInventory[i];
             instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Dodge.ToString();
             instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].LocateSpeed.ToString();
             instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = playerInventory.glovesInventory[i].Speed.ToString();
@@ -245,6 +251,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedInventory.transform.localScale = new Vector3(1, 1, 1);
 
             instantiatedInventory.transform.GetChild(1).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].objName.ToString();
+            instantiatedInventory.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().hatBool = true;
+            instantiatedInventory.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisHat = playerInventory.hatInventory[i];
             instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Dodge.ToString();
             instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].LocateSpeed.ToString();
             instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = playerInventory.hatInventory[i].Speed.ToString();
@@ -303,6 +311,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedInventory.transform.localScale = new Vector3(1, 1, 1);
 
             instantiatedInventory.transform.GetChild(1).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].objName.ToString();
+            instantiatedInventory.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().broomBool = true;
+            instantiatedInventory.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisBroom = playerInventory.broomInventory[i];
             instantiatedInventory.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Dodge.ToString();
             instantiatedInventory.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].LocateSpeed.ToString();
             instantiatedInventory.transform.GetChild(9).GetChild(10).GetComponent<TMP_Text>().text = playerInventory.broomInventory[i].Speed.ToString();
@@ -363,6 +373,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().bodyBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisBody = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().body;
 
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().body.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().body.Dodge.ToString();
@@ -416,6 +428,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().bodyBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisBody = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.LocateSpeed.ToString();
@@ -468,6 +482,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().bodyBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisBody = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.LocateSpeed.ToString();
@@ -520,6 +536,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().bodyBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisBody = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.LocateSpeed.ToString();
@@ -580,7 +598,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
-
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().hatBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisHat = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat.LocateSpeed.ToString();
@@ -633,6 +652,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().hatBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisHat = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.LocateSpeed.ToString();
@@ -685,6 +706,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().hatBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisHat = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.LocateSpeed.ToString();
@@ -737,6 +760,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().hatBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisHat = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.LocateSpeed.ToString();
@@ -797,7 +822,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
-
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glovesBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisGloves = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves.LocateSpeed.ToString();
@@ -850,6 +876,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glovesBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisGloves = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.LocateSpeed.ToString();
@@ -902,6 +930,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glovesBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisGloves = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.LocateSpeed.ToString();
@@ -954,6 +984,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glovesBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisGloves = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.LocateSpeed.ToString();
@@ -1014,7 +1046,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
-
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glassesBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisGlasses = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.LocateSpeed.ToString();
@@ -1067,6 +1100,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glassesBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisGlasses = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.LocateSpeed.ToString();
@@ -1119,6 +1154,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glassesBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisGlasses = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.LocateSpeed.ToString();
@@ -1171,6 +1208,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glassesBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisGlasses = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.LocateSpeed.ToString();
@@ -1231,7 +1270,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
-
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().broomBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisBroom = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom.LocateSpeed.ToString();
@@ -1284,6 +1324,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().broomBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisBroom = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.LocateSpeed.ToString();
@@ -1336,6 +1378,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().broomBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisBroom = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.LocateSpeed.ToString();
@@ -1388,6 +1432,8 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().broomBool = true;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().thisBroom = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom;
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.objName.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.Dodge.ToString();
             instantiatedCurrentlyEquiped.transform.GetChild(9).GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.LocateSpeed.ToString();

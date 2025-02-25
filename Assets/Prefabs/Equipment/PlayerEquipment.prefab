@@ -3309,6 +3309,7 @@ GameObject:
   - component: {fileID: 7726952448376189338}
   - component: {fileID: 6532117785755647199}
   - component: {fileID: 7215611977414860578}
+  - component: {fileID: 2711630819493702432}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3419,9 +3420,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: EquipmentElement, Assembly-CSharp
-        m_MethodName: EquipmentPurchased
+      - m_Target: {fileID: 2711630819493702432}
+        m_TargetAssemblyTypeName: AddRemoveEquipItem, Assembly-CSharp
+        m_MethodName: AddRemoveEquipmentItemFromPlayerInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3431,6 +3432,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2711630819493702432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7339614047504215712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1603df69f0de2a74dbc8e2d8279e7634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyBool: 0
+  hatBool: 0
+  glovesBool: 0
+  glassesBool: 0
+  broomBool: 0
+  body: {fileID: 0}
+  hat: {fileID: 0}
+  gloves: {fileID: 0}
+  glasses: {fileID: 0}
+  broom: {fileID: 0}
 --- !u!1 &7403555327416050830
 GameObject:
   m_ObjectHideFlags: 0
