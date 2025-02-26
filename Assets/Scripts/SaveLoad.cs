@@ -27,6 +27,14 @@ public class SaveLoad : MonoBehaviour
     int gloves, gloves1, gloves2, gloves3, gloves4, gloves5;
     int broom, broom1, broom2, broom3, broom4, broom5, broom6, broom7, broom8, broom9, broom10;
     #endregion
+
+    #region Individual Player Inventory
+    public List<GameObject> equipBody;
+    public List<GameObject> equipGlasses;
+    public List<GameObject> equipGloves;
+    public List<GameObject> equipHat;
+    public List<GameObject> equipBroom;
+    #endregion
     private void Start()
     {
         teamStadiumCreated = PlayerPrefs.GetInt("stadiumCreated");
@@ -412,6 +420,69 @@ public class SaveLoad : MonoBehaviour
 
     }
 
+    #region save individual player inventory
+    public void SaveChaser1Equip(Body body, Hat hat, Gloves gloves, Glasses glasses, Broom broom)
+    {
+        PlayerPrefs.SetString("Chaser1Body", body.objName);
+        PlayerPrefs.SetString("Chaser1Hat", hat.objName);
+        PlayerPrefs.SetString("Chaser1Gloves", gloves.objName);
+        PlayerPrefs.SetString("Chaser1Glasses", glasses.objName);
+        PlayerPrefs.SetString("Chaser1Broom", broom.objName);
+    }
+
+    public void SaveChaser2Equip(Body body, Hat hat, Gloves gloves, Glasses glasses, Broom broom)
+    {
+        PlayerPrefs.SetString("Chaser2Body", body.objName);
+        PlayerPrefs.SetString("Chaser2Hat", hat.objName);
+        PlayerPrefs.SetString("Chaser2Gloves", gloves.objName);
+        PlayerPrefs.SetString("Chaser2Glasses", glasses.objName);
+        PlayerPrefs.SetString("Chaser2Broom", broom.objName);
+    }
+
+    public void SaveChaser3Equip(Body body, Hat hat, Gloves gloves, Glasses glasses, Broom broom)
+    {
+        PlayerPrefs.SetString("Chaser3Body", body.objName);
+        PlayerPrefs.SetString("Chaser3Hat", hat.objName);
+        PlayerPrefs.SetString("Chaser3Gloves", gloves.objName);
+        PlayerPrefs.SetString("Chaser3Glasses", glasses.objName);
+        PlayerPrefs.SetString("Chaser3Broom", broom.objName);
+    }
+    public void SaveBeater1Equip(Body body, Hat hat, Gloves gloves, Glasses glasses, Broom broom)
+    {
+        PlayerPrefs.SetString("Beater1Body", body.objName);
+        PlayerPrefs.SetString("Beater1Hat", hat.objName);
+        PlayerPrefs.SetString("Beater1Gloves", gloves.objName);
+        PlayerPrefs.SetString("Beater1Glasses", glasses.objName);
+        PlayerPrefs.SetString("Beater1Broom", broom.objName);
+    }
+
+    public void SaveBeater2Equip(Body body, Hat hat, Gloves gloves, Glasses glasses, Broom broom)
+    {
+        PlayerPrefs.SetString("Beater2Body", body.objName);
+        PlayerPrefs.SetString("Beater2Hat", hat.objName);
+        PlayerPrefs.SetString("Beater2Gloves", gloves.objName);
+        PlayerPrefs.SetString("Beater2Glasses", glasses.objName);
+        PlayerPrefs.SetString("Beater2Broom", broom.objName);
+    }
+
+    public void SaveKeeperEquip(Body body, Hat hat, Gloves gloves, Glasses glasses, Broom broom)
+    {
+        PlayerPrefs.SetString("KeeperBody", body.objName);
+        PlayerPrefs.SetString("KeeperHat", hat.objName);
+        PlayerPrefs.SetString("KeeperGloves", gloves.objName);
+        PlayerPrefs.SetString("KeeperGlasses", glasses.objName);
+        PlayerPrefs.SetString("KeeperBroom", broom.objName);
+    }
+
+    public void SaveSeekerEquip(Body body, Hat hat, Gloves gloves, Glasses glasses, Broom broom)
+    {
+        PlayerPrefs.SetString("SeekerBody", body.objName);
+        PlayerPrefs.SetString("SeekerHat", hat.objName);
+        PlayerPrefs.SetString("SeekerGloves", gloves.objName);
+        PlayerPrefs.SetString("SeekerGlasses", glasses.objName);
+        PlayerPrefs.SetString("SeekerBroom", broom.objName);
+    }
+    #endregion
     public void LoadTeam()
     {
         if (GameObject.Find("Players_Team") != null)
@@ -711,6 +782,128 @@ public class SaveLoad : MonoBehaviour
             playerInventory.broomInventory.Add(GameObject.Find("Broom").transform.GetChild(9).GetComponent<Broom>());
         for (int i = 0; i < broom10; i++)
             playerInventory.broomInventory.Add(GameObject.Find("Broom").transform.GetChild(10).GetComponent<Broom>());
+        #endregion
+
+        #region Individual Player Inventory
+        for (int i = 0; i < equipBody.Count; i++)
+        {
+            if (equipBody[i].GetComponent<Body>().objName == PlayerPrefs.GetString("Chaser1Body"))
+                playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].body = equipBody[i].GetComponent<Body>();
+
+            if (equipBody[i].GetComponent<Body>().objName == PlayerPrefs.GetString("Chaser2Body"))
+                playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].body = equipBody[i].GetComponent<Body>();
+
+            if (equipBody[i].GetComponent<Body>().objName == PlayerPrefs.GetString("Chaser3Body"))
+                playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].body = equipBody[i].GetComponent<Body>();
+
+            if (equipBody[i].GetComponent<Body>().objName == PlayerPrefs.GetString("Beater1Body"))
+                playerTeamLoad.GetComponent<SeasonTeam>().beaters[0].body = equipBody[i].GetComponent<Body>();
+
+            if (equipBody[i].GetComponent<Body>().objName == PlayerPrefs.GetString("Beater2Body"))
+                playerTeamLoad.GetComponent<SeasonTeam>().beaters[1].body = equipBody[i].GetComponent<Body>();
+
+            if (equipBody[i].GetComponent<Body>().objName == PlayerPrefs.GetString("KeeperBody"))
+                playerTeamLoad.GetComponent<SeasonTeam>().keeper[0].body = equipBody[i].GetComponent<Body>();
+
+            if (equipBody[i].GetComponent<Body>().objName == PlayerPrefs.GetString("SeekerBody"))
+                playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].body = equipBody[i].GetComponent<Body>();
+        }
+
+        for (int i = 0; i < equipHat.Count; i++)
+        {
+            if (equipHat[i].GetComponent<Hat>().objName == PlayerPrefs.GetString("Chaser1Hat"))
+                playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].hat = equipHat[i].GetComponent<Hat>();
+
+            if (equipHat[i].GetComponent<Hat>().objName == PlayerPrefs.GetString("Chaser2Hat"))
+                playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].hat = equipHat[i].GetComponent<Hat>();
+
+            if (equipHat[i].GetComponent<Hat>().objName == PlayerPrefs.GetString("Chaser3Hat"))
+                playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].hat = equipHat[i].GetComponent<Hat>();
+
+            if (equipHat[i].GetComponent<Hat>().objName == PlayerPrefs.GetString("Beater1Hat"))
+                playerTeamLoad.GetComponent<SeasonTeam>().beaters[0].hat = equipHat[i].GetComponent<Hat>();
+
+            if (equipHat[i].GetComponent<Hat>().objName == PlayerPrefs.GetString("Beater2Hat"))
+                playerTeamLoad.GetComponent<SeasonTeam>().beaters[1].hat = equipHat[i].GetComponent<Hat>();
+
+            if (equipHat[i].GetComponent<Hat>().objName == PlayerPrefs.GetString("KeeperHat"))
+                playerTeamLoad.GetComponent<SeasonTeam>().keeper[0].hat = equipHat[i].GetComponent<Hat>();
+
+            if (equipHat[i].GetComponent<Hat>().objName == PlayerPrefs.GetString("SeekerHat"))
+                playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].hat = equipHat[i].GetComponent<Hat>();
+        }
+
+        for (int i = 0; i < equipGlasses.Count; i++)
+        {
+            if (equipGlasses[i].GetComponent<Glasses>().objName == PlayerPrefs.GetString("Chaser1Glasses"))
+                playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].glasses = equipGlasses[i].GetComponent<Glasses>();
+
+            if (equipGlasses[i].GetComponent<Glasses>().objName == PlayerPrefs.GetString("Chaser2Glasses"))
+                playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].glasses = equipGlasses[i].GetComponent<Glasses>();
+
+            if (equipGlasses[i].GetComponent<Glasses>().objName == PlayerPrefs.GetString("Chaser3Glasses"))
+                playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].glasses = equipGlasses[i].GetComponent<Glasses>();
+
+            if (equipGlasses[i].GetComponent<Glasses>().objName == PlayerPrefs.GetString("Beater1Glasses"))
+                playerTeamLoad.GetComponent<SeasonTeam>().beaters[0].glasses = equipGlasses[i].GetComponent<Glasses>();
+
+            if (equipGlasses[i].GetComponent<Glasses>().objName == PlayerPrefs.GetString("Beater2Glasses"))
+                playerTeamLoad.GetComponent<SeasonTeam>().beaters[1].glasses = equipGlasses[i].GetComponent<Glasses>();
+
+            if (equipGlasses[i].GetComponent<Glasses>().objName == PlayerPrefs.GetString("KeeperGlasses"))
+                playerTeamLoad.GetComponent<SeasonTeam>().keeper[0].glasses = equipGlasses[i].GetComponent<Glasses>();
+
+            if (equipGlasses[i].GetComponent<Glasses>().objName == PlayerPrefs.GetString("SeekerGlasses"))
+                playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].glasses = equipGlasses[i].GetComponent<Glasses>();
+        }
+
+        for (int i = 0; i < equipGloves.Count; i++)
+        {
+            if (equipGloves[i].GetComponent<Gloves>().objName == PlayerPrefs.GetString("Chaser1Gloves"))
+                playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].gloves = equipGloves[i].GetComponent<Gloves>();
+
+            if (equipGloves[i].GetComponent<Gloves>().objName == PlayerPrefs.GetString("Chaser2Gloves"))
+                playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].gloves = equipGloves[i].GetComponent<Gloves>();
+
+            if (equipGloves[i].GetComponent<Gloves>().objName == PlayerPrefs.GetString("Chaser3Gloves"))
+                playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].gloves = equipGloves[i].GetComponent<Gloves>();
+
+            if (equipGloves[i].GetComponent<Gloves>().objName == PlayerPrefs.GetString("Beater1Gloves"))
+                playerTeamLoad.GetComponent<SeasonTeam>().beaters[0].gloves = equipGloves[i].GetComponent<Gloves>();
+
+            if (equipGloves[i].GetComponent<Gloves>().objName == PlayerPrefs.GetString("Beater2Gloves"))
+                playerTeamLoad.GetComponent<SeasonTeam>().beaters[1].gloves = equipGloves[i].GetComponent<Gloves>();
+
+            if (equipGloves[i].GetComponent<Gloves>().objName == PlayerPrefs.GetString("KeeperGloves"))
+                playerTeamLoad.GetComponent<SeasonTeam>().keeper[0].gloves = equipGloves[i].GetComponent<Gloves>();
+
+            if (equipGloves[i].GetComponent<Gloves>().objName == PlayerPrefs.GetString("SeekerGloves"))
+                playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].gloves = equipGloves[i].GetComponent<Gloves>();
+        }
+
+        for (int i = 0; i < equipBroom.Count; i++)
+        {
+            if (equipBroom[i].GetComponent<Broom>().objName == PlayerPrefs.GetString("Chaser1Broom"))
+                playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].broom = equipBroom[i].GetComponent<Broom>();
+
+            if (equipBroom[i].GetComponent<Broom>().objName == PlayerPrefs.GetString("Chaser2Broom"))
+                playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].broom = equipBroom[i].GetComponent<Broom>();
+
+            if (equipBroom[i].GetComponent<Broom>().objName == PlayerPrefs.GetString("Chaser3Broom"))
+                playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].broom = equipBroom[i].GetComponent<Broom>();
+
+            if (equipBroom[i].GetComponent<Broom>().objName == PlayerPrefs.GetString("Beater1Broom"))
+                playerTeamLoad.GetComponent<SeasonTeam>().beaters[0].broom = equipBroom[i].GetComponent<Broom>();
+
+            if (equipBroom[i].GetComponent<Broom>().objName == PlayerPrefs.GetString("Beater2Broom"))
+                playerTeamLoad.GetComponent<SeasonTeam>().beaters[1].broom = equipBroom[i].GetComponent<Broom>();
+
+            if (equipBroom[i].GetComponent<Broom>().objName == PlayerPrefs.GetString("KeeperBroom"))
+                playerTeamLoad.GetComponent<SeasonTeam>().keeper[0].broom = equipBroom[i].GetComponent<Broom>();
+
+            if (equipBroom[i].GetComponent<Broom>().objName == PlayerPrefs.GetString("SeekerBroom"))
+                playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].broom = equipBroom[i].GetComponent<Broom>();
+        }
         #endregion
 
         int tempWin = PlayerPrefs.GetInt("Wins");

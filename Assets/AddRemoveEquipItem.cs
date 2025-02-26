@@ -14,6 +14,8 @@ public class AddRemoveEquipItem : MonoBehaviour
     public Glasses thisGlasses;
     public Broom thisBroom;
 
+    GameObject playersTeam;
+
     public void AddRemoveEquipmentItemFromPlayerInventory()
     {
         //Add that inventory to team's inventory
@@ -29,7 +31,9 @@ public class AddRemoveEquipItem : MonoBehaviour
         //change this button to be unclickable
         MakeThisButtonUnClickable();
         //Save this Player
+        SavePlayerInventory();
         //Save team's inventory
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SavePlayerInventory();
     }
 
     void MakeAllButtonsClickable()
@@ -228,5 +232,20 @@ public class AddRemoveEquipItem : MonoBehaviour
             GameObject.Find("PlayerInventory").GetComponent<PlayerInventory>().glassesInventory.Remove(thisGlasses);
         else if (broomBool)
             GameObject.Find("PlayerInventory").GetComponent<PlayerInventory>().broomInventory.Remove(thisBroom);
+    }
+
+    void SavePlayerInventory()
+    {
+        playersTeam = GameObject.Find("Players_Team");
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveChaser1Equip(playersTeam.transform.GetChild(0).GetComponent<Chaser>().body, playersTeam.transform.GetChild(0).GetComponent<Chaser>().hat, playersTeam.transform.GetChild(0).GetComponent<Chaser>().gloves, playersTeam.transform.GetChild(0).GetComponent<Chaser>().glasses, playersTeam.transform.GetChild(0).GetComponent<Chaser>().broom);
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveChaser1Equip(playersTeam.transform.GetChild(1).GetComponent<Chaser>().body, playersTeam.transform.GetChild(1).GetComponent<Chaser>().hat, playersTeam.transform.GetChild(1).GetComponent<Chaser>().gloves, playersTeam.transform.GetChild(1).GetComponent<Chaser>().glasses, playersTeam.transform.GetChild(1).GetComponent<Chaser>().broom);
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveChaser1Equip(playersTeam.transform.GetChild(2).GetComponent<Chaser>().body, playersTeam.transform.GetChild(2).GetComponent<Chaser>().hat, playersTeam.transform.GetChild(2).GetComponent<Chaser>().gloves, playersTeam.transform.GetChild(2).GetComponent<Chaser>().glasses, playersTeam.transform.GetChild(2).GetComponent<Chaser>().broom);
+
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveBeater1Equip(playersTeam.transform.GetChild(3).GetComponent<Beater>().body, playersTeam.transform.GetChild(3).GetComponent<Beater>().hat, playersTeam.transform.GetChild(3).GetComponent<Beater>().gloves, playersTeam.transform.GetChild(3).GetComponent<Beater>().glasses, playersTeam.transform.GetChild(3).GetComponent<Beater>().broom);
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveBeater2Equip(playersTeam.transform.GetChild(4).GetComponent<Beater>().body, playersTeam.transform.GetChild(4).GetComponent<Beater>().hat, playersTeam.transform.GetChild(4).GetComponent<Beater>().gloves, playersTeam.transform.GetChild(4).GetComponent<Beater>().glasses, playersTeam.transform.GetChild(4).GetComponent<Beater>().broom);
+
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveKeeperEquip(playersTeam.transform.GetChild(5).GetComponent<Keeper>().body, playersTeam.transform.GetChild(5).GetComponent<Keeper>().hat, playersTeam.transform.GetChild(5).GetComponent<Keeper>().gloves, playersTeam.transform.GetChild(5).GetComponent<Keeper>().glasses, playersTeam.transform.GetChild(5).GetComponent<Keeper>().broom);
+
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveSeekerEquip(playersTeam.transform.GetChild(6).GetComponent<Seeker>().body, playersTeam.transform.GetChild(6).GetComponent<Seeker>().hat, playersTeam.transform.GetChild(6).GetComponent<Seeker>().gloves, playersTeam.transform.GetChild(6).GetComponent<Seeker>().glasses, playersTeam.transform.GetChild(6).GetComponent<Seeker>().broom);
     }
 }
