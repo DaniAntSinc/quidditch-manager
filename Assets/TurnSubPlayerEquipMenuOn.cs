@@ -370,7 +370,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().body.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().bodyBool = true;
@@ -425,7 +425,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().body.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().bodyBool = true;
@@ -479,7 +479,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().body.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().bodyBool = true;
@@ -533,7 +533,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().body.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().bodyBool = true;
@@ -595,7 +595,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().hat.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().hatBool = true;
@@ -649,7 +649,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().hat.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().hatBool = true;
@@ -703,7 +703,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().hat.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().hatBool = true;
@@ -757,7 +757,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().hat.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().hatBool = true;
@@ -819,7 +819,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().gloves.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glovesBool = true;
@@ -873,7 +873,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().gloves.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glovesBool = true;
@@ -927,7 +927,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().gloves.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glovesBool = true;
@@ -981,7 +981,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().gloves.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glovesBool = true;
@@ -1043,7 +1043,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().glasses.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glassesBool = true;
@@ -1097,7 +1097,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().glasses.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glassesBool = true;
@@ -1151,7 +1151,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().glasses.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glassesBool = true;
@@ -1205,7 +1205,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().glasses.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().glassesBool = true;
@@ -1267,7 +1267,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment.GetComponent<Chaser>().broom.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().broomBool = true;
@@ -1321,7 +1321,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment.GetComponent<Beater>().broom.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().broomBool = true;
@@ -1375,7 +1375,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment.GetComponent<Seeker>().broom.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().broomBool = true;
@@ -1429,7 +1429,7 @@ public class TurnSubPlayerEquipMenuOn : MonoBehaviour
         if (GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment != null)
         {
             instantiatedCurrentlyEquiped.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment.GetComponent<Keeper>().broom.objName;
-            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().enabled = false;
+            instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<Button>().interactable = false;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Active";
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
             instantiatedCurrentlyEquiped.transform.GetChild(2).GetComponent<AddRemoveEquipItem>().broomBool = true;
