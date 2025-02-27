@@ -109,14 +109,17 @@ public class OpenPlayerPage : MonoBehaviour
             else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept > 0)
             {
                 chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+                chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept / 100);//main
                 chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = (((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept) / 100);//boosted        
+                chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.green; 
                 chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept).ToString();
             }
             else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept < 0)
             {
                 chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept / 100);//negative
                 chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = (((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept) / 100);//main
-                chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted   
+                chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted 
+                chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.red;
                 chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept).ToString();
             }
 
