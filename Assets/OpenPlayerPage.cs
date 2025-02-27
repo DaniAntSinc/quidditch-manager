@@ -22,11 +22,105 @@ public class OpenPlayerPage : MonoBehaviour
             GameObject.Find("LineUpPosition").GetComponent<TMP_Text>().text = "Chaser";
             ClearOutManagementExistingItems();
             GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>();
+            CalculateSliders();
+            individualPage.transform.GetChild(5).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.objName;
+            individualPage.transform.GetChild(6).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().glasses.objName;
+            individualPage.transform.GetChild(7).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().gloves.objName;
+            individualPage.transform.GetChild(8).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().hat.objName;
+            individualPage.transform.GetChild(9).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().broom.objName;
+        }
+        else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>() != null)
+        {
+            beaterSubMenu.SetActive(true);
+            GameObject.Find("LineUpName").GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().Name;
+            GameObject.Find("LineUpPosition").GetComponent<TMP_Text>().text = "Beater";
+            ClearOutManagementExistingItems();
+            GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>();
+            CalculateSliders();
+            individualPage.transform.GetChild(5).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().body.objName;
+            individualPage.transform.GetChild(6).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().glasses.objName;
+            individualPage.transform.GetChild(7).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().gloves.objName;
+            individualPage.transform.GetChild(8).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().hat.objName;
+            individualPage.transform.GetChild(9).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().broom.objName;
+        }
+        else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>() != null)
+        {
+            keeperSubMenu.SetActive(true);
+            GameObject.Find("LineUpName").GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().Name;
+            GameObject.Find("LineUpPosition").GetComponent<TMP_Text>().text = "Keeper";
+            ClearOutManagementExistingItems();
+            GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>();
+            CalculateSliders();
+            individualPage.transform.GetChild(5).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().body.objName;
+            individualPage.transform.GetChild(6).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().glasses.objName;
+            individualPage.transform.GetChild(7).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().gloves.objName;
+            individualPage.transform.GetChild(8).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().hat.objName;
+            individualPage.transform.GetChild(9).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().broom.objName;
+        }
+        else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>() != null)
+        {
+            seekerSubMenu.SetActive(true);
+            GameObject.Find("LineUpName").GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().Name;
+            GameObject.Find("LineUpPosition").GetComponent<TMP_Text>().text = "Seeker";
+            ClearOutManagementExistingItems();
+            GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>();
+            CalculateSliders();
+            individualPage.transform.GetChild(5).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().body.objName;
+            individualPage.transform.GetChild(6).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().glasses.objName;
+            individualPage.transform.GetChild(7).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().gloves.objName;
+            individualPage.transform.GetChild(8).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().hat.objName;
+            individualPage.transform.GetChild(9).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().broom.objName;
+        }
+    }
+
+    void ClearOutManagementExistingItems()
+    {
+        GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment = null;
+        GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment = null;
+        GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment = null;
+        GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment = null;
+    }
+
+    void CloseAllSubMenus()
+    {
+        chaserSubMenu.SetActive(false);
+        beaterSubMenu.SetActive(false);
+        keeperSubMenu.SetActive(false);
+        seekerSubMenu.SetActive(false);
+    }
+
+    public void CalculateSliders()
+    { 
+    //base
+    //green
+    //red
+
+        if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>() != null)
+        {
             //slider - intercept
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept / 100);//main
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept.ToString();
+
+            if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept == 0)
+            {
+                chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept / 100);//main
+                chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+                chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted  
+                chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept.ToString();
+            }
+            else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept > 0)
+            {
+                chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+                chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = (((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept) / 100);//boosted        
+                chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept).ToString();
+            }
+            else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept < 0)
+            {
+                chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept / 100);//negative
+                chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = (((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept) / 100);//main
+                chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted   
+                chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept).ToString();
+            }
+
+
             //slider - pass
             chaserSubMenu.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
             chaserSubMenu.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
@@ -52,20 +146,9 @@ public class OpenPlayerPage : MonoBehaviour
             chaserSubMenu.transform.GetChild(5).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
             chaserSubMenu.transform.GetChild(5).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().dodge / 100);//main
             chaserSubMenu.transform.GetChild(5).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().dodge.ToString();
-
-            individualPage.transform.GetChild(5).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.objName;
-            individualPage.transform.GetChild(6).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().glasses.objName;
-            individualPage.transform.GetChild(7).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().gloves.objName;
-            individualPage.transform.GetChild(8).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().hat.objName;
-            individualPage.transform.GetChild(9).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().broom.objName;
         }
         else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>() != null)
         {
-            beaterSubMenu.SetActive(true);
-            GameObject.Find("LineUpName").GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().Name;
-            GameObject.Find("LineUpPosition").GetComponent<TMP_Text>().text = "Beater";
-            ClearOutManagementExistingItems();
-            GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>();
             //slider - locate speed
             beaterSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
             beaterSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
@@ -76,20 +159,9 @@ public class OpenPlayerPage : MonoBehaviour
             beaterSubMenu.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
             beaterSubMenu.transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().dodge / 100);//main
             beaterSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().dodge.ToString();
-
-            individualPage.transform.GetChild(5).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().body.objName;
-            individualPage.transform.GetChild(6).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().glasses.objName;
-            individualPage.transform.GetChild(7).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().gloves.objName;
-            individualPage.transform.GetChild(8).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().hat.objName;
-            individualPage.transform.GetChild(9).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().broom.objName;
         }
         else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>() != null)
         {
-            keeperSubMenu.SetActive(true);
-            GameObject.Find("LineUpName").GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().Name;
-            GameObject.Find("LineUpPosition").GetComponent<TMP_Text>().text = "Keeper";
-            ClearOutManagementExistingItems();
-            GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>();
             //slider - block
             keeperSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
             keeperSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
@@ -100,20 +172,9 @@ public class OpenPlayerPage : MonoBehaviour
             keeperSubMenu.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
             keeperSubMenu.transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().dodge / 100);//main
             keeperSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().dodge.ToString();
-
-            individualPage.transform.GetChild(5).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().body.objName;
-            individualPage.transform.GetChild(6).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().glasses.objName;
-            individualPage.transform.GetChild(7).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().gloves.objName;
-            individualPage.transform.GetChild(8).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().hat.objName;
-            individualPage.transform.GetChild(9).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().broom.objName;
         }
         else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>() != null)
         {
-            seekerSubMenu.SetActive(true);
-            GameObject.Find("LineUpName").GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().Name;
-            GameObject.Find("LineUpPosition").GetComponent<TMP_Text>().text = "Seeker";
-            ClearOutManagementExistingItems();
-            GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>();
             //slider - intercept
             seekerSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
             seekerSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
@@ -139,28 +200,6 @@ public class OpenPlayerPage : MonoBehaviour
             seekerSubMenu.transform.GetChild(4).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
             seekerSubMenu.transform.GetChild(4).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().dodge / 100);//main
             seekerSubMenu.transform.GetChild(4).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().dodge.ToString();
-
-            individualPage.transform.GetChild(5).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().body.objName;
-            individualPage.transform.GetChild(6).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().glasses.objName;
-            individualPage.transform.GetChild(7).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().gloves.objName;
-            individualPage.transform.GetChild(8).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().hat.objName;
-            individualPage.transform.GetChild(9).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().broom.objName;
         }
-    }
-
-    void ClearOutManagementExistingItems()
-    {
-        GameObject.Find("Management").GetComponent<Management>().tempHolderBeaterEquipment = null;
-        GameObject.Find("Management").GetComponent<Management>().tempHolderChaserEquipment = null;
-        GameObject.Find("Management").GetComponent<Management>().tempHolderSeekerEquipment = null;
-        GameObject.Find("Management").GetComponent<Management>().tempHolderKeeperEquipment = null;
-    }
-
-    void CloseAllSubMenus()
-    {
-        chaserSubMenu.SetActive(false);
-        beaterSubMenu.SetActive(false);
-        keeperSubMenu.SetActive(false);
-        seekerSubMenu.SetActive(false);
     }
 }
