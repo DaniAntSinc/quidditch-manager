@@ -91,231 +91,16 @@ public class OpenPlayerPage : MonoBehaviour
 
     public void CalculateSliders()
     { 
-    //base
-    //green
-    //red
-
         if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>() != null)
-        {
             ChaserCheck();
-        }
         else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>() != null)
-        {
-            //slider - locate speed
-            beaterSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
-            beaterSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
-            beaterSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().locateSpeed / 100);//main
-            beaterSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().locateSpeed.ToString();
-            //slider - dodge
-            beaterSubMenu.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
-            beaterSubMenu.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
-            beaterSubMenu.transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().dodge / 100);//main
-            beaterSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().dodge.ToString();
-        }
+            BeaterCheck();
         else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>() != null)
-        {
-            //slider - block
-            keeperSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
-            keeperSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
-            keeperSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().block / 100);//main
-            keeperSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().block.ToString();
-            //slider - dodge
-            keeperSubMenu.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
-            keeperSubMenu.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
-            keeperSubMenu.transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().dodge / 100);//main
-            keeperSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().dodge.ToString();
-        }
+            KeeperCheck();
         else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>() != null)
-        {
-            //slider - intercept
-            seekerSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
-            seekerSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
-            seekerSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().sight / 100);//main
-            seekerSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().sight.ToString();
-            //slider - pass
-            seekerSubMenu.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
-            seekerSubMenu.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
-            seekerSubMenu.transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().speed / 100);//main
-            seekerSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().speed.ToString();
-            //slider - shooting
-            seekerSubMenu.transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
-            seekerSubMenu.transform.GetChild(2).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
-            seekerSubMenu.transform.GetChild(2).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().reach / 100);//main
-            seekerSubMenu.transform.GetChild(2).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().reach.ToString();
-            //slider - speed
-            seekerSubMenu.transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
-            seekerSubMenu.transform.GetChild(3).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
-            seekerSubMenu.transform.GetChild(3).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().grab / 6);//main
-            seekerSubMenu.transform.GetChild(3).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().grab.ToString();
-            //slider - tackle
-            seekerSubMenu.transform.GetChild(4).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted        
-            seekerSubMenu.transform.GetChild(4).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative     
-            seekerSubMenu.transform.GetChild(4).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().dodge / 100);//main
-            seekerSubMenu.transform.GetChild(4).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().dodge.ToString();
-        }
+            SeekerCheck();
     }
 
-    void BodyCheck()
-    {
-        //slider - intercept
-        if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept == 0)
-        {
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept / 100);//main
-            
-        }
-        else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept > 0)
-        {
-            
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.green;
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept).ToString();
-        }
-        else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept < 0)
-        {
-            
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.red;
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().intercept + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Intercept).ToString();
-        }
-
-        //slider - pass
-        if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Pass == 0)
-        {
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().pass / 100);//main
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted  
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().pass.ToString();
-        }
-        else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Pass > 0)
-        {
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().pass / 100);//main
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = (((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().pass + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Pass) / 100);//boosted        
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.green;
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().pass + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Pass).ToString();
-        }
-        else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Pass < 0)
-        {
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().pass / 100);//negative
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = (((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().pass + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Pass) / 100);//main
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted 
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.red;
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().pass + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Pass).ToString();
-        }
-        //slider - shooting
-        if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Shooting == 0)
-        {
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().shooting / 100);//main
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted  
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().shooting.ToString();
-        }
-        else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Shooting > 0)
-        {
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().shooting / 100);//main
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = (((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().shooting + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Shooting) / 100);//boosted        
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.green;
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().shooting + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Shooting).ToString();
-        }
-        else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Shooting < 0)
-        {
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().shooting / 100);//negative
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = (((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().shooting + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Shooting) / 100);//main
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted 
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.red;
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().shooting + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Shooting).ToString();
-        }
-        //slider - speed
-        if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Speed == 0)
-        {
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().speed / 100);//main
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted  
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().speed.ToString();
-        }
-        else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Speed > 0)
-        {
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().speed / 100);//main
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = (((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().speed + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Speed) / 100);//boosted        
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.green;
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().speed + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Speed).ToString();
-        }
-        else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Speed < 0)
-        {
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().speed / 100);//negative
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = (((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().speed + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Speed) / 100);//main
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted 
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.red;
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().speed + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Speed).ToString();
-        }
-        //slider - tackle
-        if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Tackle == 0)
-        {
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().tackle / 100);//main
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted  
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().tackle.ToString();
-        }
-        else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Tackle > 0)
-        {
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().tackle / 100);//main
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = (((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().tackle + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Tackle) / 100);//boosted        
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.green;
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().tackle + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Tackle).ToString();
-        }
-        else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Tackle < 0)
-        {
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().tackle / 100);//negative
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = (((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().tackle + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Tackle) / 100);//main
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted 
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.red;
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().tackle + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Tackle).ToString();
-        }
-        //slider - dodge
-        if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Dodge == 0)
-        {
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().dodge / 100);//main
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted  
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().dodge.ToString();
-        }
-        else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Dodge > 0)
-        {
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().dodge / 100);//main
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = (((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().dodge + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Dodge) / 100);//boosted        
-
-            chaserSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().dodge + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Dodge).ToString();
-        }
-        else if (GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Dodge < 0)
-        {
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().dodge / 100);//negative
-            chaserSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = (((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().dodge + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Chaser>().body.Dodge) / 100);//main
-
- 
-        }
-    }
-
-    void HatCheck()
-    { 
-    
-    }
-
-    void GlassesCheck()
-    { 
-    
-    }
-
-    void GlovesCheck()
-    { 
-    
-    }
-
-    void BroomCheck()
-    { 
-    
-    }
     void ChaserCheck()
     {
         //Intercept
@@ -474,5 +259,249 @@ public class OpenPlayerPage : MonoBehaviour
             chaserSubMenu.transform.GetChild(5).GetChild(1).GetComponent<TMP_Text>().color = Color.white;
         }
         chaserSubMenu.transform.GetChild(5).GetChild(1).GetComponent<TMP_Text>().text = allDodge.ToString();
+    }
+
+    void BeaterCheck()
+    {
+        //Locate Speed
+        int combinedEquipmentLocateSpeed = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().body.LocateSpeed + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().hat.LocateSpeed + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().glasses.LocateSpeed + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().gloves.LocateSpeed + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().broom.LocateSpeed;
+        int allLocateSpeed = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().locateSpeed + combinedEquipmentLocateSpeed;
+        if (combinedEquipmentLocateSpeed > 0)
+        {
+            beaterSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            beaterSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().locateSpeed / 100);//main
+            beaterSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = (float)allLocateSpeed / 100;//boosted        
+            beaterSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.green;
+        }
+        else if (combinedEquipmentLocateSpeed < 0)
+        {
+            beaterSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().locateSpeed / 100);//negative
+            beaterSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = (float)allLocateSpeed / 100;//main
+            beaterSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted 
+            beaterSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.red;
+        }
+        else
+        {
+            beaterSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            beaterSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted  
+            beaterSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().locateSpeed.ToString();
+            beaterSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.white;
+        }
+        beaterSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = allLocateSpeed.ToString();
+
+        //Dodge
+        int combinedEquipmentDodge = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().body.Dodge + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().hat.Dodge + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().glasses.Dodge + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().gloves.Dodge + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().broom.Dodge;
+        int allDodge = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().dodge + combinedEquipmentDodge;
+        if (combinedEquipmentDodge > 0)
+        {
+            beaterSubMenu.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            beaterSubMenu.transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().dodge / 100);//main
+            beaterSubMenu.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Slider>().value = (float)allDodge / 100;//boosted        
+            beaterSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.green;
+        }
+        else if (combinedEquipmentDodge < 0)
+        {
+            beaterSubMenu.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().dodge / 100);//negative
+            beaterSubMenu.transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Slider>().value = (float)allDodge / 100;//main
+            beaterSubMenu.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted 
+            beaterSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.red;
+        }
+        else
+        {
+            beaterSubMenu.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            beaterSubMenu.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted  
+            beaterSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Beater>().dodge.ToString();
+            beaterSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.white;
+        }
+        beaterSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = allDodge.ToString();
+    }
+
+    void KeeperCheck()
+    {
+           //Block
+        int combinedEquipmentBlock = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().body.Block + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().hat.Block + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().glasses.Block + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().gloves.Block + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().broom.Block;
+        int allBlock = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().block + combinedEquipmentBlock;
+        if (combinedEquipmentBlock > 0)
+        {
+            keeperSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            keeperSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().block / 100);//main
+            keeperSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = (float)allBlock / 100;//boosted        
+            keeperSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.green;
+        }
+        else if (combinedEquipmentBlock < 0)
+        {
+            keeperSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().block / 100);//negative
+            keeperSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = (float)allBlock / 100;//main
+            keeperSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted 
+            keeperSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.red;
+        }
+        else
+        {
+            keeperSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            keeperSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted  
+            keeperSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().block.ToString();
+            keeperSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.white;
+        }
+        keeperSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = allBlock.ToString();
+
+        //Dodge
+        int combinedEquipmentDodge = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().body.Dodge + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().hat.Dodge + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().glasses.Dodge + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().gloves.Dodge + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().broom.Dodge;
+        int allDodge = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().dodge + combinedEquipmentDodge;
+        if (combinedEquipmentDodge > 0)
+        {
+            keeperSubMenu.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            keeperSubMenu.transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().dodge / 100);//main
+            keeperSubMenu.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Slider>().value = (float)allDodge / 100;//boosted        
+            keeperSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.green;
+        }
+        else if (combinedEquipmentDodge < 0)
+        {
+            keeperSubMenu.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().dodge / 100);//negative
+            keeperSubMenu.transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Slider>().value = (float)allDodge / 100;//main
+            keeperSubMenu.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted 
+            keeperSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.red;
+        }
+        else
+        {
+            keeperSubMenu.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            keeperSubMenu.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted  
+            keeperSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Keeper>().dodge.ToString();
+            keeperSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.white;
+        }
+        keeperSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = allDodge.ToString();
+    }
+
+    void SeekerCheck()
+    { 
+           //Sight
+        int combinedEquipmentSight = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().body.Sight + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().hat.Sight + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().glasses.Sight + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().gloves.Sight + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().broom.Sight;
+        int allSight = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().sight + combinedEquipmentSight;
+        if (combinedEquipmentSight > 0)
+        {
+            seekerSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            seekerSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().sight / 100);//main
+            seekerSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = (float)allSight / 100;//boosted        
+            seekerSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.green;
+        }
+        else if (combinedEquipmentSight < 0)
+        {
+            seekerSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().sight / 100);//negative
+            seekerSubMenu.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Slider>().value = (float)allSight / 100;//main
+            seekerSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted 
+            seekerSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.red;
+        }
+        else
+        {
+            seekerSubMenu.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            seekerSubMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted  
+            seekerSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().sight.ToString();
+            seekerSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().color = Color.white;
+        }
+        seekerSubMenu.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = allSight.ToString();
+
+        //Speed
+        int combinedEquipmentSpeed = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().body.Speed + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().hat.Speed + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().glasses.Speed + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().gloves.Speed + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().broom.Speed;
+        int allSpeed = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().speed + combinedEquipmentSpeed;
+        if (combinedEquipmentSpeed > 0)
+        {
+            seekerSubMenu.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            seekerSubMenu.transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().speed / 100);//main
+            seekerSubMenu.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Slider>().value = (float)allSpeed / 100;//boosted        
+            seekerSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.green;
+        }
+        else if (combinedEquipmentSpeed < 0)
+        {
+            seekerSubMenu.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().speed / 100);//negative
+            seekerSubMenu.transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Slider>().value = (float)allSpeed / 100;//main
+            seekerSubMenu.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted 
+            seekerSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.red;
+        }
+        else
+        {
+            seekerSubMenu.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            seekerSubMenu.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted  
+            seekerSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().speed.ToString();
+            seekerSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.white;
+        }
+        seekerSubMenu.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = allSpeed.ToString();
+
+
+        //Reach
+        int combinedEquipmentReach = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().body.Reach + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().hat.Reach + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().glasses.Reach + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().gloves.Reach + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().broom.Reach;
+        int allReach = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().reach + combinedEquipmentReach;
+        if (combinedEquipmentReach > 0)
+        {
+            seekerSubMenu.transform.GetChild(2).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            seekerSubMenu.transform.GetChild(2).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().reach / 100);//main
+            seekerSubMenu.transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Slider>().value = (float)allReach / 100;//boosted        
+            seekerSubMenu.transform.GetChild(2).GetChild(1).GetComponent<TMP_Text>().color = Color.green;
+        }
+        else if (combinedEquipmentReach < 0)
+        {
+            seekerSubMenu.transform.GetChild(2).GetChild(0).GetChild(1).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().reach / 100);//negative
+            seekerSubMenu.transform.GetChild(2).GetChild(0).GetChild(2).GetComponent<Slider>().value = (float)allReach / 100;//main
+            seekerSubMenu.transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted 
+            seekerSubMenu.transform.GetChild(2).GetChild(1).GetComponent<TMP_Text>().color = Color.red;
+        }
+        else
+        {
+            seekerSubMenu.transform.GetChild(2).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            seekerSubMenu.transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted  
+            seekerSubMenu.transform.GetChild(2).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().reach.ToString();
+            seekerSubMenu.transform.GetChild(2).GetChild(1).GetComponent<TMP_Text>().color = Color.white;
+        }
+        seekerSubMenu.transform.GetChild(2).GetChild(1).GetComponent<TMP_Text>().text = allReach.ToString();
+
+        //Grab
+        int combinedEquipmentGrab = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().body.Grab + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().hat.Grab + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().glasses.Grab + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().gloves.Grab + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().broom.Grab;
+        int allGrab = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().grab + combinedEquipmentGrab;
+        if (combinedEquipmentGrab > 0)
+        {
+            seekerSubMenu.transform.GetChild(3).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            seekerSubMenu.transform.GetChild(3).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().grab / 8);//main
+            seekerSubMenu.transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Slider>().value = (float)allGrab / 8;//boosted        
+            seekerSubMenu.transform.GetChild(3).GetChild(1).GetComponent<TMP_Text>().color = Color.green;
+        }
+        else if (combinedEquipmentGrab < 0)
+        {
+            seekerSubMenu.transform.GetChild(3).GetChild(0).GetChild(1).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().grab / 8);//negative
+            seekerSubMenu.transform.GetChild(3).GetChild(0).GetChild(2).GetComponent<Slider>().value = (float)allGrab / 8;//main
+            seekerSubMenu.transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted 
+            seekerSubMenu.transform.GetChild(3).GetChild(1).GetComponent<TMP_Text>().color = Color.red;
+        }
+        else
+        {
+            seekerSubMenu.transform.GetChild(3).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            seekerSubMenu.transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted  
+            seekerSubMenu.transform.GetChild(3).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().grab.ToString();
+            seekerSubMenu.transform.GetChild(3).GetChild(1).GetComponent<TMP_Text>().color = Color.white;
+        }
+        seekerSubMenu.transform.GetChild(3).GetChild(1).GetComponent<TMP_Text>().text = allGrab.ToString();
+
+        //Dodge
+        int combinedEquipmentDodge = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().body.Dodge + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().hat.Dodge + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().glasses.Dodge + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().gloves.Dodge + GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().broom.Dodge;
+        int allDodge = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().dodge + combinedEquipmentDodge;
+        if (combinedEquipmentDodge > 0)
+        {
+            seekerSubMenu.transform.GetChild(4).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            seekerSubMenu.transform.GetChild(4).GetChild(0).GetChild(2).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().dodge / 100);//main
+            seekerSubMenu.transform.GetChild(4).GetChild(0).GetChild(0).GetComponent<Slider>().value = (float)allDodge / 100;//boosted        
+            seekerSubMenu.transform.GetChild(4).GetChild(1).GetComponent<TMP_Text>().color = Color.green;
+        }
+        else if (combinedEquipmentDodge < 0)
+        {
+            seekerSubMenu.transform.GetChild(4).GetChild(0).GetChild(1).GetComponent<Slider>().value = ((float)GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().dodge / 100);//negative
+            seekerSubMenu.transform.GetChild(4).GetChild(0).GetChild(2).GetComponent<Slider>().value = (float)allDodge / 100;//main
+            seekerSubMenu.transform.GetChild(4).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted 
+            seekerSubMenu.transform.GetChild(4).GetChild(1).GetComponent<TMP_Text>().color = Color.red;
+        }
+        else
+        {
+            seekerSubMenu.transform.GetChild(4).GetChild(0).GetChild(1).GetComponent<Slider>().value = 0;//negative
+            seekerSubMenu.transform.GetChild(4).GetChild(0).GetChild(0).GetComponent<Slider>().value = 0;//boosted  
+            seekerSubMenu.transform.GetChild(4).GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().dodge.ToString();
+            seekerSubMenu.transform.GetChild(4).GetChild(1).GetComponent<TMP_Text>().color = Color.white;
+        }
+        seekerSubMenu.transform.GetChild(4).GetChild(1).GetComponent<TMP_Text>().text = allDodge.ToString();
     }
 }
