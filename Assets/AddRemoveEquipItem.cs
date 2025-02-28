@@ -247,5 +247,7 @@ public class AddRemoveEquipItem : MonoBehaviour
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveKeeperEquip(playersTeam.transform.GetChild(5).GetComponent<Keeper>().body, playersTeam.transform.GetChild(5).GetComponent<Keeper>().hat, playersTeam.transform.GetChild(5).GetComponent<Keeper>().gloves, playersTeam.transform.GetChild(5).GetComponent<Keeper>().glasses, playersTeam.transform.GetChild(5).GetComponent<Keeper>().broom);
 
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveSeekerEquip(playersTeam.transform.GetChild(6).GetComponent<Seeker>().body, playersTeam.transform.GetChild(6).GetComponent<Seeker>().hat, playersTeam.transform.GetChild(6).GetComponent<Seeker>().gloves, playersTeam.transform.GetChild(6).GetComponent<Seeker>().glasses, playersTeam.transform.GetChild(6).GetComponent<Seeker>().broom);
+
+        print(playersTeam.transform.GetChild(3).GetComponent<Beater>().gloves);
     }
 }

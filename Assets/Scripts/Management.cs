@@ -676,52 +676,11 @@ public class Management : MonoBehaviour
         chaser3.text = playersTeam.GetComponent<SeasonTeam>().chasers[2].Name;
         logoSprite.sprite = logoSelectionList[logoNumSelected];
         teamBudgetText.text = "Team Budget: " + saveLoad.teamBudget.ToString("n0") + "G" ;
-        print("Here");
         seasonTracker.teamsInLeague.Add(playersTeam.GetComponent<SeasonTeam>());
         teamRecord.text = "Team Record: " + playersTeam.GetComponent<SeasonTeam>().win + " - " + playersTeam.GetComponent<SeasonTeam>().loss;
 
 
         #region Equipment Set Up - TEMPORARY
-       /* playersTeam.GetComponent<SeasonTeam>().chasers[0].hat = hat;
-        playersTeam.GetComponent<SeasonTeam>().chasers[1].hat = hat;
-        playersTeam.GetComponent<SeasonTeam>().chasers[2].hat = hat;
-        playersTeam.GetComponent<SeasonTeam>().beaters[0].hat = hat;
-        playersTeam.GetComponent<SeasonTeam>().beaters[1].hat = hat;
-        playersTeam.GetComponent<SeasonTeam>().keeper[0].hat = hat;
-        playersTeam.GetComponent<SeasonTeam>().seeker[0].hat = hat;
-
-        playersTeam.GetComponent<SeasonTeam>().chasers[0].body = body;
-        playersTeam.GetComponent<SeasonTeam>().chasers[1].body = body;
-        playersTeam.GetComponent<SeasonTeam>().chasers[2].body = body;
-        playersTeam.GetComponent<SeasonTeam>().beaters[0].body = body;
-        playersTeam.GetComponent<SeasonTeam>().beaters[1].body = body;
-        playersTeam.GetComponent<SeasonTeam>().keeper[0].body = body;
-        playersTeam.GetComponent<SeasonTeam>().seeker[0].body = body;
-
-        playersTeam.GetComponent<SeasonTeam>().chasers[0].glasses = glasses;
-        playersTeam.GetComponent<SeasonTeam>().chasers[1].glasses = glasses;
-        playersTeam.GetComponent<SeasonTeam>().chasers[2].glasses = glasses;
-        playersTeam.GetComponent<SeasonTeam>().beaters[0].glasses = glasses;
-        playersTeam.GetComponent<SeasonTeam>().beaters[1].glasses = glasses;
-        playersTeam.GetComponent<SeasonTeam>().keeper[0].glasses = glasses;
-        playersTeam.GetComponent<SeasonTeam>().seeker[0].glasses = glasses;
-
-        playersTeam.GetComponent<SeasonTeam>().chasers[0].gloves = gloves;
-        playersTeam.GetComponent<SeasonTeam>().chasers[1].gloves = gloves;
-        playersTeam.GetComponent<SeasonTeam>().chasers[2].gloves = gloves;
-        playersTeam.GetComponent<SeasonTeam>().beaters[0].gloves = gloves;
-        playersTeam.GetComponent<SeasonTeam>().beaters[1].gloves = gloves;
-        playersTeam.GetComponent<SeasonTeam>().keeper[0].gloves = gloves;
-        playersTeam.GetComponent<SeasonTeam>().seeker[0].gloves = gloves;
-
-        playersTeam.GetComponent<SeasonTeam>().chasers[0].broom = broom;
-        playersTeam.GetComponent<SeasonTeam>().chasers[1].broom = broom;
-        playersTeam.GetComponent<SeasonTeam>().chasers[2].broom = broom;
-        playersTeam.GetComponent<SeasonTeam>().beaters[0].broom = broom;
-        playersTeam.GetComponent<SeasonTeam>().beaters[1].broom = broom;
-        playersTeam.GetComponent<SeasonTeam>().keeper[0].broom = broom;
-        playersTeam.GetComponent<SeasonTeam>().seeker[0].broom = broom;
-       */
         playersTeam.GetComponent<SeasonTeam>().chasers[0].EvaluateExpNeeded();
         playersTeam.GetComponent<SeasonTeam>().chasers[1].EvaluateExpNeeded();
         playersTeam.GetComponent<SeasonTeam>().chasers[2].EvaluateExpNeeded();

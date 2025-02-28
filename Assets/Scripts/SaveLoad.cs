@@ -153,7 +153,13 @@ public class SaveLoad : MonoBehaviour
         PlayerPrefs.SetInt("seekerGrab", playersTeam.seeker[0].grab);
         PlayerPrefs.SetInt("seekerSalary", playersTeam.seeker[0].salary);
 
-        
+        SaveChaser1Equip(equipBody[0].GetComponent<Body>(), equipHat[0].GetComponent<Hat>(), equipGloves[0].GetComponent<Gloves>(), equipGlasses[0].GetComponent<Glasses>(), equipBroom[0].GetComponent<Broom>());
+        SaveChaser2Equip(equipBody[0].GetComponent<Body>(), equipHat[0].GetComponent<Hat>(), equipGloves[0].GetComponent<Gloves>(), equipGlasses[0].GetComponent<Glasses>(), equipBroom[0].GetComponent<Broom>());
+        SaveChaser3Equip(equipBody[0].GetComponent<Body>(), equipHat[0].GetComponent<Hat>(), equipGloves[0].GetComponent<Gloves>(), equipGlasses[0].GetComponent<Glasses>(), equipBroom[0].GetComponent<Broom>());
+        SaveBeater1Equip(equipBody[0].GetComponent<Body>(), equipHat[0].GetComponent<Hat>(), equipGloves[0].GetComponent<Gloves>(), equipGlasses[0].GetComponent<Glasses>(), equipBroom[0].GetComponent<Broom>());
+        SaveBeater2Equip(equipBody[0].GetComponent<Body>(), equipHat[0].GetComponent<Hat>(), equipGloves[0].GetComponent<Gloves>(), equipGlasses[0].GetComponent<Glasses>(), equipBroom[0].GetComponent<Broom>());
+        SaveKeeperEquip(equipBody[0].GetComponent<Body>(), equipHat[0].GetComponent<Hat>(), equipGloves[0].GetComponent<Gloves>(), equipGlasses[0].GetComponent<Glasses>(), equipBroom[0].GetComponent<Broom>());
+        SaveSeekerEquip(equipBody[0].GetComponent<Body>(), equipHat[0].GetComponent<Hat>(), equipGloves[0].GetComponent<Gloves>(), equipGlasses[0].GetComponent<Glasses>(), equipBroom[0].GetComponent<Broom>());
 
         teamLineupCreated = 1;
         PlayerPrefs.SetInt("lineupCreated", teamLineupCreated);
@@ -375,8 +381,6 @@ public class SaveLoad : MonoBehaviour
             else if (playerInventory.broomInventory[i].objName == "Twigger 90")
                 broom10++;
         }
-
-        print(broom10);
 
         PlayerPrefs.SetInt("Equipbody", body);
         PlayerPrefs.SetInt("Equipbody1", body1);
