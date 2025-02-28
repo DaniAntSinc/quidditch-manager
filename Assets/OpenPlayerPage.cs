@@ -71,6 +71,7 @@ public class OpenPlayerPage : MonoBehaviour
             individualPage.transform.GetChild(8).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().hat.objName;
             individualPage.transform.GetChild(9).GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").transform.GetChild(childCount).GetComponent<Seeker>().broom.objName;
         }
+        GameObject.Find("Management").GetComponent<Management>().positionHolder = this.gameObject.GetComponent<OpenPlayerPage>();
     }
 
     void ClearOutManagementExistingItems()

@@ -25,6 +25,8 @@ public class Management : MonoBehaviour
     public Seeker tempHolderSeekerEquipment;
     public Keeper tempHolderKeeperEquipment;
 
+    public OpenPlayerPage positionHolder;
+
     #region freeagent generation
     int chasersToCreate = 20;
     int beatersToCreate = 12;
@@ -680,7 +682,7 @@ public class Management : MonoBehaviour
 
 
         #region Equipment Set Up - TEMPORARY
-        playersTeam.GetComponent<SeasonTeam>().chasers[0].hat = hat;
+       /* playersTeam.GetComponent<SeasonTeam>().chasers[0].hat = hat;
         playersTeam.GetComponent<SeasonTeam>().chasers[1].hat = hat;
         playersTeam.GetComponent<SeasonTeam>().chasers[2].hat = hat;
         playersTeam.GetComponent<SeasonTeam>().beaters[0].hat = hat;
@@ -719,7 +721,7 @@ public class Management : MonoBehaviour
         playersTeam.GetComponent<SeasonTeam>().beaters[1].broom = broom;
         playersTeam.GetComponent<SeasonTeam>().keeper[0].broom = broom;
         playersTeam.GetComponent<SeasonTeam>().seeker[0].broom = broom;
-
+       */
         playersTeam.GetComponent<SeasonTeam>().chasers[0].EvaluateExpNeeded();
         playersTeam.GetComponent<SeasonTeam>().chasers[1].EvaluateExpNeeded();
         playersTeam.GetComponent<SeasonTeam>().chasers[2].EvaluateExpNeeded();
@@ -884,7 +886,7 @@ public class Management : MonoBehaviour
 
     public void CloseIndividualEquipmentPage()
     {
-        
+        positionHolder.OpenIndividualPage();
         individualEquipmentPage.SetActive(false);
     }
 }
