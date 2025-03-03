@@ -22,4 +22,6 @@ public class SeasonTeam : MonoBehaviour
     public List<Seeker> seeker;
 
     public float teamSun, teamClear, teamRain, teamFog, teamSnow;
+
+    public TeamStrategy teamStrategy;
 }

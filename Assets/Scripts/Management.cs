@@ -106,6 +106,9 @@ public class Management : MonoBehaviour
     public GameObject individualPlayerPage;
     public GameObject individualEquipmentPage;
     #endregion
+
+    public GameObject[] teamStrategies;
+
     public void Start()
     {
         chaserHolderForReference = new List<Chaser>();
@@ -127,6 +130,8 @@ public class Management : MonoBehaviour
         playersTeam.GetComponent<SeasonTeam>().beaters = new List<Beater>();
         playersTeam.GetComponent<SeasonTeam>().seeker = new List<Seeker>();
         playersTeam.GetComponent<SeasonTeam>().keeper = new List<Keeper>();
+
+        playersTeam.GetComponent<SeasonTeam>().teamStrategy = GameObject.Find("SaveLoad").GetComponent<SaveLoad>().strategies[0].GetComponent<TeamStrategy>();
 
         playersTeam.transform.parent = GameObject.Find("Teams").transform;
         teamCreationMenu.SetActive(true);
@@ -738,6 +743,10 @@ public class Management : MonoBehaviour
     {
         startingPageMenu.SetActive(false);
         strategySubMenu.SetActive(true);
+        for (int i = 0; i < teamStrategies.Length; i++)
+        {
+            teamStrategies[i].GetComponent<SetTeamStrategy>().SetUpStrategyTextFields();
+        }
     }
     public void OpenStandingsSubMenu()
     {

@@ -35,6 +35,8 @@ public class SaveLoad : MonoBehaviour
     public List<GameObject> equipHat;
     public List<GameObject> equipBroom;
     #endregion
+
+    public GameObject[] strategies;
     private void Start()
     {
         teamStadiumCreated = PlayerPrefs.GetInt("stadiumCreated");
@@ -241,6 +243,11 @@ public class SaveLoad : MonoBehaviour
 
         PlayerPrefs.SetInt("Wins", playersTeam.win);
         PlayerPrefs.SetInt("Losses", playersTeam.loss);
+    }
+
+    public void SaveTeamStrategy(int teamStratNum)
+    {
+        PlayerPrefs.SetInt("Strategy", teamStratNum);
     }
 
     public void SavePlayerInventory()
@@ -936,6 +943,8 @@ public class SaveLoad : MonoBehaviour
             }           
         }
         #endregion
+
+        playerTeamLoad.GetComponent<SeasonTeam>().teamStrategy = strategies[PlayerPrefs.GetInt("Strategy")].GetComponent<TeamStrategy>();
 
         teamBudget = PlayerPrefs.GetInt("TeamBudget");
 
