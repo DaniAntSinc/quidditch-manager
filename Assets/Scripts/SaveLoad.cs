@@ -42,11 +42,6 @@ public class SaveLoad : MonoBehaviour
         teamNameCreated = PlayerPrefs.GetInt("nameCreated");
         teamLineupCreated = PlayerPrefs.GetInt("lineupCreated");
 
-        print(teamStadiumCreated);
-        print(teamLogoCreated);
-        print(teamNameCreated);
-        print(teamLineupCreated);
-
         if (teamStadiumCreated == 1 && teamLogoCreated == 1 && teamNameCreated == 1 && teamLineupCreated == 1)
         {
             loadButton.interactable = true;
@@ -943,8 +938,6 @@ public class SaveLoad : MonoBehaviour
         #endregion
 
         teamBudget = PlayerPrefs.GetInt("TeamBudget");
-
-        print(playerTeamLoad.GetComponent<SeasonTeam>().homeStadium.stadiumName);
 
         //save team currency
         GameObject.Find("Management").GetComponent<Management>().ManagementHomePage();
