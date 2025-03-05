@@ -261,6 +261,8 @@ public class SaveLoad : MonoBehaviour
             {
                 print("here");
                 PlayerPrefs.SetString("FAChaserName" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().Name);
+                PlayerPrefs.SetInt("FAChaserAge" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().age);
+                PlayerPrefs.SetFloat("FAChaserAgeMultiplier" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().ageMultiplier);
                 PlayerPrefs.SetInt("FAChaserDodge" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().dodge);
                 PlayerPrefs.SetInt("FAChaserIntercept" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().intercept);
                 PlayerPrefs.SetInt("FAChaserPass" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().pass);
@@ -268,8 +270,9 @@ public class SaveLoad : MonoBehaviour
                 PlayerPrefs.SetInt("FAChaserSpeed" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().speed);
                 PlayerPrefs.SetInt("FAChaserTackle" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().tackle);
                 PlayerPrefs.SetInt("FAChaserSalary" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().salary);
-
-                print(PlayerPrefs.GetInt("FAChaserSalary5").ToString());
+                //age
+                //age multiplier
+                //division? 
             }
         }
         //20 (this also happens when you select chasers)
@@ -943,15 +946,16 @@ public class SaveLoad : MonoBehaviour
         }
         #endregion
 
-        #region
-
-        for (int i = 0; i < 17; i++)
+        #region Free Agents
+        for (int i = 0; i < 15; i++)
         {
             GameObject objToSpawn;
             objToSpawn = new GameObject("ChaserFreeAgent");
             objToSpawn.transform.SetParent(FAGO.transform);
             objToSpawn.AddComponent<Chaser>();
             objToSpawn.GetComponent<Chaser>().Name = PlayerPrefs.GetString("FAChaserName" + i);
+            objToSpawn.GetComponent<Chaser>().age = PlayerPrefs.GetInt("FAChaserAge" + i);
+            objToSpawn.GetComponent<Chaser>().ageMultiplier = PlayerPrefs.GetFloat("FAChaserAgeMultiplier" + i);
             objToSpawn.GetComponent<Chaser>().dodge = PlayerPrefs.GetInt("FAChaserDodge" + i);
             objToSpawn.GetComponent<Chaser>().intercept = PlayerPrefs.GetInt("FAChaserIntercept" + i);
             objToSpawn.GetComponent<Chaser>().pass = PlayerPrefs.GetInt("FAChaserPass" + i);
@@ -964,6 +968,7 @@ public class SaveLoad : MonoBehaviour
             objToSpawn.GetComponent<Chaser>().gloves = equipGloves[0].GetComponent<Gloves>();
             objToSpawn.GetComponent<Chaser>().glasses = equipGlasses[0].GetComponent<Glasses>();
             objToSpawn.GetComponent<Chaser>().broom = equipBroom[0].GetComponent<Broom>();
+            objToSpawn.GetComponent<Chaser>().isFreeAgent = true;
         }
         #endregion
 
