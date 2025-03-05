@@ -37,6 +37,7 @@ public class SaveLoad : MonoBehaviour
     #endregion
 
     public GameObject[] strategies;
+    public GameObject FAGO;
     private void Start()
     {
         teamStadiumCreated = PlayerPrefs.GetInt("stadiumCreated");
@@ -248,6 +249,36 @@ public class SaveLoad : MonoBehaviour
     public void SaveTeamStrategy(int teamStratNum)
     {
         PlayerPrefs.SetInt("Strategy", teamStratNum);
+    }
+
+    public void SaveFreeAgents()
+    {
+        //Save Chasers
+        for (int i = 0; i < FAGO.transform.childCount; i++)
+        {
+            print("here also");
+            if (FAGO.transform.GetChild(i).GetComponent<Chaser>() != null)
+            {
+                print("here");
+                PlayerPrefs.SetString("FAChaserName" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().Name);
+                PlayerPrefs.SetInt("FAChaserDodge" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().dodge);
+                PlayerPrefs.SetInt("FAChaserIntercept" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().intercept);
+                PlayerPrefs.SetInt("FAChaserPass" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().pass);
+                PlayerPrefs.SetInt("FAChaserShooting" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().shooting);
+                PlayerPrefs.SetInt("FAChaserSpeed" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().speed);
+                PlayerPrefs.SetInt("FAChaserTackle" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().tackle);
+                PlayerPrefs.SetInt("FAChaserSalary" + i, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().salary);
+
+                print(PlayerPrefs.GetInt("FAChaserSalary5").ToString());
+            }
+        }
+        //20 (this also happens when you select chasers)
+        //Save Beaters
+        //12 (this also happens when you select beaters)
+        //Save Keepers
+        //10 (this also happens when you select keeper)
+        //Save Seekers
+        //8 (this also happens when you select seeker)
     }
 
     public void SavePlayerInventory()
@@ -909,6 +940,30 @@ public class SaveLoad : MonoBehaviour
 
             if (equipBroom[i].GetComponent<Broom>().objName == PlayerPrefs.GetString("SeekerBroom"))
                 playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].broom = equipBroom[i].GetComponent<Broom>();
+        }
+        #endregion
+
+        #region
+
+        for (int i = 0; i < 17; i++)
+        {
+            GameObject objToSpawn;
+            objToSpawn = new GameObject("ChaserFreeAgent");
+            objToSpawn.transform.SetParent(FAGO.transform);
+            objToSpawn.AddComponent<Chaser>();
+            objToSpawn.GetComponent<Chaser>().Name = PlayerPrefs.GetString("FAChaserName" + i);
+            objToSpawn.GetComponent<Chaser>().dodge = PlayerPrefs.GetInt("FAChaserDodge" + i);
+            objToSpawn.GetComponent<Chaser>().intercept = PlayerPrefs.GetInt("FAChaserIntercept" + i);
+            objToSpawn.GetComponent<Chaser>().pass = PlayerPrefs.GetInt("FAChaserPass" + i);
+            objToSpawn.GetComponent<Chaser>().shooting = PlayerPrefs.GetInt("FAChaserShooting" + i);
+            objToSpawn.GetComponent<Chaser>().speed = PlayerPrefs.GetInt("FAChaserSpeed" + i);
+            objToSpawn.GetComponent<Chaser>().tackle = PlayerPrefs.GetInt("FAChaserTackle" + i);
+            objToSpawn.GetComponent<Chaser>().salary = PlayerPrefs.GetInt("FAChaserSalary" + i);
+            objToSpawn.GetComponent<Chaser>().body = equipBody[0].GetComponent<Body>();
+            objToSpawn.GetComponent<Chaser>().hat = equipHat[0].GetComponent<Hat>();
+            objToSpawn.GetComponent<Chaser>().gloves = equipGloves[0].GetComponent<Gloves>();
+            objToSpawn.GetComponent<Chaser>().glasses = equipGlasses[0].GetComponent<Glasses>();
+            objToSpawn.GetComponent<Chaser>().broom = equipBroom[0].GetComponent<Broom>();
         }
         #endregion
 

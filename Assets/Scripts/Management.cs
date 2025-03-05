@@ -666,6 +666,9 @@ public class Management : MonoBehaviour
 
     public void ManagementHomePage()
     {
+
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveFreeAgents();
+
         //closeALlOther management menus
         managementHomeMenu.SetActive(true);
         if(playersTeam == null)
@@ -693,7 +696,6 @@ public class Management : MonoBehaviour
         playersTeam.GetComponent<SeasonTeam>().beaters[1].EvaluateExpNeeded();
         playersTeam.GetComponent<SeasonTeam>().keeper[0].EvaluateExpNeeded();
         playersTeam.GetComponent<SeasonTeam>().seeker[0].EvaluateExpNeeded();
-
         #endregion
     }
 
