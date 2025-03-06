@@ -997,7 +997,7 @@ public class SaveLoad : MonoBehaviour
             objToSpawn.GetComponent<Chaser>().isFreeAgent = true;
         }
 
-        for (int i = 0; i < 12; i++)
+        for (int i = 0; i < 10; i++)
         {
             GameObject objToSpawn;
             objToSpawn = new GameObject("BeaterFreeAgent");
@@ -1017,7 +1017,7 @@ public class SaveLoad : MonoBehaviour
             objToSpawn.GetComponent<Beater>().isFreeAgent = true;
         }
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 9; i++)
         {
             GameObject objToSpawn;
             objToSpawn = new GameObject("KeeperFreeAgent");
@@ -1037,7 +1037,7 @@ public class SaveLoad : MonoBehaviour
             objToSpawn.GetComponent<Keeper>().isFreeAgent = true;
         }
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 7; i++)
         {
             GameObject objToSpawn;
             objToSpawn = new GameObject("SeekerFreeAgent");

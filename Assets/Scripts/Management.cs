@@ -569,17 +569,42 @@ public class Management : MonoBehaviour
     {
         //add player to team
         if (Chaser)
+        {
             playersTeam.GetComponent<SeasonTeam>().chasers.Add(chaserHolderForReference[playerToSign]);
-        else if(Beater)
+            //remove from free agent list
+            chaserHolderForReference[playerToSign].GetComponent<Chaser>().isFreeAgent = false;
+            //parent player to team
+            chaserHolderForReference[playerToSign].transform.parent = playersTeam.transform;
+        }
+
+        else if (Beater)
+        {
             playersTeam.GetComponent<SeasonTeam>().beaters.Add(beaterHolderForReference[playerToSign].GetComponent<Beater>());
+            //remove from free agent list
+            beaterHolderForReference[playerToSign].GetComponent<Beater>().isFreeAgent = false;
+            //parent player to team
+            beaterHolderForReference[playerToSign].transform.parent = playersTeam.transform;
+        }
+           
         else if (Keeper)
+        {
             playersTeam.GetComponent<SeasonTeam>().keeper.Add(keeperHolderForReference[playerToSign].GetComponent<Keeper>());
+            //remove from free agent list
+            keeperHolderForReference[playerToSign].GetComponent<Keeper>().isFreeAgent = false;
+            //parent player to team
+            keeperHolderForReference[playerToSign].transform.parent = playersTeam.transform;
+        }
+            
+            
         else if (Seeker)
+        {
             playersTeam.GetComponent<SeasonTeam>().seeker.Add(seekerHolderForReference[playerToSign].GetComponent<Seeker>());
-        //remove from free agent list
-        chaserHolderForReference[playerToSign].GetComponent<Chaser>().isFreeAgent = false;
-        //parent player to team
-        chaserHolderForReference[playerToSign].transform.parent = playersTeam.transform;
+            //remove from free agent list
+            seekerHolderForReference[playerToSign].GetComponent<Seeker>().isFreeAgent = false;
+            //parent player to team
+            seekerHolderForReference[playerToSign].transform.parent = playersTeam.transform;
+        }
+                 
         //update payroll
         if (Chaser)
             teamBudget -= chaserHolderForReference[playerToSign].GetComponent<Chaser>().salary;
@@ -595,20 +620,69 @@ public class Management : MonoBehaviour
 
     public void UnSignPlayer(int playerToUnsign, bool Chaser, bool Beater, bool Keeper, bool Seeker)
     {
+        int chaserCount = 0;
+        int beaterCount = 0;
+        int keeperCount = 0;
+        int seekerCount = 0;
+
+        for (int i = 0; i < GameObject.Find("freeagents").transform.childCount; i++)
+        {
+            if (GameObject.Find("freeagents").transform.GetChild(i).name == "ChaserFreeAgent")
+                chaserCount++;
+            if (GameObject.Find("freeagents").transform.GetChild(i).name == "BeaterFreeAgent")
+                beaterCount++;
+            if (GameObject.Find("freeagents").transform.GetChild(i).name == "KeeperFreeAgent")
+                keeperCount++;
+            if (GameObject.Find("freeagents").transform.GetChild(i).name == "SeekerFreeAgent")
+                seekerCount++;
+        }
         //increase position count needed
         if (Chaser)
+        {
             playersTeam.GetComponent<SeasonTeam>().chasers.Remove(chaserHolderForReference[playerToUnsign].GetComponent<Chaser>());
+
+            //remove player to team
+            //add to free agent list
+            chaserHolderForReference[playerToUnsign].GetComponent<Chaser>().isFreeAgent = true;
+            //parent back to 'free agent' player to team
+            chaserHolderForReference[playerToUnsign].transform.parent = freeAgentsCollection.transform;
+            chaserHolderForReference[playerToUnsign].transform.SetSiblingIndex(playerToUnsign);
+        }
+
         else if (Beater)
+        {
             playersTeam.GetComponent<SeasonTeam>().beaters.Remove(beaterHolderForReference[playerToUnsign].GetComponent<Beater>());
+
+            //remove player to team
+            //add to free agent list
+            beaterHolderForReference[playerToUnsign].GetComponent<Beater>().isFreeAgent = true;
+            //parent back to 'free agent' player to team
+            beaterHolderForReference[playerToUnsign].transform.parent = freeAgentsCollection.transform;
+            beaterHolderForReference[playerToUnsign].transform.SetSiblingIndex(playerToUnsign + chaserCount);
+        }
+
         else if (Keeper)
+        {
             playersTeam.GetComponent<SeasonTeam>().keeper.Remove(keeperHolderForReference[playerToUnsign].GetComponent<Keeper>());
+            //remove player to team
+            //add to free agent list
+            keeperHolderForReference[playerToUnsign].GetComponent<Keeper>().isFreeAgent = true;
+            //parent back to 'free agent' player to team
+            keeperHolderForReference[playerToUnsign].transform.parent = freeAgentsCollection.transform;
+            keeperHolderForReference[playerToUnsign].transform.SetSiblingIndex(playerToUnsign + chaserCount + beaterCount);
+        }
+
         else if (Seeker)
+        {
             playersTeam.GetComponent<SeasonTeam>().seeker.Remove(seekerHolderForReference[playerToUnsign].GetComponent<Seeker>());
-        //remove player to team
-        //add to free agent list
-        chaserHolderForReference[playerToUnsign].GetComponent<Chaser>().isFreeAgent = true;
-        //parent back to 'free agent' player to team
-        chaserHolderForReference[playerToUnsign].transform.parent = freeAgentsCollection.transform;
+            //remove player to team
+            //add to free agent list
+            seekerHolderForReference[playerToUnsign].GetComponent<Seeker>().isFreeAgent = true;
+            //parent back to 'free agent' player to team
+            seekerHolderForReference[playerToUnsign].transform.parent = freeAgentsCollection.transform;
+            seekerHolderForReference[playerToUnsign].transform.SetSiblingIndex(playerToUnsign + chaserCount + beaterCount + keeperCount);
+        }
+
         //update payroll
         if (Chaser)
             teamBudget += chaserHolderForReference[playerToUnsign].GetComponent<Chaser>().salary;
