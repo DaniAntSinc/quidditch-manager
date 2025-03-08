@@ -76,9 +76,12 @@ public class ManagementSeasonTracker : MonoBehaviour
         CheckSchedule();
         DateCheck();
         managementMenu.GetComponent<Management>().UpdateManagementUI();
-        if ((dayOfSeason % 7) == 0)
+        //change this back to 6
+        if ((dayOfSeason % 2) == 0)
         {
-            print("UpdateFreeAgents");
+            Debug.LogWarning("Turn This Back to 6");
+            print("Update free agent list");
+            GameObject.Find("Management").GetComponent<Management>().UpdateFreeAgentList();
         }
     }
 
