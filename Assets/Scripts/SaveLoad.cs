@@ -261,49 +261,50 @@ public class SaveLoad : MonoBehaviour
         {
             if (FAGO.transform.GetChild(i).GetComponent<Chaser>() != null)
             {
-                PlayerPrefs.SetString("FAChaserName" + moy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().Name);
-                PlayerPrefs.SetInt("FAChaserAge" + moy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().age);
-                PlayerPrefs.SetFloat("FAChaserAgeMultiplier" + moy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().ageMultiplier);
-                PlayerPrefs.SetInt("FAChaserDodge" + moy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().dodge);
-                PlayerPrefs.SetInt("FAChaserIntercept" + moy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().intercept);
-                PlayerPrefs.SetInt("FAChaserPass" + moy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().pass);
-                PlayerPrefs.SetInt("FAChaserShooting" + moy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().shooting);
-                PlayerPrefs.SetInt("FAChaserSpeed" + moy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().speed);
-                PlayerPrefs.SetInt("FAChaserTackle" + moy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().tackle);
-                PlayerPrefs.SetInt("FAChaserSalary" + moy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().salary);
+                PlayerPrefs.SetString("FAChaserName" + moy, FAGO.transform.GetChild(i).GetComponent<Chaser>().Name);
+                print(FAGO.transform.GetChild(i).GetComponent<Chaser>().Name);
+                PlayerPrefs.SetInt("FAChaserAge" + moy, FAGO.transform.GetChild(i).GetComponent<Chaser>().age);
+                PlayerPrefs.SetFloat("FAChaserAgeMultiplier" + moy, FAGO.transform.GetChild(i).GetComponent<Chaser>().ageMultiplier);
+                PlayerPrefs.SetInt("FAChaserDodge" + moy, FAGO.transform.GetChild(i).GetComponent<Chaser>().dodge);
+                PlayerPrefs.SetInt("FAChaserIntercept" + moy, FAGO.transform.GetChild(i).GetComponent<Chaser>().intercept);
+                PlayerPrefs.SetInt("FAChaserPass" + moy, FAGO.transform.GetChild(i).GetComponent<Chaser>().pass);
+                PlayerPrefs.SetInt("FAChaserShooting" + moy, FAGO.transform.GetChild(i).GetComponent<Chaser>().shooting);
+                PlayerPrefs.SetInt("FAChaserSpeed" + moy, FAGO.transform.GetChild(i).GetComponent<Chaser>().speed);
+                PlayerPrefs.SetInt("FAChaserTackle" + moy, FAGO.transform.GetChild(i).GetComponent<Chaser>().tackle);
+                PlayerPrefs.SetInt("FAChaserSalary" + moy, FAGO.transform.GetChild(i).GetComponent<Chaser>().salary);
                 moy++;
             }
             if (FAGO.transform.GetChild(i).GetComponent<Beater>() != null)
             {
-                PlayerPrefs.SetString("FABeaterName" + joy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>().Name);
-                PlayerPrefs.SetInt("FABeaterAge" + joy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>().age);
-                PlayerPrefs.SetFloat("FABeaterAgeMultiplier" + joy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>().ageMultiplier);
-                PlayerPrefs.SetInt("FABeaterDodge" + joy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>().dodge);
-                PlayerPrefs.SetInt("FABeaterLocateSpeed" + joy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>().locateSpeed);
-                PlayerPrefs.SetInt("FABeaterSalary" + joy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>().salary);
+                PlayerPrefs.SetString("FABeaterName" + joy, FAGO.transform.GetChild(i).GetComponent<Beater>().Name);
+                PlayerPrefs.SetInt("FABeaterAge" + joy, FAGO.transform.GetChild(i).GetComponent<Beater>().age);
+                PlayerPrefs.SetFloat("FABeaterAgeMultiplier" + joy, FAGO.transform.GetChild(i).GetComponent<Beater>().ageMultiplier);
+                PlayerPrefs.SetInt("FABeaterDodge" + joy, FAGO.transform.GetChild(i).GetComponent<Beater>().dodge);
+                PlayerPrefs.SetInt("FABeaterLocateSpeed" + joy, FAGO.transform.GetChild(i).GetComponent<Beater>().locateSpeed);
+                PlayerPrefs.SetInt("FABeaterSalary" + joy, FAGO.transform.GetChild(i).GetComponent<Beater>().salary);
                 joy++;
             }
             if (FAGO.transform.GetChild(i).GetComponent<Keeper>() != null)
             {
-                PlayerPrefs.SetString("FAKeeperName" + koy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>().Name);
-                PlayerPrefs.SetInt("FAKeeperAge" + koy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>().age);
-                PlayerPrefs.SetFloat("FAKeeperAgeMultiplier" + koy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>().ageMultiplier);
-                PlayerPrefs.SetInt("FAKeeperDodge" + koy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>().dodge);
-                PlayerPrefs.SetInt("FAKeeperBlock" + koy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>().block);
-                PlayerPrefs.SetInt("FAKeeperSalary" + koy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>().salary);
+                PlayerPrefs.SetString("FAKeeperName" + koy, FAGO.transform.GetChild(i).GetComponent<Keeper>().Name);
+                PlayerPrefs.SetInt("FAKeeperAge" + koy, FAGO.transform.GetChild(i).GetComponent<Keeper>().age);
+                PlayerPrefs.SetFloat("FAKeeperAgeMultiplier" + koy, FAGO.transform.GetChild(i).GetComponent<Keeper>().ageMultiplier);
+                PlayerPrefs.SetInt("FAKeeperDodge" + koy, FAGO.transform.GetChild(i).GetComponent<Keeper>().dodge);
+                PlayerPrefs.SetInt("FAKeeperBlock" + koy, FAGO.transform.GetChild(i).GetComponent<Keeper>().block);
+                PlayerPrefs.SetInt("FAKeeperSalary" + koy, FAGO.transform.GetChild(i).GetComponent<Keeper>().salary);
                 koy++;
             }
             if (FAGO.transform.GetChild(i).GetComponent<Seeker>() != null)
             {
-                PlayerPrefs.SetString("FASeekerName" + loy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().Name);
-                PlayerPrefs.SetInt("FASeekerAge" + loy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().age);
-                PlayerPrefs.SetFloat("FASeekerAgeMultiplier" + loy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().ageMultiplier);
-                PlayerPrefs.SetInt("FASeekerDodge" + loy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().dodge);
-                PlayerPrefs.SetInt("FASeekerSight" + loy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().sight);
-                PlayerPrefs.SetInt("FASeekerSpeed" + loy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().speed);
-                PlayerPrefs.SetInt("FASeekerReach" + loy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().reach);
-                PlayerPrefs.SetInt("FASeekerGrab" + loy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().grab);
-                PlayerPrefs.SetInt("FASeekerSalary" + loy, GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().salary);
+                PlayerPrefs.SetString("FASeekerName" + loy, FAGO.transform.GetChild(i).GetComponent<Seeker>().Name);
+                PlayerPrefs.SetInt("FASeekerAge" + loy, FAGO.transform.GetChild(i).GetComponent<Seeker>().age);
+                PlayerPrefs.SetFloat("FASeekerAgeMultiplier" + loy, FAGO.transform.GetChild(i).GetComponent<Seeker>().ageMultiplier);
+                PlayerPrefs.SetInt("FASeekerDodge" + loy, FAGO.transform.GetChild(i).GetComponent<Seeker>().dodge);
+                PlayerPrefs.SetInt("FASeekerSight" + loy, FAGO.transform.GetChild(i).GetComponent<Seeker>().sight);
+                PlayerPrefs.SetInt("FASeekerSpeed" + loy, FAGO.transform.GetChild(i).GetComponent<Seeker>().speed);
+                PlayerPrefs.SetInt("FASeekerReach" + loy, FAGO.transform.GetChild(i).GetComponent<Seeker>().reach);
+                PlayerPrefs.SetInt("FASeekerGrab" + loy, FAGO.transform.GetChild(i).GetComponent<Seeker>().grab);
+                PlayerPrefs.SetInt("FASeekerSalary" + loy, FAGO.transform.GetChild(i).GetComponent<Seeker>().salary);
                 loy++;
             }
         }

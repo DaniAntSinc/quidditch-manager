@@ -32,10 +32,6 @@ public class Management : MonoBehaviour
     int beatersToCreate = 12;
     int keepersToCreate = 10;
     int seekersToCreate = 8;
-    List<GameObject> chaserHolder;
-    List<GameObject> beaterHolder;
-    List<GameObject> keeperHolder;
-    List<GameObject> seekerHolder;
     public Hat baseHat;
     public Body baseBody;
     public Glasses baseGlasses;
@@ -113,11 +109,6 @@ public class Management : MonoBehaviour
 
     public GameObject[] teamStrategies;
 
-    int chaserCountToFlip = 0;
-    int beaterCountToFlip = 0;
-    int keeperCountToFlip = 0;
-    int seekerCountToFlip = 0;
-
     public void Start()
     {
         chaserHolderForReference = new List<Chaser>();
@@ -126,11 +117,6 @@ public class Management : MonoBehaviour
         seekerHolderForReference = new List<Seeker>();
         logoGOHolder = new List<GameObject>();
         stadiumGOHolder = new List<GameObject>();
-
-        chaserHolder = new List<GameObject>();
-        beaterHolder = new List<GameObject>();
-        keeperHolder = new List<GameObject>();
-        seekerHolder = new List<GameObject>();
     }
 
     public void NewTeam()
@@ -950,159 +936,71 @@ public class Management : MonoBehaviour
 
     public void UpdateFreeAgentList()
     {
-        //update list of free agents
-        chasersToCreate = 7;
-        beatersToCreate = 5;
-        keepersToCreate = 3;
-        seekersToCreate = 4;
+        int joy = 0;
+        int koy = 0;
+        int loy = 0;
+        int moy = 0;
 
-       //identify chasers in the free agent list
+        for (int i = 0; i < GameObject.Find("freeagents").transform.childCount; i++)
+        {
+            if (GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>() != null)
+            {
+                PlayerPrefs.SetString("FAChaserName" + moy, "");
+                PlayerPrefs.SetInt("FAChaserAge" + moy, 0);
+                PlayerPrefs.SetFloat("FAChaserAgeMultiplier" + moy, 0);
+                PlayerPrefs.SetInt("FAChaserDodge" + moy, 0);
+                PlayerPrefs.SetInt("FAChaserIntercept" + moy, 0);
+                PlayerPrefs.SetInt("FAChaserPass" + moy, 0);
+                PlayerPrefs.SetInt("FAChaserShooting" + moy, 0);
+                PlayerPrefs.SetInt("FAChaserSpeed" + moy, 0);
+                PlayerPrefs.SetInt("FAChaserTackle" + moy, 0);
+                PlayerPrefs.SetInt("FAChaserSalary" + moy, 0);
+                moy++;
+            }
+            if (GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>() != null)
+            {
+                PlayerPrefs.SetString("FABeaterName" + joy, "");
+                PlayerPrefs.SetInt("FABeaterAge" + joy, 0);
+                PlayerPrefs.SetFloat("FABeaterAgeMultiplier" + joy, 0);
+                PlayerPrefs.SetInt("FABeaterDodge" + joy, 0);
+                PlayerPrefs.SetInt("FABeaterLocateSpeed" + joy, 0);
+                PlayerPrefs.SetInt("FABeaterSalary" + joy, 0);
+                joy++;
+            }
+            if (GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>() != null)
+            {
+                PlayerPrefs.SetString("FAKeeperName" + koy, "");
+                PlayerPrefs.SetInt("FAKeeperAge" + koy, 0);
+                PlayerPrefs.SetFloat("FAKeeperAgeMultiplier" + koy, 0);
+                PlayerPrefs.SetInt("FAKeeperDodge" + koy, 0);
+                PlayerPrefs.SetInt("FAKeeperBlock" + koy, 0);
+                PlayerPrefs.SetInt("FAKeeperSalary" + koy, 0);
+                koy++;
+            }
+            if (GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>() != null)
+            {
+                PlayerPrefs.SetString("FASeekerName" + loy, "");
+                PlayerPrefs.SetInt("FASeekerAge" + loy, 0);
+                PlayerPrefs.SetFloat("FASeekerAgeMultiplier" + loy, 0);
+                PlayerPrefs.SetInt("FASeekerDodge" + loy, 0);
+                PlayerPrefs.SetInt("FASeekerSight" + loy, 0);
+                PlayerPrefs.SetInt("FASeekerSpeed" + loy, 0);
+                PlayerPrefs.SetInt("FASeekerReach" + loy, 0);
+                PlayerPrefs.SetInt("FASeekerGrab" + loy, 0);
+                PlayerPrefs.SetInt("FASeekerSalary" + loy, 0);
+                loy++;
+            }
+        }
+
         foreach (Transform child in freeAgentsCollection.transform)
         {
-            if (child.name == "ChaserFreeAgent")
-            {
-                chaserHolder.Add(child.gameObject);
-            }
+            Destroy(child.gameObject);
         }
-
-        chaserCountToFlip = chasersToCreate;
-        //flip the free agent bool in the list (should be 7)
-        ChaserFreeAgentBoolFlip();
-        //delete 7 chasers
-        for (int i = 0; i < chaserHolder.Count; i++)
-        {
-            if (!chaserHolder[i].GetComponent<Chaser>().isFreeAgent)
-            {
-                Destroy(chaserHolder[i]);
-            }
-        }
-        chaserHolder.RemoveAll(GameObject => GameObject == null);
-        chaserHolderForReference.RemoveAll(Chaser => Chaser == null);
-
-        //identify beaters in the free agent list
-        foreach (Transform child in freeAgentsCollection.transform)
-        {
-            if (child.name == "BeaterFreeAgent")
-            {
-                beaterHolder.Add(child.gameObject);
-            }
-        }
-
-        beaterCountToFlip = beatersToCreate;
-        //flip the free agent bool in the list (should be 7)
-        BeaterFreeAgentBoolFlip();
-        //delete 5 beaters
-        for (int i = 0; i < beaterHolder.Count; i++)
-        {
-            if (!beaterHolder[i].GetComponent<Beater>().isFreeAgent)
-            {
-                Destroy(beaterHolder[i]);
-            }
-        }
-        beaterHolder.RemoveAll(GameObject => GameObject == null);
-        beaterHolderForReference.RemoveAll(Beater => Beater == null);
-
-        //identify keepers in the free agent list
-        foreach (Transform child in freeAgentsCollection.transform)
-        {
-            if (child.name == "KeeperFreeAgent")
-            {
-                keeperHolder.Add(child.gameObject);
-            }
-        }
-
-        keeperCountToFlip = keepersToCreate;
-        //flip the free agent bool in the list (should be 7)
-        KeeperFreeAgentBoolFlip();
-        //delete 3 keepers
-        for (int i = 0; i < keeperHolder.Count; i++)
-        {
-            if (!keeperHolder[i].GetComponent<Keeper>().isFreeAgent)
-            {
-                Destroy(keeperHolder[i]);
-            }
-        }
-        keeperHolder.RemoveAll(GameObject => GameObject == null);
-        keeperHolderForReference.RemoveAll(Keeper => Keeper == null);
-
-        //identify seekers in the free agent list
-        foreach (Transform child in freeAgentsCollection.transform)
-        {
-            if (child.name == "SeekerFreeAgent")
-            {
-                seekerHolder.Add(child.gameObject);
-            }
-        }
-
-        seekerCountToFlip = seekersToCreate;
-        //flip the free agent bool in the list (should be 7)
-        SeekerFreeAgentBoolFlip();
-        //delete 4 seekers
-        for (int i = 0; i < seekerHolder.Count; i++)
-        {
-            if (!seekerHolder[i].GetComponent<Seeker>().isFreeAgent)
-            {
-                Destroy(seekerHolder[i]);
-            }
-        }
-        seekerHolder.RemoveAll(GameObject => GameObject == null);
-        seekerHolderForReference.RemoveAll(Seeker => Seeker == null);
-
+       
         //generate the new free agents
         GenerateFreeAgents(chasersToCreate, beatersToCreate, keepersToCreate, seekersToCreate);
         //save free agents
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveFreeAgents();
-    }
-
-    void ChaserFreeAgentBoolFlip()
-    {
-        int randomBool = Random.Range(0, chaserHolder.Count);
-        if (chaserHolder[randomBool].GetComponent<Chaser>().isFreeAgent)
-        {
-            chaserHolder[randomBool].GetComponent<Chaser>().isFreeAgent = false;
-            chaserCountToFlip--;
-        }
-
-        if (chaserCountToFlip > 0)
-            ChaserFreeAgentBoolFlip();
-    }
-
-    void BeaterFreeAgentBoolFlip()
-    {
-        int randomBool = Random.Range(0, beaterHolder.Count);
-        if (beaterHolder[randomBool].GetComponent<Beater>().isFreeAgent)
-        {
-            beaterHolder[randomBool].GetComponent<Beater>().isFreeAgent = false;
-            beaterCountToFlip--;
-        }
-
-        if (beaterCountToFlip > 0)
-            BeaterFreeAgentBoolFlip();
-    }
-
-    void KeeperFreeAgentBoolFlip()
-    {
-        int randomBool = Random.Range(0, keeperHolder.Count);
-        if (keeperHolder[randomBool].GetComponent<Keeper>().isFreeAgent)
-        {
-            keeperHolder[randomBool].GetComponent<Keeper>().isFreeAgent = false;
-            keeperCountToFlip--;
-        }
-
-        if (keeperCountToFlip > 0)
-            KeeperFreeAgentBoolFlip();
-    }
-
-    void SeekerFreeAgentBoolFlip()
-    {
-        int randomBool = Random.Range(0, seekerHolder.Count);
-        if (seekerHolder[randomBool].GetComponent<Seeker>().isFreeAgent)
-        {
-            seekerHolder[randomBool].GetComponent<Seeker>().isFreeAgent = false;
-            seekerCountToFlip--;
-        }
-
-        if (seekerCountToFlip > 0)
-            SeekerFreeAgentBoolFlip();
+        print(PlayerPrefs.GetString("FAChaserName0").ToString());
     }
 }
