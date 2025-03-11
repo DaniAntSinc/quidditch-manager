@@ -262,7 +262,6 @@ public class SaveLoad : MonoBehaviour
             if (FAGO.transform.GetChild(i).GetComponent<Chaser>() != null)
             {
                 PlayerPrefs.SetString("FAChaserName" + moy, FAGO.transform.GetChild(i).GetComponent<Chaser>().Name);
-                print(FAGO.transform.GetChild(i).GetComponent<Chaser>().Name);
                 PlayerPrefs.SetInt("FAChaserAge" + moy, FAGO.transform.GetChild(i).GetComponent<Chaser>().age);
                 PlayerPrefs.SetFloat("FAChaserAgeMultiplier" + moy, FAGO.transform.GetChild(i).GetComponent<Chaser>().ageMultiplier);
                 PlayerPrefs.SetInt("FAChaserDodge" + moy, FAGO.transform.GetChild(i).GetComponent<Chaser>().dodge);

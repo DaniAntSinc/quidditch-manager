@@ -945,62 +945,69 @@ public class Management : MonoBehaviour
         {
             if (GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>() != null)
             {
-                PlayerPrefs.SetString("FAChaserName" + moy, "");
-                PlayerPrefs.SetInt("FAChaserAge" + moy, 0);
-                PlayerPrefs.SetFloat("FAChaserAgeMultiplier" + moy, 0);
-                PlayerPrefs.SetInt("FAChaserDodge" + moy, 0);
-                PlayerPrefs.SetInt("FAChaserIntercept" + moy, 0);
-                PlayerPrefs.SetInt("FAChaserPass" + moy, 0);
-                PlayerPrefs.SetInt("FAChaserShooting" + moy, 0);
-                PlayerPrefs.SetInt("FAChaserSpeed" + moy, 0);
-                PlayerPrefs.SetInt("FAChaserTackle" + moy, 0);
-                PlayerPrefs.SetInt("FAChaserSalary" + moy, 0);
+
+                PlayerPrefs.DeleteKey("FAChaserName" + moy);
+                print("Delete Key: " + PlayerPrefs.GetString("FAChaserName" + moy));
+                PlayerPrefs.DeleteKey("FAChaserAge" + moy);
+                PlayerPrefs.DeleteKey("FAChaserAgeMultiplier" + moy);
+                PlayerPrefs.DeleteKey("FAChaserDodge" + moy);
+                PlayerPrefs.DeleteKey("FAChaserIntercept" + moy);
+                PlayerPrefs.DeleteKey("FAChaserPass" + moy);
+                PlayerPrefs.DeleteKey("FAChaserShooting" + moy);
+                PlayerPrefs.DeleteKey("FAChaserSpeed" + moy);
+                PlayerPrefs.DeleteKey("FAChaserTackle" + moy);
+                PlayerPrefs.DeleteKey("FAChaserSalary" + moy);
                 moy++;
             }
             if (GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>() != null)
             {
-                PlayerPrefs.SetString("FABeaterName" + joy, "");
-                PlayerPrefs.SetInt("FABeaterAge" + joy, 0);
-                PlayerPrefs.SetFloat("FABeaterAgeMultiplier" + joy, 0);
-                PlayerPrefs.SetInt("FABeaterDodge" + joy, 0);
-                PlayerPrefs.SetInt("FABeaterLocateSpeed" + joy, 0);
-                PlayerPrefs.SetInt("FABeaterSalary" + joy, 0);
+                PlayerPrefs.DeleteKey("FABeaterName" + joy);
+                PlayerPrefs.DeleteKey("FABeaterAge" + joy);
+                PlayerPrefs.DeleteKey("FABeaterAgeMultiplier" + joy);
+                PlayerPrefs.DeleteKey("FABeaterDodge" + joy);
+                PlayerPrefs.DeleteKey("FABeaterLocateSpeed" + joy);
+                PlayerPrefs.DeleteKey("FABeaterSalary" + joy);
                 joy++;
             }
             if (GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>() != null)
             {
-                PlayerPrefs.SetString("FAKeeperName" + koy, "");
-                PlayerPrefs.SetInt("FAKeeperAge" + koy, 0);
-                PlayerPrefs.SetFloat("FAKeeperAgeMultiplier" + koy, 0);
-                PlayerPrefs.SetInt("FAKeeperDodge" + koy, 0);
-                PlayerPrefs.SetInt("FAKeeperBlock" + koy, 0);
-                PlayerPrefs.SetInt("FAKeeperSalary" + koy, 0);
+                PlayerPrefs.DeleteKey("FAKeeperName" + koy);
+                PlayerPrefs.DeleteKey("FAKeeperAge" + koy);
+                PlayerPrefs.DeleteKey("FAKeeperAgeMultiplier" + koy);
+                PlayerPrefs.DeleteKey("FAKeeperDodge" + koy);
+                PlayerPrefs.DeleteKey("FAKeeperBlock" + koy);
+                PlayerPrefs.DeleteKey("FAKeeperSalary" + koy);
                 koy++;
             }
             if (GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>() != null)
             {
-                PlayerPrefs.SetString("FASeekerName" + loy, "");
-                PlayerPrefs.SetInt("FASeekerAge" + loy, 0);
-                PlayerPrefs.SetFloat("FASeekerAgeMultiplier" + loy, 0);
-                PlayerPrefs.SetInt("FASeekerDodge" + loy, 0);
-                PlayerPrefs.SetInt("FASeekerSight" + loy, 0);
-                PlayerPrefs.SetInt("FASeekerSpeed" + loy, 0);
-                PlayerPrefs.SetInt("FASeekerReach" + loy, 0);
-                PlayerPrefs.SetInt("FASeekerGrab" + loy, 0);
-                PlayerPrefs.SetInt("FASeekerSalary" + loy, 0);
+                PlayerPrefs.DeleteKey("FASeekerName" + loy);
+                PlayerPrefs.DeleteKey("FASeekerAge" + loy);
+                PlayerPrefs.DeleteKey("FASeekerAgeMultiplier" + loy);
+                PlayerPrefs.DeleteKey("FASeekerDodge" + loy);
+                PlayerPrefs.DeleteKey("FASeekerSight" + loy);
+                PlayerPrefs.DeleteKey("FASeekerSpeed" + loy);
+                PlayerPrefs.DeleteKey("FASeekerReach" + loy);
+                PlayerPrefs.DeleteKey("FASeekerGrab" + loy);
+                PlayerPrefs.DeleteKey("FASeekerSalary" + loy);
                 loy++;
             }
         }
-
+      
         foreach (Transform child in freeAgentsCollection.transform)
         {
             Destroy(child.gameObject);
         }
        
         //generate the new free agents
-        GenerateFreeAgents(chasersToCreate, beatersToCreate, keepersToCreate, seekersToCreate);
+        GenerateFreeAgents(chasersToCreate - 3, beatersToCreate - 2, keepersToCreate - 1, seekersToCreate - 1);
+        StartCoroutine("savingDelay");
+    }
+
+    IEnumerator savingDelay()
+    {
+        yield return new WaitForSeconds(2);
         //save free agents
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveFreeAgents();
-        print(PlayerPrefs.GetString("FAChaserName0").ToString());
     }
 }
