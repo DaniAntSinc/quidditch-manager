@@ -8,11 +8,14 @@ public class Beater : Player
     public int dodge;
     public int salary;
     public int currentLSExperience;
-    public int LSExperienceCap; 
+    public int LSExperienceCap;
+
+    int proRatedSalary;
     public void CalculateSalary()
     {
         AgeMatrix();
         salary = Mathf.RoundToInt(((locateSpeed * 250) + (dodge * 28) + 32000) * ageMultiplier);
+        proRatedSalary = Mathf.RoundToInt((((locateSpeed * 250) + (dodge * 28) + 32000) * ageMultiplier) / ((111 - GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason) / 111));
     }
 
     public void EvaluateExpNeeded()

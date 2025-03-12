@@ -10,10 +10,13 @@ public class Keeper : Player
 
     public int currentBExperience;
     public int BExperienceCap;
+
+    int proRatedSalary;
     public void CalculateSalary()
     {
         AgeMatrix();
         salary = Mathf.RoundToInt(((dodge * 50) + (block * 425) + 40000) * ageMultiplier);
+        proRatedSalary = Mathf.RoundToInt((((dodge * 50) + (block * 425) + 40000) * ageMultiplier) / ((111 - GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason) / 111));
     }
 
     public void EvaluateExpNeeded()

@@ -21,10 +21,13 @@ public class Seeker : Player
     public int RExperienceCap;
     public int currentGExperience;
     public int GExperienceCap;
+
+    int proRatedSalary;
     public void CalculateSalary()
     {
         AgeMatrix();
         salary = Mathf.RoundToInt(((dodge * 50) + (sight * 225) + (speed * 225) + (reach * 450) + (grab * 7500) + 20000) * ageMultiplier);
+        proRatedSalary = Mathf.RoundToInt((((dodge * 50) + (sight * 225) + (speed * 225) + (reach * 450) + (grab * 7500) + 20000) * ageMultiplier) / ((111 - GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason) / 111));
     }
     public void EvaluateExpNeeded()
     {
