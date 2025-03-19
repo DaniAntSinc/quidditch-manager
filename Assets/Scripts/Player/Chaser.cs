@@ -25,13 +25,14 @@ public class Chaser : Player
     public int currentTExperience;
     public int TExperienceCap;
 
-    int proRatedSalary;
+    public int proRatedSalary;
     public void CalculateSalary()
     {
         {
             AgeMatrix();
             salary = Mathf.RoundToInt(((dodge * 28) + (intercept * 50) + (pass * 60) + (shooting * 68) + (speed * 64) + (tackle * 58) + 20000) * ageMultiplier);
-            proRatedSalary = Mathf.RoundToInt((((dodge * 28) + (intercept * 50) + (pass * 60) + (shooting * 68) + (speed * 64) + (tackle * 58) + 20000) * ageMultiplier)/ ((111 - GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason) / 111));
+            float salaryHolder = (((((dodge * 28) + (intercept * 50) + (pass * 60) + (shooting * 68) + (speed * 64) + (tackle * 58) + 20000) * ageMultiplier) / 111) * (111 - GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason));
+            proRatedSalary = Mathf.RoundToInt(salaryHolder);
         }
     }
     public void EvaluateExpNeeded()

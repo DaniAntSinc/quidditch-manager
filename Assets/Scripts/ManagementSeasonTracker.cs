@@ -41,6 +41,7 @@ public class ManagementSeasonTracker : MonoBehaviour
     public GameObject chaserPlayers, beaterPlayers, keeperPlayers, seekerPlayers;
     public GameObject chaserHolder, beaterHolder, keeperHolder, seekerHolder;
     public GameObject chaserHeader, beaterHeader, keeperHeader, seekerHeader;
+    public GameObject chaserPrefab, beaterPrefab, keeperPrefab, seekerPrefab;
     #endregion
 
     private void Start()
@@ -364,6 +365,27 @@ public class ManagementSeasonTracker : MonoBehaviour
         chaserHeader.SetActive(true);
         chasersFAMenu.transform.GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
         // Turn on players
+        for (int i = 0; i < GameObject.Find("freeagents").transform.childCount; i++)
+        {
+            if (GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>() != null)
+            {
+                GameObject newlyCreatedChaser = Instantiate(chaserPrefab, chaserHolder.transform.position, transform.rotation);
+                GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().CalculateSalary();
+                newlyCreatedChaser.transform.SetParent(chaserPlayers.transform);
+                newlyCreatedChaser.transform.localScale = new Vector3(1, 1, 1);
+                newlyCreatedChaser.transform.GetChild(1).GetComponent<TMP_Text>().text =  GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().Name;
+                newlyCreatedChaser.transform.GetChild(2).GetComponent<TMP_Text>().text =  GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().intercept.ToString();
+                newlyCreatedChaser.transform.GetChild(3).GetComponent<TMP_Text>().text =  GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().pass.ToString();
+                newlyCreatedChaser.transform.GetChild(4).GetComponent<TMP_Text>().text =  GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().shooting.ToString();
+                newlyCreatedChaser.transform.GetChild(5).GetComponent<TMP_Text>().text =  GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().speed.ToString();
+                newlyCreatedChaser.transform.GetChild(6).GetComponent<TMP_Text>().text =  GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().tackle.ToString();
+                newlyCreatedChaser.transform.GetChild(7).GetComponent<TMP_Text>().text =  GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().age.ToString();
+                newlyCreatedChaser.transform.GetChild(8).GetComponent<TMP_Text>().text =  GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().proRatedSalary.ToString("n2");
+
+                newlyCreatedChaser.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList = i;
+                newlyCreatedChaser.GetComponent<SignFreeAgent>().isChaser = true;
+            }
+        }
     }
 
     public void ToggleBeater()
@@ -373,6 +395,24 @@ public class ManagementSeasonTracker : MonoBehaviour
         beaterHeader.SetActive(true);
         beatersFAMenu.transform.GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
         // Turn on players
+        for (int i = 0; i < GameObject.Find("freeagents").transform.childCount; i++)
+        {
+            if (GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>() != null)
+            {
+                GameObject newlyCreatedBeater = Instantiate(beaterPrefab, beaterHolder.transform.position, transform.rotation);
+                GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>().CalculateSalary();
+                newlyCreatedBeater.transform.SetParent(beaterPlayers.transform);
+                newlyCreatedBeater.transform.localScale = new Vector3(1, 1, 1);
+                newlyCreatedBeater.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>().Name;
+                newlyCreatedBeater.transform.GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>().locateSpeed.ToString();
+                newlyCreatedBeater.transform.GetChild(3).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>().dodge.ToString();
+                newlyCreatedBeater.transform.GetChild(4).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>().age.ToString();
+                newlyCreatedBeater.transform.GetChild(5).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>().proRatedSalary.ToString("n2");
+
+                newlyCreatedBeater.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList = i;
+                newlyCreatedBeater.GetComponent<SignFreeAgent>().isBeater = true;
+            }
+        }
     }
 
     public void ToggleSeeker()
@@ -382,6 +422,28 @@ public class ManagementSeasonTracker : MonoBehaviour
         seekerHeader.SetActive(true);
         seekersFAMenu.transform.GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
         // Turn on players
+        for (int i = 0; i < GameObject.Find("freeagents").transform.childCount; i++)
+        {
+            if (GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>() != null)
+            {
+                GameObject newlyCreatedSeeker = Instantiate(seekerPrefab, seekerHolder.transform.position, transform.rotation);
+                GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().CalculateSalary();
+                newlyCreatedSeeker.transform.SetParent(seekerPlayers.transform);
+                newlyCreatedSeeker.transform.localScale = new Vector3(1, 1, 1);
+
+                newlyCreatedSeeker.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().Name;
+                newlyCreatedSeeker.transform.GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().sight.ToString();
+                newlyCreatedSeeker.transform.GetChild(3).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().speed.ToString();
+                newlyCreatedSeeker.transform.GetChild(4).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().reach.ToString();
+                newlyCreatedSeeker.transform.GetChild(5).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().grab.ToString();
+                newlyCreatedSeeker.transform.GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().dodge.ToString();
+                newlyCreatedSeeker.transform.GetChild(7).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().age.ToString();
+                newlyCreatedSeeker.transform.GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().proRatedSalary.ToString("n2");
+
+                newlyCreatedSeeker.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList = i;
+                newlyCreatedSeeker.GetComponent<SignFreeAgent>().isSeeker = true;
+            }
+        }
     }
 
     public void ToggleKeeper()
@@ -391,6 +453,25 @@ public class ManagementSeasonTracker : MonoBehaviour
         keeperHeader.SetActive(true);
         keepersFAMenu.transform.GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
         // Turn on players
+        for (int i = 0; i < GameObject.Find("freeagents").transform.childCount; i++)
+        {
+            if (GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>() != null)
+            {
+                GameObject newlyCreatedKeeper = Instantiate(keeperPrefab, keeperHolder.transform.position, transform.rotation);
+                GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>().CalculateSalary();
+                newlyCreatedKeeper.transform.SetParent(keeperPlayers.transform);
+                newlyCreatedKeeper.transform.localScale = new Vector3(1, 1, 1);
+
+                newlyCreatedKeeper.transform.GetChild(1).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>().Name;
+                newlyCreatedKeeper.transform.GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>().block.ToString();
+                newlyCreatedKeeper.transform.GetChild(3).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>().dodge.ToString();
+                newlyCreatedKeeper.transform.GetChild(4).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>().age.ToString();
+                newlyCreatedKeeper.transform.GetChild(5).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>().proRatedSalary.ToString("n2");
+
+                newlyCreatedKeeper.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList = i;
+                newlyCreatedKeeper.GetComponent<SignFreeAgent>().isKeeper = true;
+            }
+        }
     }
     //click button, cycle through positions
     //surface pro rated salary instead of full salary
