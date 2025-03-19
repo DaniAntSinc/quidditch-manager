@@ -36,6 +36,13 @@ public class ManagementSeasonTracker : MonoBehaviour
 
     public List<GameObject> allStadiumImprovments;
 
+    #region FreeAgents
+    public GameObject chasersFAMenu, beatersFAMenu, keepersFAMenu, seekersFAMenu;
+    public GameObject chaserPlayers, beaterPlayers, keeperPlayers, seekerPlayers;
+    public GameObject chaserHolder, beaterHolder, keeperHolder, seekerHolder;
+    public GameObject chaserHeader, beaterHeader, keeperHeader, seekerHeader;
+    #endregion
+
     private void Start()
     {
         combinedCalendar = new List<GameObject>();
@@ -321,4 +328,75 @@ public class ManagementSeasonTracker : MonoBehaviour
         //home menu
         baseTeamBudget.text = "Team Budget: " + GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget.ToString("n0") + " G";
     }
+
+    #region Free Agents
+
+    void ClearPreviousSelection()
+    {
+        chaserHolder.SetActive(false);
+        beaterHolder.SetActive(false);
+        keeperHolder.SetActive(false);
+        seekerHolder.SetActive(false);
+
+        chaserHeader.SetActive(false);
+        beaterHeader.SetActive(false);
+        keeperHeader.SetActive(false);
+        seekerHeader.SetActive(false);
+
+        chasersFAMenu.transform.GetChild(0).GetComponent<TMP_Text>().color = Color.white;
+        beatersFAMenu.transform.GetChild(0).GetComponent<TMP_Text>().color = Color.white;
+        keepersFAMenu.transform.GetChild(0).GetComponent<TMP_Text>().color = Color.white;
+        seekersFAMenu.transform.GetChild(0).GetComponent<TMP_Text>().color = Color.white;
+
+        foreach (Transform child in chaserPlayers.transform)
+            Destroy(child.gameObject);
+        foreach (Transform child in beaterPlayers.transform)
+            Destroy(child.gameObject);
+        foreach (Transform child in seekerPlayers.transform)
+            Destroy(child.gameObject);
+        foreach (Transform child in keeperPlayers.transform)
+            Destroy(child.gameObject);
+    }
+    public void ToggleChaser()
+    {
+        ClearPreviousSelection();
+        chaserHolder.SetActive(true);
+        chaserHeader.SetActive(true);
+        chasersFAMenu.transform.GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+        // Turn on players
+    }
+
+    public void ToggleBeater()
+    {
+        ClearPreviousSelection();
+        beaterHolder.SetActive(true);
+        beaterHeader.SetActive(true);
+        beatersFAMenu.transform.GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+        // Turn on players
+    }
+
+    public void ToggleSeeker()
+    {
+        ClearPreviousSelection();
+        seekerHolder.SetActive(true);
+        seekerHeader.SetActive(true);
+        seekersFAMenu.transform.GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+        // Turn on players
+    }
+
+    public void ToggleKeeper()
+    {
+        ClearPreviousSelection();
+        keeperHolder.SetActive(true);
+        keeperHeader.SetActive(true);
+        keepersFAMenu.transform.GetChild(0).GetComponent<TMP_Text>().color = Color.grey;
+        // Turn on players
+    }
+    //click button, cycle through positions
+    //surface pro rated salary instead of full salary
+    //'trade' button
+    //if you press 'trade' open window to release a player
+    //close window
+    //confirm window - swap all equipment, remove player from lineup, add player to lineup, save free agent, save player lineup
+    #endregion
 }

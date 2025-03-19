@@ -802,6 +802,7 @@ public class Management : MonoBehaviour
     {
         startingPageMenu.SetActive(false);
         transactSubMenu.SetActive(true);
+        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().ToggleChaser();
     }
     public void OpenStadiumSubMenu()
     {
