@@ -45,6 +45,23 @@ public class ManagementSeasonTracker : MonoBehaviour
     public GameObject transactMidSeasonMenu, transactMidSeasonChaser, transactMidSeasonBeater, transactMidSeasonSeeker, transactMidSeasonKeeper;
     #endregion
 
+    #region FreeAgentSwap
+    public TMP_Text chaserSwapFAName, chaserSwapFAIntercept, chaserSwapFAPass, chaserSwapFAShoot, chaserSwapFASpeed, chaserSwapFATackle, chaserSwapFAAge, chaserSwapFASalary;
+    public TMP_Text chaserSwap1Name, chaserSwap1Intercept, chaserSwap1Pass, chaserSwap1Shoot, chaserSwap1Speed, chaserSwap1Tackle, chaserSwap1Age, chaserSwap1Salary;
+    public TMP_Text chaserSwap2Name, chaserSwap2Intercept, chaserSwap2Pass, chaserSwap2Shoot, chaserSwap2Speed, chaserSwap2Tackle, chaserSwap2Age, chaserSwap2Salary;
+    public TMP_Text chaserSwap3Name, chaserSwap3Intercept, chaserSwap3Pass, chaserSwap3Shoot, chaserSwap3Speed, chaserSwap3Tackle, chaserSwap3Age, chaserSwap3Salary;
+
+    public TMP_Text beaterSwapFAName, beaterSwapFALocateSpeed, beaterSwapFADodge, beaterSwapFAAge, beaterSwapFASalary;
+    public TMP_Text beaterSwap1Name, beaterSwap1LocateSpeed, beaterSwap1Dodge, beaterSwap1Age, beaterSwap1Salary;
+    public TMP_Text beaterSwap2Name, beaterSwap2LocateSpeed, beaterSwap2Dodge, beaterSwap2Age, beaterSwap2Salary;
+
+    public TMP_Text keeperSwapFAName, keeperSwapFABlock, keeperSwapFADodge, keeperSwapFAAge, keeperSwapFASalary;
+    public TMP_Text keeperSwap1Name, keeperSwap1Block, keeperSwap1Dodge, keeperSwap1Age, keeperSwap1Salary;
+
+    public TMP_Text seekerSwapFAName, seekerSwapFASight, seekerSwapFASpeed, seekerSwapFAReach, seekerSwapFAGrab, seekerSwapFADodge, seekerSwapFAAge, seekerSwapFASalary;
+    public TMP_Text seekerSwap1Name, seekerSwap1Sight, seekerSwap1Speed, seekerSwap1Reach, seekerSwap1Grab, seekerSwap1Dodge, seekerSwap1Age, seekerSwap1Salary;
+    #endregion
+
     private void Start()
     {
         combinedCalendar = new List<GameObject>();
@@ -481,4 +498,30 @@ public class ManagementSeasonTracker : MonoBehaviour
     {
         transactMidSeasonMenu.SetActive(false);
     }
+
+    public void UpdateChaserTrade()
+    { 
+    
+    }
+
+    public void UpdateBeaterTrade()
+    { 
+    
+    }
+
+    public void UpdateKeeperTrade()
+    { 
+    
+    }
+
+    public void UpdateSeekerTrade()
+    { 
+    
+    }
+
+    //all the positions are set, just hard code each button to replace a specific position (with specific child placement in the new list)
+    //make sure player has enough salary before hitting 'release'
+    //swap all the equipment, remove the existing player, add the new player, change the parenting, save lineup (and free agents)
+
+    //then hit the 'closetransactmenu' to close the window
 }
