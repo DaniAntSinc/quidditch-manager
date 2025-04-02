@@ -499,24 +499,112 @@ public class ManagementSeasonTracker : MonoBehaviour
         transactMidSeasonMenu.SetActive(false);
     }
 
-    public void UpdateChaserTrade()
-    { 
-    
+    public void UpdateChaserTrade(
+        string FAName, int FAInt, int FAPass, int FAShoot, int FASpeed, int FATackle, int FAAge, int FASalary,
+        string Name1, int Int1, int Pass1, int Shoot1, int Speed1, int Tackle1, int Age1, int Salary1,
+        string Name2, int Int2, int Pass2, int Shoot2, int Speed2, int Tackle2, int Age2, int Salary2,
+        string Name3, int Int3, int Pass3, int Shoot3, int Speed3, int Tackle3, int Age3, int Salary3
+        )
+    {
+        chaserSwapFAName.text = FAName;
+        chaserSwapFAIntercept.text = FAInt.ToString();
+        chaserSwapFAPass.text = FAPass.ToString();
+        chaserSwapFAShoot.text = FAShoot.ToString();
+        chaserSwapFASpeed.text = FASpeed.ToString();
+        chaserSwapFATackle.text = FATackle.ToString();
+        chaserSwapFAAge.text = FAAge.ToString();
+        chaserSwapFASalary.text = FASalary.ToString("n0") + " G";
+
+        chaserSwap1Name.text = Name1;
+        chaserSwap1Intercept.text = Int1.ToString();
+        chaserSwap1Pass.text = Pass1.ToString();
+        chaserSwap1Shoot.text = Shoot1.ToString();
+        chaserSwap1Speed.text = Speed1.ToString();
+        chaserSwap1Tackle.text = Tackle1.ToString();
+        chaserSwap1Age.text = Age1.ToString();
+        chaserSwap1Salary.text = Salary1.ToString("n0") + " G";
+
+        chaserSwap2Name.text = Name2;
+        chaserSwap2Intercept.text = Int2.ToString();
+        chaserSwap2Pass.text = Pass2.ToString();
+        chaserSwap2Shoot.text = Shoot2.ToString();
+        chaserSwap2Speed.text = Speed2.ToString();
+        chaserSwap2Tackle.text = Tackle2.ToString();
+        chaserSwap2Age.text = Age2.ToString();
+        chaserSwap2Salary.text = Salary2.ToString("n0") + " G";
+
+        chaserSwap3Name.text = Name3;
+        chaserSwap3Intercept.text = Int3.ToString();
+        chaserSwap3Pass.text = Pass3.ToString();
+        chaserSwap3Shoot.text = Shoot3.ToString();
+        chaserSwap3Speed.text = Speed3.ToString();
+        chaserSwap3Tackle.text = Tackle3.ToString();
+        chaserSwap3Age.text = Age3.ToString();
+        chaserSwap3Salary.text = Salary3.ToString("n0") + " G";
     }
 
-    public void UpdateBeaterTrade()
-    { 
-    
+    public void UpdateBeaterTrade(
+        string FAName, int FALS, int FADodge, int FAAge, int FASalary,
+        string Name1, int LS1, int Dodge1, int Age1, int Salary1,
+        string Name2, int LS2, int Dodge2, int Age2, int Salary2)
+    {
+        beaterSwapFAName.text = FAName;
+        beaterSwapFALocateSpeed.text = FALS.ToString();
+        beaterSwapFADodge.text = FADodge.ToString();
+        beaterSwapFAAge.text = FAAge.ToString();
+        beaterSwapFASalary.text = FASalary.ToString("n0") + " G";
+
+        beaterSwap1Name.text = Name1;
+        beaterSwap1LocateSpeed.text = LS1.ToString();
+        beaterSwap1Dodge.text = Dodge1.ToString();
+        beaterSwap1Age.text = Age1.ToString();
+        beaterSwap1Salary.text = Salary1.ToString("n0") + " G";
+
+        beaterSwap2Name.text = Name2;
+        beaterSwap2LocateSpeed.text = LS2.ToString();
+        beaterSwap2Dodge.text = Dodge2.ToString();
+        beaterSwap2Age.text = Age2.ToString();
+        beaterSwap2Salary.text = Salary2.ToString("n0") + " G";
+}
+
+    public void UpdateKeeperTrade(
+        string FAName, int FABlock, int FADodge, int FAAge, int FASalary,
+        string Name1, int Block1, int Dodge1, int Age1, int Salary1)
+    {
+        keeperSwapFAName.text = FAName;
+        keeperSwapFABlock.text = FABlock.ToString();
+        keeperSwapFADodge.text = FADodge.ToString();
+        keeperSwapFAAge.text = FAAge.ToString();
+        keeperSwapFASalary.text = FASalary.ToString("n0") + " G";
+
+        keeperSwap1Name.text = Name1;
+        keeperSwap1Block.text = Block1.ToString();
+        keeperSwap1Dodge.text = Dodge1.ToString();
+        keeperSwap1Age.text = Age1.ToString();
+        keeperSwap1Salary.text = Salary1.ToString("n0") + " G";
     }
 
-    public void UpdateKeeperTrade()
-    { 
-    
-    }
+    public void UpdateSeekerTrade(
+        string FAName, int FASight, int FASpeed, int FAReach, int FAGrab, int FADodge, int FAAge, int FASalary,
+        string Name1, int Sight1, int Speed1, int Reach1, int Grab1, int Dodge1, int Age1, int Salary1)
+    {
+        seekerSwapFAName.text = FAName;
+        seekerSwapFASight.text = FASight.ToString();
+        seekerSwapFASpeed.text = FASpeed.ToString();
+        seekerSwapFAReach.text = FAReach.ToString();
+        seekerSwapFAGrab.text = FAGrab.ToString();
+        seekerSwapFADodge.text = FADodge.ToString();
+        seekerSwapFAAge.text = FAAge.ToString();
+        seekerSwapFASalary.text = FASalary.ToString("n0") + " G";
 
-    public void UpdateSeekerTrade()
-    { 
-    
+        seekerSwap1Name.text = Name1;
+        seekerSwap1Sight.text = Sight1.ToString();
+        seekerSwap1Speed.text = Speed1.ToString();
+        seekerSwap1Reach.text = Reach1.ToString();
+        seekerSwap1Grab.text = Grab1.ToString();
+        seekerSwap1Dodge.text = Dodge1.ToString();
+        seekerSwap1Age.text = Age1.ToString();
+        seekerSwap1Salary.text = Salary1.ToString("n0") + " G";
     }
 
     //all the positions are set, just hard code each button to replace a specific position (with specific child placement in the new list)

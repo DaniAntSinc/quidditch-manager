@@ -1048,6 +1048,7 @@ public class SaveLoad : MonoBehaviour
             objToSpawn.GetComponent<Seeker>().ageMultiplier = PlayerPrefs.GetFloat("FASeekerAgeMultiplier" + i);
             objToSpawn.GetComponent<Seeker>().sight = PlayerPrefs.GetInt("FASeekerSight" + i);
             objToSpawn.GetComponent<Seeker>().speed = PlayerPrefs.GetInt("FASeekerSpeed" + i);
+            objToSpawn.GetComponent<Seeker>().dodge = PlayerPrefs.GetInt("FASeekerDodge" + i);
             objToSpawn.GetComponent<Seeker>().reach = PlayerPrefs.GetInt("FASeekerReach" + i);
             objToSpawn.GetComponent<Seeker>().grab = PlayerPrefs.GetInt("FASeekerGrab" + i);
             objToSpawn.GetComponent<Seeker>().salary = PlayerPrefs.GetInt("FASeekerSalary" + i);

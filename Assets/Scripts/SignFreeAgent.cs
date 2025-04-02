@@ -26,13 +26,109 @@ public class SignFreeAgent : MonoBehaviour
             GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().transactMidSeasonSeeker.SetActive(false);
 
             if (isChaser)
-            { GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().transactMidSeasonChaser.SetActive(true); }
+            { GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().transactMidSeasonChaser.SetActive(true);
+                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().UpdateChaserTrade(
+                    //FA
+                    GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Chaser>().Name,
+                    GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Chaser>().intercept,
+                     GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Chaser>().pass,
+                    GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Chaser>().shooting,
+                     GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Chaser>().speed,
+                     GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Chaser>().tackle,
+                    GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Chaser>().age,
+                     GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Chaser>().salary,
+                    //1
+                    GameObject.Find("Players_Team").transform.GetChild(0).GetComponent<Chaser>().Name,
+                    GameObject.Find("Players_Team").transform.GetChild(0).GetComponent<Chaser>().intercept,
+                     GameObject.Find("Players_Team").transform.GetChild(0).GetComponent<Chaser>().pass,
+                    GameObject.Find("Players_Team").transform.GetChild(0).GetComponent<Chaser>().shooting,
+                     GameObject.Find("Players_Team").transform.GetChild(0).GetComponent<Chaser>().speed,
+                     GameObject.Find("Players_Team").transform.GetChild(0).GetComponent<Chaser>().tackle,
+                    GameObject.Find("Players_Team").transform.GetChild(0).GetComponent<Chaser>().age,
+                     GameObject.Find("Players_Team").transform.GetChild(0).GetComponent<Chaser>().salary,
+                     //2
+                     GameObject.Find("Players_Team").transform.GetChild(1).GetComponent<Chaser>().Name,
+                    GameObject.Find("Players_Team").transform.GetChild(1).GetComponent<Chaser>().intercept,
+                     GameObject.Find("Players_Team").transform.GetChild(1).GetComponent<Chaser>().pass,
+                    GameObject.Find("Players_Team").transform.GetChild(1).GetComponent<Chaser>().shooting,
+                     GameObject.Find("Players_Team").transform.GetChild(1).GetComponent<Chaser>().speed,
+                     GameObject.Find("Players_Team").transform.GetChild(1).GetComponent<Chaser>().tackle,
+                    GameObject.Find("Players_Team").transform.GetChild(1).GetComponent<Chaser>().age,
+                     GameObject.Find("Players_Team").transform.GetChild(1).GetComponent<Chaser>().salary,
+                     //3
+                     GameObject.Find("Players_Team").transform.GetChild(2).GetComponent<Chaser>().Name,
+                    GameObject.Find("Players_Team").transform.GetChild(2).GetComponent<Chaser>().intercept,
+                     GameObject.Find("Players_Team").transform.GetChild(2).GetComponent<Chaser>().pass,
+                    GameObject.Find("Players_Team").transform.GetChild(2).GetComponent<Chaser>().shooting,
+                     GameObject.Find("Players_Team").transform.GetChild(2).GetComponent<Chaser>().speed,
+                     GameObject.Find("Players_Team").transform.GetChild(2).GetComponent<Chaser>().tackle,
+                    GameObject.Find("Players_Team").transform.GetChild(2).GetComponent<Chaser>().age,
+                     GameObject.Find("Players_Team").transform.GetChild(2).GetComponent<Chaser>().salary
+                    );
+            }
             if (isBeater)
-            { GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().transactMidSeasonBeater.SetActive(true); }
+            { GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().transactMidSeasonBeater.SetActive(true);
+                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().UpdateBeaterTrade(
+                    //FA
+                    GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Beater>().Name,
+                    GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Beater>().locateSpeed,
+                     GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Beater>().dodge,
+                    GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Beater>().age,
+                     GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Beater>().salary,
+                     //1
+                     GameObject.Find("Players_Team").transform.GetChild(3).GetComponent<Beater>().Name,
+                    GameObject.Find("Players_Team").transform.GetChild(3).GetComponent<Beater>().locateSpeed,
+                     GameObject.Find("Players_Team").transform.GetChild(3).GetComponent<Beater>().dodge,
+                    GameObject.Find("Players_Team").transform.GetChild(3).GetComponent<Beater>().age,
+                     GameObject.Find("Players_Team").transform.GetChild(3).GetComponent<Beater>().salary,
+                     //2
+                     GameObject.Find("Players_Team").transform.GetChild(4).GetComponent<Beater>().Name,
+                    GameObject.Find("Players_Team").transform.GetChild(4).GetComponent<Beater>().locateSpeed,
+                     GameObject.Find("Players_Team").transform.GetChild(4).GetComponent<Beater>().dodge,
+                    GameObject.Find("Players_Team").transform.GetChild(4).GetComponent<Beater>().age,
+                     GameObject.Find("Players_Team").transform.GetChild(4).GetComponent<Beater>().salary
+                    );
+            }
             if (isKeeper)
-            { GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().transactMidSeasonKeeper.SetActive(true); }
+            { GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().transactMidSeasonKeeper.SetActive(true);
+                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().UpdateKeeperTrade(
+                    //FA
+                    GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Keeper>().Name,
+                    GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Keeper>().block,
+                     GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Keeper>().dodge,
+                    GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Keeper>().age,
+                     GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Keeper>().salary,
+                     //1
+                     GameObject.Find("Players_Team").transform.GetChild(5).GetComponent<Keeper>().Name,
+                    GameObject.Find("Players_Team").transform.GetChild(5).GetComponent<Keeper>().block,
+                     GameObject.Find("Players_Team").transform.GetChild(5).GetComponent<Keeper>().dodge,
+                    GameObject.Find("Players_Team").transform.GetChild(5).GetComponent<Keeper>().age,
+                     GameObject.Find("Players_Team").transform.GetChild(5).GetComponent<Keeper>().salary
+                    );
+            }
             if (isSeeker)
-            { GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().transactMidSeasonSeeker.SetActive(true); }
+            { GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().transactMidSeasonSeeker.SetActive(true);
+                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().UpdateSeekerTrade(
+                    //FA
+                    GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Seeker>().Name,
+                    GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Seeker>().sight,
+                     GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Seeker>().speed,
+                     GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Seeker>().reach,
+                     GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Seeker>().grab,
+                     GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Seeker>().dodge,
+                    GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Seeker>().age,
+                     GameObject.Find("freeagents").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Seeker>().salary,
+                                         //1
+                    GameObject.Find("Players_Team").transform.GetChild(6).GetComponent<Seeker>().Name,
+                    GameObject.Find("Players_Team").transform.GetChild(6).GetComponent<Seeker>().sight,
+                     GameObject.Find("Players_Team").transform.GetChild(6).GetComponent<Seeker>().speed,
+                     GameObject.Find("Players_Team").transform.GetChild(6).GetComponent<Seeker>().reach,
+                     GameObject.Find("Players_Team").transform.GetChild(6).GetComponent<Seeker>().grab,
+                     GameObject.Find("Players_Team").transform.GetChild(6).GetComponent<Seeker>().dodge,
+                    GameObject.Find("Players_Team").transform.GetChild(6).GetComponent<Seeker>().age,
+                     GameObject.Find("Players_Team").transform.GetChild(6).GetComponent<Seeker>().salary
+                    );
+            }
         }
         else
         {
