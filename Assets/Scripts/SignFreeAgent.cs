@@ -139,27 +139,67 @@ public class SignFreeAgent : MonoBehaviour
             if(isChaser && (GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget >= GameObject.Find("freeagents").transform.GetChild(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation).GetComponent<Chaser>().salary))
             {
                 print("trade");
+                //   store child number
                 print(GameObject.Find("freeagents").transform.GetChild(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation).GetComponent<Chaser>().salary);
-               
+
+                // add free agent to parent
+                GameObject holder = GameObject.Find("freeagents").transform.GetChild(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation).gameObject;
+                holder.transform.SetParent(GameObject.Find("Players_Team").transform);
+                //remove old player
+                GameObject transferOut = GameObject.Find("Players_Team").transform.GetChild(playerNumberFromFreeAgentList).gameObject;
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers.Remove(GameObject.Find("Players_Team").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Chaser>());
+                transferOut.transform.SetParent(GameObject.Find("freeagents").transform);
+                transferOut.transform.SetSiblingIndex(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation);
+                transferOut.name = "ChaserFreeAgent";
+                //add new player
+                holder.transform.SetSiblingIndex(this.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList);
+                holder.gameObject.name = "Chaser";
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers.Add(holder.GetComponent<Chaser>());
+                //change previous free agent to incoming FA
+                this.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList = GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation;
+                // move equipment from old player to new player
+                //hat
+                Hat tempHat = holder.GetComponent<Chaser>().hat;
+                holder.GetComponent<Chaser>().hat = transferOut.GetComponent<Chaser>().hat;
+                transferOut.GetComponent<Chaser>().hat = tempHat;
+
+                //body
+                Body tempBody = holder.GetComponent<Chaser>().body;
+                holder.GetComponent<Chaser>().body = transferOut.GetComponent<Chaser>().body;
+                transferOut.GetComponent<Chaser>().body = tempBody;
+                //gloves
+                Gloves tempGloves = holder.GetComponent<Chaser>().gloves;
+                holder.GetComponent<Chaser>().gloves = transferOut.GetComponent<Chaser>().gloves;
+                transferOut.GetComponent<Chaser>().gloves = tempGloves;
+                //glasses
+                Glasses tempGlasses = holder.GetComponent<Chaser>().glasses;
+                holder.GetComponent<Chaser>().glasses = transferOut.GetComponent<Chaser>().glasses;
+                transferOut.GetComponent<Chaser>().glasses = tempGlasses;
+                //broom
+                Broom tempBrooms = holder.GetComponent<Chaser>().broom;
+                holder.GetComponent<Chaser>().broom = transferOut.GetComponent<Chaser>().broom;
+                transferOut.GetComponent<Chaser>().broom = tempBrooms;
+                // update finances
+                GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget -= holder.GetComponent<Chaser>().salary;
+
+                transferOut.GetComponent<Chaser>().isFreeAgent = true;
+                holder.GetComponent<Chaser>().isFreeAgent = false;
             }
+            //beater
+            //keeper
+            //seeker
+
+
+
+            // UI update finances
             
-             //   store child number
-           // add free agent to parent
+            //Save FA 
+            //Save player line up
 
-       // add player to whichever Players_Team list they need to be
-
-       // remove old player from Players_Team list
-
-       // remove old player from parent
-       // add old player to free agents list(and the correct child)
-
-       // move equipment from old player to new player
-
-       // update finances
-
-       // UI update finances
-       // close the window
-           
+            // close the window
+            GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().CloseTransactMenu();
+            GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().ToggleChaser();
+            GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation = 0;
         }
         else
         {

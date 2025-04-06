@@ -503,6 +503,7 @@ public class ManagementSeasonTracker : MonoBehaviour
     public void CloseTransactMenu()
     {
         transactMidSeasonMenu.SetActive(false);
+        tempHolderForTradeConfirmation = 0;
     }
 
     public void UpdateChaserTrade(
