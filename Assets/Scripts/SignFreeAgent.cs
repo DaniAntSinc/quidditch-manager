@@ -313,14 +313,14 @@ public class SignFreeAgent : MonoBehaviour
                 Broom tempBrooms = holder.GetComponent<Seeker>().broom;
                 holder.GetComponent<Seeker>().broom = transferOut.GetComponent<Seeker>().broom;
                 transferOut.GetComponent<Seeker>().broom = tempBrooms;
-                // update finances
-                GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget -= holder.GetComponent<Seeker>().salary;
 
                 transferOut.GetComponent<Seeker>().isFreeAgent = true;
                 holder.GetComponent<Seeker>().isFreeAgent = false;
             }
             //Save FA 
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveFreeAgents();
             //Save player line up
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveLineUp();
 
             // close the window
             GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().CloseTransactMenu();
