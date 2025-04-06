@@ -62,6 +62,8 @@ public class ManagementSeasonTracker : MonoBehaviour
     public TMP_Text seekerSwap1Name, seekerSwap1Sight, seekerSwap1Speed, seekerSwap1Reach, seekerSwap1Grab, seekerSwap1Dodge, seekerSwap1Age, seekerSwap1Salary;
 
     public TMP_Text teamFinancesTradePage;
+
+    public int tempHolderForTradeConfirmation;
     #endregion
 
     private void Start()

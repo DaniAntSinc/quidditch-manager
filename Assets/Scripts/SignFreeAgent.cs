@@ -12,6 +12,7 @@ public class SignFreeAgent : MonoBehaviour
     public int playerNumberFromFreeAgentList;
 
     public bool midSeasonTrade;
+    public bool tradeConfirmation;
 
     public void SignPlayer()
     {
@@ -129,6 +130,36 @@ public class SignFreeAgent : MonoBehaviour
                      GameObject.Find("Players_Team").transform.GetChild(6).GetComponent<Seeker>().salary
                     );
             }
+            GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation = playerNumberFromFreeAgentList;
+        }
+
+        if (tradeConfirmation)
+        {
+            //if enough money
+            if(isChaser && (GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget >= GameObject.Find("freeagents").transform.GetChild(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation).GetComponent<Chaser>().salary))
+            {
+                print("trade");
+                print(GameObject.Find("freeagents").transform.GetChild(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation).GetComponent<Chaser>().salary);
+               
+            }
+            
+             //   store child number
+           // add free agent to parent
+
+       // add player to whichever Players_Team list they need to be
+
+       // remove old player from Players_Team list
+
+       // remove old player from parent
+       // add old player to free agents list(and the correct child)
+
+       // move equipment from old player to new player
+
+       // update finances
+
+       // UI update finances
+       // close the window
+           
         }
         else
         {
