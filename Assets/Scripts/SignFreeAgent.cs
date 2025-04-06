@@ -138,10 +138,6 @@ public class SignFreeAgent : MonoBehaviour
             //if enough money
             if(isChaser && (GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget >= GameObject.Find("freeagents").transform.GetChild(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation).GetComponent<Chaser>().salary))
             {
-                print("trade");
-                //   store child number
-                print(GameObject.Find("freeagents").transform.GetChild(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation).GetComponent<Chaser>().salary);
-
                 // add free agent to parent
                 GameObject holder = GameObject.Find("freeagents").transform.GetChild(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation).gameObject;
                 holder.transform.SetParent(GameObject.Find("Players_Team").transform);
@@ -186,13 +182,143 @@ public class SignFreeAgent : MonoBehaviour
                 holder.GetComponent<Chaser>().isFreeAgent = false;
             }
             //beater
+            if (isBeater && (GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget >= GameObject.Find("freeagents").transform.GetChild(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation).GetComponent<Beater>().salary))
+            {
+                // add free agent to parent
+                GameObject holder = GameObject.Find("freeagents").transform.GetChild(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation).gameObject;
+                holder.transform.SetParent(GameObject.Find("Players_Team").transform);
+                //remove old player
+                GameObject transferOut = GameObject.Find("Players_Team").transform.GetChild(playerNumberFromFreeAgentList).gameObject;
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters.Remove(GameObject.Find("Players_Team").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Beater>());
+                transferOut.transform.SetParent(GameObject.Find("freeagents").transform);
+                transferOut.transform.SetSiblingIndex(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation);
+                transferOut.name = "BeaterFreeAgent";
+                //add new player
+                holder.transform.SetSiblingIndex(this.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList);
+                holder.gameObject.name = "Beater";
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters.Add(holder.GetComponent<Beater>());
+                //change previous free agent to incoming FA
+                this.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList = GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation;
+                // move equipment from old player to new player
+                //hat
+                Hat tempHat = holder.GetComponent<Beater>().hat;
+                holder.GetComponent<Beater>().hat = transferOut.GetComponent<Beater>().hat;
+                transferOut.GetComponent<Beater>().hat = tempHat;
+
+                //body
+                Body tempBody = holder.GetComponent<Beater>().body;
+                holder.GetComponent<Beater>().body = transferOut.GetComponent<Beater>().body;
+                transferOut.GetComponent<Beater>().body = tempBody;
+                //gloves
+                Gloves tempGloves = holder.GetComponent<Beater>().gloves;
+                holder.GetComponent<Beater>().gloves = transferOut.GetComponent<Beater>().gloves;
+                transferOut.GetComponent<Beater>().gloves = tempGloves;
+                //glasses
+                Glasses tempGlasses = holder.GetComponent<Beater>().glasses;
+                holder.GetComponent<Beater>().glasses = transferOut.GetComponent<Beater>().glasses;
+                transferOut.GetComponent<Beater>().glasses = tempGlasses;
+                //broom
+                Broom tempBrooms = holder.GetComponent<Beater>().broom;
+                holder.GetComponent<Beater>().broom = transferOut.GetComponent<Beater>().broom;
+                transferOut.GetComponent<Beater>().broom = tempBrooms;
+                // update finances
+                GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget -= holder.GetComponent<Beater>().salary;
+
+                transferOut.GetComponent<Beater>().isFreeAgent = true;
+                holder.GetComponent<Beater>().isFreeAgent = false;
+            }
             //keeper
+            if (isKeeper && (GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget >= GameObject.Find("freeagents").transform.GetChild(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation).GetComponent<Keeper>().salary))
+            {
+                // add free agent to parent
+                GameObject holder = GameObject.Find("freeagents").transform.GetChild(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation).gameObject;
+                holder.transform.SetParent(GameObject.Find("Players_Team").transform);
+                //remove old player
+                GameObject transferOut = GameObject.Find("Players_Team").transform.GetChild(playerNumberFromFreeAgentList).gameObject;
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper.Remove(GameObject.Find("Players_Team").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Keeper>());
+                transferOut.transform.SetParent(GameObject.Find("freeagents").transform);
+                transferOut.transform.SetSiblingIndex(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation);
+                transferOut.name = "KeeperFreeAgent";
+                //add new player
+                holder.transform.SetSiblingIndex(this.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList);
+                holder.gameObject.name = "Keeper";
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper.Add(holder.GetComponent<Keeper>());
+                //change previous free agent to incoming FA
+                this.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList = GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation;
+                // move equipment from old player to new player
+                //hat
+                Hat tempHat = holder.GetComponent<Keeper>().hat;
+                holder.GetComponent<Keeper>().hat = transferOut.GetComponent<Keeper>().hat;
+                transferOut.GetComponent<Keeper>().hat = tempHat;
+
+                //body
+                Body tempBody = holder.GetComponent<Keeper>().body;
+                holder.GetComponent<Keeper>().body = transferOut.GetComponent<Keeper>().body;
+                transferOut.GetComponent<Keeper>().body = tempBody;
+                //gloves
+                Gloves tempGloves = holder.GetComponent<Keeper>().gloves;
+                holder.GetComponent<Keeper>().gloves = transferOut.GetComponent<Keeper>().gloves;
+                transferOut.GetComponent<Keeper>().gloves = tempGloves;
+                //glasses
+                Glasses tempGlasses = holder.GetComponent<Keeper>().glasses;
+                holder.GetComponent<Keeper>().glasses = transferOut.GetComponent<Keeper>().glasses;
+                transferOut.GetComponent<Keeper>().glasses = tempGlasses;
+                //broom
+                Broom tempBrooms = holder.GetComponent<Keeper>().broom;
+                holder.GetComponent<Keeper>().broom = transferOut.GetComponent<Keeper>().broom;
+                transferOut.GetComponent<Keeper>().broom = tempBrooms;
+                // update finances
+                GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget -= holder.GetComponent<Keeper>().salary;
+
+                transferOut.GetComponent<Keeper>().isFreeAgent = true;
+                holder.GetComponent<Keeper>().isFreeAgent = false;
+            }
             //seeker
+            if (isSeeker && (GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget >= GameObject.Find("freeagents").transform.GetChild(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation).GetComponent<Seeker>().salary))
+            {
+                // add free agent to parent
+                GameObject holder = GameObject.Find("freeagents").transform.GetChild(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation).gameObject;
+                holder.transform.SetParent(GameObject.Find("Players_Team").transform);
+                //remove old player
+                GameObject transferOut = GameObject.Find("Players_Team").transform.GetChild(playerNumberFromFreeAgentList).gameObject;
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker.Remove(GameObject.Find("Players_Team").transform.GetChild(playerNumberFromFreeAgentList).GetComponent<Seeker>());
+                transferOut.transform.SetParent(GameObject.Find("freeagents").transform);
+                transferOut.transform.SetSiblingIndex(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation);
+                transferOut.name = "SeekerFreeAgent";
+                //add new player
+                holder.transform.SetSiblingIndex(this.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList);
+                holder.gameObject.name = "Seeker";
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker.Add(holder.GetComponent<Seeker>());
+                //change previous free agent to incoming FA
+                this.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList = GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().tempHolderForTradeConfirmation;
+                // move equipment from old player to new player
+                //hat
+                Hat tempHat = holder.GetComponent<Seeker>().hat;
+                holder.GetComponent<Seeker>().hat = transferOut.GetComponent<Seeker>().hat;
+                transferOut.GetComponent<Seeker>().hat = tempHat;
 
+                //body
+                Body tempBody = holder.GetComponent<Seeker>().body;
+                holder.GetComponent<Seeker>().body = transferOut.GetComponent<Seeker>().body;
+                transferOut.GetComponent<Seeker>().body = tempBody;
+                //gloves
+                Gloves tempGloves = holder.GetComponent<Seeker>().gloves;
+                holder.GetComponent<Seeker>().gloves = transferOut.GetComponent<Seeker>().gloves;
+                transferOut.GetComponent<Seeker>().gloves = tempGloves;
+                //glasses
+                Glasses tempGlasses = holder.GetComponent<Seeker>().glasses;
+                holder.GetComponent<Seeker>().glasses = transferOut.GetComponent<Seeker>().glasses;
+                transferOut.GetComponent<Seeker>().glasses = tempGlasses;
+                //broom
+                Broom tempBrooms = holder.GetComponent<Seeker>().broom;
+                holder.GetComponent<Seeker>().broom = transferOut.GetComponent<Seeker>().broom;
+                transferOut.GetComponent<Seeker>().broom = tempBrooms;
+                // update finances
+                GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget -= holder.GetComponent<Seeker>().salary;
 
-
-            // UI update finances
-            
+                transferOut.GetComponent<Seeker>().isFreeAgent = true;
+                holder.GetComponent<Seeker>().isFreeAgent = false;
+            }
             //Save FA 
             //Save player line up
 
