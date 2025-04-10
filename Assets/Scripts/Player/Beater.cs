@@ -11,6 +11,8 @@ public class Beater : Player
     public int LSExperienceCap;
 
     public int proRatedSalary;
+
+    public float stamina = 1;
     public void CalculateSalary()
     {
         AgeMatrix();

@@ -26,6 +26,8 @@ public class Chaser : Player
     public int TExperienceCap;
 
     public int proRatedSalary;
+
+    public float stamina = 1;
     public void CalculateSalary()
     {
         {

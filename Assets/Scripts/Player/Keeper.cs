@@ -12,6 +12,8 @@ public class Keeper : Player
     public int BExperienceCap;
 
     public int proRatedSalary;
+
+    public float stamina = 1;
     public void CalculateSalary()
     {
         AgeMatrix();

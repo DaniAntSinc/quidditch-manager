@@ -23,6 +23,8 @@ public class Seeker : Player
     public int GExperienceCap;
 
     public int proRatedSalary;
+
+    public float stamina = 1; 
     public void CalculateSalary()
     {
         AgeMatrix();
