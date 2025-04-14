@@ -9,6 +9,8 @@ public class Beater : Player
     public int salary;
     public int currentLSExperience;
     public int LSExperienceCap;
+    public int currentDExperience;
+    public int DExperienceCap;
 
     public int proRatedSalary;
 
@@ -23,6 +25,7 @@ public class Beater : Player
 
     public void EvaluateExpNeeded()
     {
+        DExperienceCap = 100 + dodge;
         LSExperienceCap = 100 + locateSpeed;
     }
 

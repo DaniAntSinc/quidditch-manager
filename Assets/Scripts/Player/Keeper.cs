@@ -10,6 +10,8 @@ public class Keeper : Player
 
     public int currentBExperience;
     public int BExperienceCap;
+    public int currentDExperience;
+    public int DExperienceCap;
 
     public int proRatedSalary;
 
@@ -24,6 +26,7 @@ public class Keeper : Player
 
     public void EvaluateExpNeeded()
     {
+        DExperienceCap = 100 + dodge;
         BExperienceCap = 115 + block;
     }
     public void CheckIfOverflow()
