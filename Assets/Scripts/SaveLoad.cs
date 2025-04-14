@@ -224,12 +224,18 @@ public class SaveLoad : MonoBehaviour
 
         PlayerPrefs.SetInt("Beater1CurrentLSExp", playersTeam.beaters[0].currentLSExperience);
         PlayerPrefs.SetInt("Beater1LSExperienceCap", playersTeam.beaters[0].LSExperienceCap);
+        PlayerPrefs.SetInt("Beater1CurrentDExp", playersTeam.beaters[0].currentDExperience);
+        PlayerPrefs.SetInt("Beater1DExperienceCap", playersTeam.beaters[0].DExperienceCap);
 
         PlayerPrefs.SetInt("Beater2CurrentLSExp", playersTeam.beaters[1].currentLSExperience);
         PlayerPrefs.SetInt("Beater2LSExperienceCap", playersTeam.beaters[1].LSExperienceCap);
+        PlayerPrefs.SetInt("Beater2CurrentDExp", playersTeam.beaters[1].currentDExperience);
+        PlayerPrefs.SetInt("Beater2DExperienceCap", playersTeam.beaters[1].DExperienceCap);
 
         PlayerPrefs.SetInt("KeeperCurrentBExp", playersTeam.keeper[0].currentBExperience);
         PlayerPrefs.SetInt("KeeperBExperienceCap", playersTeam.keeper[0].BExperienceCap);
+        PlayerPrefs.SetInt("KeeperCurrentDExp", playersTeam.keeper[0].currentDExperience);
+        PlayerPrefs.SetInt("KeeperDExperienceCap", playersTeam.keeper[0].DExperienceCap);
 
         PlayerPrefs.SetInt("SeekerCurrentDExp", playersTeam.seeker[0].currentDExperience);
         PlayerPrefs.SetInt("SeekerDExperienceCap", playersTeam.seeker[0].DExperienceCap);
@@ -708,12 +714,18 @@ public class SaveLoad : MonoBehaviour
 
         playerTeamLoad.GetComponent<SeasonTeam>().beaters[0].currentLSExperience = PlayerPrefs.GetInt("Beater1CurrentLSExp");
         playerTeamLoad.GetComponent<SeasonTeam>().beaters[0].LSExperienceCap = PlayerPrefs.GetInt("Beater1LSExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().beaters[0].currentDExperience = PlayerPrefs.GetInt("Beater1CurrentDExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().beaters[0].DExperienceCap = PlayerPrefs.GetInt("Beater1DExperienceCap");
 
         playerTeamLoad.GetComponent<SeasonTeam>().beaters[1].currentLSExperience = PlayerPrefs.GetInt("Beater2CurrentLSExp");
         playerTeamLoad.GetComponent<SeasonTeam>().beaters[1].LSExperienceCap = PlayerPrefs.GetInt("Beater2LSExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().beaters[1].currentDExperience = PlayerPrefs.GetInt("Beater2CurrentDExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().beaters[1].DExperienceCap = PlayerPrefs.GetInt("Beater2DExperienceCap");
 
         playerTeamLoad.GetComponent<SeasonTeam>().keeper[0].currentBExperience = PlayerPrefs.GetInt("KeeperCurrentBExp");
         playerTeamLoad.GetComponent<SeasonTeam>().keeper[0].BExperienceCap = PlayerPrefs.GetInt("KeeperBExperienceCap");
+        playerTeamLoad.GetComponent<SeasonTeam>().keeper[0].currentDExperience = PlayerPrefs.GetInt("Keeper1CurrentDExp");
+        playerTeamLoad.GetComponent<SeasonTeam>().keeper[0].DExperienceCap = PlayerPrefs.GetInt("Keeper1DExperienceCap");
 
         playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].currentDExperience = PlayerPrefs.GetInt("SeekerCurrentDExp");
         playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].DExperienceCap = PlayerPrefs.GetInt("SeekerDExperienceCap");
