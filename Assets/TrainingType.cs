@@ -32,5 +32,6 @@ public class TrainingType : MonoBehaviour
 
         //Save Exp
         //Adv to Next Day
+        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().OpenPostTrainingMenu();
     }
 }

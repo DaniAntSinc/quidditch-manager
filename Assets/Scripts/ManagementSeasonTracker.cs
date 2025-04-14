@@ -66,6 +66,8 @@ public class ManagementSeasonTracker : MonoBehaviour
     public int tempHolderForTradeConfirmation;
     #endregion
 
+    public GameObject trainingMenu, postTrainingMenu;
+
     private void Start()
     {
         combinedCalendar = new List<GameObject>();
@@ -100,6 +102,21 @@ public class ManagementSeasonTracker : MonoBehaviour
     int thisGameCapacity;
     #endregion
 
+    public void OpenTrainingMenu()
+    {
+        trainingMenu.SetActive(true);
+    }
+
+    public void OpenPostTrainingMenu()
+    {
+        postTrainingMenu.SetActive(true);
+    }
+
+    public void CloseTrainingMenusAdvanceDay()
+    {
+        trainingMenu.SetActive(false);
+        postTrainingMenu.SetActive(false);
+    }
     public void AdvanceDay()
     {
         dayOfSeason++;
@@ -125,7 +142,10 @@ public class ManagementSeasonTracker : MonoBehaviour
             placeInList++;
         }
         else
+        {
+            OpenTrainingMenu();
             dayActihitiesText.text = "Train";
+        }
 
         if (dayOfSeason > 111)
             dayOfSeason = 0;
