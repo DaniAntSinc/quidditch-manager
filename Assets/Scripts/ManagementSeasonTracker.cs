@@ -106,6 +106,7 @@ public class ManagementSeasonTracker : MonoBehaviour
     {
         trainingMenu.SetActive(true);
         GameObject.Find("ManagementTeamTraining").GetComponent<ManagementTeamTraining>().OpenTrainingPage();
+        GameObject.Find("ManagementTeamTraining").GetComponent<ManagementTeamTraining>().ToggleTeam();
     }
 
     public void OpenPostTrainingMenu()

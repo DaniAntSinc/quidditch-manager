@@ -42,11 +42,14 @@ public class ManagementTeamTraining : MonoBehaviour
     public Slider seekerStamina, seekerSight, seekerSpeed, seekerReach, seekerGrab, seekerDodge;
 
     //Training Page
-    //Text Fields
     public TMP_Text trainingChaser1, trainingChaser2, trainingChaser3, trainingBeater1, trainingBeater2, trainingKeeper, trainingSeeker;
     public Slider chaser1Stam, chaser2Stam, chaser3Stam, beater1Stam, beater2Stam, keeperStam, seekerStam;
 
     public TrainingType[] trainingTypeList;
+
+    //Headers
+    public TMP_Text team, chaser, beater, keeper, seeker;
+    public GameObject teamMenu, chaserMenu, beaterMenu, keeperMenu, seekerMenu;
 
     public void OpenTrainingPage()
     {
@@ -210,5 +213,54 @@ public class ManagementTeamTraining : MonoBehaviour
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveLineUp();
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveExperience();
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveStamina();
+    }
+
+    public void AllToggle()
+    {
+        team.color = Color.white;
+        chaser.color = Color.white;
+        beater.color = Color.white;
+        keeper.color = Color.white;
+        seeker.color = Color.white;
+
+        teamMenu.SetActive(false);
+        chaserMenu.SetActive(false);
+        beaterMenu.SetActive(false);
+        keeperMenu.SetActive(false);
+        seekerMenu.SetActive(false);
+    }
+    public void ToggleTeam()
+    {
+        AllToggle();
+        team.color = Color.grey;
+        teamMenu.SetActive(true);
+    }
+
+    public void ToggleChaser()
+    {
+        AllToggle();
+        chaser.color = Color.grey;
+        chaserMenu.SetActive(true);
+    }
+
+    public void ToggleBeater()
+    {
+        AllToggle();
+        beater.color = Color.grey;
+        beaterMenu.SetActive(true);
+    }
+
+    public void ToggleKeeper()
+    {
+        AllToggle();
+        keeper.color = Color.grey;
+        keeperMenu.SetActive(true);
+    }
+
+    public void ToggleSeeker()
+    {
+        AllToggle();
+        seeker.color = Color.grey;
+        seekerMenu.SetActive(true);
     }
 }
