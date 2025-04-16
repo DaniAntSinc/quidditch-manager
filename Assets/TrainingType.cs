@@ -69,13 +69,13 @@ public class TrainingType : MonoBehaviour
     public void ExecuteTraining()
     {
         if (isTeam &&
-            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina >= staminaCost &&
-            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina >= staminaCost &&
-            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina >= staminaCost &&
-            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina >= staminaCost &&
-            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina >= staminaCost &&
-            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina >= staminaCost &&
-            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina >= staminaCost
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina >= -staminaCost &&
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina >= -staminaCost &&
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina >= -staminaCost &&
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina >= -staminaCost &&
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina >= -staminaCost &&
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina >= -staminaCost &&
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina >= -staminaCost
             )
         {
             GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina += staminaCost;
@@ -128,9 +128,9 @@ public class TrainingType : MonoBehaviour
             GameObject.Find("ManagementTeamTraining").GetComponent<ManagementTeamTraining>().UpdateSliderOnPostTrainingPage();
         }
         else if (isChaser &&
-            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina >= staminaCost &&
-            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina >= staminaCost &&
-            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina >= staminaCost)
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina >= -staminaCost &&
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina >= -staminaCost &&
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina >= -staminaCost)
         {
             GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina += staminaCost;
             GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina += staminaCost;
@@ -169,8 +169,8 @@ public class TrainingType : MonoBehaviour
             GameObject.Find("ManagementTeamTraining").GetComponent<ManagementTeamTraining>().UpdateSliderOnPostTrainingPage();
         }
         else if (isBeater &&
-            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina >= staminaCost &&
-            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina >= staminaCost)
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina >= -staminaCost &&
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina >= -staminaCost)
         {
             GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina += staminaCost;
             GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina += staminaCost;
@@ -210,7 +210,7 @@ public class TrainingType : MonoBehaviour
             GameObject.Find("ManagementTeamTraining").GetComponent<ManagementTeamTraining>().UpdateSliderOnPostTrainingPage();
         }
         else if (isSeeker &&
-            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina >= staminaCost)
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina >= -staminaCost)
         {
             GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina += staminaCost;
 
