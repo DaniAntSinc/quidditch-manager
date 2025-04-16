@@ -41,6 +41,42 @@ public class ManagementTeamTraining : MonoBehaviour
 
     public Slider seekerStamina, seekerSight, seekerSpeed, seekerReach, seekerGrab, seekerDodge;
 
+    //Training Page
+    //Text Fields
+    public TMP_Text trainingChaser1, trainingChaser2, trainingChaser3, trainingBeater1, trainingBeater2, trainingKeeper, trainingSeeker;
+    public Slider chaser1Stam, chaser2Stam, chaser3Stam, beater1Stam, beater2Stam, keeperStam, seekerStam;
+
+    public void OpenTrainingPage()
+    {
+        trainingChaser1.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].Name;
+        trainingChaser2.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].Name;
+        trainingChaser3.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].Name;
+        trainingBeater1.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].Name;
+        trainingBeater2.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].Name;
+        trainingKeeper.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].Name;
+        trainingSeeker.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].Name;
+
+        chaser1Stam.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina / 100);
+        chaser2Stam.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina / 100);
+        chaser3Stam.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina / 100);
+
+        beater1Stam.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina / 100);
+        beater2Stam.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina / 100);
+
+        keeperStam.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina / 100);
+
+        seekerStam.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina / 100);
+
+        chaser1Stam.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = Color.Lerp(Color.red, Color.green, ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina / 100));
+        chaser2Stam.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = Color.Lerp(Color.red, Color.green, ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina / 100));
+        chaser3Stam.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = Color.Lerp(Color.red, Color.green, ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina / 100));
+
+        beater1Stam.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = Color.Lerp(Color.red, Color.green, ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina / 100));
+        beater2Stam.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = Color.Lerp(Color.red, Color.green, ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina / 100));
+
+        keeperStam.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = Color.Lerp(Color.red, Color.green, ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina / 100));
+        seekerStam.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = Color.Lerp(Color.red, Color.green, ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina / 100));
+    }
     public void UpdateSliderOnPostTrainingPage()
     {
         //update min/max
