@@ -10,6 +10,8 @@ public class TrainingType : MonoBehaviour
     public int dodgeExp, intExp, passExp, shotExp, speedExp, tackleExp, locateExp, blockExp, sightExp, reachExp, grabExp;
     public string trainingName;
     public TMP_Text nameOfTraining, stamCost, dodgeText, speedText, interceptText, passingText, shootingText, tackleText, locateText, blockText, sightText, reachText, grabText;
+    //positions not actively training get this boost so  they can 'rest'
+    int recoveryStamina = 10;
 
     public void PrepList()
     {
@@ -158,6 +160,11 @@ public class TrainingType : MonoBehaviour
             GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentTExperience += tackleExp;
             GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentTExperience += tackleExp;
 
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina += recoveryStamina;
+
             GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().OpenPostTrainingMenu();
             GameObject.Find("ManagementTeamTraining").GetComponent<ManagementTeamTraining>().UpdateSliderOnPostTrainingPage();
         }
@@ -174,6 +181,12 @@ public class TrainingType : MonoBehaviour
             GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].currentLSExperience += locateExp;
             GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].currentLSExperience += locateExp;
 
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina += recoveryStamina;
+
             GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().OpenPostTrainingMenu();
             GameObject.Find("ManagementTeamTraining").GetComponent<ManagementTeamTraining>().UpdateSliderOnPostTrainingPage();
         }
@@ -185,6 +198,13 @@ public class TrainingType : MonoBehaviour
             GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].currentDExperience += dodgeExp;
            
             GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].currentBExperience += blockExp;
+
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina += recoveryStamina;
 
             GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().OpenPostTrainingMenu();
             GameObject.Find("ManagementTeamTraining").GetComponent<ManagementTeamTraining>().UpdateSliderOnPostTrainingPage();
@@ -202,12 +222,32 @@ public class TrainingType : MonoBehaviour
             GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentRExperience += reachExp;
             GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentGExperience += grabExp;
 
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina += recoveryStamina;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina += recoveryStamina;
+
             GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().OpenPostTrainingMenu();
             GameObject.Find("ManagementTeamTraining").GetComponent<ManagementTeamTraining>().UpdateSliderOnPostTrainingPage();
         }
 
-        //Save Exp
-        //Adv to Next Day
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina = 100;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina = 100;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina = 100;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina = 100;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina = 100;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina = 100;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina = 100;
+
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina = 0;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina = 0;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina = 0;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina = 0;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina = 0;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina = 0;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina = 0;
 
     }
 }
