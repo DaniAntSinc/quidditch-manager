@@ -390,8 +390,6 @@ public class GameManager : MonoBehaviour
         SR.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentRExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].RExperienceCap);
         SG.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].currentGExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].GExperienceCap);
         #endregion
-        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveLineUp();
-        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveExperience();
     }
 
     public void SetLineUp()
@@ -451,6 +449,9 @@ public class GameManager : MonoBehaviour
             if (managementMode)
             { 
                 managementPostGameButton.SetActive(true);
+                GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveStamina();
+                GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveLineUp();
+                GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveExperience();
                 newGameButton.SetActive(false);
             }
             if (hogwartsSeason)

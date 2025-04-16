@@ -209,5 +209,6 @@ public class ManagementTeamTraining : MonoBehaviour
         //save exp
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveLineUp();
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveExperience();
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveStamina();
     }
 }

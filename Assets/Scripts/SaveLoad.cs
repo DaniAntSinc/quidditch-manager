@@ -84,6 +84,19 @@ public class SaveLoad : MonoBehaviour
         PlayerPrefs.SetString("StadiumSaveElement" + SaveNumber, SaveNumber);
     }
 
+    public void SaveStamina()
+    {
+        PlayerPrefs.SetFloat("Chaser1Stam", playersTeam.chasers[0].stamina);
+        PlayerPrefs.SetFloat("Chaser2Stam", playersTeam.chasers[1].stamina);
+        PlayerPrefs.SetFloat("Chaser3Stam", playersTeam.chasers[2].stamina);
+
+        PlayerPrefs.SetFloat("Beater1Stam", playersTeam.beaters[0].stamina);
+        PlayerPrefs.SetFloat("Beater2Stam", playersTeam.beaters[1].stamina);
+
+        PlayerPrefs.SetFloat("KeeperStam", playersTeam.keeper[0].stamina);
+        PlayerPrefs.SetFloat("SeekerStam", playersTeam.seeker[0].stamina);
+    }
+
     public void SaveLineUp()
     {
         PlayerPrefs.SetInt("TeamBudget", teamBudget);
@@ -741,6 +754,16 @@ public class SaveLoad : MonoBehaviour
 
         playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].currentGExperience = PlayerPrefs.GetInt("SeekerCurrentGExp");
         playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].GExperienceCap = PlayerPrefs.GetInt("SeekerGExperienceCap");
+        //Stamina
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[0].stamina = PlayerPrefs.GetFloat("Chaser1Stam");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[1].stamina = PlayerPrefs.GetFloat("Chaser2Stam");
+        playerTeamLoad.GetComponent<SeasonTeam>().chasers[2].stamina = PlayerPrefs.GetFloat("Chaser3Stam");
+
+        playerTeamLoad.GetComponent<SeasonTeam>().beaters[0].stamina = PlayerPrefs.GetFloat("Beater1Stam");
+        playerTeamLoad.GetComponent<SeasonTeam>().beaters[1].stamina = PlayerPrefs.GetFloat("Beater2Stam");
+
+        playerTeamLoad.GetComponent<SeasonTeam>().keeper[0].stamina = PlayerPrefs.GetFloat("KeeperStam");
+        playerTeamLoad.GetComponent<SeasonTeam>().seeker[0].stamina = PlayerPrefs.GetFloat("SeekerStam");
 
         #endregion
         #region Equipment / Player Inventory
