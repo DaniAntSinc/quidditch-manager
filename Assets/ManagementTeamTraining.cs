@@ -46,6 +46,8 @@ public class ManagementTeamTraining : MonoBehaviour
     public TMP_Text trainingChaser1, trainingChaser2, trainingChaser3, trainingBeater1, trainingBeater2, trainingKeeper, trainingSeeker;
     public Slider chaser1Stam, chaser2Stam, chaser3Stam, beater1Stam, beater2Stam, keeperStam, seekerStam;
 
+    public TrainingType[] trainingTypeList;
+
     public void OpenTrainingPage()
     {
         trainingChaser1.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].Name;
@@ -76,6 +78,12 @@ public class ManagementTeamTraining : MonoBehaviour
 
         keeperStam.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = Color.Lerp(Color.red, Color.green, ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina / 100));
         seekerStam.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = Color.Lerp(Color.red, Color.green, ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina / 100));
+
+        //Prep All Training Types
+        for (int i = 0; i < trainingTypeList.Length; i++)
+        {
+            trainingTypeList[i].PrepList();
+        }
     }
     public void UpdateSliderOnPostTrainingPage()
     {
