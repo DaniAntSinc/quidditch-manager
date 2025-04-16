@@ -233,6 +233,11 @@ public class TrainingType : MonoBehaviour
             GameObject.Find("ManagementTeamTraining").GetComponent<ManagementTeamTraining>().UpdateSliderOnPostTrainingPage();
         }
 
+        CheckStaminaLimits();
+    }
+
+    public void CheckStaminaLimits()
+    {
         if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina = 100;
         if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina = 100;
         if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina = 100;
@@ -248,6 +253,5 @@ public class TrainingType : MonoBehaviour
         if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina = 0;
         if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina = 0;
         if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina = 0;
-
     }
 }

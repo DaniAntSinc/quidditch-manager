@@ -449,6 +449,8 @@ public class GameManager : MonoBehaviour
             if (managementMode)
             { 
                 managementPostGameButton.SetActive(true);
+
+                StaminaDeductionCalculation();
                 GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveStamina();
                 GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveLineUp();
                 GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveExperience();
@@ -1926,6 +1928,80 @@ public class GameManager : MonoBehaviour
         //save game (exp and exp cap) 
 
         CheckSliders();
+    }
+
+    public void StaminaDeductionCalculation()
+    {
+        float lengthOfTime = duration / 60;
+        if (lengthOfTime < 4)
+        {
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina -= lengthOfTime;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina -= lengthOfTime;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina -= lengthOfTime;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina -= lengthOfTime;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina -= lengthOfTime;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina -= lengthOfTime;
+            GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina -= lengthOfTime;
+        }
+        else
+        {
+            //Formula: Deduct Stamina equal to (Stamina from previous tier + (Total Time in minutes - Minutes of Previous Tier) * Multiplier) [ie - the longer the game goes, the more tired you get] 
+            if (lengthOfTime < 10)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina -= (4 + ((lengthOfTime - 4) * 2));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina -= (4 + ((lengthOfTime - 4) * 2));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina -= (4 + ((lengthOfTime - 4) * 2));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina -= (4 + ((lengthOfTime - 4) * 2));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina -= (4 + ((lengthOfTime - 4) * 2));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina -= (4 + ((lengthOfTime - 4) * 2));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina -= (4 + ((lengthOfTime - 4) * 2));
+            }
+            if (lengthOfTime >= 10 && lengthOfTime <= 15)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina -= (18 + ((lengthOfTime - 10) * 3));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina -= (18 + ((lengthOfTime - 10) * 3));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina -= (18 + ((lengthOfTime - 10) * 3));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina -= (18 + ((lengthOfTime - 10) * 3));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina -= (18 + ((lengthOfTime - 10) * 3));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina -= (18 + ((lengthOfTime - 10) * 3));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina -= (18 + ((lengthOfTime - 10) * 3));
+            }
+            if (lengthOfTime >= 15 && lengthOfTime <= 20)
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina -= (42 + ((lengthOfTime - 15) * 3.5f));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina -= (42 + ((lengthOfTime - 15) * 3.5f));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina -= (42 + ((lengthOfTime - 15) * 3.5f));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina -= (42 + ((lengthOfTime - 15) * 3.5f));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina -= (42 + ((lengthOfTime - 15) * 3.5f));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina -= (42 + ((lengthOfTime - 15) * 3.5f));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina -= (42 + ((lengthOfTime - 15) * 3.5f));
+            }
+            else
+            {
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina -= (70 + ((lengthOfTime - 20) * 4.25f));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina -= (70 + ((lengthOfTime - 20) * 4.25f));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina -= (70 + ((lengthOfTime - 20) * 4.25f));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina -= (70 + ((lengthOfTime - 20) * 4.25f));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina -= (70 + ((lengthOfTime - 20) * 4.25f));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina -= (70 + ((lengthOfTime - 20) * 4.25f));
+                GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina -= (70 + ((lengthOfTime - 20) * 4.25f));
+            }
+        }
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina = 100;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina = 100;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina = 100;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina = 100;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina = 100;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina = 100;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina > 100) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina = 100;
+
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].stamina = 0;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].stamina = 0;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].stamina = 0;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].stamina = 0;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina = 0;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina = 0;
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina = 0;
     }
 }
 
