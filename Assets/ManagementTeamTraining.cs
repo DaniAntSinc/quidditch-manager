@@ -110,7 +110,7 @@ public class ManagementTeamTraining : MonoBehaviour
         chaserTackleMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].tackle.ToString();
         chaserTackleMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].tackle + 1).ToString();
         chaserDodgeMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].dodge.ToString();
-        chaserDodgeMin.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].dodge + 1).ToString();
+        chaserDodgeMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].dodge + 1).ToString();
 
         chaser2InterceptMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].intercept.ToString();
         chaser2InterceptMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].intercept + 1).ToString();
@@ -123,7 +123,7 @@ public class ManagementTeamTraining : MonoBehaviour
         chaser2TackleMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].tackle.ToString();
         chaser2TackleMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].tackle + 1).ToString();
         chaser2DodgeMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].dodge.ToString();
-        chaser2DodgeMin.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].dodge + 1).ToString();
+        chaser2DodgeMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].dodge + 1).ToString();
 
         chaser3InterceptMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].intercept.ToString();
         chaser3InterceptMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].intercept + 1).ToString();
@@ -136,7 +136,7 @@ public class ManagementTeamTraining : MonoBehaviour
         chaser3TackleMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].tackle.ToString();
         chaser3TackleMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].tackle + 1).ToString();
         chaser3DodgeMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].dodge.ToString();
-        chaser3DodgeMin.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].dodge + 1).ToString();
+        chaser3DodgeMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].dodge + 1).ToString();
 
         beater1locateSpeedMin.text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].locateSpeed.ToString();
         beater1locateSpeedMax.text = (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].locateSpeed + 1).ToString();
@@ -174,6 +174,7 @@ public class ManagementTeamTraining : MonoBehaviour
         chaser2Intercept.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentIExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].IExperienceCap);
         chaser3Intercept.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentIExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].IExperienceCap);
         chaser1Pass.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentPExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].PExperienceCap);
+        print(((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentPExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].PExperienceCap));
         chaser2Pass.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].currentPExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].PExperienceCap);
         chaser3Pass.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].currentPExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].PExperienceCap);
         chaser1Shooting.value = ((float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].currentSExperience / (float)GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].SExperienceCap);
