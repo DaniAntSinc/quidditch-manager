@@ -126,9 +126,8 @@ public class ManagementSeasonTracker : MonoBehaviour
         DateCheck();
         managementMenu.GetComponent<Management>().UpdateManagementUI();
         //change this back to 6
-        if ((dayOfSeason % 2) == 0)
+        if ((dayOfSeason % 6) == 0)
         {
-            Debug.LogWarning("Turn This Back to 6");
             print("Update free agent list");
             GameObject.Find("Management").GetComponent<Management>().UpdateFreeAgentList();
         }
@@ -136,6 +135,8 @@ public class ManagementSeasonTracker : MonoBehaviour
 
     void CheckSchedule()
     {
+        GameObject.Find("ManagementAISchedule").GetComponent<ManagementAISchedule>().SimulateAIGame(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason - 1);
+
         if (dayOfSeason == matchDays[placeInList])
         {
             dayActihitiesText.text = "Match Day";
