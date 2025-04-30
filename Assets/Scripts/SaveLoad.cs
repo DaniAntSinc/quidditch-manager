@@ -568,6 +568,13 @@ public class SaveLoad : MonoBehaviour
         PlayerPrefs.SetString("SeekerBroom", broom.objName);
     }
     #endregion
+
+    public void SavePlayerSeasonRecord(int win, int loss, int score)
+    {
+        PlayerPrefs.SetInt(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team + "Wins", GameObject.Find("Players_Team").GetComponent<SeasonTeam>().win);
+        PlayerPrefs.SetInt(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team + "Loss", GameObject.Find("Players_Team").GetComponent<SeasonTeam>().loss);
+        PlayerPrefs.SetInt(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team + "Score", GameObject.Find("Players_Team").GetComponent<SeasonTeam>().score);
+    }
     public void LoadTeam()
     {
         if (GameObject.Find("Players_Team") != null)
@@ -1131,6 +1138,14 @@ public class SaveLoad : MonoBehaviour
         playerTeamLoad.GetComponent<SeasonTeam>().teamStrategy = strategies[PlayerPrefs.GetInt("Strategy")].GetComponent<TeamStrategy>();
 
         teamBudget = PlayerPrefs.GetInt("TeamBudget");
+        //Load Record
+        playerTeamLoad.GetComponent<SeasonTeam>().win = PlayerPrefs.GetInt(playerTeamLoad.GetComponent<SeasonTeam>().team + "Wins");
+        playerTeamLoad.GetComponent<SeasonTeam>().loss = PlayerPrefs.GetInt(playerTeamLoad.GetComponent<SeasonTeam>().team + "Loss");
+        playerTeamLoad.GetComponent<SeasonTeam>().score = PlayerPrefs.GetInt(playerTeamLoad.GetComponent<SeasonTeam>().team + "Score");
+
+        print("Loaded Win:" + playerTeamLoad.GetComponent<SeasonTeam>().win);
+        print("Loaded Loss:" + playerTeamLoad.GetComponent<SeasonTeam>().loss);
+        print("Loaded Score:" + playerTeamLoad.GetComponent<SeasonTeam>().score);
 
         //save team currency
         GameObject.Find("Management").GetComponent<Management>().ManagementHomePage();

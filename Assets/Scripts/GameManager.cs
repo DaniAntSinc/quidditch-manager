@@ -436,20 +436,48 @@ public class GameManager : MonoBehaviour
         if (matchOver && !winnerChosen)
         {
             if (team1Score > team2Score)
+            {
                 CreateGameEvent(players.team1 + " wins! Final Score: " + team1Score + " to " + team2Score);
 
+                if (managementMode)
+                {
+                    if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == players.team1)
+                        LogWinLossScore(1, 0, team1Score);
+                    if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == players.team2)
+                        LogWinLossScore(0, 1, team2Score);
+                }
+            }
+
+
             else if (team1Score < team2Score)
+            {
                 CreateGameEvent(players.team2 + " wins! Final Score: " + team2Score + " to " + team1Score);
+
+                if (managementMode)
+                {
+                    if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == players.team1)
+                        LogWinLossScore(0, 1, team1Score);
+                    if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == players.team2)
+                        LogWinLossScore(1, 0, team2Score);
+                }
+            }
 
             else
             {
                 CreateGameEvent("It is a tie! " + players.team1 + ": " + team1Score + "to" + players.team2 + ": " + team2Score);
+
+                if (managementMode)
+                {
+                    if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == players.team1)
+                        LogWinLossScore(0, 0, team1Score);
+                    if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == players.team2)
+                        LogWinLossScore(0, 0, team2Score);
+                }
             }
             winnerChosen = true;
             if (managementMode)
             { 
                 managementPostGameButton.SetActive(true);
-
                 StaminaDeductionCalculation();
                 GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveStamina();
                 GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveLineUp();
@@ -2002,6 +2030,20 @@ public class GameManager : MonoBehaviour
         if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].stamina = 0;
         if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].stamina = 0;
         if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina < 0) GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].stamina = 0;
+    }
+
+    public void LogWinLossScore(int win, int loss, int score)
+    {
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().win += win;
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().loss += loss;
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().score += score;
+
+        print( GameObject.Find("Players_Team").GetComponent<SeasonTeam>().win);
+        print( GameObject.Find("Players_Team").GetComponent<SeasonTeam>().loss);
+        print(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().score);
+
+        //SaveLoad playerScore
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SavePlayerSeasonRecord(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().win, GameObject.Find("Players_Team").GetComponent<SeasonTeam>().loss, GameObject.Find("Players_Team").GetComponent<SeasonTeam>().score);
     }
 }
 
