@@ -575,6 +575,46 @@ public class SaveLoad : MonoBehaviour
         PlayerPrefs.SetInt(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team + "Loss", GameObject.Find("Players_Team").GetComponent<SeasonTeam>().loss);
         PlayerPrefs.SetInt(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team + "Score", GameObject.Find("Players_Team").GetComponent<SeasonTeam>().score);
     }
+
+    public void SaveAISeasonRecords()
+    {
+        //Holyhead Harpies
+        PlayerPrefs.SetInt("Holyhead Harpies Win", 0);
+        PlayerPrefs.SetInt("Holyhead Harpies Loss", 0);
+        PlayerPrefs.SetInt("Holyhead Harpies Score", 0);
+        //Montrose Magpies
+        PlayerPrefs.SetInt("Montrose Magpies Win", 0);
+        PlayerPrefs.SetInt("Montrose Magpies Loss", 0);
+        PlayerPrefs.SetInt("Montrose Magpies Score", 0);
+        //Chudley Cannons
+        PlayerPrefs.SetInt("Chudley Cannons Win", 0);
+        PlayerPrefs.SetInt("Chudley Cannons Loss", 0);
+        PlayerPrefs.SetInt("Chudley Cannons Score", 0);
+        //Puddlemere United
+        PlayerPrefs.SetInt("Puddlemere United Win", 0);
+        PlayerPrefs.SetInt("Puddlemere United Loss", 0);
+        PlayerPrefs.SetInt("Puddlemere United Score", 0);
+        //Tutshill Tornadoes
+        PlayerPrefs.SetInt("Tutshill Tornadoes Win", 0);
+        PlayerPrefs.SetInt("Tutshill Tornadoes Loss", 0);
+        PlayerPrefs.SetInt("Tutshill Tornadoes Score", 0);
+        //Kenmare Kestrels
+        PlayerPrefs.SetInt("Kenmare Kestrels Win", 0);
+        PlayerPrefs.SetInt("Kenmare Kestrels Loss", 0);
+        PlayerPrefs.SetInt("Kenmare Kestrels Score", 0);
+        //Caerphilly Catapults
+        PlayerPrefs.SetInt("Caerphilly Catapults Win", 0);
+        PlayerPrefs.SetInt("Caerphilly Catapults Loss", 0);
+        PlayerPrefs.SetInt("Caerphilly Catapults Score", 0);
+        //Wimbourne Wasps
+        PlayerPrefs.SetInt("Wimbourne Wasps Win", 0);
+        PlayerPrefs.SetInt("Wimbourne Wasps Loss", 0);
+        PlayerPrefs.SetInt("Wimbourne Wasps Score", 0);
+        //Bally Castle Bats
+        PlayerPrefs.SetInt("Bally Castle Bats Win", 0);
+        PlayerPrefs.SetInt("Bally Castle Bats Loss", 0);
+        PlayerPrefs.SetInt("Bally Castle Bats Score", 0);
+    }
     public void LoadTeam()
     {
         if (GameObject.Find("Players_Team") != null)
