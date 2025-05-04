@@ -576,6 +576,15 @@ public class SaveLoad : MonoBehaviour
         PlayerPrefs.SetInt(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team + "Score", GameObject.Find("Players_Team").GetComponent<SeasonTeam>().score);
     }
 
+    public void SavePlayerOpponent(string teamName, int win, int loss, int score)
+    {
+        PlayerPrefs.SetInt(teamName + " Win", GameObject.Find(teamName).GetComponent<SeasonTeam>().win += win);
+        PlayerPrefs.SetInt(teamName + " Loss", GameObject.Find(teamName).GetComponent<SeasonTeam>().loss += loss);
+        PlayerPrefs.SetInt(teamName + " SCore", GameObject.Find(teamName).GetComponent<SeasonTeam>().score += score);
+
+        print(teamName);
+    }
+
     public void SaveAISeasonRecords()
     {
         //Holyhead Harpies

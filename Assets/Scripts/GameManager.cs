@@ -442,9 +442,15 @@ public class GameManager : MonoBehaviour
                 if (managementMode)
                 {
                     if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == players.team1)
+                    {
                         LogWinLossScore(1, 0, team1Score);
+                        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SavePlayerOpponent(players.team2, 0, 1, team2Score);
+                    }
                     if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == players.team2)
+                    {
                         LogWinLossScore(0, 1, team2Score);
+                        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SavePlayerOpponent(players.team1, 1, 0, team1Score);
+                    }
                 }
             }
 
@@ -456,9 +462,15 @@ public class GameManager : MonoBehaviour
                 if (managementMode)
                 {
                     if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == players.team1)
+                    {
                         LogWinLossScore(0, 1, team1Score);
+                        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SavePlayerOpponent(players.team2, 1, 0, team2Score);
+                    }
                     if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == players.team2)
+                    {
                         LogWinLossScore(1, 0, team2Score);
+                        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SavePlayerOpponent(players.team1, 1, 0, team1Score);
+                    }
                 }
             }
 
