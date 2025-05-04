@@ -137,6 +137,9 @@ public class ManagementSeasonTracker : MonoBehaviour
     {
         GameObject.Find("ManagementAISchedule").GetComponent<ManagementAISchedule>().SimulateAIGame(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason - 1);
 
+        print("Day of Season:" + dayOfSeason);
+        print("Match Day:" + matchDays[placeInList]);
+
         if (dayOfSeason == matchDays[placeInList])
         {
             dayActihitiesText.text = "Match Day";
@@ -152,6 +155,11 @@ public class ManagementSeasonTracker : MonoBehaviour
 
         if (dayOfSeason > 111)
             dayOfSeason = 0;
+    }
+
+    public void UpdateTextForEndOfDay()
+    {
+        dayActihitiesText.text = "End Day";
     }
 
     void SetUIForMatchPreview(SeasonTeam visitor, SeasonTeam home, Stadium stadium)
@@ -206,8 +214,9 @@ public class ManagementSeasonTracker : MonoBehaviour
         int homeseekerTeamValue = home.seeker[0].sight + home.seeker[0].speed + home.seeker[0].reach + home.seeker[0].grab;
         homeSeeker.text = (((homeseekerTeamValue * 100) / 304)).ToString("0");
 
-        //visitor record
-        //home record
+        //visitor / home record
+        visitorRecord.text = (visitor.win + " - " + visitor.loss).ToString();
+        homeRecord.text = (home.win + " - " + home.loss).ToString();
 
         visitorTeamName.text = visitor.team;
         homeTeamName.text = home.team;
@@ -241,13 +250,15 @@ public class ManagementSeasonTracker : MonoBehaviour
     {
         GameObject.Find("Main Camera").GetComponent<GameManager>().ClearStats();
         //players.RandomWeather(teamsInLeague[homeTeams[placeInList]].homeStadium);
-        matchStart.BeginMatch(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[homeTeams[placeInList]].homeStadium);
+
+        //might be a hacky way, but currently it is pulling the wrong team from the match preview to the actual game being played
+        matchStart.BeginMatch(teamsInLeague[visitorTeams[placeInList - 1]], teamsInLeague[homeTeams[placeInList - 1]], teamsInLeague[homeTeams[placeInList - 1]].homeStadium);
         managementMenu.SetActive(false);
         ExhibOrSeason.SetActive(false);
         TeamSelection.SetActive(false);
         startingMenu.SetActive(true);
         matchPreviewMenu.SetActive(false);
-        CalculateGameRevenue(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[homeTeams[placeInList]].homeStadium);
+        CalculateGameRevenue(teamsInLeague[visitorTeams[placeInList - 1]], teamsInLeague[homeTeams[placeInList - 1]], teamsInLeague[homeTeams[placeInList - 1]].homeStadium);
     }
 
     public void CalculateGameRevenue(SeasonTeam visitor, SeasonTeam home, Stadium stadium)

@@ -490,6 +490,7 @@ public class GameManager : MonoBehaviour
             if (managementMode)
             { 
                 managementPostGameButton.SetActive(true);
+                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().UpdateTextForEndOfDay();
                 StaminaDeductionCalculation();
                 GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveStamina();
                 GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveLineUp();
