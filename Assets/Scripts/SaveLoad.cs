@@ -580,50 +580,23 @@ public class SaveLoad : MonoBehaviour
     {
         PlayerPrefs.SetInt(teamName + " Win", GameObject.Find(teamName).GetComponent<SeasonTeam>().win += win);
         PlayerPrefs.SetInt(teamName + " Loss", GameObject.Find(teamName).GetComponent<SeasonTeam>().loss += loss);
-        PlayerPrefs.SetInt(teamName + " SCore", GameObject.Find(teamName).GetComponent<SeasonTeam>().score += score);
+        PlayerPrefs.SetInt(teamName + " Score", GameObject.Find(teamName).GetComponent<SeasonTeam>().score += score);
 
         print(teamName);
     }
 
-    public void SaveAISeasonRecords()
+    public void SaveAIGameOpponents(string teamName1, int win1, int loss1, int score1,
+        string teamName2, int win2, int loss2, int score2
+        )
     {
-        //Holyhead Harpies
-        PlayerPrefs.SetInt("Holyhead Harpies Win", 0);
-        PlayerPrefs.SetInt("Holyhead Harpies Loss", 0);
-        PlayerPrefs.SetInt("Holyhead Harpies Score", 0);
-        //Montrose Magpies
-        PlayerPrefs.SetInt("Montrose Magpies Win", 0);
-        PlayerPrefs.SetInt("Montrose Magpies Loss", 0);
-        PlayerPrefs.SetInt("Montrose Magpies Score", 0);
-        //Chudley Cannons
-        PlayerPrefs.SetInt("Chudley Cannons Win", 0);
-        PlayerPrefs.SetInt("Chudley Cannons Loss", 0);
-        PlayerPrefs.SetInt("Chudley Cannons Score", 0);
-        //Puddlemere United
-        PlayerPrefs.SetInt("Puddlemere United Win", 0);
-        PlayerPrefs.SetInt("Puddlemere United Loss", 0);
-        PlayerPrefs.SetInt("Puddlemere United Score", 0);
-        //Tutshill Tornadoes
-        PlayerPrefs.SetInt("Tutshill Tornadoes Win", 0);
-        PlayerPrefs.SetInt("Tutshill Tornadoes Loss", 0);
-        PlayerPrefs.SetInt("Tutshill Tornadoes Score", 0);
-        //Kenmare Kestrels
-        PlayerPrefs.SetInt("Kenmare Kestrels Win", 0);
-        PlayerPrefs.SetInt("Kenmare Kestrels Loss", 0);
-        PlayerPrefs.SetInt("Kenmare Kestrels Score", 0);
-        //Caerphilly Catapults
-        PlayerPrefs.SetInt("Caerphilly Catapults Win", 0);
-        PlayerPrefs.SetInt("Caerphilly Catapults Loss", 0);
-        PlayerPrefs.SetInt("Caerphilly Catapults Score", 0);
-        //Wimbourne Wasps
-        PlayerPrefs.SetInt("Wimbourne Wasps Win", 0);
-        PlayerPrefs.SetInt("Wimbourne Wasps Loss", 0);
-        PlayerPrefs.SetInt("Wimbourne Wasps Score", 0);
-        //Bally Castle Bats
-        PlayerPrefs.SetInt("Bally Castle Bats Win", 0);
-        PlayerPrefs.SetInt("Bally Castle Bats Loss", 0);
-        PlayerPrefs.SetInt("Bally Castle Bats Score", 0);
+        PlayerPrefs.SetInt(teamName1 + " Win", win1);
+        PlayerPrefs.SetInt(teamName1 + " Loss",loss1);
+        PlayerPrefs.SetInt(teamName1 + " Score", score1);
+        PlayerPrefs.SetInt(teamName2 + " Win", win2);
+        PlayerPrefs.SetInt(teamName2 + " Loss", loss2);
+        PlayerPrefs.SetInt(teamName2 + " Score", score2);
     }
+
     public void LoadTeam()
     {
         if (GameObject.Find("Players_Team") != null)
@@ -1192,9 +1165,42 @@ public class SaveLoad : MonoBehaviour
         playerTeamLoad.GetComponent<SeasonTeam>().loss = PlayerPrefs.GetInt(playerTeamLoad.GetComponent<SeasonTeam>().team + "Loss");
         playerTeamLoad.GetComponent<SeasonTeam>().score = PlayerPrefs.GetInt(playerTeamLoad.GetComponent<SeasonTeam>().team + "Score");
 
-        print("Loaded Win:" + playerTeamLoad.GetComponent<SeasonTeam>().win);
-        print("Loaded Loss:" + playerTeamLoad.GetComponent<SeasonTeam>().loss);
-        print("Loaded Score:" + playerTeamLoad.GetComponent<SeasonTeam>().score);
+        //Load AI Scores
+        GameObject.Find("Holyhead Harpies").GetComponent<SeasonTeam>().win = PlayerPrefs.GetInt("Holyhead Harpies Win");
+        GameObject.Find("Holyhead Harpies").GetComponent<SeasonTeam>().loss = PlayerPrefs.GetInt("Holyhead Harpies Loss");
+        GameObject.Find("Holyhead Harpies").GetComponent<SeasonTeam>().score = PlayerPrefs.GetInt("Holyhead Harpies Score");
+
+        GameObject.Find("Montrose Magpies").GetComponent<SeasonTeam>().win = PlayerPrefs.GetInt("Montrose Magpies Win");
+        GameObject.Find("Montrose Magpies").GetComponent<SeasonTeam>().loss = PlayerPrefs.GetInt("Montrose Magpies Loss");
+        GameObject.Find("Montrose Magpies").GetComponent<SeasonTeam>().score = PlayerPrefs.GetInt("Montrose Magpies Score");
+
+        GameObject.Find("Chudley Cannons").GetComponent<SeasonTeam>().win = PlayerPrefs.GetInt("Chudley Cannons Win");
+        GameObject.Find("Chudley Cannons").GetComponent<SeasonTeam>().loss = PlayerPrefs.GetInt("Chudley Cannons Loss");
+        GameObject.Find("Chudley Cannons").GetComponent<SeasonTeam>().score = PlayerPrefs.GetInt("Chudley Cannons Score");
+
+        GameObject.Find("Puddlemere United").GetComponent<SeasonTeam>().win = PlayerPrefs.GetInt("Puddlemere United Win");
+        GameObject.Find("Puddlemere United").GetComponent<SeasonTeam>().loss = PlayerPrefs.GetInt("Puddlemere United Loss");
+        GameObject.Find("Puddlemere United").GetComponent<SeasonTeam>().score = PlayerPrefs.GetInt("Puddlemere United Score");
+
+        GameObject.Find("Tutshill Tornadoes").GetComponent<SeasonTeam>().win = PlayerPrefs.GetInt("Tutshill Tornadoes Win");
+        GameObject.Find("Tutshill Tornadoes").GetComponent<SeasonTeam>().loss = PlayerPrefs.GetInt("Tutshill Tornadoes Loss");
+        GameObject.Find("Tutshill Tornadoes").GetComponent<SeasonTeam>().score = PlayerPrefs.GetInt("Tutshill Tornadoes Score");
+
+        GameObject.Find("Kenmare Kestrels").GetComponent<SeasonTeam>().win = PlayerPrefs.GetInt("Kenmare Kestrels Win");
+        GameObject.Find("Kenmare Kestrels").GetComponent<SeasonTeam>().loss = PlayerPrefs.GetInt("Kenmare Kestrels Loss");
+        GameObject.Find("Kenmare Kestrels").GetComponent<SeasonTeam>().score = PlayerPrefs.GetInt("Kenmare Kestrels Score");
+
+        GameObject.Find("Caerphilly Catapults").GetComponent<SeasonTeam>().win = PlayerPrefs.GetInt("Caerphilly Catapults Win");
+        GameObject.Find("Caerphilly Catapults").GetComponent<SeasonTeam>().loss = PlayerPrefs.GetInt("Caerphilly Catapults Loss");
+        GameObject.Find("Caerphilly Catapults").GetComponent<SeasonTeam>().score = PlayerPrefs.GetInt("Caerphilly Catapults Score");
+
+        GameObject.Find("Wimbourne Wasps").GetComponent<SeasonTeam>().win = PlayerPrefs.GetInt("Wimbourne Wasps Win");
+        GameObject.Find("Wimbourne Wasps").GetComponent<SeasonTeam>().loss = PlayerPrefs.GetInt("Wimbourne Wasps Loss");
+        GameObject.Find("Wimbourne Wasps").GetComponent<SeasonTeam>().score = PlayerPrefs.GetInt("Wimbourne Wasps Score");
+
+        GameObject.Find("Bally Castle Bats").GetComponent<SeasonTeam>().win = PlayerPrefs.GetInt("Bally Castle Bats Win");
+        GameObject.Find("Bally Castle Bats").GetComponent<SeasonTeam>().loss = PlayerPrefs.GetInt("Bally Castle Bats Loss");
+        GameObject.Find("Bally Castle Bats").GetComponent<SeasonTeam>().score = PlayerPrefs.GetInt("Bally Castle Bats Score");
 
         //save team currency
         GameObject.Find("Management").GetComponent<Management>().ManagementHomePage();

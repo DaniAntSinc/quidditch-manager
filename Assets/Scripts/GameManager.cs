@@ -469,7 +469,7 @@ public class GameManager : MonoBehaviour
                     if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == players.team2)
                     {
                         LogWinLossScore(1, 0, team2Score);
-                        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SavePlayerOpponent(players.team1, 1, 0, team1Score);
+                        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SavePlayerOpponent(players.team1, 0, 1, team1Score);
                     }
                 }
             }

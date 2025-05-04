@@ -90,9 +90,10 @@ public class ManagementAISchedule : MonoBehaviour
         teams[visitor[dayOfSeason]].score += visitorScore;
         teams[home[dayOfSeason]].score += homeScore;
 
- //      print("Visitor: " + teams[visitor[dayOfSeason]].name + " : " + visitorScore);
- //       print("Home: " + teams[home[dayOfSeason]].name + " : " + homeScore);
         //Save win, loss, score
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveAIGameOpponents(
+             teams[visitor[dayOfSeason]].team, teams[visitor[dayOfSeason]].win, teams[visitor[dayOfSeason]].loss, teams[visitor[dayOfSeason]].score,
+             teams[home[dayOfSeason]].team, teams[home[dayOfSeason]].win, teams[home[dayOfSeason]].loss, teams[home[dayOfSeason]].score);
         //update standings
     }
 }
