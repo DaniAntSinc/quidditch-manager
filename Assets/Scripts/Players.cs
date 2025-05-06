@@ -235,6 +235,7 @@ public class Players : MonoBehaviour
             team1KeeperDodge = (int)(modifier * (visitor.keeper[0].dodge + visitor.keeper[0].hat.Dodge + visitor.keeper[0].gloves.Dodge + visitor.keeper[0].glasses.Dodge + visitor.keeper[0].body.Dodge + visitor.keeper[0].broom.Dodge + visitor.teamStrategy.dodge));
         }
         //seeker
+        team1Seeker = visitor.seeker[0].Name;
         if (visitor.seeker[0].stamina > 85)
         {
             float modifier = 1;
@@ -430,6 +431,7 @@ public class Players : MonoBehaviour
                 team2KeeperDodge = (int)(modifier * (home.keeper[0].dodge + home.keeper[0].hat.Dodge + home.keeper[0].gloves.Dodge + home.keeper[0].glasses.Dodge + home.keeper[0].body.Dodge + home.keeper[0].broom.Dodge + home.teamStrategy.dodge));
             }
             //seeker
+            team2Seeker = home.seeker[0].Name;
             if (home.seeker[0].stamina > 85)
             {
                 float modifier = 1;
