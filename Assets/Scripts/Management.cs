@@ -771,6 +771,10 @@ public class Management : MonoBehaviour
         playersTeam.GetComponent<SeasonTeam>().keeper[0].EvaluateExpNeeded();
         playersTeam.GetComponent<SeasonTeam>().seeker[0].EvaluateExpNeeded();
         #endregion
+
+        //Adding team to division
+        if(!GameObject.Find("ManagementAISchedule").GetComponent<ManagementAISchedule>().LeagueA.Contains(playersTeam.GetComponent<SeasonTeam>()))
+            GameObject.Find("ManagementAISchedule").GetComponent<ManagementAISchedule>().LeagueA.Add(playersTeam.GetComponent<SeasonTeam>());
     }
 
     public void ReturnToManagementHomePage()
@@ -829,6 +833,7 @@ public class Management : MonoBehaviour
     {
         startingPageMenu.SetActive(false);
         standingsSubMenu.SetActive(true);
+        GameObject.Find("ManagementAISchedule").GetComponent<ManagementAISchedule>().UpdateStandings();
     }
 
     public void CheckIfAllFieldsEnteredForProgressingOnNewTeam()

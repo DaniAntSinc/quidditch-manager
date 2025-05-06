@@ -1158,6 +1158,8 @@ public class SaveLoad : MonoBehaviour
         #endregion
 
         playerTeamLoad.GetComponent<SeasonTeam>().teamStrategy = strategies[PlayerPrefs.GetInt("Strategy")].GetComponent<TeamStrategy>();
+        //Add Team to Division
+        GameObject.Find("ManagementAISchedule").GetComponent<ManagementAISchedule>().LeagueA.Add(playerTeamLoad.GetComponent<SeasonTeam>());
 
         teamBudget = PlayerPrefs.GetInt("TeamBudget");
         //Load Record
