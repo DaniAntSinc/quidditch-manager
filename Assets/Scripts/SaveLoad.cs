@@ -329,6 +329,11 @@ public class SaveLoad : MonoBehaviour
 
     }
 
+    public void SaveDayOfSeason(int day)
+    {
+        PlayerPrefs.SetInt("DayOfSeason", day);
+    }
+
     public void SavePlayerInventory()
     {
         PlayerPrefs.SetInt("TeamBudget", teamBudget);
@@ -595,6 +600,48 @@ public class SaveLoad : MonoBehaviour
         PlayerPrefs.SetInt(teamName2 + " Win", win2);
         PlayerPrefs.SetInt(teamName2 + " Loss", loss2);
         PlayerPrefs.SetInt(teamName2 + " Score", score2);
+    }
+
+    public void SaveAllAITeamsOnceCleared()
+    {
+        //Load AI Scores
+     PlayerPrefs.SetInt("Holyhead Harpies Win", 0);
+     PlayerPrefs.SetInt("Holyhead Harpies Loss", 0);
+     PlayerPrefs.SetInt("Holyhead Harpies Score", 0);
+
+     PlayerPrefs.SetInt("Montrose Magpies Win", 0);
+     PlayerPrefs.SetInt("Montrose Magpies Loss", 0);
+     PlayerPrefs.SetInt("Montrose Magpies Score", 0);
+
+     PlayerPrefs.SetInt("Chudley Cannons Win", 0);
+     PlayerPrefs.SetInt("Chudley Cannons Loss", 0);
+     PlayerPrefs.SetInt("Chudley Cannons Score", 0);
+
+     PlayerPrefs.SetInt("Puddlemere United Win", 0);
+     PlayerPrefs.SetInt("Puddlemere United Loss", 0);
+     PlayerPrefs.SetInt("Puddlemere United Score", 0);
+
+     PlayerPrefs.SetInt("Tutshill Tornadoes Win", 0);
+     PlayerPrefs.SetInt("Tutshill Tornadoes Loss", 0);
+     PlayerPrefs.SetInt("Tutshill Tornadoes Score", 0);
+
+     PlayerPrefs.SetInt("Kenmare Kestrels Win", 0);
+     PlayerPrefs.SetInt("Kenmare Kestrels Loss", 0);
+     PlayerPrefs.SetInt("Kenmare Kestrels Score", 0);
+
+     PlayerPrefs.SetInt("Caerphilly Catapults Win", 0);
+     PlayerPrefs.SetInt("Caerphilly Catapults Loss", 0);
+     PlayerPrefs.SetInt("Caerphilly Catapults Score", 0);
+
+     PlayerPrefs.SetInt("Wimbourne Wasps Win", 0);
+     PlayerPrefs.SetInt("Wimbourne Wasps Loss", 0);
+     PlayerPrefs.SetInt("Wimbourne Wasps Score", 0);
+
+     PlayerPrefs.SetInt("Bally Castle Bats Win", 0);
+     PlayerPrefs.SetInt("Bally Castle Bats Loss", 0);
+     PlayerPrefs.SetInt("Bally Castle Bats Score", 0);
+
+        SavePlayerSeasonRecord(0, 0, 0);
     }
 
     public void LoadTeam()
@@ -1156,7 +1203,9 @@ public class SaveLoad : MonoBehaviour
             }           
         }
         #endregion
-
+        //Load Day of Season
+        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason = PlayerPrefs.GetInt("DayOfSeason");
+        //Load Team Strategy
         playerTeamLoad.GetComponent<SeasonTeam>().teamStrategy = strategies[PlayerPrefs.GetInt("Strategy")].GetComponent<TeamStrategy>();
         //Add Team to Division
         GameObject.Find("ManagementAISchedule").GetComponent<ManagementAISchedule>().LeagueA.Add(playerTeamLoad.GetComponent<SeasonTeam>());

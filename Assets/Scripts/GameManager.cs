@@ -2057,6 +2057,8 @@ public class GameManager : MonoBehaviour
 
         //SaveLoad playerScore
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SavePlayerSeasonRecord(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().win, GameObject.Find("Players_Team").GetComponent<SeasonTeam>().loss, GameObject.Find("Players_Team").GetComponent<SeasonTeam>().score);
+        //Save Day
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveDayOfSeason(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason);
     }
 }
 

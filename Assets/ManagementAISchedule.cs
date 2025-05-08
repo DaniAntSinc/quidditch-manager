@@ -138,4 +138,32 @@ public class ManagementAISchedule : MonoBehaviour
             LeagueBGO[i].transform.GetChild(4).GetComponent<TMP_Text>().text = tempStandings2[i].score.ToString();
         }
     }
+
+    public void ResetSeasonStats()
+    {
+        for (int i = 0; i < LeagueAGO.Count; i++)
+        {
+            LeagueA[i].GetComponent<SeasonTeam>().win = 0;
+            LeagueA[i].GetComponent<SeasonTeam>().loss = 0;
+            LeagueA[i].GetComponent<SeasonTeam>().score = 0;
+        }
+
+        for (int i = 0; i < LeagueBGO.Count; i++)
+        {
+            LeagueB[i].GetComponent<SeasonTeam>().win = 0;
+            LeagueB[i].GetComponent<SeasonTeam>().loss = 0;
+            LeagueB[i].GetComponent<SeasonTeam>().score = 0;
+        }
+
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().win = 0;
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().loss = 0;
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().score = 0;
+
+        //Reset Day
+        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason = 0;
+        //Save Day
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveDayOfSeason(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason);
+        //Save team data
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveAllAITeamsOnceCleared();
+    }
 }

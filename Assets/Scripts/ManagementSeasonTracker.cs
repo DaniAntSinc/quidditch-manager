@@ -151,6 +151,8 @@ public class ManagementSeasonTracker : MonoBehaviour
         {
             OpenTrainingMenu();
             dayActihitiesText.text = "Train";
+            //Save Day
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveDayOfSeason(dayOfSeason);
         }
 
         if (dayOfSeason > 111)
