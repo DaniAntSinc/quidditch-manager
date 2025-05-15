@@ -165,5 +165,7 @@ public class ManagementAISchedule : MonoBehaviour
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveDayOfSeason(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason);
         //Save team data
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveAllAITeamsOnceCleared();
+
+        //Enter Salary Negotiations
     }
 }
