@@ -31,10 +31,10 @@ public class ManagementAISchedule : MonoBehaviour
 
     public void Update()
     {
-      /* if(Input.GetKeyDown(KeyCode.S))
+       if(Input.GetKeyDown(KeyCode.S))
             SimSeason();
         if (Input.GetKeyDown(KeyCode.R))
-            ResetSeasonStats();*/
+            ResetSeasonStats();
     }
     public void AddPlayersTeamToLeagueA(SeasonTeam playersTeam)
     {
@@ -260,8 +260,34 @@ public class ManagementAISchedule : MonoBehaviour
     void CheckEndOfSeasonStatus()
     {
         UpdateStandings();
+        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason = 103;
+
         if (LeagueAGO[0].transform.GetChild(1).GetComponent<TMP_Text>().color == Color.yellow || LeagueAGO[1].transform.GetChild(1).GetComponent<TMP_Text>().color == Color.yellow)
-        { 
+        {
+            //if player made playoffs, add it to the games list
+            if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == LeagueAFirst.team)
+            {
+                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().matchDays.Add(105);
+                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().homeTeams.Add(9);
+                for (int i = 0; i < GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague.Count; i++)
+                {
+                    if(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[i].team == LeagueASecond.team)
+                        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().visitorTeams.Add(i);
+                }
+            }
+
+            else if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == LeagueASecond.team)
+            {
+                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().matchDays.Add(105);
+                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().visitorTeams.Add(9);
+                for (int i = 0; i < GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague.Count; i++)
+                {
+                    if (GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[i].team == LeagueAFirst.team)
+                        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().homeTeams.Add(i);
+                }
+            }
+
+
             //Qualified For Playoffs
             leagueAWinners.Add(LeagueAFirst);
             leagueAWinners.Add(LeagueASecond);
@@ -269,13 +295,38 @@ public class ManagementAISchedule : MonoBehaviour
             leagueBWinners.Add(LeagueBSecond);
 
             //Sim Second Round
-            SimSecondRound();
+            // SimSecondRound();
 
             //Check if player made it
             if (leagueWinners[0].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team || leagueWinners[1].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
             {
                 //Sim third round
-                SimThirdRound();
+                // SimThirdRound();
+                if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == leagueWinners[0].team)
+                {
+                    GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().matchDays.Add(109);
+                    if (leagueWinners[0].score >= leagueWinners[1].score)
+                    {
+                        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().homeTeams.Add(9);
+
+                        for (int i = 0; i < GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague.Count; i++)
+                        {
+                            if (GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[i].team == leagueWinners[1].team)
+                                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().visitorTeams.Add(i);
+                        }
+                    }
+
+                    else
+                    {
+                        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().visitorTeams.Add(9);
+
+                        for (int i = 0; i < GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague.Count; i++)
+                        {
+                            if (GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[i].team == leagueWinners[0].team)
+                                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().homeTeams.Add(i);
+                        }
+                    }
+                }
 
                 if (leagueWinners[0].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
                 {

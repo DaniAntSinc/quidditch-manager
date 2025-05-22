@@ -108,6 +108,7 @@ public class Management : MonoBehaviour
     #endregion
 
     public GameObject[] teamStrategies;
+    public GameObject playoffButton;
 
     public void Start()
     {
@@ -818,6 +819,10 @@ public class Management : MonoBehaviour
     {
         startingPageMenu.SetActive(false);
         calendarSubMenu.SetActive(true);
+        if (GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason >= 102)
+            playoffButton.SetActive(true);
+        else
+            playoffButton.SetActive(false);
         GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().DateCheck();
     }
     public void OpenStrategySubMenu()
