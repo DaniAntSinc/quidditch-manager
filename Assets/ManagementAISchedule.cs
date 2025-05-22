@@ -25,12 +25,16 @@ public class ManagementAISchedule : MonoBehaviour
     SeasonTeam LeagueAFirst, LeagueASecond, LeagueBFirst, LeagueBSecond;
     SeasonTeam LeagueAThird, LeagueAFourth, LeagueAFifth;
 
+    public GameObject A1, A2, B1, B2, AC, BC, LC;
+
+    public GameObject playoffScreen, calendarScreen;
+
     public void Update()
     {
-       if(Input.GetKeyDown(KeyCode.S))
+      /* if(Input.GetKeyDown(KeyCode.S))
             SimSeason();
         if (Input.GetKeyDown(KeyCode.R))
-            ResetSeasonStats();
+            ResetSeasonStats();*/
     }
     public void AddPlayersTeamToLeagueA(SeasonTeam playersTeam)
     {
@@ -278,7 +282,7 @@ public class ManagementAISchedule : MonoBehaviour
                     wonChampionship.SetActive(true);
                     SetUpEndOfSeasonConsistents();
 
-                    defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "Won the Championship!";
+                    defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "You won the Championship!";
                     //prizing
                     defaultResetSeason.transform.GetChild(0).GetChild(5).GetComponent<TMP_Text>().text = "225,000 G Awarded!";
                     GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget += 225000;
@@ -293,6 +297,13 @@ public class ManagementAISchedule : MonoBehaviour
                     defaultResetSeason.transform.GetChild(0).GetChild(5).GetComponent<TMP_Text>().text = "150,000 G Awarded!";
                     GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget += 150000;
                 }
+
+                LC.SetActive(true);
+                LC.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Image>().sprite = leagueWinners[0].logo;
+                LC.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = leagueWinners[0].team;
+                LC.transform.GetChild(1).GetChild(2).GetComponent<TMP_Text>().text = leagueWinners[0].win + " - " + leagueWinners[0].loss;
+                if (leagueWinners[0].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+                    LC.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.yellow;
             }
 
             else
@@ -335,5 +346,65 @@ public class ManagementAISchedule : MonoBehaviour
         defaultResetSeason.transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<Image>().sprite = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().logo;
         //win record, loss record
         defaultResetSeason.transform.GetChild(0).GetChild(2).GetComponent<TMP_Text>().text = "Team Record: " + GameObject.Find("Players_Team").GetComponent<SeasonTeam>().win + " - " + GameObject.Find("Players_Team").GetComponent<SeasonTeam>().loss;
+    }
+
+    public void ConnectPlayoffBracketHookups()
+    {
+        // public GameObject A1, A2, B1, B2, AC, BC, LC;
+        A1.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Image>().sprite = LeagueAFirst.logo;
+        A1.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = LeagueAFirst.team;
+        A1.transform.GetChild(1).GetChild(2).GetComponent<TMP_Text>().text = LeagueAFirst.win + " - " + LeagueAFirst.loss;
+        if (LeagueAFirst.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+            A1.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.yellow;
+
+        A2.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Image>().sprite = LeagueASecond.logo;
+        A2.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = LeagueASecond.team;
+        A2.transform.GetChild(1).GetChild(2).GetComponent<TMP_Text>().text = LeagueASecond.win + " - " + LeagueASecond.loss;
+        if (LeagueASecond.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+            A2.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.yellow;
+
+        B1.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Image>().sprite = LeagueBFirst.logo;
+        B1.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = LeagueBFirst.team;
+        B1.transform.GetChild(1).GetChild(2).GetComponent<TMP_Text>().text = LeagueBFirst.win + " - " + LeagueBFirst.loss;
+
+        B2.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Image>().sprite = LeagueBSecond.logo;
+        B2.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = LeagueBSecond.team;
+        B2.transform.GetChild(1).GetChild(2).GetComponent<TMP_Text>().text = LeagueBSecond.win + " - " + LeagueBSecond.loss;
+
+        if (leagueWinners.Count > 0)
+        {
+            AC.SetActive(true);
+            BC.SetActive(true);
+
+            AC.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Image>().sprite = leagueWinners[0].logo;
+            AC.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = leagueWinners[0].team;
+            AC.transform.GetChild(1).GetChild(2).GetComponent<TMP_Text>().text = leagueWinners[0].win + " - " + leagueWinners[0].loss;
+            if (leagueWinners[0].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+                AC.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.yellow;
+
+            BC.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Image>().sprite = leagueWinners[1].logo;
+            BC.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = leagueWinners[1].team;
+            BC.transform.GetChild(1).GetChild(2).GetComponent<TMP_Text>().text = leagueWinners[1].win + " - " + leagueWinners[1].loss;
+        }
+
+
+    }
+
+    public void TurnOnCalendar()
+    {
+        playoffScreen.SetActive(false);
+        calendarScreen.SetActive(true);
+    }
+
+    public void TurnOnPlayoff()
+    {
+        playoffScreen.SetActive(true);
+        calendarScreen.SetActive(false);
+    }
+
+    public void ClosePlayoff()
+    {
+        playoffScreen.SetActive(false);
+        calendarScreen.SetActive(false);
     }
 }
