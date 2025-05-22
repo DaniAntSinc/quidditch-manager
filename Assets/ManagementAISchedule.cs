@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using TMPro;
+using UnityEngine.UI;
 
 public class ManagementAISchedule : MonoBehaviour
 {
@@ -13,7 +14,24 @@ public class ManagementAISchedule : MonoBehaviour
     public List<GameObject> LeagueAGO, LeagueBGO;
 
     int homeScore, visitorScore;
-    //needs added to save/load and when saving a new team
+
+    public GameObject defaultResetSeason, missedPostSeason, lostInPlayoffs, wonChampionship;
+    public GameObject startingPage;
+
+    public List<SeasonTeam> leagueAWinners;
+    public List<SeasonTeam> leagueBWinners;
+    public List<SeasonTeam> leagueWinners;
+
+    SeasonTeam LeagueAFirst, LeagueASecond, LeagueBFirst, LeagueBSecond;
+    SeasonTeam LeagueAThird, LeagueAFourth, LeagueAFifth;
+
+    public void Update()
+    {
+       if(Input.GetKeyDown(KeyCode.S))
+            SimSeason();
+        if (Input.GetKeyDown(KeyCode.R))
+            ResetSeasonStats();
+    }
     public void AddPlayersTeamToLeagueA(SeasonTeam playersTeam)
     {
         LeagueA.Add(playersTeam);
@@ -103,6 +121,12 @@ public class ManagementAISchedule : MonoBehaviour
     {
         //League A
         var tempStandings = LeagueA.OrderByDescending(i => i.win).ThenBy(l => l.loss).ThenByDescending(p => p.score).ToList();
+        LeagueAFirst = tempStandings[0];
+        LeagueASecond = tempStandings[1];
+        LeagueAThird = tempStandings[2];
+        LeagueAFourth = tempStandings[3];
+        LeagueAFifth = tempStandings[4];
+
         //fill in team name, win, loss, points based on position
         for (int i = 0; i < tempStandings.Count; i++)
         {
@@ -129,6 +153,8 @@ public class ManagementAISchedule : MonoBehaviour
 
         //League B
         var tempStandings2 = LeagueB.OrderByDescending(i => i.win).ThenBy(l => l.loss).ThenByDescending(p => p.score).ToList();
+        LeagueBFirst = tempStandings2[0];
+        LeagueBSecond = tempStandings2[1];
         //fill in team name, win, loss, points based on position
         for (int i = 0; i < tempStandings2.Count; i++)
         {
@@ -165,7 +191,149 @@ public class ManagementAISchedule : MonoBehaviour
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveDayOfSeason(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason);
         //Save team data
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveAllAITeamsOnceCleared();
+        //Clear winning team Lists
+        leagueAWinners.Clear();
+        leagueBWinners.Clear();
+        leagueWinners.Clear();
 
         //Enter Salary Negotiations
+    }
+    #region Cheats to End Season
+    public void SimSeason()
+    {
+        for (int i = 0; i < 26; i++)
+        {
+            for (int j = 0; j < LeagueA.Count; j++)
+            {
+                LeagueA[j].score += (10 * (Random.Range(0, 20)));
+                if (Random.value < 0.5f)
+                {
+                    LeagueA[j].win += 1;
+                    LeagueA[j].score += 150;
+                }
+                else
+                    LeagueA[j].loss += 1;
+            }
+
+            for (int k = 0; k < LeagueB.Count; k++)
+            {
+                LeagueB[k].score += (10 * (Random.Range(0, 20)));
+                if (Random.value < 0.5f)
+                {
+                    LeagueB[k].win += 1;
+                    LeagueB[k].score += 150;
+                }
+                else
+                    LeagueB[k].loss += 1;
+            }
+            i++;
+        }
+        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason = 100;
+        CheckEndOfSeasonStatus();
+    }
+
+    public void SimSecondRound()
+    {
+        if (Random.value < 0.5f)
+            leagueWinners.Add(LeagueAFirst);
+        else
+            leagueWinners.Add(LeagueASecond);
+
+        if (Random.value < 0.5f)
+            leagueWinners.Add(LeagueBFirst);
+        else
+            leagueWinners.Add(LeagueBSecond);
+    }
+
+    public void SimThirdRound()
+    {
+        if (Random.value < 0.5f)
+            leagueWinners.Remove(leagueWinners[0]);
+        else
+            leagueWinners.Remove(leagueWinners[1]);
+    }
+    #endregion
+    void CheckEndOfSeasonStatus()
+    {
+        UpdateStandings();
+        if (LeagueAGO[0].transform.GetChild(1).GetComponent<TMP_Text>().color == Color.yellow || LeagueAGO[1].transform.GetChild(1).GetComponent<TMP_Text>().color == Color.yellow)
+        { 
+            //Qualified For Playoffs
+            leagueAWinners.Add(LeagueAFirst);
+            leagueAWinners.Add(LeagueASecond);
+            leagueBWinners.Add(LeagueBFirst);
+            leagueBWinners.Add(LeagueBSecond);
+
+            //Sim Second Round
+            SimSecondRound();
+
+            //Check if player made it
+            if (leagueWinners[0].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team || leagueWinners[1].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+            {
+                //Sim third round
+                SimThirdRound();
+
+                if (leagueWinners[0].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+                {
+                    wonChampionship.SetActive(true);
+                    SetUpEndOfSeasonConsistents();
+
+                    defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "Won the Championship!";
+                    //prizing
+                    defaultResetSeason.transform.GetChild(0).GetChild(5).GetComponent<TMP_Text>().text = "225,000 G Awarded!";
+                    GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget += 225000;
+                }
+                else
+                {
+                    SetUpEndOfSeasonConsistents();
+                    lostInPlayoffs.SetActive(true);
+
+                    defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "Lost in the Championship Match";
+                    //prizing
+                    defaultResetSeason.transform.GetChild(0).GetChild(5).GetComponent<TMP_Text>().text = "150,000 G Awarded!";
+                    GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget += 150000;
+                }
+            }
+
+            else
+            {
+                SetUpEndOfSeasonConsistents();
+                lostInPlayoffs.SetActive(true);
+
+                defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "Lost in the Semi Finals";
+                //prizing
+                defaultResetSeason.transform.GetChild(0).GetChild(5).GetComponent<TMP_Text>().text = "100,000 G Awarded!";
+                GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget += 100000;
+            }
+        }
+        else
+        {
+            missedPostSeason.SetActive(true);
+            SetUpEndOfSeasonConsistents();
+
+            if(LeagueAThird.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+                defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "3rd of 5";
+            if (LeagueAFourth.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+                defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "4th of 5";
+            if (LeagueAFifth.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+                defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "5th of 5";
+
+            //prizing
+            defaultResetSeason.transform.GetChild(0).GetChild(5).GetComponent<TMP_Text>().text = "";
+        }
+
+    }
+
+    void SetUpEndOfSeasonConsistents()
+    {
+        defaultResetSeason.SetActive(true);
+        startingPage.SetActive(false);
+
+        //team name
+        defaultResetSeason.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team;
+        //team logo
+        defaultResetSeason.transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<Image>().sprite = GameObject.Find("Players_Team").GetComponent<SeasonTeam>().logo;
+        //win record, loss record
+        defaultResetSeason.transform.GetChild(0).GetChild(2).GetComponent<TMP_Text>().text = "Team Record: " + GameObject.Find("Players_Team").GetComponent<SeasonTeam>().win + " - " + GameObject.Find("Players_Team").GetComponent<SeasonTeam>().loss;
     }
 }
