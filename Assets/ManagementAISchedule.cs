@@ -27,7 +27,7 @@ public class ManagementAISchedule : MonoBehaviour
 
     public GameObject A1, A2, B1, B2, AC, BC, LC;
 
-    public GameObject playoffScreen, calendarScreen;
+    public GameObject playoffScreen, calendarScreen, managementHome, newLoad, teamCreation;
 
     public void Update()
     {
@@ -200,7 +200,19 @@ public class ManagementAISchedule : MonoBehaviour
         leagueBWinners.Clear();
         leagueWinners.Clear();
 
-        //Enter Salary Negotiations
+        //Reset All Stats, Clear out player's team, send them back to the starting menu to make a new team
+        GameObject.Find("Management").GetComponent<Management>().NewTeam();
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().ClearTeam();
+        for (int i = 0; i < defaultResetSeason.transform.childCount; i++)
+        {
+            defaultResetSeason.transform.GetChild(i).gameObject.SetActive(false);
+        }
+        defaultResetSeason.transform.GetChild(0).gameObject.SetActive(true);
+        defaultResetSeason.SetActive(false);
+        managementHome.SetActive(false);
+        newLoad.SetActive(true);
+        teamCreation.SetActive(false);
+        newLoad.transform.GetChild(6).GetComponent<Button>().interactable = false;
     }
     #region Cheats to End Season
     public void SimSeason()
