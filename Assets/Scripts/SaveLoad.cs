@@ -36,6 +36,24 @@ public class SaveLoad : MonoBehaviour
     public List<GameObject> equipBroom;
     #endregion
 
+    #region SeasonSimulation
+
+    #region HogwartsSeason
+    public bool hasHogwartsSeasonData;
+
+    #endregion
+
+    #region IslesSeason
+    public bool hasIslesSeasonData;
+
+    #endregion
+
+    #region WorldCupSeason
+    public bool hasWorldCupSeasonData;
+    #endregion
+
+    #endregion
+
     public GameObject[] strategies;
     public GameObject FAGO;
     private void Start()
@@ -1256,4 +1274,105 @@ public class SaveLoad : MonoBehaviour
         //save team currency
         GameObject.Find("Management").GetComponent<Management>().ManagementHomePage();
     }
+
+    #region Season Simulation Data
+
+    #region Hogwarts 
+    public void ResetHogwartsSeasonData()
+    {
+        print("New Hogwarts");
+        //data here = true
+        //day of season = 0
+        //set all teams wins to 0
+        //set all teams losses to 0
+        //set all  teams points to 0
+    }
+
+    public void SaveHogwartsSeasonData()
+    { 
+    //Save day of season
+    //save each team wins
+    //save each team losses
+    //save each team points scored
+    //save snitch duration
+    }
+
+    public void LoadHogwartsSeasonData()
+    {
+        print("Load Hogwarts");
+        //load day of season
+        //load each team wins
+        //load each team losses
+        //load each team points scored
+        //load snitch duration
+    }
+    #endregion
+
+    #region Isles
+
+    public void ResetIslesSeasonData()
+    {
+        print("New Isles");
+        //data here = true
+        //day of season = 0
+        //set all teams wins to 0
+        //set all teams losses to 0
+        //set all  teams points to 0
+
+    }
+
+    public void SaveIslesSeasonData()
+    {
+        //Save day of season
+        //save each team wins
+        //save each team losses
+        //save each team points scored
+        //save snitch duration
+    }
+
+    public void LoadIslesSeasonData()
+    {
+        print("Load Season");
+        //load day of season
+        //load each team wins
+        //load each team losses
+        //load each team points scored
+        //load snitch duration
+    }
+    #endregion
+
+    #region World
+
+    public void ResetWorldSeasonData()
+    {
+        print("New World");
+        //data here = true
+        //day of season = 0
+        //set all teams wins to 0
+        //set all teams losses to 0
+        //set all  teams points to 0
+    }
+
+    public void SaveWorldSeasonData()
+    {
+        //Save day of season
+        //save each team wins
+        //save each team losses
+        //save each team points scored
+        //save snitch duration
+        //save playoffs 
+    }
+
+    public void LoadWorldSeasonData()
+    {
+        print("Load World");
+        //load day of season
+        //load each team wins
+        //load each team losses
+        //load each team points scored
+        //load snitch duration
+        //load playoffs
+    }
+    #endregion
+    #endregion
 }

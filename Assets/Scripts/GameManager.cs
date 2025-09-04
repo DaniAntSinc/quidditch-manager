@@ -211,6 +211,9 @@ public class GameManager : MonoBehaviour
 
     int thisGameTicket, thisGameConcession, thisGameSouvenir, thisGameLeagueDist;
 
+    public GameObject newLoadBundle;
+    int seasonChoiceSelectedForSim;
+
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -1252,6 +1255,14 @@ public class GameManager : MonoBehaviour
     public void CloseExhib()
     {
         exhibSeasonMenu.SetActive(true);
+
+        exhibButton.SetActive(true);
+        seasonButton.SetActive(true);
+        playoffButton.SetActive(true);
+        seasonList.SetActive(false);
+
+        newLoadBundle.SetActive(false);
+        //seasonList.SetActive(true);
     }
 
     public void HogwartsSeason()
@@ -1260,8 +1271,8 @@ public class GameManager : MonoBehaviour
         britishIslesSeason = false;
         worldCupSeason = false;
 
-        seasonBack.SetActive(true);
-        seasonBegin.SetActive(true);
+        //seasonBack.SetActive(true);
+        //seasonBegin.SetActive(true);
 
         hogwartsTeamStandingsClass.Add(seasonTeams[0]);
         hogwartsTeamStandingsClass.Add(seasonTeams[1]);
@@ -1270,6 +1281,8 @@ public class GameManager : MonoBehaviour
 
         spotter.SetActive(true);
         spotter.transform.position = spotterTarget[0].transform.position;
+
+        SeasonChoiceSelected(0);
     }
 
     public void BritishSeason()
@@ -1278,8 +1291,8 @@ public class GameManager : MonoBehaviour
         britishIslesSeason = true;
         worldCupSeason = false;
 
-        seasonBack.SetActive(true);
-        seasonBegin.SetActive(true);
+        //seasonBack.SetActive(true);
+        //seasonBegin.SetActive(true);
 
         britishIslesTeamStandingsClassDivision1.Add(seasonTeams[4]);
         britishIslesTeamStandingsClassDivision1.Add(seasonTeams[5]);
@@ -1292,6 +1305,8 @@ public class GameManager : MonoBehaviour
 
         spotter.SetActive(true);
         spotter.transform.position = spotterTarget[1].transform.position;
+
+        SeasonChoiceSelected(1);
     }
 
     public void WorldCupSeason()
@@ -1300,8 +1315,8 @@ public class GameManager : MonoBehaviour
         britishIslesSeason = false;
         worldCupSeason = true;
 
-        seasonBack.SetActive(true);
-        seasonBegin.SetActive(true);
+        //seasonBack.SetActive(true);
+        //seasonBegin.SetActive(true);
 
         worldCupTeamStandingsClassDivision1.Add(seasonTeams[12]);
         worldCupTeamStandingsClassDivision1.Add(seasonTeams[13]);
@@ -1320,6 +1335,47 @@ public class GameManager : MonoBehaviour
 
         spotter.SetActive(true);
         spotter.transform.position = spotterTarget[2].transform.position;
+
+        SeasonChoiceSelected(2);
+    }
+
+    public void SeasonChoiceSelected(int seasonType)
+    {
+        seasonList.SetActive(false);
+        newLoadBundle.SetActive(true);
+        seasonChoiceSelectedForSim = seasonType;
+    }
+
+    public void NewSimSeason()
+    {
+        if (seasonChoiceSelectedForSim == 0)
+        {
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().ResetHogwartsSeasonData();
+        }
+        else if (seasonChoiceSelectedForSim == 1)
+        {
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().ResetIslesSeasonData();
+        }
+        else if (seasonChoiceSelectedForSim == 2)
+        {
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().ResetWorldSeasonData();
+        }
+    }
+
+    public void LoadSimSeason()
+    {
+        if (seasonChoiceSelectedForSim == 0)
+        {
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().LoadHogwartsSeasonData();
+        }
+        else if (seasonChoiceSelectedForSim == 1)
+        {
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().LoadIslesSeasonData();
+        }
+        else if (seasonChoiceSelectedForSim == 2)
+        {
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().LoadWorldSeasonData();
+        }
     }
 
     public void SeasonBack()
