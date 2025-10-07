@@ -84,6 +84,12 @@ public class SaveLoad : MonoBehaviour
         teamStadiumCreated = 0;
     }
 
+    public void SaveAudio(int toggle)
+    {
+        PlayerPrefs.SetInt("AudioToggled", toggle);
+        //Loaded in GameManager start
+    }
+
     public void AssignSeasonTeamToSaveLoad(SeasonTeam teamCreated)
     {
         playersTeam = teamCreated;

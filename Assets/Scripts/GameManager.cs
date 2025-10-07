@@ -211,6 +211,8 @@ public class GameManager : MonoBehaviour
 
     int thisGameTicket, thisGameConcession, thisGameSouvenir, thisGameLeagueDist;
 
+    public GameObject audioIconImageOn, audioIconImageOff;
+
     public GameObject newLoadBundle;
     int seasonChoiceSelectedForSim;
 
@@ -236,6 +238,11 @@ public class GameManager : MonoBehaviour
             currentButton.transform.GetChild(1).GetComponent<Image>().sprite = seasonTeams[i].logo;
             currentButton.GetComponent<ButtonSetUp>().teamName.text = seasonTeams[i].team;
             //assign button
+        }
+
+        if (PlayerPrefs.GetInt("AudioToggled") == 0)
+        {
+            ToggleMusic();
         }
     }
 
@@ -1530,14 +1537,21 @@ public class GameManager : MonoBehaviour
         if (musicPlaying)
         {
             soundManager.SetActive(true);
-            musicToggle.color = Color.green;
-            musicToggleFeedbackUI.text = "On";
+
+            // musicToggle.color = Color.green;
+            // musicToggleFeedbackUI.text = "On";
+            audioIconImageOn.SetActive(true);
+            audioIconImageOff.SetActive(false);
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveAudio(1);
         }
         else
         {
             soundManager.SetActive(false);
-            musicToggle.color = Color.red;
-            musicToggleFeedbackUI.text = "Off";
+            //  musicToggle.color = Color.red;
+            //  musicToggleFeedbackUI.text = "Off";
+            audioIconImageOn.SetActive(false);
+            audioIconImageOff.SetActive(true);
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveAudio(0);
         }
 }
 
