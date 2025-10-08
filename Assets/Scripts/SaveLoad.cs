@@ -19,6 +19,8 @@ public class SaveLoad : MonoBehaviour
     public Button loadButton;
     public TMP_Text loadText;
 
+    public GameManager gameManager;
+
     #region EquipmentVariables
     public PlayerInventory playerInventory;
     int body, body1, body2, body3, body4, body5;
@@ -1294,13 +1296,30 @@ public class SaveLoad : MonoBehaviour
         //set all  teams points to 0
     }
 
-    public void SaveHogwartsSeasonData()
-    { 
-    //Save day of season
-    //save each team wins
-    //save each team losses
-    //save each team points scored
-    //save snitch duration
+    public void SaveHogwartsSeasonData(int dayOfSeason, 
+        int GryW, int GryL, int GryP,
+         int SlyW, int SlyL, int SlyP,
+          int RavW, int RavL, int RavP,
+           int HufW, int HufL, int HufP)
+    {
+        //Save day of season
+        PlayerPrefs.SetInt("HogwartsDayOfSeason", dayOfSeason);
+        //save each team wins
+        PlayerPrefs.SetInt("GryffindorWin", GryW);
+        PlayerPrefs.SetInt("SlytherinWin", SlyW);
+        PlayerPrefs.SetInt("RavenclawWin", RavW);
+        PlayerPrefs.SetInt("HufflepuffWin", HufW);
+        //save each team losses
+        PlayerPrefs.SetInt("GryffindorLoss", GryL);
+        PlayerPrefs.SetInt("SlytherinLoss", SlyL);
+        PlayerPrefs.SetInt("RavenclawLoss", RavL);
+        PlayerPrefs.SetInt("HufflepuffLoss", HufL);
+        //save each team points scored
+        PlayerPrefs.SetInt("GryffindorPoints", GryP);
+        PlayerPrefs.SetInt("SlytherinPoints", SlyP);
+        PlayerPrefs.SetInt("RavenclawPoints", RavP);
+        PlayerPrefs.SetInt("HufflepuffPoints", HufP);
+        //save snitch duration
     }
 
     public void LoadHogwartsSeasonData()
@@ -1311,6 +1330,9 @@ public class SaveLoad : MonoBehaviour
         //load each team losses
         //load each team points scored
         //load snitch duration
+        
+        //gameManager.NextSeasonGame();
+         
     }
     #endregion
 
@@ -1327,12 +1349,45 @@ public class SaveLoad : MonoBehaviour
 
     }
 
-    public void SaveIslesSeasonData()
+    public void SaveIslesSeasonData(int dayOfSeason,
+        int HHW, int HHL, int HHP,
+         int MMW, int MML, int MMP,
+          int ChCW, int ChCL, int ChCP,
+           int PUW, int PUL, int PUP,
+        int TTW, int TTL, int TTP,
+         int KKW, int KKL, int KKP,
+          int CaCW, int CaCL, int CaCP,
+           int WWW, int WWL, int WWP)
     {
         //Save day of season
+        PlayerPrefs.SetInt("IslesDayOfSeason", dayOfSeason);
         //save each team wins
+        PlayerPrefs.SetInt("HHWin", HHW);
+        PlayerPrefs.SetInt("MMWWin", MMW);
+        PlayerPrefs.SetInt("ChCWin", ChCW);
+        PlayerPrefs.SetInt("PUWin", PUW);
+        PlayerPrefs.SetInt("TTWin", TTW);
+        PlayerPrefs.SetInt("KKWin", KKW);
+        PlayerPrefs.SetInt("CaCWin", CaCW);
+        PlayerPrefs.SetInt("WWWin", WWW);
         //save each team losses
+        PlayerPrefs.SetInt("HHLoss", HHW);
+        PlayerPrefs.SetInt("MMWLoss", MMW);
+        PlayerPrefs.SetInt("ChCLoss", ChCW);
+        PlayerPrefs.SetInt("PULoss", PUW);
+        PlayerPrefs.SetInt("TTLoss", TTW);
+        PlayerPrefs.SetInt("KKLoss", KKW);
+        PlayerPrefs.SetInt("CaCLoss", CaCW);
+        PlayerPrefs.SetInt("WWLoss", WWW);
         //save each team points scored
+        PlayerPrefs.SetInt("HHPoints", HHW);
+        PlayerPrefs.SetInt("MMWPoints", MMW);
+        PlayerPrefs.SetInt("ChCPoints", ChCW);
+        PlayerPrefs.SetInt("PUPoints", PUW);
+        PlayerPrefs.SetInt("TTPoints", TTW);
+        PlayerPrefs.SetInt("KKPoints", KKW);
+        PlayerPrefs.SetInt("CaCPoints", CaCW);
+        PlayerPrefs.SetInt("WWPoints", WWW);
         //save snitch duration
     }
 
@@ -1344,6 +1399,8 @@ public class SaveLoad : MonoBehaviour
         //load each team losses
         //load each team points scored
         //load snitch duration
+
+        //gameManager.NextSeasonGame();
     }
     #endregion
 
@@ -1359,14 +1416,54 @@ public class SaveLoad : MonoBehaviour
         //set all  teams points to 0
     }
 
-    public void SaveWorldSeasonData()
+    public void SaveWorldSeasonData(int dayOfSeason,
+         int WC1W, int WC2W, int WC3W, int WC4W, int WC5W, int WC6W, int WC7W, int WC8W, int WC9W, int WC10W, int WC11W, int WC12W,
+         int WC1L, int WC2L, int WC3L, int WC4L, int WC5L, int WC6L, int WC7L, int WC8L, int WC9L, int WC10L, int WC11L, int WC12L,
+         int WC1P, int WC2P, int WC3P, int WC4P, int WC5P, int WC6P, int WC7P, int WC8P, int WC9P, int WC10P, int WC11P, int WC12P
+        )
     {
         //Save day of season
+        PlayerPrefs.SetInt("WorldCupDayOfSeason", dayOfSeason);
         //save each team wins
+        PlayerPrefs.SetInt("WC1Win", WC1W);
+        PlayerPrefs.SetInt("WC2Win", WC2W);
+        PlayerPrefs.SetInt("WC3Win", WC3W);
+        PlayerPrefs.SetInt("WC4Win", WC4W);
+        PlayerPrefs.SetInt("WC5Win", WC5W);
+        PlayerPrefs.SetInt("WC6Win", WC6W);
+        PlayerPrefs.SetInt("WC7Win", WC7W);
+        PlayerPrefs.SetInt("WC8Win", WC8W);
+        PlayerPrefs.SetInt("WC9Win", WC9W);
+        PlayerPrefs.SetInt("WC10Win", WC10W);
+        PlayerPrefs.SetInt("WC11Win", WC11W);
+        PlayerPrefs.SetInt("WC12Win", WC12W);
         //save each team losses
+        PlayerPrefs.SetInt("WC1Loss", WC1L);
+        PlayerPrefs.SetInt("WC2Loss", WC2L);
+        PlayerPrefs.SetInt("WC3Loss", WC3L);
+        PlayerPrefs.SetInt("WC4Loss", WC4L);
+        PlayerPrefs.SetInt("WC5Loss", WC5L);
+        PlayerPrefs.SetInt("WC6Loss", WC6L);
+        PlayerPrefs.SetInt("WC7Loss", WC7L);
+        PlayerPrefs.SetInt("WC8Loss", WC8L);
+        PlayerPrefs.SetInt("WC9Loss", WC9L);
+        PlayerPrefs.SetInt("WC10Loss", WC10L);
+        PlayerPrefs.SetInt("WC11Loss", WC11L);
+        PlayerPrefs.SetInt("WC12Loss", WC12L);
         //save each team points scored
+        PlayerPrefs.SetInt("WC1Points", WC1P);
+        PlayerPrefs.SetInt("WC2Points", WC2P);
+        PlayerPrefs.SetInt("WC3Points", WC3P);
+        PlayerPrefs.SetInt("WC4Points", WC4P);
+        PlayerPrefs.SetInt("WC5Points", WC5P);
+        PlayerPrefs.SetInt("WC6Points", WC6P);
+        PlayerPrefs.SetInt("WC7Points", WC7P);
+        PlayerPrefs.SetInt("WC8Points", WC8P);
+        PlayerPrefs.SetInt("WC9Points", WC9P);
+        PlayerPrefs.SetInt("WC10Points", WC10P);
+        PlayerPrefs.SetInt("WC11Points", WC11P);
+        PlayerPrefs.SetInt("WC12Points", WC12P);
         //save snitch duration
-        //save playoffs 
     }
 
     public void LoadWorldSeasonData()
@@ -1378,6 +1475,8 @@ public class SaveLoad : MonoBehaviour
         //load each team points scored
         //load snitch duration
         //load playoffs
+
+        //gameManager.NextSeasonGame();
     }
     #endregion
     #endregion

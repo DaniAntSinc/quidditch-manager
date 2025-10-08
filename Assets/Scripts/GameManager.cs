@@ -1436,10 +1436,47 @@ public class GameManager : MonoBehaviour
         spotter.SetActive(false);
     }
 
+    public void SaveSeasonData()
+    {
+        if (hogwartsSeason)
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveHogwartsSeasonData
+                (seasonGameCount,
+                hogwartsTeams[0].win, hogwartsTeams[1].win, hogwartsTeams[2].win, hogwartsTeams[3].win,
+                hogwartsTeams[0].loss, hogwartsTeams[1].loss, hogwartsTeams[2].loss, hogwartsTeams[3].loss,
+                hogwartsTeams[0].score, hogwartsTeams[1].score, hogwartsTeams[2].score, hogwartsTeams[3].score
+                );
+        else if (britishIslesSeason)
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveIslesSeasonData(
+                seasonGameCount,
+                britishIslesTeamsGroup1[0].win, britishIslesTeamsGroup1[1].win, britishIslesTeamsGroup1[2].win, britishIslesTeamsGroup1[3].win, britishIslesTeamsGroup2[0].win, britishIslesTeamsGroup2[1].win, britishIslesTeamsGroup2[2].win, britishIslesTeamsGroup2[3].win,
+                britishIslesTeamsGroup1[0].loss, britishIslesTeamsGroup1[1].loss, britishIslesTeamsGroup1[2].loss, britishIslesTeamsGroup1[3].loss, britishIslesTeamsGroup2[0].loss, britishIslesTeamsGroup2[1].loss, britishIslesTeamsGroup2[2].loss, britishIslesTeamsGroup2[3].loss,
+                britishIslesTeamsGroup1[0].score, britishIslesTeamsGroup1[1].score, britishIslesTeamsGroup1[2].score, britishIslesTeamsGroup1[3].score, britishIslesTeamsGroup2[0].score, britishIslesTeamsGroup2[1].score, britishIslesTeamsGroup2[2].score, britishIslesTeamsGroup2[3].score
+                );
+        else if (worldCupSeason)
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveWorldSeasonData(
+                seasonGameCount,
+                worldCupTeamsGroup1[0].win, worldCupTeamsGroup1[1].win, worldCupTeamsGroup1[2].win, worldCupTeamsGroup1[3].win,
+                worldCupTeamsGroup2[0].win, worldCupTeamsGroup2[1].win, worldCupTeamsGroup2[2].win, worldCupTeamsGroup2[3].win,
+                worldCupTeamsGroup3[0].win, worldCupTeamsGroup3[1].win, worldCupTeamsGroup3[2].win, worldCupTeamsGroup3[3].win,
+
+                worldCupTeamsGroup1[0].loss, worldCupTeamsGroup1[1].loss, worldCupTeamsGroup1[2].loss, worldCupTeamsGroup1[3].loss,
+                worldCupTeamsGroup2[0].loss, worldCupTeamsGroup2[1].loss, worldCupTeamsGroup2[2].loss, worldCupTeamsGroup2[3].loss,
+                worldCupTeamsGroup3[0].loss, worldCupTeamsGroup3[1].loss, worldCupTeamsGroup3[2].loss, worldCupTeamsGroup3[3].loss,
+
+                worldCupTeamsGroup1[0].score, worldCupTeamsGroup1[1].score, worldCupTeamsGroup1[2].score, worldCupTeamsGroup1[3].score,
+                worldCupTeamsGroup2[0].score, worldCupTeamsGroup2[1].score, worldCupTeamsGroup2[2].score, worldCupTeamsGroup2[3].score,
+                worldCupTeamsGroup3[0].score, worldCupTeamsGroup3[1].score, worldCupTeamsGroup3[2].score, worldCupTeamsGroup3[3].score
+                );
+
+        NextSeasonGame();
+    }
+
     public void NextSeasonGame()
     {
         if (hogwartsSeason || britishIslesSeason || worldCupSeason)
+        {
             seasonGameCount++;
+        }
         else
         {
             newGameButton.SetActive(true);
