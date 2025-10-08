@@ -1297,10 +1297,9 @@ public class SaveLoad : MonoBehaviour
     }
 
     public void SaveHogwartsSeasonData(int dayOfSeason, 
-        int GryW, int GryL, int GryP,
-         int SlyW, int SlyL, int SlyP,
-          int RavW, int RavL, int RavP,
-           int HufW, int HufL, int HufP)
+        int GryW, int SlyW, int RavW, int HufW,
+         int GryL, int SlyL, int RavL, int HufL,
+          int GryP, int SlyP, int RavP, int HufP)
     {
         //Save day of season
         PlayerPrefs.SetInt("HogwartsDayOfSeason", dayOfSeason);
