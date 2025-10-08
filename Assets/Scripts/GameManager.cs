@@ -1280,6 +1280,9 @@ public class GameManager : MonoBehaviour
         britishIslesSeason = false;
         worldCupSeason = false;
 
+        if (PlayerPrefs.GetInt("HogwartsDayOfSeason") == 0 || PlayerPrefs.GetInt("HogwartsCupDayOfSeason") > 5)
+            newLoadBundle.transform.GetChild(1).GetComponent<Button>().interactable = false;
+
         //seasonBack.SetActive(true);
         //seasonBegin.SetActive(true);
 
@@ -1299,6 +1302,9 @@ public class GameManager : MonoBehaviour
         hogwartsSeason = false;
         britishIslesSeason = true;
         worldCupSeason = false;
+
+        if (PlayerPrefs.GetInt("IslesDayOfSeason") == 0 || PlayerPrefs.GetInt("IslesCupDayOfSeason") > 11)
+            newLoadBundle.transform.GetChild(1).GetComponent<Button>().interactable = false;
 
         //seasonBack.SetActive(true);
         //seasonBegin.SetActive(true);
@@ -1324,6 +1330,9 @@ public class GameManager : MonoBehaviour
         britishIslesSeason = false;
         worldCupSeason = true;
 
+        if (PlayerPrefs.GetInt("WorldCupDayOfSeason") == 0 || PlayerPrefs.GetInt("WorldCupDayOfSeason") > 85)
+            newLoadBundle.transform.GetChild(1).GetComponent<Button>().interactable = false;
+
         //seasonBack.SetActive(true);
         //seasonBegin.SetActive(true);
 
@@ -1346,6 +1355,12 @@ public class GameManager : MonoBehaviour
         spotter.transform.position = spotterTarget[2].transform.position;
 
         SeasonChoiceSelected(2);
+    }
+
+    public void AISeasonBack()
+    {
+        seasonList.SetActive(true);
+        newLoadBundle.SetActive(false);
     }
 
     public void SeasonChoiceSelected(int seasonType)
