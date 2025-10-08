@@ -209,6 +209,8 @@ public class GameManager : MonoBehaviour
     public Slider K1B;
     public Slider SS, SSp, SR, SG;
 
+    public int passingInDayOfSeasonFromSaveAndLoad;
+
     int thisGameTicket, thisGameConcession, thisGameSouvenir, thisGameLeagueDist;
 
     public GameObject audioIconImageOn, audioIconImageOff;
@@ -1374,14 +1376,17 @@ public class GameManager : MonoBehaviour
         if (seasonChoiceSelectedForSim == 0)
         {
             GameObject.Find("SaveLoad").GetComponent<SaveLoad>().LoadHogwartsSeasonData();
+            passingInDayOfSeasonFromSaveAndLoad = seasonGameCount;
         }
         else if (seasonChoiceSelectedForSim == 1)
         {
             GameObject.Find("SaveLoad").GetComponent<SaveLoad>().LoadIslesSeasonData();
+            passingInDayOfSeasonFromSaveAndLoad = seasonGameCount;
         }
         else if (seasonChoiceSelectedForSim == 2)
         {
             GameObject.Find("SaveLoad").GetComponent<SaveLoad>().LoadWorldSeasonData();
+            passingInDayOfSeasonFromSaveAndLoad = seasonGameCount;
         }
     }
 

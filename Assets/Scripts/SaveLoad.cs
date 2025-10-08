@@ -1326,13 +1326,26 @@ public class SaveLoad : MonoBehaviour
     {
         print("Load Hogwarts");
         //load day of season
+        gameManager.passingInDayOfSeasonFromSaveAndLoad = PlayerPrefs.GetInt("HogwartsDayOfSeason");
         //load each team wins
+        gameManager.hogwartsTeams[0].win = PlayerPrefs.GetInt("GryffindorWin");
+        gameManager.hogwartsTeams[1].win = PlayerPrefs.GetInt("SlytherinWin");
+        gameManager.hogwartsTeams[2].win = PlayerPrefs.GetInt("RavenclawWin");
+        gameManager.hogwartsTeams[3].win = PlayerPrefs.GetInt("HufflepuffWin");
         //load each team losses
+        gameManager.hogwartsTeams[0].loss = PlayerPrefs.GetInt("GryffindorLoss");
+        gameManager.hogwartsTeams[1].loss = PlayerPrefs.GetInt("SlytherinLoss");
+        gameManager.hogwartsTeams[2].loss = PlayerPrefs.GetInt("RavenclawLoss");
+        gameManager.hogwartsTeams[3].loss = PlayerPrefs.GetInt("HufflepuffLoss");
         //load each team points scored
+        gameManager.hogwartsTeams[0].score = PlayerPrefs.GetInt("GryffindorPoints");
+        gameManager.hogwartsTeams[1].score = PlayerPrefs.GetInt("SlytherinPoints");
+        gameManager.hogwartsTeams[2].score = PlayerPrefs.GetInt("RavenclawPoints");
+        gameManager.hogwartsTeams[3].score = PlayerPrefs.GetInt("HufflepuffPoints");
         //load snitch duration
-        
+
         //gameManager.NextSeasonGame();
-         
+        //close simulation type menu
     }
     #endregion
 
@@ -1395,12 +1408,41 @@ public class SaveLoad : MonoBehaviour
     {
         print("Load Season");
         //load day of season
+        gameManager.passingInDayOfSeasonFromSaveAndLoad = PlayerPrefs.GetInt("IslesDayOfSeason");
         //load each team wins
+        gameManager.britishIslesTeamsGroup1[0].win = PlayerPrefs.GetInt("HHWin");
+        gameManager.britishIslesTeamsGroup1[1].win = PlayerPrefs.GetInt("MMWWin");
+        gameManager.britishIslesTeamsGroup1[2].win = PlayerPrefs.GetInt("ChCWin");
+        gameManager.britishIslesTeamsGroup1[3].win = PlayerPrefs.GetInt("PUWin");
+
+        gameManager.britishIslesTeamsGroup2[0].win = PlayerPrefs.GetInt("TTWin");
+        gameManager.britishIslesTeamsGroup2[1].win = PlayerPrefs.GetInt("KKWin");
+        gameManager.britishIslesTeamsGroup2[2].win = PlayerPrefs.GetInt("CaCWin");
+        gameManager.britishIslesTeamsGroup2[3].win = PlayerPrefs.GetInt("WWWin");
         //load each team losses
+        gameManager.britishIslesTeamsGroup1[0].loss = PlayerPrefs.GetInt("HHLoss");
+        gameManager.britishIslesTeamsGroup1[1].loss = PlayerPrefs.GetInt("MMWLoss");
+        gameManager.britishIslesTeamsGroup1[2].loss = PlayerPrefs.GetInt("ChCLoss");
+        gameManager.britishIslesTeamsGroup1[3].loss = PlayerPrefs.GetInt("PULoss");
+
+        gameManager.britishIslesTeamsGroup2[0].loss = PlayerPrefs.GetInt("TTLoss");
+        gameManager.britishIslesTeamsGroup2[1].loss = PlayerPrefs.GetInt("KKLoss");
+        gameManager.britishIslesTeamsGroup2[2].loss = PlayerPrefs.GetInt("CaCLoss");
+        gameManager.britishIslesTeamsGroup2[3].loss = PlayerPrefs.GetInt("WWLoss");
         //load each team points scored
+        gameManager.britishIslesTeamsGroup1[0].score = PlayerPrefs.GetInt("HHPoints");
+        gameManager.britishIslesTeamsGroup1[1].score = PlayerPrefs.GetInt("MMWPoints");
+        gameManager.britishIslesTeamsGroup1[2].score = PlayerPrefs.GetInt("ChCPoints");
+        gameManager.britishIslesTeamsGroup1[3].score = PlayerPrefs.GetInt("PUPoints");
+
+        gameManager.britishIslesTeamsGroup2[0].score = PlayerPrefs.GetInt("TTPoints");
+        gameManager.britishIslesTeamsGroup2[1].score = PlayerPrefs.GetInt("KKPoints");
+        gameManager.britishIslesTeamsGroup2[2].score = PlayerPrefs.GetInt("CaCPoints");
+        gameManager.britishIslesTeamsGroup2[3].score = PlayerPrefs.GetInt("WWPoints");
         //load snitch duration
 
         //gameManager.NextSeasonGame();
+        //close simulation type menu
     }
     #endregion
 
@@ -1470,13 +1512,56 @@ public class SaveLoad : MonoBehaviour
     {
         print("Load World");
         //load day of season
+        gameManager.passingInDayOfSeasonFromSaveAndLoad = PlayerPrefs.GetInt("IslesDayOfSeason");
         //load each team wins
+        gameManager.worldCupTeamsGroup1[0].win = PlayerPrefs.GetInt("WC1Win");
+        gameManager.worldCupTeamsGroup1[1].win = PlayerPrefs.GetInt("WC2Win");
+        gameManager.worldCupTeamsGroup1[2].win = PlayerPrefs.GetInt("WC3Win");
+        gameManager.worldCupTeamsGroup1[3].win = PlayerPrefs.GetInt("WC4Win");
+
+        gameManager.worldCupTeamsGroup2[0].win = PlayerPrefs.GetInt("WC5Win");
+        gameManager.worldCupTeamsGroup2[1].win = PlayerPrefs.GetInt("WC6Win");
+        gameManager.worldCupTeamsGroup2[2].win = PlayerPrefs.GetInt("WC7Win");
+        gameManager.worldCupTeamsGroup2[3].win = PlayerPrefs.GetInt("WC8Win");
+
+        gameManager.worldCupTeamsGroup3[0].win = PlayerPrefs.GetInt("WC9Win");
+        gameManager.worldCupTeamsGroup3[1].win = PlayerPrefs.GetInt("WC10Win");
+        gameManager.worldCupTeamsGroup3[2].win = PlayerPrefs.GetInt("WC11Win");
+        gameManager.worldCupTeamsGroup3[3].win = PlayerPrefs.GetInt("WC12Win");
         //load each team losses
+        gameManager.worldCupTeamsGroup1[0].loss = PlayerPrefs.GetInt("WC1Loss");
+        gameManager.worldCupTeamsGroup1[1].loss = PlayerPrefs.GetInt("WC2Loss");
+        gameManager.worldCupTeamsGroup1[2].loss = PlayerPrefs.GetInt("WC3Loss");
+        gameManager.worldCupTeamsGroup1[3].loss = PlayerPrefs.GetInt("WC4Loss");
+
+        gameManager.worldCupTeamsGroup2[0].loss = PlayerPrefs.GetInt("WC5Loss");
+        gameManager.worldCupTeamsGroup2[1].loss = PlayerPrefs.GetInt("WC6Loss");
+        gameManager.worldCupTeamsGroup2[2].loss = PlayerPrefs.GetInt("WC7Loss");
+        gameManager.worldCupTeamsGroup2[3].loss = PlayerPrefs.GetInt("WC8Loss");
+
+        gameManager.worldCupTeamsGroup3[0].loss = PlayerPrefs.GetInt("WC9Loss");
+        gameManager.worldCupTeamsGroup3[1].loss = PlayerPrefs.GetInt("WC10Loss");
+        gameManager.worldCupTeamsGroup3[2].loss = PlayerPrefs.GetInt("WC11Loss");
+        gameManager.worldCupTeamsGroup3[3].loss = PlayerPrefs.GetInt("WC12Loss");
         //load each team points scored
+        gameManager.worldCupTeamsGroup1[0].score = PlayerPrefs.GetInt("WC1Points");
+        gameManager.worldCupTeamsGroup1[1].score = PlayerPrefs.GetInt("WC2Points");
+        gameManager.worldCupTeamsGroup1[2].score = PlayerPrefs.GetInt("WC3Points");
+        gameManager.worldCupTeamsGroup1[3].score = PlayerPrefs.GetInt("WC4Points");
+
+        gameManager.worldCupTeamsGroup2[0].score = PlayerPrefs.GetInt("WC5Points");
+        gameManager.worldCupTeamsGroup2[1].score = PlayerPrefs.GetInt("WC6Points");
+        gameManager.worldCupTeamsGroup2[2].score = PlayerPrefs.GetInt("WC7Points");
+        gameManager.worldCupTeamsGroup2[3].score = PlayerPrefs.GetInt("WC8Points");
+
+        gameManager.worldCupTeamsGroup3[0].score = PlayerPrefs.GetInt("WC9Points");
+        gameManager.worldCupTeamsGroup3[1].score = PlayerPrefs.GetInt("WC10Points");
+        gameManager.worldCupTeamsGroup3[2].score = PlayerPrefs.GetInt("WC11Points");
+        gameManager.worldCupTeamsGroup3[3].score = PlayerPrefs.GetInt("WC12Points");
         //load snitch duration
-        //load playoffs
 
         //gameManager.NextSeasonGame();
+        //close simulation type menu
     }
     #endregion
     #endregion
