@@ -1512,7 +1512,7 @@ public class SaveLoad : MonoBehaviour
     {
         print("Load World");
         //load day of season
-        gameManager.passingInDayOfSeasonFromSaveAndLoad = PlayerPrefs.GetInt("IslesDayOfSeason");
+        gameManager.passingInDayOfSeasonFromSaveAndLoad = PlayerPrefs.GetInt("WorldCupDayOfSeason");
         //load each team wins
         gameManager.worldCupTeamsGroup1[0].win = PlayerPrefs.GetInt("WC1Win");
         gameManager.worldCupTeamsGroup1[1].win = PlayerPrefs.GetInt("WC2Win");

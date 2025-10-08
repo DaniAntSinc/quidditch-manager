@@ -1280,7 +1280,7 @@ public class GameManager : MonoBehaviour
         britishIslesSeason = false;
         worldCupSeason = false;
 
-        if (PlayerPrefs.GetInt("HogwartsDayOfSeason") == 0 || PlayerPrefs.GetInt("HogwartsCupDayOfSeason") > 5)
+        if ((PlayerPrefs.GetInt("GryffindorWin") > 0 || PlayerPrefs.GetInt("GryffindorLoss") > 0) || PlayerPrefs.GetInt("HogwartsDayOfSeason") < 5)
             newLoadBundle.transform.GetChild(1).GetComponent<Button>().interactable = false;
 
         //seasonBack.SetActive(true);
@@ -1303,7 +1303,7 @@ public class GameManager : MonoBehaviour
         britishIslesSeason = true;
         worldCupSeason = false;
 
-        if (PlayerPrefs.GetInt("IslesDayOfSeason") == 0 || PlayerPrefs.GetInt("IslesCupDayOfSeason") > 11)
+        if ((PlayerPrefs.GetInt("HHWin") > 0 || PlayerPrefs.GetInt("HHLoss") > 0) || PlayerPrefs.GetInt("IslesCupDayOfSeason") > 11)
             newLoadBundle.transform.GetChild(1).GetComponent<Button>().interactable = false;
 
         //seasonBack.SetActive(true);
@@ -1330,7 +1330,7 @@ public class GameManager : MonoBehaviour
         britishIslesSeason = false;
         worldCupSeason = true;
 
-        if (PlayerPrefs.GetInt("WorldCupDayOfSeason") == 0 || PlayerPrefs.GetInt("WorldCupDayOfSeason") > 85)
+        if ((PlayerPrefs.GetInt("WC1Win") > 0 || PlayerPrefs.GetInt("WC1Loss") > 0) || PlayerPrefs.GetInt("WorldCupDayOfSeason") > 85)
             newLoadBundle.transform.GetChild(1).GetComponent<Button>().interactable = false;
 
         //seasonBack.SetActive(true);
@@ -1384,6 +1384,8 @@ public class GameManager : MonoBehaviour
         {
             GameObject.Find("SaveLoad").GetComponent<SaveLoad>().ResetWorldSeasonData();
         }
+
+        SeasonBegin();
     }
 
     public void LoadSimSeason()
