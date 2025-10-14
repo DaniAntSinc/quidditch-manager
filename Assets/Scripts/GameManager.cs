@@ -1303,9 +1303,10 @@ public class GameManager : MonoBehaviour
         britishIslesSeason = true;
         worldCupSeason = false;
 
-        if (PlayerPrefs.GetInt("IslesCupDayOfSeason") == 0 || PlayerPrefs.GetInt("IslesCupDayOfSeason") > 11)
+        if (PlayerPrefs.GetInt("IslesDayOfSeason") == 0 || PlayerPrefs.GetInt("IslesDayOfSeason") > 11)
             newLoadBundle.transform.GetChild(1).GetComponent<Button>().interactable = false;
 
+        print("Player PRef:" + PlayerPrefs.GetInt("IslesDayOfSeason"));
         //seasonBack.SetActive(true);
         //seasonBegin.SetActive(true);
 
@@ -1368,6 +1369,7 @@ public class GameManager : MonoBehaviour
         seasonList.SetActive(false);
         newLoadBundle.SetActive(true);
         seasonChoiceSelectedForSim = seasonType;
+        print("Season Choice = " + seasonChoiceSelectedForSim);
     }
 
     public void NewSimSeason()
@@ -1390,20 +1392,22 @@ public class GameManager : MonoBehaviour
 
     public void LoadSimSeason()
     {
+
         if (seasonChoiceSelectedForSim == 0)
         {
             GameObject.Find("SaveLoad").GetComponent<SaveLoad>().LoadHogwartsSeasonData();
-            passingInDayOfSeasonFromSaveAndLoad = seasonGameCount;
+            seasonGameCount = passingInDayOfSeasonFromSaveAndLoad;
         }
         else if (seasonChoiceSelectedForSim == 1)
         {
             GameObject.Find("SaveLoad").GetComponent<SaveLoad>().LoadIslesSeasonData();
-            passingInDayOfSeasonFromSaveAndLoad = seasonGameCount;
+            seasonGameCount = passingInDayOfSeasonFromSaveAndLoad;
+            print(passingInDayOfSeasonFromSaveAndLoad + "&&" + seasonGameCount);
         }
         else if (seasonChoiceSelectedForSim == 2)
         {
             GameObject.Find("SaveLoad").GetComponent<SaveLoad>().LoadWorldSeasonData();
-            passingInDayOfSeasonFromSaveAndLoad = seasonGameCount;
+            seasonGameCount = passingInDayOfSeasonFromSaveAndLoad;
         }
 
         NextSeasonGame();

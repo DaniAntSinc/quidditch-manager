@@ -1362,17 +1362,14 @@ public class SaveLoad : MonoBehaviour
     }
 
     public void SaveIslesSeasonData(int dayOfSeason,
-        int HHW, int HHL, int HHP,
-         int MMW, int MML, int MMP,
-          int ChCW, int ChCL, int ChCP,
-           int PUW, int PUL, int PUP,
-        int TTW, int TTL, int TTP,
-         int KKW, int KKL, int KKP,
-          int CaCW, int CaCL, int CaCP,
-           int WWW, int WWL, int WWP)
+        int HHW, int MMW, int ChCW, int PUW, int TTW, int KKW, int CaCW, int WWW,
+        int HHL, int MML, int ChCL, int PUL, int TTL, int KKL, int CaCL, int WWL,
+        int HHP, int MMP, int ChCP, int PUP, int TTP, int KKP, int CaCP, int WWP)
     {
+        print("Isles Saved");
         //Save day of season
         PlayerPrefs.SetInt("IslesDayOfSeason", dayOfSeason);
+        print("Isles Day Of Season:" + dayOfSeason);
         //save each team wins
         PlayerPrefs.SetInt("HHWin", HHW);
         PlayerPrefs.SetInt("MMWWin", MMW);
@@ -1383,23 +1380,23 @@ public class SaveLoad : MonoBehaviour
         PlayerPrefs.SetInt("CaCWin", CaCW);
         PlayerPrefs.SetInt("WWWin", WWW);
         //save each team losses
-        PlayerPrefs.SetInt("HHLoss", HHW);
-        PlayerPrefs.SetInt("MMWLoss", MMW);
-        PlayerPrefs.SetInt("ChCLoss", ChCW);
-        PlayerPrefs.SetInt("PULoss", PUW);
-        PlayerPrefs.SetInt("TTLoss", TTW);
-        PlayerPrefs.SetInt("KKLoss", KKW);
-        PlayerPrefs.SetInt("CaCLoss", CaCW);
-        PlayerPrefs.SetInt("WWLoss", WWW);
+        PlayerPrefs.SetInt("HHLoss", HHL);
+        PlayerPrefs.SetInt("MMWLoss", MML);
+        PlayerPrefs.SetInt("ChCLoss", ChCL);
+        PlayerPrefs.SetInt("PULoss", PUL);
+        PlayerPrefs.SetInt("TTLoss", TTL);
+        PlayerPrefs.SetInt("KKLoss", KKL);
+        PlayerPrefs.SetInt("CaCLoss", CaCL);
+        PlayerPrefs.SetInt("WWLoss", WWL);
         //save each team points scored
-        PlayerPrefs.SetInt("HHPoints", HHW);
-        PlayerPrefs.SetInt("MMWPoints", MMW);
-        PlayerPrefs.SetInt("ChCPoints", ChCW);
-        PlayerPrefs.SetInt("PUPoints", PUW);
-        PlayerPrefs.SetInt("TTPoints", TTW);
-        PlayerPrefs.SetInt("KKPoints", KKW);
-        PlayerPrefs.SetInt("CaCPoints", CaCW);
-        PlayerPrefs.SetInt("WWPoints", WWW);
+        PlayerPrefs.SetInt("HHPoints", HHP);
+        PlayerPrefs.SetInt("MMWPoints", MMP);
+        PlayerPrefs.SetInt("ChCPoints", ChCP);
+        PlayerPrefs.SetInt("PUPoints", PUP);
+        PlayerPrefs.SetInt("TTPoints", TTP);
+        PlayerPrefs.SetInt("KKPoints", KKP);
+        PlayerPrefs.SetInt("CaCPoints", CaCP);
+        PlayerPrefs.SetInt("WWPoints", WWP);
         //save snitch duration
     }
 
@@ -1408,6 +1405,7 @@ public class SaveLoad : MonoBehaviour
         print("Load Season");
         //load day of season
         gameManager.passingInDayOfSeasonFromSaveAndLoad = PlayerPrefs.GetInt("IslesDayOfSeason");
+        print(gameManager.passingInDayOfSeasonFromSaveAndLoad + "= Day of Season");
         //load each team wins
         gameManager.britishIslesTeamsGroup1[0].win = PlayerPrefs.GetInt("HHWin");
         gameManager.britishIslesTeamsGroup1[1].win = PlayerPrefs.GetInt("MMWWin");
