@@ -2198,5 +2198,15 @@ public class GameManager : MonoBehaviour
         //Save Day
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveDayOfSeason(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason);
     }
+
+    public void OpenChaoticPlay()
+    { 
+        Application.OpenURL("https://chaoticplay.itch.io/");
+    }
+
+    public void OpenAdrian()
+    { 
+        Application.OpenURL("https://adrianrosario.net/");
+    }
 }
 
