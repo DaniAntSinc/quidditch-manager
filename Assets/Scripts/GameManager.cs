@@ -218,6 +218,8 @@ public class GameManager : MonoBehaviour
     public GameObject newLoadBundle;
     int seasonChoiceSelectedForSim;
 
+    public GameObject playoffMenu;
+
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -1238,6 +1240,12 @@ public class GameManager : MonoBehaviour
         seasonButton.SetActive(false);
         playoffButton.SetActive(false);
         seasonList.SetActive(true);
+    }
+
+    public void PlayoffButton()
+    {
+        playoffMenu.SetActive(true);
+        exhibSeasonMenu.SetActive(false);
     }
 
     public void OpenManagementMenu()
