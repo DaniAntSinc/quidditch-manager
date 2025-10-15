@@ -1486,6 +1486,7 @@ public class GameManager : MonoBehaviour
         playoffMenu.SetActive(true);
         playoffMenu.GetComponent<PlayoffMenu>().UpdateStandings(team1Score, team2Score);
         playoffsAreActive = false;
+        postPlayoffButton.SetActive(false);
     }
 
     public void SaveSeasonData()

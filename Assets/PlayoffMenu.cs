@@ -69,17 +69,195 @@ public class PlayoffMenu : MonoBehaviour
 
     public void PlayNextPlayoffGame()
     {
-        gameManager.NextPlayoffGame(visitorTeam[playOffGameNumber], homeTeam[playOffGameNumber]);
-        PlayoffMenuGO.SetActive(false);
-        teamSelection.SetActive(false);
+        if (playOffGameNumber >= 6)
+        {
+            //turn on scroll menu
+            teamScrollBox.SetActive(true);
+            highlighter.SetActive(true);
+            highlighter.transform.position = firstRound[0].transform.position;
+            //clear out all fields everywhere
+            //visual
+            for (int i = 0; i < firstRound.Length; i++)
+            {
+                firstRound[i].transform.GetChild(0).GetComponent<TMP_Text>().text = "";
+                firstRound[i].transform.GetChild(1).GetComponent<TMP_Text>().text = "";
+            }
+            for (int i = 0; i < secondRound.Length; i++)
+            {
+                secondRound[i].transform.GetChild(0).GetComponent<TMP_Text>().text = "";
+                secondRound[i].transform.GetChild(1).GetComponent<TMP_Text>().text = "";
+            }
+            for (int i = 0; i < thirdRound.Length; i++)
+            {
+                thirdRound[i].transform.GetChild(0).GetComponent<TMP_Text>().text = "";
+                thirdRound[i].transform.GetChild(1).GetComponent<TMP_Text>().text = "";
+            }
+            //all lists
+            teamsList.Clear();
+            visitorTeam.Clear();
+            homeTeam.Clear();
+            //turn off undo button
+            undoButton.SetActive(false);
+            //turn off start button
+            startButton.SetActive(false);
+            //turn this button off
+            nextGameButton.SetActive(false);
+        }
+        else
+        {
+            gameManager.NextPlayoffGame(homeTeam[playOffGameNumber], visitorTeam[playOffGameNumber]);
+            PlayoffMenuGO.SetActive(false);
+            teamSelection.SetActive(false);
+        }
     }
 
     public void UpdateStandings(int visitorScore, int homeScore)
     {
-        //add text to visitor
-        //add text to home
-        //highlight winner
-        //advance winner to next bracket
-        playOffGameNumber++;
+        if (visitorScore == homeScore)
+        {
+            //in case there is a tie, do nothing - player needs to redo it
+        }
+        else
+        {
+            switch (playOffGameNumber)
+            {
+                case 0:
+                    //add visitor score
+                    firstRound[0].transform.GetChild(1).GetComponent<TMP_Text>().text = visitorScore.ToString();
+                    //add home score
+                    firstRound[1].transform.GetChild(1).GetComponent<TMP_Text>().text = homeScore.ToString();
+                    if (visitorScore > homeScore)
+                    {
+                        firstRound[0].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
+                        visitorTeam.Add(homeTeam[0]);
+                        secondRound[0].transform.GetChild(0).GetComponent<TMP_Text>().text = firstRound[0].transform.GetChild(0).GetComponent<TMP_Text>().text;
+                    }
+                    else
+                    {
+                        firstRound[1].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
+                        visitorTeam.Add(visitorTeam[0]);
+                        secondRound[0].transform.GetChild(0).GetComponent<TMP_Text>().text = firstRound[1].transform.GetChild(0).GetComponent<TMP_Text>().text;
+                    }
+                    break;
+                case 1:
+                    //add visitor score
+                    firstRound[2].transform.GetChild(1).GetComponent<TMP_Text>().text = visitorScore.ToString();
+                    //add home score
+                    firstRound[3].transform.GetChild(1).GetComponent<TMP_Text>().text = homeScore.ToString();
+                    if (visitorScore > homeScore)
+                    {
+                        firstRound[2].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
+                        homeTeam.Add(homeTeam[1]);
+                        secondRound[1].transform.GetChild(0).GetComponent<TMP_Text>().text = firstRound[2].transform.GetChild(0).GetComponent<TMP_Text>().text;
+                    }
+                    else
+                    {
+                        firstRound[3].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
+                        homeTeam.Add(visitorTeam[1]);
+                        secondRound[1].transform.GetChild(0).GetComponent<TMP_Text>().text = firstRound[3].transform.GetChild(0).GetComponent<TMP_Text>().text;
+                    }
+                    break;
+                case 2:
+                    //add visitor score
+                    firstRound[4].transform.GetChild(1).GetComponent<TMP_Text>().text = visitorScore.ToString();
+                    //add home score
+                    firstRound[5].transform.GetChild(1).GetComponent<TMP_Text>().text = homeScore.ToString();
+                    if (visitorScore > homeScore)
+                    {
+                        firstRound[4].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
+                        visitorTeam.Add(homeTeam[2]);
+                        secondRound[2].transform.GetChild(0).GetComponent<TMP_Text>().text = firstRound[4].transform.GetChild(0).GetComponent<TMP_Text>().text;
+                    }
+                    else
+                    {
+                        firstRound[5].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
+                        visitorTeam.Add(visitorTeam[2]);
+                        secondRound[2].transform.GetChild(0).GetComponent<TMP_Text>().text = firstRound[5].transform.GetChild(0).GetComponent<TMP_Text>().text;
+                    }
+                    break;
+                case 3:
+                    //add visitor score
+                    firstRound[6].transform.GetChild(1).GetComponent<TMP_Text>().text = visitorScore.ToString();
+                    //add home score
+                    firstRound[7].transform.GetChild(1).GetComponent<TMP_Text>().text = homeScore.ToString();
+                    if (visitorScore > homeScore)
+                    {
+                        firstRound[6].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
+                        homeTeam.Add(homeTeam[3]);
+                        secondRound[3].transform.GetChild(0).GetComponent<TMP_Text>().text = firstRound[6].transform.GetChild(0).GetComponent<TMP_Text>().text;
+                    }
+                    else
+                    {
+                        firstRound[7].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
+                        homeTeam.Add(visitorTeam[3]);
+                        secondRound[3].transform.GetChild(0).GetComponent<TMP_Text>().text = firstRound[7].transform.GetChild(0).GetComponent<TMP_Text>().text;
+                    }
+                    break;
+                case 4:
+                    //add visitor score
+                    secondRound[0].transform.GetChild(1).GetComponent<TMP_Text>().text = visitorScore.ToString();
+                    //add home score
+                    secondRound[1].transform.GetChild(1).GetComponent<TMP_Text>().text = homeScore.ToString();
+
+                    if (visitorScore > homeScore)
+                    {
+                        secondRound[0].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
+                        visitorTeam.Add(homeTeam[4]);
+                        thirdRound[0].transform.GetChild(0).GetComponent<TMP_Text>().text = secondRound[0].transform.GetChild(0).GetComponent<TMP_Text>().text;
+                    }
+                    else
+                    {
+                        secondRound[1].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
+                        visitorTeam.Add(visitorTeam[4]);
+                        thirdRound[0].transform.GetChild(0).GetComponent<TMP_Text>().text = secondRound[1].transform.GetChild(0).GetComponent<TMP_Text>().text;
+                    }
+                    break;
+                case 5:
+                    //add visitor score
+                    secondRound[2].transform.GetChild(1).GetComponent<TMP_Text>().text = visitorScore.ToString();
+                    //add home score
+                    secondRound[3].transform.GetChild(1).GetComponent<TMP_Text>().text = homeScore.ToString();
+
+                    if (visitorScore > homeScore)
+                    {
+                        secondRound[2].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
+                        homeTeam.Add(homeTeam[5]);
+                        thirdRound[1].transform.GetChild(0).GetComponent<TMP_Text>().text = secondRound[2].transform.GetChild(0).GetComponent<TMP_Text>().text;
+                    }
+                    else
+                    {
+                        secondRound[3].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
+                        homeTeam.Add(visitorTeam[5]);
+                        thirdRound[1].transform.GetChild(0).GetComponent<TMP_Text>().text = secondRound[3].transform.GetChild(0).GetComponent<TMP_Text>().text;
+                    }
+                    break;
+                case 6:
+                    //add visitor score
+                    thirdRound[0].transform.GetChild(1).GetComponent<TMP_Text>().text = visitorScore.ToString();
+                    //add home score
+                    thirdRound[1].transform.GetChild(1).GetComponent<TMP_Text>().text = homeScore.ToString();
+
+                    if (visitorScore > homeScore)
+                    {
+                        thirdRound[0].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
+                        winner[0].transform.GetChild(0).GetComponent<TMP_Text>().text = thirdRound[0].transform.GetChild(0).GetComponent<TMP_Text>().text;
+                        winner[0].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
+                    }
+                    else
+                    {
+                        thirdRound[1].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
+                        winner[0].transform.GetChild(0).GetComponent<TMP_Text>().text = thirdRound[1].transform.GetChild(0).GetComponent<TMP_Text>().text;
+                        winner[0].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.yellow;
+                    }
+                    break;
+            }
+
+            playOffGameNumber++;
+
+            if (playOffGameNumber > 6)
+            {
+                nextGameButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "New Bracket";
+            }
+        }
     }
 }
