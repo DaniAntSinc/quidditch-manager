@@ -221,6 +221,8 @@ public class GameManager : MonoBehaviour
     public GameObject playoffMenu;
     public GameObject postPlayoffButton;
     bool playoffsAreActive;
+    public GameObject spotter4;
+    public GameObject[] playoffSnitchDuration;
 
     private void Start()
     {
@@ -1723,6 +1725,34 @@ public class GameManager : MonoBehaviour
             spotter2.transform.position = spotterTarget2[3].transform.position;
         }
     }
+
+    #region Playoff Snitch
+
+    public void PlayoffFastSnitch()
+    {
+        chasers.seekerTimeDuration = chasers.fastTime;
+        spotter4.transform.position = playoffSnitchDuration[0].transform.position;
+    }
+
+    public void PlayoffMediumTime()
+    {
+        chasers.seekerTimeDuration = chasers.mediumTime;
+        spotter4.transform.position = playoffSnitchDuration[1].transform.position;
+    }
+
+    public void PlayoffDefaultSnitch()
+    {
+        chasers.seekerTimeDuration = chasers.defaultTime;
+        spotter4.transform.position = playoffSnitchDuration[2].transform.position;
+    }
+
+    public void PlayoffLongSnitch()
+    {
+        chasers.seekerTimeDuration = chasers.longTime;
+        spotter4.transform.position = playoffSnitchDuration[3].transform.position;
+    }
+
+    #endregion
 
     public void TogglePlayoffPage()
     {
