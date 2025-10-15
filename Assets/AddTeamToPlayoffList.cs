@@ -14,6 +14,9 @@ public class AddTeamToPlayoffList : MonoBehaviour
 
     public void AddToPlayOffMenu()
     {
-        menu.AddTeamToList(currentTeam);
+        if (menu.teamsList.Count <= 7)
+            menu.AddTeamToList(currentTeam);
+        else
+            print("no more room");
     }
 }

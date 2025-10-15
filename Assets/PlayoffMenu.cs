@@ -11,6 +11,7 @@ public class PlayoffMenu : MonoBehaviour
     public List<SeasonTeam> teamsList;
     public List <SeasonTeam> visitorTeam, homeTeam;
     public GameObject undoButton, startButton;
+    public GameObject nextGameButton, teamScrollBox; 
 
     private void Start()
     {
@@ -46,5 +47,26 @@ public class PlayoffMenu : MonoBehaviour
             undoButton.SetActive(false);
         if (teamsList.Count <= 7)
             highlighter.transform.position = firstRound[teamsList.Count].transform.position;
+
+        startButton.SetActive(false);
+    }
+
+    public void StartPlayoffs()
+    {
+        teamScrollBox.SetActive(false);
+        nextGameButton.SetActive(true);
+        //set home and away matches / lineup
+        for (int i = 0; i < teamsList.Count; i++)
+        {
+            if (i % 2 == 0)
+                homeTeam.Add(teamsList[i]);
+            else
+                visitorTeam.Add(teamsList[i]);
+        }
+    }
+
+    public void PlayNextPlayoffGame()
+    {
+        print("do stuff to take player to main game");
     }
 }
