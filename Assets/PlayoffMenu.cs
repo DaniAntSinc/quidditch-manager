@@ -11,8 +11,10 @@ public class PlayoffMenu : MonoBehaviour
     public List<SeasonTeam> teamsList;
     public List <SeasonTeam> visitorTeam, homeTeam;
     public GameObject undoButton, startButton;
-    public GameObject nextGameButton, teamScrollBox; 
-
+    public GameObject nextGameButton, teamScrollBox;
+    public int playOffGameNumber;
+    public GameManager gameManager;
+    public GameObject teamSelection;
     private void Start()
     {
         highlighter.SetActive(true);
@@ -67,6 +69,17 @@ public class PlayoffMenu : MonoBehaviour
 
     public void PlayNextPlayoffGame()
     {
-        print("do stuff to take player to main game");
+        gameManager.NextPlayoffGame(visitorTeam[playOffGameNumber], homeTeam[playOffGameNumber]);
+        PlayoffMenuGO.SetActive(false);
+        teamSelection.SetActive(false);
+    }
+
+    public void UpdateStandings(int visitorScore, int homeScore)
+    {
+        //add text to visitor
+        //add text to home
+        //highlight winner
+        //advance winner to next bracket
+        playOffGameNumber++;
     }
 }

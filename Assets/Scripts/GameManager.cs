@@ -219,6 +219,8 @@ public class GameManager : MonoBehaviour
     int seasonChoiceSelectedForSim;
 
     public GameObject playoffMenu;
+    public GameObject postPlayoffButton;
+    bool playoffsAreActive;
 
     private void Start()
     {
@@ -591,6 +593,11 @@ public class GameManager : MonoBehaviour
                     nextGame.SetActive(false);
                     newGameButton.SetActive(true);
                 }
+            }
+            if (playoffsAreActive)
+            {
+                newGameButton.SetActive(false);
+                postPlayoffButton.SetActive(true);
             }
             else
             {
@@ -1474,6 +1481,13 @@ public class GameManager : MonoBehaviour
         spotter.SetActive(false);
     }
 
+    public void ReturnToPlayoffMenu()
+    {
+        playoffMenu.SetActive(true);
+        playoffMenu.GetComponent<PlayoffMenu>().UpdateStandings(team1Score, team2Score);
+        playoffsAreActive = false;
+    }
+
     public void SaveSeasonData()
     {
         if (hogwartsSeason)
@@ -1542,6 +1556,16 @@ public class GameManager : MonoBehaviour
 
         players.RandomWeather(seasonTeams[homeTeam].homeStadium);
         players.BeginMatch(seasonTeams[visitorTeam], seasonTeams[homeTeam], seasonTeams[homeTeam].homeStadium);
+    }
+
+    public void NextPlayoffGame(SeasonTeam visitor, SeasonTeam home)
+    {
+        playoffsAreActive = true;
+
+        ClearStats();
+
+        players.RandomWeather(home.homeStadium);
+        players.BeginMatch(visitor, home, home.homeStadium);
     }
     //turn button on correctly
     public void OpenManagementMenuAfterAGame()
