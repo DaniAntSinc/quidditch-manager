@@ -1665,6 +1665,14 @@ public class GameManager : MonoBehaviour
 
     public void ReturnFromSimMenu()
     {
+        //resetting the season menu after closing
+        seasonButtonMenu.SetActive(false);
+        exhibButton.SetActive(true);
+        seasonButton.SetActive(true);
+        playoffButton.SetActive(true);
+        seasonList.SetActive(false);
+        newLoadBundle.SetActive(false);
+
         simulationMenu.SetActive(true);
     }
 
