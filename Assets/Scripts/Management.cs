@@ -109,7 +109,6 @@ public class Management : MonoBehaviour
 
     public GameObject[] teamStrategies;
     public GameObject playoffButton;
-
     public void Start()
     {
         chaserHolderForReference = new List<Chaser>();
@@ -449,7 +448,7 @@ public class Management : MonoBehaviour
             newlyCreatedSeeker.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList = i;
             newlyCreatedSeeker.GetComponent<SignFreeAgent>().isSeeker = true;
         }
-    }
+}
 
     #region ToggleLineupsOnAndOffDuringFA
     public void CloseAllOtherLineUpWindows()

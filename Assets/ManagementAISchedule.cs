@@ -29,6 +29,8 @@ public class ManagementAISchedule : MonoBehaviour
 
     public GameObject playoffScreen, calendarScreen, managementHome, newLoad, teamCreation;
 
+    public TMP_Text homeName, visitorName, homeScoreText, visitorScoreText;
+
     public void Update()
     {
        if(Input.GetKeyDown(KeyCode.S))
@@ -119,6 +121,12 @@ public class ManagementAISchedule : MonoBehaviour
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveAIGameOpponents(
              teams[visitor[dayOfSeason]].team, teams[visitor[dayOfSeason]].win, teams[visitor[dayOfSeason]].loss, teams[visitor[dayOfSeason]].score,
              teams[home[dayOfSeason]].team, teams[home[dayOfSeason]].win, teams[home[dayOfSeason]].loss, teams[home[dayOfSeason]].score);
+
+        visitorName.text = teams[visitor[dayOfSeason]].team;
+        homeName.text = teams[home[dayOfSeason]].team;
+
+        visitorScoreText.text = visitorScore.ToString();
+        homeScoreText.text = homeScore.ToString();
     }
 
     public void UpdateStandings()

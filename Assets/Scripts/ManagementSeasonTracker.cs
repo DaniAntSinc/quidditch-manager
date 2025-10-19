@@ -36,6 +36,8 @@ public class ManagementSeasonTracker : MonoBehaviour
 
     public List<GameObject> allStadiumImprovments;
 
+    public GameObject news, freeAgentText;
+
     #region FreeAgents
     public GameObject chasersFAMenu, beatersFAMenu, keepersFAMenu, seekersFAMenu;
     public GameObject chaserPlayers, beaterPlayers, keeperPlayers, seekerPlayers;
@@ -130,6 +132,13 @@ public class ManagementSeasonTracker : MonoBehaviour
         {
             print("Update free agent list");
             GameObject.Find("Management").GetComponent<Management>().UpdateFreeAgentList();
+
+            news.SetActive(true);
+            freeAgentText.SetActive(true);
+        }
+        else {
+            news.SetActive(false);
+            freeAgentText.SetActive(false);
         }
     }
 
