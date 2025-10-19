@@ -27,7 +27,7 @@ public class Chaser : Player
 
     public int proRatedSalary;
 
-    public float stamina = 1;
+    public float stamina = 100;
     public void CalculateSalary()
     {
         {

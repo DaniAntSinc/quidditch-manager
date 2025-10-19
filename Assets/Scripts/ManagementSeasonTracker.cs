@@ -451,7 +451,7 @@ public class ManagementSeasonTracker : MonoBehaviour
                 newlyCreatedChaser.transform.GetChild(6).GetComponent<TMP_Text>().text =  GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().tackle.ToString();
                 newlyCreatedChaser.transform.GetChild(7).GetComponent<TMP_Text>().text =  GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().age.ToString();
                 newlyCreatedChaser.transform.GetChild(8).GetComponent<TMP_Text>().text =  GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().salary.ToString("n2");
-
+                GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Chaser>().stamina = 100;
                 newlyCreatedChaser.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList = i;
                 newlyCreatedChaser.GetComponent<SignFreeAgent>().isChaser = true;
             }
@@ -479,7 +479,7 @@ public class ManagementSeasonTracker : MonoBehaviour
                 newlyCreatedBeater.transform.GetChild(3).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>().dodge.ToString();
                 newlyCreatedBeater.transform.GetChild(4).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>().age.ToString();
                 newlyCreatedBeater.transform.GetChild(5).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>().salary.ToString("n2");
-
+                GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Beater>().stamina = 100;
                 newlyCreatedBeater.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList = i;
                 newlyCreatedBeater.GetComponent<SignFreeAgent>().isBeater = true;
             }
@@ -510,7 +510,7 @@ public class ManagementSeasonTracker : MonoBehaviour
                 newlyCreatedSeeker.transform.GetChild(6).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().dodge.ToString();
                 newlyCreatedSeeker.transform.GetChild(7).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().age.ToString();
                 newlyCreatedSeeker.transform.GetChild(8).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().salary.ToString("n2");
-
+                GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Seeker>().stamina = 100;
                 newlyCreatedSeeker.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList = i;
                 newlyCreatedSeeker.GetComponent<SignFreeAgent>().isSeeker = true;
             }
@@ -538,7 +538,7 @@ public class ManagementSeasonTracker : MonoBehaviour
                 newlyCreatedKeeper.transform.GetChild(3).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>().dodge.ToString();
                 newlyCreatedKeeper.transform.GetChild(4).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>().age.ToString();
                 newlyCreatedKeeper.transform.GetChild(5).GetComponent<TMP_Text>().text = GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>().salary.ToString("n2");
-
+                GameObject.Find("freeagents").transform.GetChild(i).GetComponent<Keeper>().stamina = 100;
                 newlyCreatedKeeper.GetComponent<SignFreeAgent>().playerNumberFromFreeAgentList = i;
                 newlyCreatedKeeper.GetComponent<SignFreeAgent>().isKeeper = true;
             }
