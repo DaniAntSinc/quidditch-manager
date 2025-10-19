@@ -224,6 +224,11 @@ public class GameManager : MonoBehaviour
     public GameObject spotter4;
     public GameObject[] playoffSnitchDuration;
 
+    //Season Auto Advance
+    bool autoGameAdvanceFireOnce;
+    public bool AutoAdvanceSeasonIsActive;
+    public GameObject seasonAutoAdvanceContainer, toggleOffSpot, toggleOnSpot, autoToggle;
+    public TMP_Text onOffAuto;
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -426,6 +431,12 @@ public class GameManager : MonoBehaviour
         team1Name.text = players.team1;
         team2Name.text = players.team2;
         StartCoroutine(WaitForKickOff());
+        if (hogwartsSeason || britishIslesSeason || worldCupSeason)
+        {
+            seasonAutoAdvanceContainer.SetActive(true);
+        }
+        else
+            seasonAutoAdvanceContainer.SetActive(false);
     }
 
     private void Update()
@@ -524,6 +535,11 @@ public class GameManager : MonoBehaviour
                     newGameButton.SetActive(false);
                     print("absolute");
                     UpdateHogwartsStandingsUI();
+                    if (autoGameAdvanceFireOnce && AutoAdvanceSeasonIsActive)
+                    {
+                        autoGameAdvanceFireOnce = false;
+                        StartCoroutine("DelayForAuto");
+                    }
                 }
                 else
                 {
@@ -543,6 +559,11 @@ public class GameManager : MonoBehaviour
                     nextGame.SetActive(true);
                     newGameButton.SetActive(false);
                     UpdateBritishIslesStandingsUI();
+                    if (autoGameAdvanceFireOnce && AutoAdvanceSeasonIsActive)
+                    {
+                        autoGameAdvanceFireOnce = false;
+                        StartCoroutine("DelayForAuto");
+                    }
                 }
                 else if (seasonGameCount <= 11)
                 {
@@ -553,6 +574,11 @@ public class GameManager : MonoBehaviour
                     newGameButton.SetActive(false);
                     OpenStats();
                     TurnOnStandings();
+                    if (autoGameAdvanceFireOnce && AutoAdvanceSeasonIsActive)
+                    {
+                        autoGameAdvanceFireOnce = false;
+                        StartCoroutine("DelayForAuto");
+                    }
                 }
                 else
                 {
@@ -572,6 +598,11 @@ public class GameManager : MonoBehaviour
                     nextGame.SetActive(true);
                     newGameButton.SetActive(false);
                     UpdateWorldCupStandingsUI();
+                    if (autoGameAdvanceFireOnce && AutoAdvanceSeasonIsActive)
+                    {
+                        autoGameAdvanceFireOnce = false;
+                        StartCoroutine("DelayForAuto");
+                    }
                 }
                 else if (seasonGameCount == 83 || seasonGameCount == 84 || seasonGameCount == 85)
                 {
@@ -1527,6 +1558,26 @@ public class GameManager : MonoBehaviour
         NextSeasonGame();
     }
 
+    public void ToggleAutoNextSeasonGame()
+    {
+        AutoAdvanceSeasonIsActive = !AutoAdvanceSeasonIsActive;
+
+        if (AutoAdvanceSeasonIsActive)
+        {
+            onOffAuto.text = "ON";
+            autoToggle.transform.SetParent(toggleOnSpot.transform);
+            autoToggle.transform.localPosition = new Vector3(0, 0, 0);
+            autoGameAdvanceFireOnce = true;
+        }
+
+        else
+        {
+            onOffAuto.text = "OFF";
+            autoToggle.transform.SetParent(toggleOffSpot.transform);
+            autoToggle.transform.localPosition = new Vector3(0, 0, 0);
+        }
+}
+
     public void NextSeasonGame()
     {
         if (hogwartsSeason || britishIslesSeason || worldCupSeason)
@@ -2278,6 +2329,13 @@ public class GameManager : MonoBehaviour
     public void OpenAdrian()
     { 
         Application.OpenURL("https://adrianrosario.net/");
+    }
+
+    IEnumerator DelayForAuto()
+    {
+        yield return new WaitForSeconds(3);
+        NextSeasonGame();
+        autoGameAdvanceFireOnce = true;
     }
 }
 
