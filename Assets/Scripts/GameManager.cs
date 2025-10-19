@@ -1731,6 +1731,8 @@ public class GameManager : MonoBehaviour
     public void Simulation()
     {
         simulationMenu.SetActive(false);
+        managementMenu.SetActive(false);
+        exhibSeasonMenu.SetActive(true);
     }
 
     public void ReturnFromSimMenu()
