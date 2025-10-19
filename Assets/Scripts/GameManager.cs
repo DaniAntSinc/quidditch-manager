@@ -540,6 +540,7 @@ public class GameManager : MonoBehaviour
                         autoGameAdvanceFireOnce = false;
                         StartCoroutine("DelayForAuto");
                     }
+                   
                 }
                 else
                 {
@@ -549,6 +550,9 @@ public class GameManager : MonoBehaviour
                     TurnOnStandings();
                     nextGame.SetActive(false);
                     newGameButton.SetActive(true);
+                    seasonAutoAdvanceContainer.SetActive(false);
+                    AutoAdvanceSeasonIsActive = false;
+                    nextGame.GetComponent<Button>().interactable = true;
                 }
             }
             else if (britishIslesSeason)
@@ -588,6 +592,9 @@ public class GameManager : MonoBehaviour
                     TurnOnStandings();
                     nextGame.SetActive(false);
                     newGameButton.SetActive(true);
+                    seasonAutoAdvanceContainer.SetActive(false);
+                    AutoAdvanceSeasonIsActive = false;
+                    nextGame.GetComponent<Button>().interactable = true;
                 }
             }
             else if(worldCupSeason)
@@ -614,6 +621,9 @@ public class GameManager : MonoBehaviour
                     newGameButton.SetActive(false);
                     OpenStats();
                     TurnOnStandings();
+                    seasonAutoAdvanceContainer.SetActive(false);
+                    AutoAdvanceSeasonIsActive = false;
+                    nextGame.GetComponent<Button>().interactable = true;
                 }
                 else
                 {
@@ -625,6 +635,9 @@ public class GameManager : MonoBehaviour
                     TurnOnStandings();
                     nextGame.SetActive(false);
                     newGameButton.SetActive(true);
+                    seasonAutoAdvanceContainer.SetActive(false);
+                    AutoAdvanceSeasonIsActive = false;
+                    nextGame.GetComponent<Button>().interactable = true;
                 }
             }
             if (playoffsAreActive)
@@ -632,11 +645,11 @@ public class GameManager : MonoBehaviour
                 newGameButton.SetActive(false);
                 postPlayoffButton.SetActive(true);
             }
-            else
+           /* else
             {
                 nextGame.SetActive(false);
                 newGameButton.SetActive(true);
-            }
+            }*/
 
             matchStatsButton.SetActive(true);
             matchStarted = false;
@@ -1460,6 +1473,7 @@ public class GameManager : MonoBehaviour
 
         NextSeasonGame();
         teamsUI.SetActive(false);
+        playoffMenu.SetActive(false);
         exhibSeasonMenu.SetActive(false);
     }
 
@@ -1481,7 +1495,7 @@ public class GameManager : MonoBehaviour
 
     public void SeasonBegin()
     {
-       // seasonGameCount = 79;
+        // seasonGameCount = 79;
         seasonGameCount = 0;
 
         for (int i = 0; i < seasonTeams.Length; i++)
@@ -1506,6 +1520,7 @@ public class GameManager : MonoBehaviour
             homeTeam = worldCupHomeSchedule[0];
         }
         teamsUI.SetActive(false);
+        playoffMenu.SetActive(false);
         exhibSeasonMenu.SetActive(false);
 
         players.RandomWeather(seasonTeams[homeTeam].homeStadium);
@@ -1568,6 +1583,7 @@ public class GameManager : MonoBehaviour
             autoToggle.transform.SetParent(toggleOnSpot.transform);
             autoToggle.transform.localPosition = new Vector3(0, 0, 0);
             autoGameAdvanceFireOnce = true;
+            nextGame.GetComponent<Button>().interactable = false;
         }
 
         else
@@ -1575,6 +1591,7 @@ public class GameManager : MonoBehaviour
             onOffAuto.text = "OFF";
             autoToggle.transform.SetParent(toggleOffSpot.transform);
             autoToggle.transform.localPosition = new Vector3(0, 0, 0);
+            nextGame.GetComponent<Button>().interactable = true;
         }
 }
 
