@@ -37,6 +37,7 @@ public class ManagementSeasonTracker : MonoBehaviour
     public List<GameObject> allStadiumImprovments;
 
     public GameObject news, freeAgentText;
+    public GameObject playoffMode;
 
     #region FreeAgents
     public GameObject chasersFAMenu, beatersFAMenu, keepersFAMenu, seekersFAMenu;
@@ -267,6 +268,7 @@ public class ManagementSeasonTracker : MonoBehaviour
         managementMenu.SetActive(false);
         ExhibOrSeason.SetActive(false);
         TeamSelection.SetActive(false);
+        playoffMode.SetActive(false);
         startingMenu.SetActive(true);
         matchPreviewMenu.SetActive(false);
         CalculateGameRevenue(teamsInLeague[visitorTeams[placeInList - 1]], teamsInLeague[homeTeams[placeInList - 1]], teamsInLeague[homeTeams[placeInList - 1]].homeStadium);
