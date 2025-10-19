@@ -516,6 +516,11 @@ public class GameManager : MonoBehaviour
                 }
             }
             winnerChosen = true;
+            if (playoffsAreActive)
+            {
+                newGameButton.SetActive(false);
+                postPlayoffButton.SetActive(true);
+            }
             if (managementMode)
             { 
                 managementPostGameButton.SetActive(true);
@@ -640,16 +645,12 @@ public class GameManager : MonoBehaviour
                     nextGame.GetComponent<Button>().interactable = true;
                 }
             }
-            if (playoffsAreActive)
-            {
-                newGameButton.SetActive(false);
-                postPlayoffButton.SetActive(true);
-            }
-           /* else
+
+           else
             {
                 nextGame.SetActive(false);
                 newGameButton.SetActive(true);
-            }*/
+            }
 
             matchStatsButton.SetActive(true);
             matchStarted = false;
@@ -1282,6 +1283,7 @@ public class GameManager : MonoBehaviour
     {
         exhibSeasonMenu.SetActive(false);
 
+        playoffMenu.SetActive(false);
         hogwartsSeason = false;
         britishIslesSeason = false;
         worldCupSeason = false;
