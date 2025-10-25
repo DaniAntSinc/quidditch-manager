@@ -261,7 +261,7 @@ public class Beaters : MonoBehaviour
                         Keeper1Stunned(bludgerWhoSentIt);
                         break;
                     case 6:
-                        StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at -" + players.team1Seeker, (0.5f * gameManager.gameSpeedMultiplier)));
+                        StartCoroutine(waitForUpdate(players.team2Beaters[bludgerWhoSentIt] + " sends a Bludger at " + players.team1Seeker, (0.5f * gameManager.gameSpeedMultiplier)));
                         Seeker1Stunned(bludgerWhoSentIt);
                         break;
                     default:
