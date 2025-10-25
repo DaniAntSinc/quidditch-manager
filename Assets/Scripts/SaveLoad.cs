@@ -80,7 +80,6 @@ public class SaveLoad : MonoBehaviour
     {
         teamCreated = false;
         PlayerPrefs.DeleteAll();
-        print("here");
         teamNameCreated = 0;
         teamLineupCreated = 0;
         teamLogoCreated = 0;

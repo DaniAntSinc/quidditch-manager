@@ -18,7 +18,7 @@ public class Keepers : MonoBehaviour
         if (keeper1Stunned)
         {
             gameManager.visitorKeepericon.SetActive(false);
-            keeper1cooldown -= Time.deltaTime;
+            keeper1cooldown -= Time.deltaTime * gameManager.gameSpeedMultiplier;
             if (keeper1cooldown <= 0)
             {
                 keeper1cooldown = Random.Range(8, 15);
@@ -29,7 +29,7 @@ public class Keepers : MonoBehaviour
         if (keeper2Stunned)
         {
             gameManager.homeKeepericon.SetActive(false);
-            keeper2cooldown -= Time.deltaTime;
+            keeper2cooldown -= Time.deltaTime * gameManager.gameSpeedMultiplier;
             if (keeper2cooldown <= 0)
             {
                 keeper2cooldown = Random.Range(8, 15);

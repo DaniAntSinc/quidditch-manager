@@ -41,6 +41,8 @@ public class Chasers : MonoBehaviour
 
     public GameObject Q1, Q2;
 
+    float avgseekerTime;
+
     private void Start()
     {
         gameManager = GameObject.Find("Main Camera").GetComponent<GameManager>();
@@ -58,7 +60,7 @@ public class Chasers : MonoBehaviour
         {
             if (quaffleHeld)
             {
-                oneSecondCountdown -= Time.deltaTime;
+                oneSecondCountdown -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                 if (oneSecondCountdown <= 0)
                 {
                     UpdateFieldAdvancement();
@@ -67,11 +69,11 @@ public class Chasers : MonoBehaviour
             }
             if (toggleMessageCooldown)
             {
-                locationMessageCooldown -= Time.deltaTime;
+                locationMessageCooldown -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                 if (locationMessageCooldown <= 0)
                 {
                     toggleMessageCooldown = false;
-                    locationMessageCooldown = 3;
+                    locationMessageCooldown = 3 * gameManager.gameSpeedMultiplier;
                     shotTaken = false;
                 }
             }
@@ -79,7 +81,7 @@ public class Chasers : MonoBehaviour
             if (team1Chaser1Stunned)
             {
                 gameManager.visitorChaser1icon.SetActive(false);
-                team1Chaser1Cooldown -= Time.deltaTime;
+                team1Chaser1Cooldown -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                 if (team1Chaser1Cooldown <= 0)
                 {
                     team1Chaser1Cooldown = Random.Range(5, 15);
@@ -92,7 +94,7 @@ public class Chasers : MonoBehaviour
             if (team1Chaser2Stunned)
             {
                 gameManager.visitorChaser2icon.SetActive(false);
-                team1Chaser2Cooldown -= Time.deltaTime;
+                team1Chaser2Cooldown -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                 if (team1Chaser2Cooldown <= 0)
                 {
                     team1Chaser2Cooldown = Random.Range(5, 15);
@@ -105,7 +107,7 @@ public class Chasers : MonoBehaviour
             if (team1Chaser3Stunned)
             {
                 gameManager.visitorChaser3icon.SetActive(false);
-                team1Chaser3Cooldown -= Time.deltaTime;
+                team1Chaser3Cooldown -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                 if (team1Chaser3Cooldown <= 0)
                 {
                     team1Chaser3Cooldown = Random.Range(5, 15);
@@ -118,7 +120,7 @@ public class Chasers : MonoBehaviour
             if (team2Chaser1Stunned)
             {
                 gameManager.homeChaser1icon.SetActive(false);
-                team2Chaser1Cooldown -= Time.deltaTime;
+                team2Chaser1Cooldown -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                 if (team2Chaser1Cooldown <= 0)
                 {
                     team2Chaser1Cooldown = Random.Range(5, 15);
@@ -131,7 +133,7 @@ public class Chasers : MonoBehaviour
             if (team2Chaser2Stunned)
             {
                 gameManager.homeChaser2icon.SetActive(false);
-                team2Chaser2Cooldown -= Time.deltaTime;
+                team2Chaser2Cooldown -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                 if (team2Chaser2Cooldown <= 0)
                 {
                     team2Chaser2Cooldown = Random.Range(5, 15);
@@ -144,7 +146,7 @@ public class Chasers : MonoBehaviour
             if (team2Chaser3Stunned)
             {
                 gameManager.homeChaser3icon.SetActive(false);
-                team2Chaser3Cooldown -= Time.deltaTime;
+                team2Chaser3Cooldown -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                 if (team2Chaser3Cooldown <= 0)
                 {
                     team2Chaser3Cooldown = Random.Range(5, 15);
@@ -222,7 +224,7 @@ public class Chasers : MonoBehaviour
             int whichSeeker1 = Random.Range(0, 1); 
             int whichSeeker2 = Random.Range(0, 1); 
             int whichSeeker3 = Random.Range(0, 1); 
-            float avgseekerTime = (seekerTime1[whichSeeker1] + seekerTime2[whichSeeker2] + seekerTime3[whichSeeker3]) / 3;
+            avgseekerTime = (seekerTime1[whichSeeker1] + seekerTime2[whichSeeker2] + seekerTime3[whichSeeker3]) / 3;
             print(seekerTime1[whichSeeker1] + " " + seekerTime2[whichSeeker2] + " " + seekerTime3[whichSeeker3]);
             print(avgseekerTime);
             StartCoroutine(StartSeeker(avgseekerTime));
@@ -235,7 +237,7 @@ public class Chasers : MonoBehaviour
             int whichSeeker1 = Random.Range(0, seekerTimeDuration);
             int whichSeeker2 = Random.Range(1, seekerTimeDuration);
             int whichSeeker3 = Random.Range(1, seekerTimeDuration);
-            float avgseekerTime = (seekerTime1[whichSeeker1] + seekerTime2[whichSeeker2] + seekerTime3[whichSeeker3]) / 3;
+            avgseekerTime = (seekerTime1[whichSeeker1] + seekerTime2[whichSeeker2] + seekerTime3[whichSeeker3]) / 3;
             print(seekerTime1[whichSeeker1] + " " + seekerTime2[whichSeeker2] + " " + seekerTime3[whichSeeker3] + " = Average time of: " + avgseekerTime + " until snitch is seen");
             StartCoroutine(StartSeeker(avgseekerTime));
         }
@@ -270,7 +272,7 @@ public class Chasers : MonoBehaviour
                     int PassChance = Random.Range(0, 100);
                     if (PassChance < players.team1ChasersPass[placementInList])
                     {
-                        StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " passes the Quaffle! ", 0.5f));
+                        StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " passes the Quaffle! ", (0.5f * gameManager.gameSpeedMultiplier)));
                         switch (placementInList)
                         {
                             case 0:
@@ -329,7 +331,7 @@ public class Chasers : MonoBehaviour
                             if (choosingRandomPassingChance > (passingChance - players.team2ChasersIntercept[teamTwoChaser]))
                             {
                                 //pass intercepted
-                                StartCoroutine(waitForUpdate(players.team2ChasersNames[teamTwoChaser] + " intercepted the pass! ", 0.5f));
+                                StartCoroutine(waitForUpdate(players.team2ChasersNames[teamTwoChaser] + " intercepted the pass! ", (0.5f * gameManager.gameSpeedMultiplier)));
                                 gameManager.team1HasPossession = false;
                                 gameManager.pitchLocation = 100 - gameManager.pitchLocation;
                                 placementInList = teamTwoChaser;
@@ -344,7 +346,7 @@ public class Chasers : MonoBehaviour
                             else
                             {
                                 //pass completed
-                                StartCoroutine(waitForUpdate(players.team1ChasersNames[tempPassingTarget] + " catches the Quaffle! ", 0.5f));
+                                StartCoroutine(waitForUpdate(players.team1ChasersNames[tempPassingTarget] + " catches the Quaffle! ", (0.5f * gameManager.gameSpeedMultiplier)));
                                 gameManager.pitchLocation += Random.Range(-5, 15);
                                 placementInList = tempPassingTarget;
                                 players.quaffleHolder = players.team1ChasersNames[placementInList];
@@ -368,7 +370,7 @@ public class Chasers : MonoBehaviour
                     int PassChance = Random.Range(0, 100);
                     if (PassChance < players.team2ChasersPass[placementInList])
                     {
-                        StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " passes the Quaffle! ", 0.5f));
+                        StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " passes the Quaffle! ", (0.5f * gameManager.gameSpeedMultiplier)));
                         switch (placementInList)
                         {
                             case 0:
@@ -426,7 +428,7 @@ public class Chasers : MonoBehaviour
                             if (choosingRandomPassingChance > (passingChance - players.team1ChasersIntercept[teamOneChaser]))
                             {
                                 //pass intercepted
-                                StartCoroutine(waitForUpdate(players.team1ChasersNames[teamOneChaser] + " intercepted the pass! ", 0.5f));
+                                StartCoroutine(waitForUpdate(players.team1ChasersNames[teamOneChaser] + " intercepted the pass! ", (0.5f * gameManager.gameSpeedMultiplier)));
                                 gameManager.team1HasPossession = true;
                                 gameManager.pitchLocation = 100 - gameManager.pitchLocation;
                                 placementInList = teamOneChaser;
@@ -441,7 +443,7 @@ public class Chasers : MonoBehaviour
                             else
                             {
                                 //pass completed
-                                StartCoroutine(waitForUpdate(players.team2ChasersNames[tempPassingTarget] + " catches the Quaffle! ", 0.5f));
+                                StartCoroutine(waitForUpdate(players.team2ChasersNames[tempPassingTarget] + " catches the Quaffle! ", (0.5f * gameManager.gameSpeedMultiplier)));
                                 gameManager.pitchLocation += Random.Range(-5, 15);
                                 placementInList = tempPassingTarget;
                                 players.quaffleHolder = players.team2ChasersNames[placementInList];
@@ -483,9 +485,9 @@ public class Chasers : MonoBehaviour
                 else
                 {
                     //tackle
-                    StartCoroutine(waitForUpdate(players.team2ChasersNames[RandomTeam2Chaser] + " tackles " + players.team1ChasersNames[placementInList] + " knocking the Quaffle loose!", 0.5f));
+                    StartCoroutine(waitForUpdate(players.team2ChasersNames[RandomTeam2Chaser] + " tackles " + players.team1ChasersNames[placementInList] + " knocking the Quaffle loose!", (0.5f * gameManager.gameSpeedMultiplier)));
                     int RandomTeam2ChaserPickUp = Random.Range(0, players.team2ChasersNames.Length);
-                    StartCoroutine(waitForUpdate(players.team2ChasersNames[RandomTeam2ChaserPickUp] + " picks it up!", 0.5f));
+                    StartCoroutine(waitForUpdate(players.team2ChasersNames[RandomTeam2ChaserPickUp] + " picks it up!", (0.5f * gameManager.gameSpeedMultiplier)));
                     gameManager.team1HasPossession = false;
                     gameManager.pitchLocation = 100 - gameManager.pitchLocation;
                     placementInList = RandomTeam2ChaserPickUp;
@@ -516,9 +518,9 @@ public class Chasers : MonoBehaviour
                 else
                 {
                     //tackle
-                    StartCoroutine(waitForUpdate(players.team1ChasersNames[RandomTeam1Chaser] + " tackles " + players.team2ChasersNames[placementInList] + " knocking the Quaffle loose!", 0.5f));
+                    StartCoroutine(waitForUpdate(players.team1ChasersNames[RandomTeam1Chaser] + " tackles " + players.team2ChasersNames[placementInList] + " knocking the Quaffle loose!", (0.5f * gameManager.gameSpeedMultiplier)));
                     int RandomTeam1ChaserPickUp = Random.Range(0, players.team1ChasersNames.Length);
-                    StartCoroutine(waitForUpdate(players.team1ChasersNames[RandomTeam1ChaserPickUp] + " picks it up!", 0.5f));
+                    StartCoroutine(waitForUpdate(players.team1ChasersNames[RandomTeam1ChaserPickUp] + " picks it up!", (0.5f * gameManager.gameSpeedMultiplier)));
                     gameManager.team1HasPossession = true;
                     gameManager.pitchLocation = 100 - gameManager.pitchLocation;
                     placementInList = RandomTeam1ChaserPickUp;
@@ -545,24 +547,24 @@ public class Chasers : MonoBehaviour
     void UpdateFieldAdvancement()
     {
         if(gameManager.team1HasPossession)
-            movementPerSecond = players.team1ChaserSpeed[placementInList] / 10;
+            movementPerSecond = (players.team1ChaserSpeed[placementInList] * gameManager.gameSpeedMultiplier) / 10;
 
         else
-            movementPerSecond = players.team2ChaserSpeed[placementInList] / 10;
+            movementPerSecond = (players.team2ChaserSpeed[placementInList] * gameManager.gameSpeedMultiplier) / 10;
 
         gameManager.pitchLocation += movementPerSecond;
 
         if (gameManager.pitchLocation > 90)
         {
             if(!toggleMessageCooldown)
-                StartCoroutine(waitForUpdate(players.quaffleHolder + " is near the hoops!", 0.5f));
+                StartCoroutine(waitForUpdate(players.quaffleHolder + " is near the hoops!", (0.5f * gameManager.gameSpeedMultiplier)));
             toggleMessageCooldown = true;
         }
 
         else if (gameManager.pitchLocation > 75 && gameManager.pitchLocation < 80)
         {
             if (!toggleMessageCooldown)
-                StartCoroutine(waitForUpdate(players.quaffleHolder + " is making progress up field!", 0.5f));
+                StartCoroutine(waitForUpdate(players.quaffleHolder + " is making progress up field!", (0.5f * gameManager.gameSpeedMultiplier)));
             float RandomCheckForTackle = Random.Range(0, 1);
             if (RandomCheckForTackle < .1f)
                 CheckForTackle();
@@ -571,7 +573,7 @@ public class Chasers : MonoBehaviour
         else if (gameManager.pitchLocation > 45f && gameManager.pitchLocation < 55f)
         {
             if (!toggleMessageCooldown)
-                StartCoroutine(waitForUpdate(players.quaffleHolder + " is in midfield!", 0.5f));
+                StartCoroutine(waitForUpdate(players.quaffleHolder + " is in midfield!", (0.5f * gameManager.gameSpeedMultiplier)));
             float RandomCheckForTackle = Random.Range(0, 1);
             if (RandomCheckForTackle < .2)
                 CheckForTackle();
@@ -580,7 +582,7 @@ public class Chasers : MonoBehaviour
         else if (gameManager.pitchLocation > 25 && gameManager.pitchLocation < 30)
         {
             if (!toggleMessageCooldown)
-                StartCoroutine(waitForUpdate(players.quaffleHolder + " is making progress up field!", 0.5f));
+                StartCoroutine(waitForUpdate(players.quaffleHolder + " is making progress up field!", (0.5f * gameManager.gameSpeedMultiplier)));
             float RandomCheckForTackle = Random.Range(0, 1);
             if (RandomCheckForTackle < .3f)
                 CheckForTackle();
@@ -589,7 +591,7 @@ public class Chasers : MonoBehaviour
         else if (gameManager.pitchLocation > 10 && gameManager.pitchLocation < 15)
         {
             if (!toggleMessageCooldown)
-                StartCoroutine(waitForUpdate(players.quaffleHolder + " is deep in their own territory!", 0.5f));
+                StartCoroutine(waitForUpdate(players.quaffleHolder + " is deep in their own territory!", (0.5f * gameManager.gameSpeedMultiplier)));
             float RandomCheckForTackle = Random.Range(0, 1);
             if (RandomCheckForTackle < .5f)
                 CheckForTackle();
@@ -617,13 +619,13 @@ public class Chasers : MonoBehaviour
                     switch (hoopAimedAt)
                     {
                         case 0:
-                            StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the left hoop, but it is blocked by " + players.team2Keeper, 0.5f));
+                            StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the left hoop, but it is blocked by " + players.team2Keeper, (0.5f * gameManager.gameSpeedMultiplier)));
                             break;
                         case 1:
-                            StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the middle hoop, but it is blocked by " + players.team2Keeper, 0.5f));
+                            StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the middle hoop, but it is blocked by " + players.team2Keeper, (0.5f * gameManager.gameSpeedMultiplier)));
                             break;
                         case 2:
-                            StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the right hoop, but it is blocked by " + players.team2Keeper, 0.5f));
+                            StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the right hoop, but it is blocked by " + players.team2Keeper, (0.5f * gameManager.gameSpeedMultiplier)));
                             break;
                         default:
                             print("Exceeded hoop limit, you shouldn't be here");
@@ -648,13 +650,13 @@ public class Chasers : MonoBehaviour
                     switch (hoopAimedAt)
                     {
                         case 0:
-                            StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the left hoop, but it is blocked by " + players.team1Keeper, 0.5f));
+                            StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the left hoop, but it is blocked by " + players.team1Keeper, (0.5f * gameManager.gameSpeedMultiplier)));
                             break;
                         case 1:
-                            StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the middle hoop, but it is blocked by " + players.team1Keeper, 0.5f));
+                            StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the middle hoop, but it is blocked by " + players.team1Keeper, (0.5f * gameManager.gameSpeedMultiplier)));
                             break;
                         case 2:
-                            StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the right hoop, but it is blocked by " + players.team1Keeper, 0.5f));
+                            StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the right hoop, but it is blocked by " + players.team1Keeper, (0.5f * gameManager.gameSpeedMultiplier)));
                             break;
                         default:
                             print("Exceeded hoop limit, you shouldn't be here");
@@ -677,7 +679,7 @@ public class Chasers : MonoBehaviour
         {
             if (keepers.keeper2Stunned)
             {
-                StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the empty hoop and scores!", 0.5f));
+                StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the empty hoop and scores!", (0.5f * gameManager.gameSpeedMultiplier)));
 
             }
             else
@@ -686,13 +688,13 @@ public class Chasers : MonoBehaviour
                 switch (hoopAimedAt)
                 {
                     case 0:
-                        StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the left hoop, and scores!", 0.5f));
+                        StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the left hoop, and scores!", (0.5f * gameManager.gameSpeedMultiplier)));
                         break;
                     case 1:
-                        StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the middle hoop, and scores!", 0.5f));
+                        StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the middle hoop, and scores!", (0.5f * gameManager.gameSpeedMultiplier)));
                         break;
                     case 2:
-                        StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the right hoop, and scores!", 0.5f));
+                        StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " shoots at the right hoop, and scores!", (0.5f * gameManager.gameSpeedMultiplier)));
                         break;
                     default:
                         print("Exceeded hoop limit, you shouldn't be here");
@@ -702,27 +704,27 @@ public class Chasers : MonoBehaviour
             quaffleHeld = false;
             gameManager.team1Score += goal;
             UpdateMomentum();
-            StartCoroutine(waitForUpdate(players.team1 + ": " + gameManager.team1Score + " to " + players.team2 + ": " + gameManager.team2Score, .5f));
+            StartCoroutine(waitForUpdate(players.team1 + ": " + gameManager.team1Score + " to " + players.team2 + ": " + gameManager.team2Score, (0.5f * gameManager.gameSpeedMultiplier)));
 
             KeeperReturnsVolley();
         }
         else
         {
             if (keepers.keeper1Stunned)
-                StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the empty hoop and scores!", 0.5f));
+                StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the empty hoop and scores!", (0.5f * gameManager.gameSpeedMultiplier)));
             else
             {
                 int hoopAimedAt = Random.Range(0, 3);
                 switch (hoopAimedAt)
                 {
                     case 0:
-                        StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the left hoop, and scores!", 0.5f));
+                        StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the left hoop, and scores!", (0.5f * gameManager.gameSpeedMultiplier)));
                         break;
                     case 1:
-                        StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the middle hoop, and scores!", 0.5f));
+                        StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the middle hoop, and scores!", (0.5f * gameManager.gameSpeedMultiplier)));
                         break;
                     case 2:
-                        StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the right hoop, and scores!", 0.5f));
+                        StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " shoots at the right hoop, and scores!", (0.5f * gameManager.gameSpeedMultiplier)));
                         break;
                     default:
                         print("Exceeded hoop limit, you shouldn't be here");
@@ -732,7 +734,7 @@ public class Chasers : MonoBehaviour
             quaffleHeld = false;
             gameManager.team2Score += goal;
             UpdateMomentum();
-            StartCoroutine(waitForUpdate(players.team1 + ": " + gameManager.team1Score + " to " + players.team2 + ": " + gameManager.team2Score, .5f));           
+            StartCoroutine(waitForUpdate(players.team1 + ": " + gameManager.team1Score + " to " + players.team2 + ": " + gameManager.team2Score, (0.5f * gameManager.gameSpeedMultiplier)));           
 
             KeeperReturnsVolley();
         }
@@ -752,7 +754,7 @@ public class Chasers : MonoBehaviour
             placementInList = RandomTeam2Chaser;
             players.quaffleHolder = players.team2ChasersNames[placementInList];
 
-            StartCoroutine(waitForUpdate(players.team2Keeper + " inbounds the Quaffle to " + players.team2ChasersNames[placementInList], 0.5f));
+            StartCoroutine(waitForUpdate(players.team2Keeper + " inbounds the Quaffle to " + players.team2ChasersNames[placementInList], (0.5f * gameManager.gameSpeedMultiplier)));
             gameManager.pitchLocation += Random.Range(15, 30);
             gameManager.team1HasPossession = false;
             quaffleHeld = true;
@@ -764,7 +766,7 @@ public class Chasers : MonoBehaviour
             placementInList = RandomTeam1Chaser;
             players.quaffleHolder = players.team1ChasersNames[placementInList];
 
-            StartCoroutine(waitForUpdate(players.team1Keeper + " inbounds the Quaffle to " + players.team1ChasersNames[placementInList], 0.5f));
+            StartCoroutine(waitForUpdate(players.team1Keeper + " inbounds the Quaffle to " + players.team1ChasersNames[placementInList], (0.5f * gameManager.gameSpeedMultiplier)));
             gameManager.pitchLocation += Random.Range(15, 30);
             gameManager.team1HasPossession = true;
             quaffleHeld = true;
@@ -790,12 +792,12 @@ public class Chasers : MonoBehaviour
             }
             if (players.team2ChasersNames[ChaserNumber] == players.quaffleHolder)
             {
-                StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " is hit by a bludger and drops the Quaffle!", 0.5f));
+                StartCoroutine(waitForUpdate(players.team1ChasersNames[placementInList] + " is hit by a bludger and drops the Quaffle!", (0.5f * gameManager.gameSpeedMultiplier)));
                 Turnover(team);
             }
             else
             {
-                StartCoroutine(waitForUpdate(players.team1ChasersNames[ChaserNumber] + " is hit by a bludger!", 0.5f));
+                StartCoroutine(waitForUpdate(players.team1ChasersNames[ChaserNumber] + " is hit by a bludger!", (0.5f * gameManager.gameSpeedMultiplier)));
             }
             AdjustStats(0, team2Bonus);
         }
@@ -809,12 +811,12 @@ public class Chasers : MonoBehaviour
                 team2Chaser3Stunned = true;
             if (players.team1ChasersNames[ChaserNumber] == players.quaffleHolder)
             {
-                StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " is hit by a bludger and drops the Quaffle!", 0.5f));
+                StartCoroutine(waitForUpdate(players.team2ChasersNames[placementInList] + " is hit by a bludger and drops the Quaffle!", (0.5f * gameManager.gameSpeedMultiplier)));
                 Turnover(team);
             }
             else
             {
-                StartCoroutine(waitForUpdate(players.team2ChasersNames[ChaserNumber] + " is hit by a bludger!", 0.5f));
+                StartCoroutine(waitForUpdate(players.team2ChasersNames[ChaserNumber] + " is hit by a bludger!", (0.5f * gameManager.gameSpeedMultiplier)));
             }
             AdjustStats(1, team1Bonus);
         }
@@ -864,7 +866,7 @@ public class Chasers : MonoBehaviour
 
             else
             {
-                StartCoroutine(waitForUpdate(players.team2ChasersNames[RandomTeam2ChaserPickUp] + " picks it up!", 0.5f));
+                StartCoroutine(waitForUpdate(players.team2ChasersNames[RandomTeam2ChaserPickUp] + " picks it up!", (0.5f * gameManager.gameSpeedMultiplier)));
                 gameManager.team1HasPossession = false;
                 gameManager.pitchLocation = 100 - gameManager.pitchLocation;
                 placementInList = RandomTeam2ChaserPickUp;
@@ -878,7 +880,7 @@ public class Chasers : MonoBehaviour
             if (RandomTeam1ChaserPickUp == 0 && team1Chaser1Stunned || RandomTeam1ChaserPickUp == 1 && team1Chaser2Stunned || RandomTeam1ChaserPickUp == 2 && team1Chaser3Stunned)
                 Turnover(1);
 
-            StartCoroutine(waitForUpdate(players.team1ChasersNames[RandomTeam1ChaserPickUp] + " picks it up!", 0.5f));
+            StartCoroutine(waitForUpdate(players.team1ChasersNames[RandomTeam1ChaserPickUp] + " picks it up!", (0.5f * gameManager.gameSpeedMultiplier)));
             gameManager.team1HasPossession = true;
             gameManager.pitchLocation = 100 - gameManager.pitchLocation;
             placementInList = RandomTeam1ChaserPickUp;
@@ -955,5 +957,12 @@ public class Chasers : MonoBehaviour
     void UpdateMomentum()
     {
         gameManager.valueListMaco.Add(gameManager.team1Score - gameManager.team2Score);
+    }
+
+    public void UpdateSnitchTimeAfterGameSpeedMultiplier(float durationPassed)
+    {
+        StopCoroutine("StartSeeker");
+        StartCoroutine(StartSeeker(avgseekerTime - durationPassed));
+        print(avgseekerTime - durationPassed);
     }
 }

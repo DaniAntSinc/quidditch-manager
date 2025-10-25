@@ -49,37 +49,37 @@ public class Seekers : MonoBehaviour
         {
             if (!gameManager.matchOver)
             {
-                snitch.transform.position = Vector3.MoveTowards(snitch.transform.position, snitchLocation.transform.position, speed * Time.deltaTime);
+                snitch.transform.position = Vector3.MoveTowards(snitch.transform.position, snitchLocation.transform.position, speed * gameManager.gameSpeedMultiplier * Time.deltaTime);
 
                 if (Vector3.Distance(snitch.position, snitchLocation.position) <= 2)
                     EstablishSnitchPosition();
 
                 if (Vector3.Distance(snitch.position, seeker1.position) <= players.team1SeekerSight && !seesSnitch)
                 {
-                    StartCoroutine(waitForUpdate("Looks like " + players.team1Seeker + " sees the Snitch!", 0.01f));
+                    StartCoroutine(waitForUpdate("Looks like " + players.team1Seeker + " sees the Snitch!", (0.01f * gameManager.gameSpeedMultiplier)));
                     seesSnitch = true;
                     gameManager.team1SeekerSaw += 1;
                 }
 
                 if (Vector3.Distance(snitch.position, seeker2.position) <= players.team2SeekerSight && !seesSnitch)
                 {
-                    StartCoroutine(waitForUpdate("Looks like " + players.team2Seeker + " sees the Snitch!", 0.01f));
+                    StartCoroutine(waitForUpdate("Looks like " + players.team2Seeker + " sees the Snitch!", (0.01f * gameManager.gameSpeedMultiplier)));
                     seesSnitch = true;
                     gameManager.team2SeekerSaw += 1;                        
                 }
 
                 if ((Vector3.Distance(snitch.position, seeker1.position) >= players.team1SeekerSight && Vector3.Distance(snitch.position, seeker2.position) >= players.team2SeekerSight) && seesSnitch)
                 {
-                    StartCoroutine(waitForUpdate("Looks like the Seekers lost sight of the Snitch!", 0.01f));
+                    StartCoroutine(waitForUpdate("Looks like the Seekers lost sight of the Snitch!", (0.01f * gameManager.gameSpeedMultiplier)));
                     seesSnitch = false;
                 }
 
                 if (!seesSnitch)
                 {
                     if (!seeker1Stunned)
-                        seeker1.transform.position = Vector3.MoveTowards(seeker1.transform.position, team1SeekerPosition.transform.position, (gameManager.seasonTeams[gameManager.visitorInt].seeker[0].speed * 0.7f) * Time.deltaTime);
+                        seeker1.transform.position = Vector3.MoveTowards(seeker1.transform.position, team1SeekerPosition.transform.position, (gameManager.seasonTeams[gameManager.visitorInt].seeker[0].speed * gameManager.gameSpeedMultiplier * 0.7f) * Time.deltaTime);
                     if (!seeker2stunned)
-                        seeker2.transform.position = Vector3.MoveTowards(seeker2.transform.position, team2SeekerPosition.transform.position, (gameManager.seasonTeams[gameManager.homeInt].seeker[0].speed * 0.7f) * Time.deltaTime);
+                        seeker2.transform.position = Vector3.MoveTowards(seeker2.transform.position, team2SeekerPosition.transform.position, (gameManager.seasonTeams[gameManager.homeInt].seeker[0].speed * gameManager.gameSpeedMultiplier * 0.7f) * Time.deltaTime);
 
                     if (Vector3.Distance(seeker1.position, team1SeekerPosition.position) <= 2 && !seeker1Stunned)
                         EstablishSeeker1Position();
@@ -90,18 +90,18 @@ public class Seekers : MonoBehaviour
                 else
                 {
                     if (!seeker1Stunned)
-                        seeker1.transform.position = Vector3.MoveTowards(seeker1.transform.position, snitch.transform.position, players.team1SeekerSpeed * Time.deltaTime);
+                        seeker1.transform.position = Vector3.MoveTowards(seeker1.transform.position, snitch.transform.position, players.team1SeekerSpeed * gameManager.gameSpeedMultiplier * Time.deltaTime);
                     if (!seeker2stunned)
-                        seeker2.transform.position = Vector3.MoveTowards(seeker2.transform.position, snitch.transform.position, players.team2SeekerSpeed * Time.deltaTime);
+                        seeker2.transform.position = Vector3.MoveTowards(seeker2.transform.position, snitch.transform.position, players.team2SeekerSpeed * gameManager.gameSpeedMultiplier * Time.deltaTime);
 
                     if (Vector3.Distance(seeker1.position, snitch.position) <= players.team1SeekerGrabRange && !reachingCooldown1 && !seeker1Stunned)
                     {
                         gameManager.team1SeekerReach += 1;
-                        StartCoroutine(waitForUpdate(players.team1Seeker + " is reaching for the Snitch!", 0.01f));
+                        StartCoroutine(waitForUpdate(players.team1Seeker + " is reaching for the Snitch!", (0.01f * gameManager.gameSpeedMultiplier)));
                         int randomChance = Random.Range(0, 100);
                         if (randomChance <= (players.team1SeekerReach + players.team1SeekerSight))
                         {
-                            StartCoroutine(waitForUpdate(players.team1Seeker + " has caught the Snitch!", 0.01f));
+                            StartCoroutine(waitForUpdate(players.team1Seeker + " has caught the Snitch!", (0.01f * gameManager.gameSpeedMultiplier)));
                             Team1Caught();
                         }
                         else
@@ -112,11 +112,11 @@ public class Seekers : MonoBehaviour
                     else if (Vector3.Distance(seeker2.position, snitch.position) <= players.team2SeekerGrabRange && !reachingCooldown2 && !seeker2stunned)
                     {
                         gameManager.team2SeekerReach += 1;
-                        StartCoroutine(waitForUpdate(players.team2Seeker + " is reaching for the Snitch!", 0.01f));
+                        StartCoroutine(waitForUpdate(players.team2Seeker + " is reaching for the Snitch!", (0.01f * gameManager.gameSpeedMultiplier)));
                         int randomChance = Random.Range(0, 100);
                         if (randomChance <= (players.team2SeekerReach + players.team2SeekerSight))
                         {
-                            StartCoroutine(waitForUpdate(players.team2Seeker + " has caught the Snitch!", 0.01f));
+                            StartCoroutine(waitForUpdate(players.team2Seeker + " has caught the Snitch!", (0.01f * gameManager.gameSpeedMultiplier)));
                             Team2Caught();
                         }
                         else
@@ -128,10 +128,10 @@ public class Seekers : MonoBehaviour
 
                 if (reachingCooldown1)
                 {
-                    cooldown1 -= Time.deltaTime;
+                    cooldown1 -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                     if (cooldown1 <= 0)
                     {
-                        StartCoroutine(waitForUpdate(players.team1Seeker + " missed the Snitch!", 0.01f));
+                        StartCoroutine(waitForUpdate(players.team1Seeker + " missed the Snitch!", (0.01f * gameManager.gameSpeedMultiplier)));
                         gameManager.team1SeekerReach += 1;
                         cooldown1 = 2f;
                         reachingCooldown1 = false;
@@ -139,10 +139,10 @@ public class Seekers : MonoBehaviour
                 }
                 if (reachingCooldown2)
                 {
-                    cooldown2 -= Time.deltaTime;
+                    cooldown2 -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                     if (cooldown2 <= 0)
                     {
-                        StartCoroutine(waitForUpdate(players.team2Seeker + " missed the Snitch!", 0.01f));
+                        StartCoroutine(waitForUpdate(players.team2Seeker + " missed the Snitch!", (0.01f * gameManager.gameSpeedMultiplier)));
                         gameManager.team2SeekerReach += 1;
                         cooldown2 = 2f;
                         reachingCooldown2 = false;
@@ -152,7 +152,7 @@ public class Seekers : MonoBehaviour
                 if (seeker1Stunned)
                 {
                     gameManager.visitorSeekericon.SetActive(false);
-                    seeker1downedDuration -= Time.deltaTime;
+                    seeker1downedDuration -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                     if (seeker1downedDuration <= 0)
                     {
                         gameManager.visitorSeekericon.SetActive(true);
@@ -164,7 +164,7 @@ public class Seekers : MonoBehaviour
                 if (seeker2stunned)
                 {
                     gameManager.homeSeekericon.SetActive(false);
-                    seeker2downedDuration -= Time.deltaTime;
+                    seeker2downedDuration -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                     if (seeker2downedDuration <= 0)
                     {
                         gameManager.homeSeekericon.SetActive(true);
@@ -183,7 +183,7 @@ public class Seekers : MonoBehaviour
 
     public void EstablishSnitchPosition()
     {
-        speed = Random.Range(1, 9);
+        speed = Random.Range(1, 9) * gameManager.gameSpeedMultiplier;
         snitchLocation.transform.position = new Vector3(Random.Range(-30, 30), Random.Range(0, 40), Random.Range(-50, 50));
     }
 

@@ -229,6 +229,11 @@ public class GameManager : MonoBehaviour
     public bool AutoAdvanceSeasonIsActive;
     public GameObject seasonAutoAdvanceContainer, toggleOffSpot, toggleOnSpot, autoToggle;
     public TMP_Text onOffAuto;
+
+    //Game Speed
+    public float gameSpeedMultiplier = 1;
+    public TMP_Text gameSpeedText;
+    public GameObject halfToggle, oneToggle, oneHalfToggle, twoToggle, speedToggle;
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -656,7 +661,7 @@ public class GameManager : MonoBehaviour
             matchStarted = false;
         }
         if (matchStarted)
-            duration += Time.deltaTime;
+            duration += (Time.deltaTime * gameSpeedMultiplier);
     }
     #region Standings
     public void UpdateHogwartsStandingsUI()
@@ -1106,9 +1111,9 @@ public class GameManager : MonoBehaviour
 
     IEnumerator WaitForKickOff()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.5f * gameSpeedMultiplier);
         CreateGameEvent("Here is the kickoff");
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2.5f * gameSpeedMultiplier);
         GameObject.Find("Chasers").GetComponent<Chasers>().KickOff();
     }
 
@@ -2354,9 +2359,47 @@ public class GameManager : MonoBehaviour
 
     IEnumerator DelayForAuto()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(3 * gameSpeedMultiplier);
         NextSeasonGame();
         autoGameAdvanceFireOnce = true;
+    }
+
+    public void SetHalfSpeed()
+    {
+        gameSpeedMultiplier = 0.5f;
+        gameSpeedText.text = "0.5x";
+        speedToggle.transform.SetParent(halfToggle.transform);
+        UpdateAllTimers();
+    }
+
+    public void SetOneSpeed()
+    {
+        gameSpeedMultiplier = 1;
+        gameSpeedText.text = "1x";
+        speedToggle.transform.SetParent(oneToggle.transform);
+        UpdateAllTimers();
+    }
+
+    public void SetTwoSpeed()
+    {
+        gameSpeedMultiplier = 2f;
+        gameSpeedText.text = "2x";
+        speedToggle.transform.SetParent(oneHalfToggle.transform);
+        UpdateAllTimers();
+    }
+
+    public void SetFiveSpeed()
+    {
+        gameSpeedMultiplier = 5f;
+        gameSpeedText.text = "5x";
+        speedToggle.transform.SetParent(twoToggle.transform);
+        UpdateAllTimers();
+    }
+
+    void UpdateAllTimers()
+    {
+        chasers.UpdateSnitchTimeAfterGameSpeedMultiplier(duration);
+        speedToggle.transform.localPosition = new Vector3(0, 0, 0);
     }
 }
 
