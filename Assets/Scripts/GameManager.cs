@@ -956,17 +956,17 @@ public class GameManager : MonoBehaviour
         newTextLine.transform.SetAsFirstSibling();
 
         newTextLine.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().text = messageForTextElement;
-        if (messageForTextElement.Contains(":") || messageForTextElement.Contains("playing at") || messageForTextElement.Contains("weather") || messageForTextElement.Contains(" and "))
+        if (messageForTextElement.Contains("knocked out") || messageForTextElement.Contains("and is stunned") || messageForTextElement.Contains("hit by"))
+        {
+            newTextLine.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().color = Color.red;
+        }
+        else if (messageForTextElement.Contains(":") || messageForTextElement.Contains("playing at") || messageForTextElement.Contains("weather") || messageForTextElement.Contains(" and "))
         {
             newTextLine.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().color = Color.yellow;
         }
         else if (messageForTextElement.Contains("Snitch"))
         {
             newTextLine.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().color = Color.grey;
-        }
-        else if (messageForTextElement.Contains("knocked out") || messageForTextElement.Contains("and is stunned") || messageForTextElement.Contains("hit by"))
-        {
-            newTextLine.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().color = Color.red;
         }
         else if (messageForTextElement.Contains(" blocked by"))
         {
@@ -1648,7 +1648,7 @@ public class GameManager : MonoBehaviour
     //turn button on correctly
     public void OpenManagementMenuAfterAGame()
     {
-        managementMenu.SetActive(true);
+       managementMenu.SetActive(true);
        managementNewLoad.SetActive(false);
        managementTeamCreation.SetActive(false);
        managementHome.SetActive(true);
@@ -1667,10 +1667,55 @@ public class GameManager : MonoBehaviour
         duration = 0;
         seekers.gameStarted = false;
 
+        GameObject.Find("Keepers").GetComponent<Keepers>().keeper1cooldown = 0;
+        GameObject.Find("Keepers").GetComponent<Keepers>().keeper2cooldown = 0;
+        GameObject.Find("Beaters").GetComponent<Beaters>().team1beater1cooldown = 0;
+        GameObject.Find("Beaters").GetComponent<Beaters>().team1beater2cooldown = 0;
+        GameObject.Find("Beaters").GetComponent<Beaters>().team2beater1cooldown = 0;
+        GameObject.Find("Beaters").GetComponent<Beaters>().team2beater2cooldown = 0;
+        GameObject.Find("Chasers").GetComponent<Chasers>().team1Chaser1Cooldown = 0;
+        GameObject.Find("Chasers").GetComponent<Chasers>().team1Chaser2Cooldown = 0;
+        GameObject.Find("Chasers").GetComponent<Chasers>().team1Chaser3Cooldown = 0;
+        GameObject.Find("Chasers").GetComponent<Chasers>().team2Chaser1Cooldown = 0;
+        GameObject.Find("Chasers").GetComponent<Chasers>().team2Chaser2Cooldown = 0;
+        GameObject.Find("Chasers").GetComponent<Chasers>().team2Chaser3Cooldown = 0;
+        GameObject.Find("Seekers").GetComponent<Seekers>().seeker1downedDuration = 0;
+        GameObject.Find("Seekers").GetComponent<Seekers>().seeker2downedDuration = 0;
+
         windowGraph.GetComponent<WindowGraph>().DestroyAllChildren();
 
+        GameObject.Find("Keepers").GetComponent<Keepers>().keeper1cooldown = 8;
+        GameObject.Find("Keepers").GetComponent<Keepers>().keeper2cooldown = 8;
+        GameObject.Find("Beaters").GetComponent<Beaters>().team1beater1cooldown = 10;
+        GameObject.Find("Beaters").GetComponent<Beaters>().team1beater2cooldown = 10;
+        GameObject.Find("Beaters").GetComponent<Beaters>().team2beater1cooldown = 10;
+        GameObject.Find("Beaters").GetComponent<Beaters>().team2beater2cooldown = 10;
+        GameObject.Find("Chasers").GetComponent<Chasers>().team1Chaser1Cooldown = 10;
+        GameObject.Find("Chasers").GetComponent<Chasers>().team1Chaser2Cooldown = 10;
+        GameObject.Find("Chasers").GetComponent<Chasers>().team1Chaser3Cooldown = 10;
+        GameObject.Find("Chasers").GetComponent<Chasers>().team2Chaser1Cooldown = 10;
+        GameObject.Find("Chasers").GetComponent<Chasers>().team2Chaser2Cooldown = 10;
+        GameObject.Find("Chasers").GetComponent<Chasers>().team2Chaser3Cooldown = 10;
+        GameObject.Find("Seekers").GetComponent<Seekers>().seeker1downedDuration = 5;
+        GameObject.Find("Seekers").GetComponent<Seekers>().seeker2downedDuration = 5;
 
-     team1Chaser1Shot = 0; team1Chaser1Goal = 0; team1Chaser1Tackles = 0; team1Chaser1Intercepts = 0;
+        visitorBeater1icon.SetActive(true);
+        visitorBeater2icon.SetActive(true);
+        visitorChaser1icon.SetActive(true);
+        visitorChaser2icon.SetActive(true);
+        visitorChaser3icon.SetActive(true);
+        visitorKeepericon.SetActive(true);
+        visitorSeekericon.SetActive(true);
+
+        homeBeater1icon.SetActive(true);
+        homeBeater2icon.SetActive(true);
+        homeChaser1icon.SetActive(true);
+        homeChaser2icon.SetActive(true);
+        homeChaser3icon.SetActive(true);
+        homeKeepericon.SetActive(true);
+        homeSeekericon.SetActive(true);
+
+        team1Chaser1Shot = 0; team1Chaser1Goal = 0; team1Chaser1Tackles = 0; team1Chaser1Intercepts = 0;
      team1Chaser2Shot = 0; team1Chaser2Goal = 0; team1Chaser2Tackles = 0; team1Chaser2Intercepts = 0;
      team1Chaser3Shot = 0; team1Chaser3Goal = 0; team1Chaser3Tackles = 0; team1Chaser3Intercepts = 0;
      team1KeeperShots = 0; team1KeeperSaves = 0;

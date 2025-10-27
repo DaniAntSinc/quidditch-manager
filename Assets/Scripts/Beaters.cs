@@ -14,10 +14,10 @@ public class Beaters : MonoBehaviour
     bool bludger1Sent, bludger2Sent;
     public bool beaterTeam1Beater1Stunned, beaterTeam1Beater2Stunned;
     public bool beaterTeam2Beater1Stunned, beaterTeam2Beater2Stunned;
-    float team1beater1cooldown = 10;
-    float team1beater2cooldown = 10;
-    float team2beater1cooldown = 10;
-    float team2beater2cooldown = 10;
+    public float team1beater1cooldown = 10;
+    public float team1beater2cooldown = 10;
+    public float team2beater1cooldown = 10;
+    public float team2beater2cooldown = 10;
 
     public bool gameStarted;
 

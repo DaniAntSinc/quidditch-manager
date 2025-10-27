@@ -5,7 +5,7 @@ using UnityEngine;
 public class Keepers : MonoBehaviour
 {
     public bool keeper1Stunned, keeper2Stunned;
-    float keeper1cooldown = 8, keeper2cooldown = 8;
+    public float keeper1cooldown = 8, keeper2cooldown = 8;
     GameManager gameManager;
 
     private void Start()

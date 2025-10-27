@@ -18,7 +18,7 @@ public class Seekers : MonoBehaviour
     float cooldown2 = 2f;
 
     public bool seeker1Stunned, seeker2stunned;
-    float seeker1downedDuration = 5, seeker2downedDuration = 5;
+    public float seeker1downedDuration = 5, seeker2downedDuration = 5;
 
     public bool gameStarted;
 
@@ -157,7 +157,7 @@ public class Seekers : MonoBehaviour
                     {
                         gameManager.visitorSeekericon.SetActive(true);
                         seeker1Stunned = false;
-                        seeker1downedDuration = 5;
+                        seeker1downedDuration = 10;
                     }
                 }
 
@@ -169,7 +169,7 @@ public class Seekers : MonoBehaviour
                     {
                         gameManager.homeSeekericon.SetActive(true);
                         seeker2stunned = false;
-                        seeker2downedDuration = 5;
+                        seeker2downedDuration = 10;
                     }
                 }
             }
