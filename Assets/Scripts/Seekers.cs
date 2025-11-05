@@ -70,7 +70,7 @@ public class Seekers : MonoBehaviour
 
                 if ((Vector3.Distance(snitch.position, seeker1.position) >= players.team1SeekerSight && Vector3.Distance(snitch.position, seeker2.position) >= players.team2SeekerSight) && seesSnitch)
                 {
-                    StartCoroutine(waitForUpdate("Looks like the Seekers lost sight of the Snitch!", (0.01f * gameManager.gameSpeedMultiplier)));
+                    //StartCoroutine(waitForUpdate("Looks like the Seekers lost sight of the Snitch!", (0.01f * gameManager.gameSpeedMultiplier)));
                     seesSnitch = false;
                 }
 

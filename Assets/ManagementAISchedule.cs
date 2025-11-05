@@ -33,10 +33,13 @@ public class ManagementAISchedule : MonoBehaviour
 
     public void Update()
     {
-       if(Input.GetKeyDown(KeyCode.S))
-            SimSeason();
-        if (Input.GetKeyDown(KeyCode.R))
-            ResetSeasonStats();
+        if (GameObject.Find("GameManager").GetComponent<GameManager>().cheats)
+        {
+            if (Input.GetKeyDown(KeyCode.S))
+                SimSeason();
+            if (Input.GetKeyDown(KeyCode.R))
+                ResetSeasonStats();
+        }
     }
     public void AddPlayersTeamToLeagueA(SeasonTeam playersTeam)
     {
@@ -253,7 +256,7 @@ public class ManagementAISchedule : MonoBehaviour
             i++;
         }
         GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason = 100;
-        CheckEndOfSeasonStatus();
+     //   CheckEndOfSeasonStatus();
     }
 
     public void SimSecondRound()
@@ -422,23 +425,23 @@ public class ManagementAISchedule : MonoBehaviour
     public void ConnectPlayoffBracketHookups()
     {
         // public GameObject A1, A2, B1, B2, AC, BC, LC;
-        A1.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Image>().sprite = LeagueAFirst.logo;
+        A1.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Image>().sprite = LeagueAFirst.logo;
         A1.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = LeagueAFirst.team;
         A1.transform.GetChild(1).GetChild(2).GetComponent<TMP_Text>().text = LeagueAFirst.win + " - " + LeagueAFirst.loss;
         if (LeagueAFirst.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
             A1.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.yellow;
 
-        A2.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Image>().sprite = LeagueASecond.logo;
+        A2.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Image>().sprite = LeagueASecond.logo;
         A2.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = LeagueASecond.team;
         A2.transform.GetChild(1).GetChild(2).GetComponent<TMP_Text>().text = LeagueASecond.win + " - " + LeagueASecond.loss;
         if (LeagueASecond.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
             A2.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.yellow;
 
-        B1.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Image>().sprite = LeagueBFirst.logo;
+        B1.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Image>().sprite = LeagueBFirst.logo;
         B1.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = LeagueBFirst.team;
         B1.transform.GetChild(1).GetChild(2).GetComponent<TMP_Text>().text = LeagueBFirst.win + " - " + LeagueBFirst.loss;
 
-        B2.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Image>().sprite = LeagueBSecond.logo;
+        B2.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Image>().sprite = LeagueBSecond.logo;
         B2.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = LeagueBSecond.team;
         B2.transform.GetChild(1).GetChild(2).GetComponent<TMP_Text>().text = LeagueBSecond.win + " - " + LeagueBSecond.loss;
 
@@ -469,13 +472,15 @@ public class ManagementAISchedule : MonoBehaviour
 
     public void TurnOnPlayoff()
     {
+        UpdateStandings();
         playoffScreen.SetActive(true);
         calendarScreen.SetActive(false);
+        ConnectPlayoffBracketHookups();
     }
 
     public void ClosePlayoff()
     {
         playoffScreen.SetActive(false);
-        calendarScreen.SetActive(false);
+        calendarScreen.SetActive(true);
     }
 }
