@@ -31,9 +31,10 @@ public class ManagementAISchedule : MonoBehaviour
 
     public TMP_Text homeName, visitorName, homeScoreText, visitorScoreText;
 
+    bool playerMadePlayoffs;
     public void Update()
     {
-        if (GameObject.Find("GameManager").GetComponent<GameManager>().cheats)
+        if (GameObject.Find("Main Camera").GetComponent<GameManager>().cheats)
         {
             if (Input.GetKeyDown(KeyCode.S))
                 SimSeason();
@@ -49,87 +50,93 @@ public class ManagementAISchedule : MonoBehaviour
     {
         homeScore = 0;
         visitorScore = 0;
-
-        print("Visitor: " + teams[visitor[dayOfSeason]].name);
-        print("Home: " + teams[home[dayOfSeason]].name);
-        //Sim Game
-
-        //chasers
-        int duration = Random.Range(30, 3600);
-        int visitorGoalCheck = teams[visitor[dayOfSeason]].chasers[0].shooting + teams[visitor[dayOfSeason]].chasers[1].shooting + teams[visitor[dayOfSeason]].chasers[2].shooting;
-        int homeGoalCheck = teams[home[dayOfSeason]].chasers[0].shooting + teams[home[dayOfSeason]].chasers[1].shooting + teams[home[dayOfSeason]].chasers[2].shooting;
-        int combinedGoalCheck = 100 + visitorGoalCheck + homeGoalCheck;
-
-        for (int i = 0; i < (int)(duration/25); i++)
+        if (dayOfSeason >= visitor.Length)
         {
-            //check for a goal
-            int goalCheck = Random.Range(0, combinedGoalCheck);
-            //if(goalCheck <= 100) = consider this a 'miss'
-            if (goalCheck > 100)
+            CheckEndOfSeasonStatus();
+        }
+        else
+        {
+            print("Visitor: " + teams[visitor[dayOfSeason]].name);
+            print("Home: " + teams[home[dayOfSeason]].name);
+            //Sim Game
+
+            //chasers
+            int duration = Random.Range(30, 3600);
+            int visitorGoalCheck = teams[visitor[dayOfSeason]].chasers[0].shooting + teams[visitor[dayOfSeason]].chasers[1].shooting + teams[visitor[dayOfSeason]].chasers[2].shooting;
+            int homeGoalCheck = teams[home[dayOfSeason]].chasers[0].shooting + teams[home[dayOfSeason]].chasers[1].shooting + teams[home[dayOfSeason]].chasers[2].shooting;
+            int combinedGoalCheck = 100 + visitorGoalCheck + homeGoalCheck;
+
+            for (int i = 0; i < (int)(duration / 25); i++)
             {
-                if (goalCheck > (100 + visitorGoalCheck))
+                //check for a goal
+                int goalCheck = Random.Range(0, combinedGoalCheck);
+                //if(goalCheck <= 100) = consider this a 'miss'
+                if (goalCheck > 100)
+                {
+                    if (goalCheck > (100 + visitorGoalCheck))
+                        visitorScore += 10;
+                    else
+                        homeScore += 10;
+                }
+
+                duration -= Random.Range(10, 45);
+            }
+            //seeker
+            int visitorSeekerCheck = teams[visitor[dayOfSeason]].seeker[0].sight;
+            int homeSeekerCheck = teams[home[dayOfSeason]].seeker[0].sight;
+            int combinedSeekerCheck = visitorSeekerCheck + homeSeekerCheck;
+
+            int seekerAdv = Random.Range(0, combinedSeekerCheck);
+            int seekerBoostToGrab = 2;
+            int oddsToGrab = Random.Range(0, teams[visitor[dayOfSeason]].seeker[0].grab + seekerBoostToGrab + teams[home[dayOfSeason]].seeker[0].grab + 1);
+
+            if (seekerAdv <= visitorSeekerCheck)
+            {
+                if (oddsToGrab <= teams[visitor[dayOfSeason]].seeker[0].grab + seekerBoostToGrab)
+                    visitorScore += 150;
+                else
+                    homeScore += 150;
+            }
+            else
+            {
+                if (oddsToGrab <= teams[home[dayOfSeason]].seeker[0].grab + seekerBoostToGrab)
+                    homeScore += 150;
+                else
+                    visitorScore += 150;
+            }
+            if (homeScore == visitorScore)
+            {
+                int tieBreaker = Random.Range(0, 2);
+                if (tieBreaker == 0)
                     visitorScore += 10;
                 else
                     homeScore += 10;
             }
+            if (visitorScore >= homeScore)
+            {
+                teams[visitor[dayOfSeason]].win += 1;
+                teams[home[dayOfSeason]].loss += 1;
+            }
+            if (homeScore >= visitorScore)
+            {
+                teams[home[dayOfSeason]].win += 1;
+                teams[visitor[dayOfSeason]].loss += 1;
+            }
 
-            duration -= Random.Range(10,45);
+            teams[visitor[dayOfSeason]].score += visitorScore;
+            teams[home[dayOfSeason]].score += homeScore;
+
+            //Save win, loss, score
+            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveAIGameOpponents(
+                 teams[visitor[dayOfSeason]].team, teams[visitor[dayOfSeason]].win, teams[visitor[dayOfSeason]].loss, teams[visitor[dayOfSeason]].score,
+                 teams[home[dayOfSeason]].team, teams[home[dayOfSeason]].win, teams[home[dayOfSeason]].loss, teams[home[dayOfSeason]].score);
+
+            visitorName.text = teams[visitor[dayOfSeason]].team;
+            homeName.text = teams[home[dayOfSeason]].team;
+
+            visitorScoreText.text = visitorScore.ToString();
+            homeScoreText.text = homeScore.ToString();
         }
-        //seeker
-        int visitorSeekerCheck = teams[visitor[dayOfSeason]].seeker[0].sight;
-        int homeSeekerCheck = teams[home[dayOfSeason]].seeker[0].sight;
-        int combinedSeekerCheck = visitorSeekerCheck + homeSeekerCheck;
-
-        int seekerAdv = Random.Range(0, combinedSeekerCheck);
-        int seekerBoostToGrab = 2;
-        int oddsToGrab = Random.Range(0,teams[visitor[dayOfSeason]].seeker[0].grab + seekerBoostToGrab + teams[home[dayOfSeason]].seeker[0].grab+1);
-
-        if (seekerAdv <= visitorSeekerCheck)
-        {
-            if (oddsToGrab <= teams[visitor[dayOfSeason]].seeker[0].grab + seekerBoostToGrab)
-                visitorScore += 150; 
-            else
-                homeScore += 150;
-        }
-        else
-        {
-            if (oddsToGrab <= teams[home[dayOfSeason]].seeker[0].grab + seekerBoostToGrab)
-                homeScore += 150;
-            else
-                visitorScore += 150;
-        }
-        if (homeScore == visitorScore)
-        {
-            int tieBreaker = Random.Range(0, 2);
-            if (tieBreaker == 0)
-                visitorScore += 10;
-            else
-                homeScore += 10;
-        }
-        if (visitorScore >= homeScore)
-        {
-            teams[visitor[dayOfSeason]].win += 1;
-            teams[home[dayOfSeason]].loss += 1;
-        }
-        if (homeScore >= visitorScore)
-        {
-            teams[home[dayOfSeason]].win += 1;
-            teams[visitor[dayOfSeason]].loss += 1;
-        }
-
-        teams[visitor[dayOfSeason]].score += visitorScore;
-        teams[home[dayOfSeason]].score += homeScore;
-
-        //Save win, loss, score
-        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveAIGameOpponents(
-             teams[visitor[dayOfSeason]].team, teams[visitor[dayOfSeason]].win, teams[visitor[dayOfSeason]].loss, teams[visitor[dayOfSeason]].score,
-             teams[home[dayOfSeason]].team, teams[home[dayOfSeason]].win, teams[home[dayOfSeason]].loss, teams[home[dayOfSeason]].score);
-
-        visitorName.text = teams[visitor[dayOfSeason]].team;
-        homeName.text = teams[home[dayOfSeason]].team;
-
-        visitorScoreText.text = visitorScore.ToString();
-        homeScoreText.text = homeScore.ToString();
     }
 
     public void UpdateStandings()
@@ -223,7 +230,7 @@ public class ManagementAISchedule : MonoBehaviour
         managementHome.SetActive(false);
         newLoad.SetActive(true);
         teamCreation.SetActive(false);
-        newLoad.transform.GetChild(6).GetComponent<Button>().interactable = false;
+        newLoad.transform.GetChild(7).GetComponent<Button>().interactable = false;
     }
     #region Cheats to End Season
     public void SimSeason()
@@ -256,6 +263,7 @@ public class ManagementAISchedule : MonoBehaviour
             i++;
         }
         GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason = 100;
+      //  UpdateStandings();
      //   CheckEndOfSeasonStatus();
     }
 
@@ -283,130 +291,148 @@ public class ManagementAISchedule : MonoBehaviour
     void CheckEndOfSeasonStatus()
     {
         UpdateStandings();
-        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason = 103;
+        missedPostSeason.SetActive(true);
+        SetUpEndOfSeasonConsistents();
 
+        if (LeagueASecond.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+            defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "1st of 5";
+        if (LeagueASecond.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+            defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "2nd of 5";
+        if (LeagueAThird.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+            defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "3rd of 5";
+        if (LeagueAFourth.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+            defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "4th of 5";
+        if (LeagueAFifth.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+            defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "5th of 5";
+
+        //prizing
+        defaultResetSeason.transform.GetChild(0).GetChild(5).GetComponent<TMP_Text>().text = "";
+
+        // GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason = 103;
+/*
         if (LeagueAGO[0].transform.GetChild(1).GetComponent<TMP_Text>().color == Color.yellow || LeagueAGO[1].transform.GetChild(1).GetComponent<TMP_Text>().color == Color.yellow)
         {
             //if player made playoffs, add it to the games list
             if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == LeagueAFirst.team)
+                playerMadePlayoffs = true;
+
+            else
             {
-                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().matchDays.Add(105);
-                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().homeTeams.Add(9);
-                for (int i = 0; i < GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague.Count; i++)
-                {
-                    if(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[i].team == LeagueASecond.team)
-                        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().visitorTeams.Add(i);
-                }
+               
             }
 
-            else if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == LeagueASecond.team)
-            {
-                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().matchDays.Add(105);
-                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().visitorTeams.Add(9);
-                for (int i = 0; i < GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague.Count; i++)
-                {
-                    if (GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[i].team == LeagueAFirst.team)
-                        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().homeTeams.Add(i);
-                }
-            }
+            if (playerMadePlayoffs)
+                PostSeasonPlayoffs(playerMadePlayoffs);
+        }*/
+    }
 
-
+    void PostSeasonPlayoffs(bool inPlayoffs)
+    {
+        if (inPlayoffs)
+        {
             //Qualified For Playoffs
             leagueAWinners.Add(LeagueAFirst);
             leagueAWinners.Add(LeagueASecond);
             leagueBWinners.Add(LeagueBFirst);
             leagueBWinners.Add(LeagueBSecond);
 
+            GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().matchDays.Add(104);
+            if (leagueAWinners[0].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+            {
+                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().homeTeams.Add(9);
+
+                for (int i = 0; i < GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague.Count; i++)
+                {
+                    if (GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[i].team == leagueAWinners[1].team)
+                        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().visitorTeams.Add(i);
+                }
+            }
+            else
+            {
+                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().visitorTeams.Add(9);
+                for (int i = 0; i < GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague.Count; i++)
+                {
+                    if (GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[i].team == leagueAWinners[0].team)
+                        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().homeTeams.Add(i);
+                }
+            }
+
             //Sim Second Round
             // SimSecondRound();
 
-            //Check if player made it
-            if (leagueWinners[0].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team || leagueWinners[1].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
-            {
-                //Sim third round
-                // SimThirdRound();
-                if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == leagueWinners[0].team)
-                {
-                    GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().matchDays.Add(109);
-                    if (leagueWinners[0].score >= leagueWinners[1].score)
-                    {
-                        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().homeTeams.Add(9);
+                //Check if player made it
+                /* if (leagueAWinners[0].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team || leagueAWinners[1].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+                 {
+                     //Sim third round
+                     // SimThirdRound();
+                     if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team == leagueWinners[0].team)
+                     {
+                         GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().matchDays.Add(109);
+                         if (leagueWinners[0].score >= leagueWinners[1].score)
+                         {
+                             GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().homeTeams.Add(9);
 
-                        for (int i = 0; i < GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague.Count; i++)
-                        {
-                            if (GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[i].team == leagueWinners[1].team)
-                                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().visitorTeams.Add(i);
-                        }
-                    }
+                             for (int i = 0; i < GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague.Count; i++)
+                             {
+                                 if (GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[i].team == leagueWinners[1].team)
+                                     GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().visitorTeams.Add(i);
+                             }
+                         }
 
-                    else
-                    {
-                        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().visitorTeams.Add(9);
+                         else
+                         {
+                             GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().visitorTeams.Add(9);
 
-                        for (int i = 0; i < GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague.Count; i++)
-                        {
-                            if (GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[i].team == leagueWinners[0].team)
-                                GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().homeTeams.Add(i);
-                        }
-                    }
-                }
+                             for (int i = 0; i < GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague.Count; i++)
+                             {
+                                 if (GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[i].team == leagueWinners[0].team)
+                                     GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().homeTeams.Add(i);
+                             }
+                         }
+                     }
 
-                if (leagueWinners[0].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
-                {
-                    wonChampionship.SetActive(true);
-                    SetUpEndOfSeasonConsistents();
+                     if (leagueWinners[0].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+                     {
+                         wonChampionship.SetActive(true);
+                         SetUpEndOfSeasonConsistents();
 
-                    defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "You won the Championship!";
-                    //prizing
-                    defaultResetSeason.transform.GetChild(0).GetChild(5).GetComponent<TMP_Text>().text = "225,000 G Awarded!";
-                    GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget += 225000;
-                }
-                else
-                {
-                    SetUpEndOfSeasonConsistents();
-                    lostInPlayoffs.SetActive(true);
+                         defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "You won the Championship!";
+                         //prizing
+                         defaultResetSeason.transform.GetChild(0).GetChild(5).GetComponent<TMP_Text>().text = "225,000 G Awarded!";
+                         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget += 225000;
+                     }
+                     else
+                     {
+                         SetUpEndOfSeasonConsistents();
+                         lostInPlayoffs.SetActive(true);
 
-                    defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "Lost in the Championship Match";
-                    //prizing
-                    defaultResetSeason.transform.GetChild(0).GetChild(5).GetComponent<TMP_Text>().text = "150,000 G Awarded!";
-                    GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget += 150000;
-                }
+                         defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "Lost in the Championship Match";
+                         //prizing
+                         defaultResetSeason.transform.GetChild(0).GetChild(5).GetComponent<TMP_Text>().text = "150,000 G Awarded!";
+                         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget += 150000;
+                     }
 
-                LC.SetActive(true);
-                LC.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Image>().sprite = leagueWinners[0].logo;
-                LC.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = leagueWinners[0].team;
-                LC.transform.GetChild(1).GetChild(2).GetComponent<TMP_Text>().text = leagueWinners[0].win + " - " + leagueWinners[0].loss;
-                if (leagueWinners[0].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
-                    LC.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.yellow;
-            }
+                     LC.SetActive(true);
+                     LC.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Image>().sprite = leagueWinners[0].logo;
+                     LC.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = leagueWinners[0].team;
+                     LC.transform.GetChild(1).GetChild(2).GetComponent<TMP_Text>().text = leagueWinners[0].win + " - " + leagueWinners[0].loss;
+                     if (leagueWinners[0].team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+                         LC.transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>().color = Color.yellow;
+                 }
 
-            else
-            {
-                SetUpEndOfSeasonConsistents();
-                lostInPlayoffs.SetActive(true);
+                 else
+                 {
+                     SetUpEndOfSeasonConsistents();
+                     lostInPlayoffs.SetActive(true);
 
-                defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "Lost in the Semi Finals";
-                //prizing
-                defaultResetSeason.transform.GetChild(0).GetChild(5).GetComponent<TMP_Text>().text = "100,000 G Awarded!";
-                GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget += 100000;
-            }
+                     defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "Lost in the Semi Finals";
+                     //prizing
+                     defaultResetSeason.transform.GetChild(0).GetChild(5).GetComponent<TMP_Text>().text = "100,000 G Awarded!";
+                     GameObject.Find("SaveLoad").GetComponent<SaveLoad>().teamBudget += 100000;
+                 }
+             }*/
+
         }
-        else
-        {
-            missedPostSeason.SetActive(true);
-            SetUpEndOfSeasonConsistents();
-
-            if(LeagueAThird.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
-                defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "3rd of 5";
-            if (LeagueAFourth.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
-                defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "4th of 5";
-            if (LeagueAFifth.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
-                defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "5th of 5";
-
-            //prizing
-            defaultResetSeason.transform.GetChild(0).GetChild(5).GetComponent<TMP_Text>().text = "";
-        }
-
     }
 
     void SetUpEndOfSeasonConsistents()

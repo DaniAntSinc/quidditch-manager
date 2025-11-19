@@ -289,6 +289,7 @@ public class SaveLoad : MonoBehaviour
 
         PlayerPrefs.SetInt("Wins", playersTeam.win);
         PlayerPrefs.SetInt("Losses", playersTeam.loss);
+        PlayerPrefs.SetInt("PlayerScore", playersTeam.score);
     }
 
     public void SaveTeamStrategy(int teamStratNum)
@@ -1203,6 +1204,7 @@ public class SaveLoad : MonoBehaviour
 
         playerTeamLoad.GetComponent<SeasonTeam>().win = tempWin;
         playerTeamLoad.GetComponent<SeasonTeam>().loss = tempLoss;
+        playerTeamLoad.GetComponent<SeasonTeam>().score = PlayerPrefs.GetInt("PlayerScore");
 
         logoNumber = PlayerPrefs.GetInt("LogoSelected");
         GameObject.Find("Management").GetComponent<Management>().logoNumSelected = logoNumber;
@@ -1238,8 +1240,8 @@ public class SaveLoad : MonoBehaviour
 
         teamBudget = PlayerPrefs.GetInt("TeamBudget");
         //Load Record
-        playerTeamLoad.GetComponent<SeasonTeam>().win = PlayerPrefs.GetInt(playerTeamLoad.GetComponent<SeasonTeam>().team + "Wins");
-        playerTeamLoad.GetComponent<SeasonTeam>().loss = PlayerPrefs.GetInt(playerTeamLoad.GetComponent<SeasonTeam>().team + "Loss");
+  //      playerTeamLoad.GetComponent<SeasonTeam>().win = PlayerPrefs.GetInt(playerTeamLoad.GetComponent<SeasonTeam>().team + "Wins");
+  //      playerTeamLoad.GetComponent<SeasonTeam>().loss = PlayerPrefs.GetInt(playerTeamLoad.GetComponent<SeasonTeam>().team + "Loss");
         playerTeamLoad.GetComponent<SeasonTeam>().score = PlayerPrefs.GetInt(playerTeamLoad.GetComponent<SeasonTeam>().team + "Score");
 
         //Load AI Scores
