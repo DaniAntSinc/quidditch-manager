@@ -145,28 +145,37 @@ public class ManagementSeasonTracker : MonoBehaviour
 
     void CheckSchedule()
     {
-        GameObject.Find("ManagementAISchedule").GetComponent<ManagementAISchedule>().SimulateAIGame(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason - 1);
-
-        print("Day of Season:" + dayOfSeason);
-        print("Match Day:" + matchDays[placeInList]);
-
-        if (dayOfSeason == matchDays[placeInList])
+        if (dayOfSeason >= 100)
         {
-            dayActihitiesText.text = "Match Day";
-            matchPreviewMenu.SetActive(true);
-            SetUIForMatchPreview(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[homeTeams[placeInList]].homeStadium);
-            placeInList++;
+            //end of season
+            GameObject.Find("ManagementAISchedule").GetComponent<ManagementAISchedule>().CheckEndOfSeasonStatus();
+            dayOfSeason = 0;
         }
         else
         {
-            OpenTrainingMenu();
-            dayActihitiesText.text = "Train";
-            //Save Day
-            GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveDayOfSeason(dayOfSeason);
-        }
+            GameObject.Find("ManagementAISchedule").GetComponent<ManagementAISchedule>().SimulateAIGame(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason - 1);
 
-        if (dayOfSeason > 111)
-            dayOfSeason = 0;
+            print("Day of Season:" + dayOfSeason);
+            print("Match Day:" + matchDays[placeInList]);
+
+            if (dayOfSeason == matchDays[placeInList])
+            {
+                dayActihitiesText.text = "Match Day";
+                matchPreviewMenu.SetActive(true);
+                SetUIForMatchPreview(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[homeTeams[placeInList]].homeStadium);
+                placeInList++;
+            }
+            else
+            {
+                OpenTrainingMenu();
+                dayActihitiesText.text = "Train";
+                //Save Day
+                GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveDayOfSeason(dayOfSeason);
+            }
+
+            if (dayOfSeason > 111)
+                dayOfSeason = 0;
+        }
     }
 
     public void UpdateTextForEndOfDay()

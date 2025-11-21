@@ -121,6 +121,8 @@ public class Management : MonoBehaviour
 
     public void NewTeam()
     {
+        if (GameObject.Find("Players_Team"))
+            Destroy(GameObject.Find("Players_Team"));
         saveLoad.ClearTeam();
         gameManager.managementMode = true;
         playersTeam = new GameObject("Players_Team");
@@ -740,7 +742,7 @@ public class Management : MonoBehaviour
 
     public void ManagementHomePage()
     {
-
+        
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveFreeAgents();
 
         //closeALlOther management menus
@@ -818,7 +820,7 @@ public class Management : MonoBehaviour
     {
         startingPageMenu.SetActive(false);
         calendarSubMenu.SetActive(true);
-        if (GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason >= 102)
+        if (GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason >= 999)
             playoffButton.SetActive(true);
         else
             playoffButton.SetActive(false);

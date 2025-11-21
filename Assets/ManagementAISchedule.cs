@@ -139,6 +139,15 @@ public class ManagementAISchedule : MonoBehaviour
         }
     }
 
+    public void ClearHeadlines()
+    {
+        visitorName.text = "";
+        homeName.text = "";
+
+        visitorScoreText.text = "";
+        homeScoreText.text = "";
+    }
+
     public void UpdateStandings()
     {
         //League A
@@ -231,6 +240,7 @@ public class ManagementAISchedule : MonoBehaviour
         newLoad.SetActive(true);
         teamCreation.SetActive(false);
         newLoad.transform.GetChild(7).GetComponent<Button>().interactable = false;
+        startingPage.SetActive(true);
     }
     #region Cheats to End Season
     public void SimSeason()
@@ -262,7 +272,7 @@ public class ManagementAISchedule : MonoBehaviour
             }
             i++;
         }
-        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason = 100;
+        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason = 99;
       //  UpdateStandings();
      //   CheckEndOfSeasonStatus();
     }
@@ -288,22 +298,33 @@ public class ManagementAISchedule : MonoBehaviour
             leagueWinners.Remove(leagueWinners[1]);
     }
     #endregion
-    void CheckEndOfSeasonStatus()
+    public void CheckEndOfSeasonStatus()
     {
         UpdateStandings();
         missedPostSeason.SetActive(true);
         SetUpEndOfSeasonConsistents();
 
-        if (LeagueASecond.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+        print(defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text);
+        if (LeagueAFirst.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+        {
             defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "1st of 5";
+        }
         if (LeagueASecond.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+        {
             defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "2nd of 5";
+        }
         if (LeagueAThird.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+        {
             defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "3rd of 5";
+        }
         if (LeagueAFourth.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+        {
             defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "4th of 5";
+        }
         if (LeagueAFifth.team == GameObject.Find("Players_Team").GetComponent<SeasonTeam>().team)
+        {
             defaultResetSeason.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "5th of 5";
+        }
 
         //prizing
         defaultResetSeason.transform.GetChild(0).GetChild(5).GetComponent<TMP_Text>().text = "";
@@ -326,7 +347,7 @@ public class ManagementAISchedule : MonoBehaviour
         }*/
     }
 
-    void PostSeasonPlayoffs(bool inPlayoffs)
+  /*  void PostSeasonPlayoffs(bool inPlayoffs)
     {
         if (inPlayoffs)
         {
@@ -432,8 +453,8 @@ public class ManagementAISchedule : MonoBehaviour
                  }
              }*/
 
-        }
-    }
+      /*  }
+    }*/
 
     void SetUpEndOfSeasonConsistents()
     {
