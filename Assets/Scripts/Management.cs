@@ -310,12 +310,12 @@ public class Management : MonoBehaviour
             newChaser.GetComponent<Chaser>().age = Random.Range(17, 40);
             nameGeneration.GenerateName();
             newChaser.GetComponent<Chaser>().Name = nameGeneration.nameCreated;
-            newChaser.GetComponent<Chaser>().dodge = Random.Range(30,60);
-            newChaser.GetComponent<Chaser>().intercept = Random.Range(25, 60);
-            newChaser.GetComponent<Chaser>().pass = Random.Range(20, 60);
-            newChaser.GetComponent<Chaser>().shooting = Random.Range(20, 60);
-            newChaser.GetComponent<Chaser>().speed = Random.Range(20, 60);
-            newChaser.GetComponent<Chaser>().tackle = Random.Range(25, 65);
+            newChaser.GetComponent<Chaser>().dodge = Random.Range(22,45);
+            newChaser.GetComponent<Chaser>().intercept = Random.Range(18,45);
+            newChaser.GetComponent<Chaser>().pass = Random.Range(15,45);
+            newChaser.GetComponent<Chaser>().shooting = Random.Range(15,45);
+            newChaser.GetComponent<Chaser>().speed = Random.Range(15,45);
+            newChaser.GetComponent<Chaser>().tackle = Random.Range(18,48);
             newChaser.GetComponent<Chaser>().CalculateSalary();
 
             newChaser.GetComponent<Chaser>().hat = baseHat;
@@ -348,11 +348,11 @@ public class Management : MonoBehaviour
             GameObject newBeater = new GameObject("BeaterFreeAgent");
             newBeater.AddComponent<Beater>();
             newBeater.GetComponent<Beater>().isFreeAgent = true;
-            newBeater.GetComponent<Beater>().age = Random.Range(17, 40);
+            newBeater.GetComponent<Beater>().age = Random.Range(17,40);
             nameGeneration.GenerateName();
             newBeater.GetComponent<Beater>().Name = nameGeneration.nameCreated;
-            newBeater.GetComponent<Beater>().dodge = Random.Range(2, 20);
-            newBeater.GetComponent<Beater>().locateSpeed = Random.Range(15, 70);
+            newBeater.GetComponent<Beater>().dodge = Random.Range(1,15);
+            newBeater.GetComponent<Beater>().locateSpeed = Random.Range(11,52);
             newBeater.GetComponent<Beater>().CalculateSalary();
 
             newBeater.GetComponent<Beater>().hat = baseHat;
@@ -382,11 +382,11 @@ public class Management : MonoBehaviour
             GameObject newKeeper = new GameObject("KeeperFreeAgent");
             newKeeper.AddComponent<Keeper>();
             newKeeper.GetComponent<Keeper>().isFreeAgent = true;
-            newKeeper.GetComponent<Keeper>().age = Random.Range(17, 40);
+            newKeeper.GetComponent<Keeper>().age = Random.Range(17,40);
             nameGeneration.GenerateName();
             newKeeper.GetComponent<Keeper>().Name = nameGeneration.nameCreated;
-            newKeeper.GetComponent<Keeper>().dodge = Random.Range(10, 50);
-            newKeeper.GetComponent<Keeper>().block = Random.Range(30, 80);
+            newKeeper.GetComponent<Keeper>().dodge = Random.Range(7,37);
+            newKeeper.GetComponent<Keeper>().block = Random.Range(22,60);
             newKeeper.GetComponent<Keeper>().CalculateSalary();
 
             newKeeper.GetComponent<Keeper>().hat = baseHat;
@@ -416,14 +416,14 @@ public class Management : MonoBehaviour
             GameObject newSeeker = new GameObject("SeekerFreeAgent");
             newSeeker.AddComponent<Seeker>();
             newSeeker.GetComponent<Seeker>().isFreeAgent = true;
-            newSeeker.GetComponent<Seeker>().age = Random.Range(17, 40);
+            newSeeker.GetComponent<Seeker>().age = Random.Range(17,40);
             nameGeneration.GenerateName();
             newSeeker.GetComponent<Seeker>().Name = nameGeneration.nameCreated;
-            newSeeker.GetComponent<Seeker>().dodge = Random.Range(15, 30);
-            newSeeker.GetComponent<Seeker>().sight = Random.Range(15, 55);
-            newSeeker.GetComponent<Seeker>().speed = Random.Range(20, 50);
-            newSeeker.GetComponent<Seeker>().reach = Random.Range(15, 25);
-            newSeeker.GetComponent<Seeker>().grab = Random.Range(2, 5);
+            newSeeker.GetComponent<Seeker>().dodge = Random.Range(11,22);
+            newSeeker.GetComponent<Seeker>().sight = Random.Range(11,41);
+            newSeeker.GetComponent<Seeker>().speed = Random.Range(15,37);
+            newSeeker.GetComponent<Seeker>().reach = Random.Range(11,18);
+            newSeeker.GetComponent<Seeker>().grab = Random.Range(1,3);
             newSeeker.GetComponent<Seeker>().CalculateSalary();
 
             newSeeker.GetComponent<Seeker>().hat = baseHat;
