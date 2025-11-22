@@ -785,6 +785,11 @@ public class Management : MonoBehaviour
         if(!GameObject.Find("ManagementAISchedule").GetComponent<ManagementAISchedule>().LeagueA.Contains(playersTeam.GetComponent<SeasonTeam>()))
             GameObject.Find("ManagementAISchedule").GetComponent<ManagementAISchedule>().LeagueA.Add(playersTeam.GetComponent<SeasonTeam>());
     }
+    public void UpdateUI()
+    {
+        teamBudgetText.text = "Team Budget: " + saveLoad.teamBudget.ToString("n0") + "G";
+        teamRecord.text = "Team Record: " + playersTeam.GetComponent<SeasonTeam>().win + " - " + playersTeam.GetComponent<SeasonTeam>().loss;
+    }
 
     public void ReturnToManagementHomePage()
     {

@@ -1653,7 +1653,9 @@ public class GameManager : MonoBehaviour
        managementTeamCreation.SetActive(false);
        managementHome.SetActive(true);
        managementBaseMenu.SetActive(true);
-}
+
+      GameObject.Find("Management").GetComponent<Management>().UpdateUI();
+    }
 
     public void ClearStats()
     {
@@ -2389,7 +2391,7 @@ public class GameManager : MonoBehaviour
         //SaveLoad playerScore
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SavePlayerSeasonRecord(GameObject.Find("Players_Team").GetComponent<SeasonTeam>().win, GameObject.Find("Players_Team").GetComponent<SeasonTeam>().loss, GameObject.Find("Players_Team").GetComponent<SeasonTeam>().score);
         //Save Day
-        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveDayOfSeason(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason);
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveDayOfSeason(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason, GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().placeInList);
     }
 
     public void OpenChaoticPlay()

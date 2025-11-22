@@ -219,7 +219,7 @@ public class ManagementAISchedule : MonoBehaviour
         //Reset Day
         GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason = 0;
         //Save Day
-        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveDayOfSeason(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason);
+        GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveDayOfSeason(GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason, GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().placeInList);
         //Save team data
         GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveAllAITeamsOnceCleared();
         //Clear winning team Lists

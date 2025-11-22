@@ -356,9 +356,10 @@ public class SaveLoad : MonoBehaviour
 
     }
 
-    public void SaveDayOfSeason(int day)
+    public void SaveDayOfSeason(int day, int placeInList)
     {
         PlayerPrefs.SetInt("DayOfSeason", day);
+        PlayerPrefs.SetInt("MatchDays", placeInList);
     }
 
     public void SavePlayerInventory()
@@ -1233,6 +1234,8 @@ public class SaveLoad : MonoBehaviour
         #endregion
         //Load Day of Season
         GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().dayOfSeason = PlayerPrefs.GetInt("DayOfSeason");
+        GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().placeInList = PlayerPrefs.GetInt("MatchDays");
+
         //Load Team Strategy
         playerTeamLoad.GetComponent<SeasonTeam>().teamStrategy = strategies[PlayerPrefs.GetInt("Strategy")].GetComponent<TeamStrategy>();
         //Add Team to Division
@@ -1283,6 +1286,8 @@ public class SaveLoad : MonoBehaviour
 
         //save team currency
         GameObject.Find("Management").GetComponent<Management>().ManagementHomePage();
+
+       GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().UpdateWording();
     }
 
     #region Season Simulation Data

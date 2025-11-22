@@ -16,7 +16,7 @@ public class ManagementSeasonTracker : MonoBehaviour
 
     //this is how many days are in the season - 4 months, 28 days, starting at 0 = max of 111
     public int dayOfSeason;
-    int placeInList;
+    public int placeInList;
     public List<int> matchDays = new List<int> { 2, 5, 10, 13, 18, 22, 24, 33, 35, 38, 44, 48, 50, 53, 60, 64, 66, 70, 75, 79, 83, 86, 89, 94, 98, 102 };
     public List<int> visitorTeams = new List<int> { 5, 3, 9, 9, 5, 4, 9, 9, 9, 8, 9, 9, 9, 8, 6, 9, 9, 0, 7, 9, 1, 2, 9, 9, 7, 6 };
     public List<int> homeTeams = new List<int> { 9, 9, 7, 5, 9, 9, 3, 4, 7, 9, 8, 2, 0, 9, 9, 6, 5, 9, 9, 1, 9, 9, 6, 8, 9, 9 };
@@ -175,11 +175,18 @@ public class ManagementSeasonTracker : MonoBehaviour
             else
             {
                 OpenTrainingMenu();
-                GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveDayOfSeason(dayOfSeason);
+                GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveDayOfSeason(dayOfSeason, placeInList);
             }
 
             if (dayOfSeason > 111)
                 dayOfSeason = 0;
+        }
+    }
+    public void UpdateWording()
+    {
+        if (dayOfSeason == matchDays[placeInList])
+        {
+            dayActihitiesText.text = "Match Day";
         }
     }
 
