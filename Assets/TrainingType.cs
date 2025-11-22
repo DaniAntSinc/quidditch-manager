@@ -11,7 +11,7 @@ public class TrainingType : MonoBehaviour
     public string trainingName;
     public TMP_Text nameOfTraining, stamCost, dodgeText, speedText, interceptText, passingText, shootingText, tackleText, locateText, blockText, sightText, reachText, grabText;
     //positions not actively training get this boost so  they can 'rest'
-    int recoveryStamina = 10;
+    int recoveryStamina = 20;
 
     public void PrepList()
     {
