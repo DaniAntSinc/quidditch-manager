@@ -161,6 +161,13 @@ public class ManagementSeasonTracker : MonoBehaviour
             if (dayOfSeason == matchDays[placeInList])
             {
                 dayActihitiesText.text = "Match Day";
+            }
+            else
+            {
+                dayActihitiesText.text = "Train";
+            }
+            if (dayOfSeason - 1 == matchDays[placeInList])
+            {
                 matchPreviewMenu.SetActive(true);
                 SetUIForMatchPreview(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[homeTeams[placeInList]].homeStadium);
                 placeInList++;
@@ -168,8 +175,6 @@ public class ManagementSeasonTracker : MonoBehaviour
             else
             {
                 OpenTrainingMenu();
-                dayActihitiesText.text = "Train";
-                //Save Day
                 GameObject.Find("SaveLoad").GetComponent<SaveLoad>().SaveDayOfSeason(dayOfSeason);
             }
 
@@ -180,7 +185,7 @@ public class ManagementSeasonTracker : MonoBehaviour
 
     public void UpdateTextForEndOfDay()
     {
-        dayActihitiesText.text = "End Day";
+        dayActihitiesText.text = "Train";
     }
 
     void SetUIForMatchPreview(SeasonTeam visitor, SeasonTeam home, Stadium stadium)
@@ -273,14 +278,14 @@ public class ManagementSeasonTracker : MonoBehaviour
         //players.RandomWeather(teamsInLeague[homeTeams[placeInList]].homeStadium);
 
         //might be a hacky way, but currently it is pulling the wrong team from the match preview to the actual game being played
-        matchStart.BeginMatch(teamsInLeague[visitorTeams[placeInList - 1]], teamsInLeague[homeTeams[placeInList - 1]], teamsInLeague[homeTeams[placeInList - 1]].homeStadium);
+        matchStart.BeginMatch(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[homeTeams[placeInList]].homeStadium);
         managementMenu.SetActive(false);
         ExhibOrSeason.SetActive(false);
         TeamSelection.SetActive(false);
         playoffMode.SetActive(false);
         startingMenu.SetActive(true);
         matchPreviewMenu.SetActive(false);
-        CalculateGameRevenue(teamsInLeague[visitorTeams[placeInList - 1]], teamsInLeague[homeTeams[placeInList - 1]], teamsInLeague[homeTeams[placeInList - 1]].homeStadium);
+        CalculateGameRevenue(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[homeTeams[placeInList]].homeStadium);
     }
 
     public void CalculateGameRevenue(SeasonTeam visitor, SeasonTeam home, Stadium stadium)

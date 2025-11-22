@@ -245,6 +245,13 @@ public class Management : MonoBehaviour
         saveLoad.AssignSeasonTeamToSaveLoad(playersTeam.GetComponent<SeasonTeam>());
         saveLoad.teamBudget = teamBudget;
         saveLoad.SaveLineUp();
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[0].transform.SetSiblingIndex(0);
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[1].transform.SetSiblingIndex(1);
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().chasers[2].transform.SetSiblingIndex(2);
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[0].transform.SetSiblingIndex(3);
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().beaters[1].transform.SetSiblingIndex(4);
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().keeper[0].transform.SetSiblingIndex(5);
+        GameObject.Find("Players_Team").GetComponent<SeasonTeam>().seeker[0].transform.SetSiblingIndex(6);
         //Assign Team overview players
         playerTeamCreationLineUpText[0].text = playersTeam.GetComponent<SeasonTeam>().keeper[0].Name;
         playerTeamCreationLineUpText[1].text = playersTeam.GetComponent<SeasonTeam>().beaters[0].Name;
