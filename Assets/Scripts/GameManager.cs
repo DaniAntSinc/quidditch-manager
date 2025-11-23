@@ -1992,7 +1992,7 @@ public class GameManager : MonoBehaviour
         if (optionsMenu)
         {
             CheckWeather();
-            optionsTab.transform.position = new Vector3(-0.1282990276813507f, -38.422922134399415f, 90);
+            optionsTab.transform.position = new Vector3(-0.1282990276813507f, -33.422922134399415f, 90);
             for (int i = 0; i < exhibitionOptions.Length; i++)
             {
                 exhibitionOptions[i].SetActive(true);
