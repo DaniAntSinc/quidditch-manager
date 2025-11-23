@@ -234,6 +234,8 @@ public class GameManager : MonoBehaviour
     public float gameSpeedMultiplier = 1;
     public TMP_Text gameSpeedText;
     public GameObject halfToggle, oneToggle, oneHalfToggle, twoToggle, speedToggle;
+
+    public string managementModeStadiumName;
     private void Start()
     {
         players = GameObject.Find("Players").GetComponent<Players>();
@@ -424,7 +426,54 @@ public class GameManager : MonoBehaviour
     {
         teamsUI.SetActive(false);
         ClearStats();
-        players.BeginMatch(seasonTeams[visitorInt], seasonTeams[homeInt], stadiumList[stadiumSelected]);
+
+        if (hogwartsSeason)
+            players.BeginMatch(seasonTeams[visitorInt], seasonTeams[homeInt], stadiumList[0]);
+        else if (britishIslesSeason)
+        {
+            for (int i = 0; i < seasonTeams.Length; i++)
+            {
+                if (seasonTeams[i].team == players.team1)
+                {
+                    players.BeginMatch(seasonTeams[visitorInt], seasonTeams[homeInt], seasonTeams[i].homeStadium);
+                    print("TEMP:  " + players.team1);
+                    print("TEMP:  " + seasonTeams[i].homeStadium);
+                }
+            }
+        }
+        else if (worldCupSeason)
+        {
+            for (int i = 0; i < seasonTeams.Length; i++)
+            {
+                if (seasonTeams[i].team == players.team1)
+                    players.BeginMatch(seasonTeams[visitorInt], seasonTeams[homeInt], seasonTeams[i].homeStadium);
+            }
+        }
+        else if (playoffsAreActive)
+        {
+            for (int i = 0; i < seasonTeams.Length; i++)
+            {
+                if (seasonTeams[i].team == players.team1)
+                    players.BeginMatch(seasonTeams[visitorInt], seasonTeams[homeInt], seasonTeams[i].homeStadium);
+            }
+        }
+        else if (managementMode)
+        {
+           // players.BeginMatch(seasonTeams[visitorInt], seasonTeams[homeInt], seasonTeams[homeInt].homeStadium);
+           // print("HOME:  " + seasonTeams[homeInt].homeStadium + "VIS:  " + seasonTeams[visitorInt].homeStadium);
+           /* for (int i = 0; i < seasonTeams.Length; i++)
+            {
+                if (seasonTeams[i].team == players.team1)
+                {
+                    players.BeginMatch(seasonTeams[visitorInt], seasonTeams[homeInt], GameObject.Find("Players_Team").GetComponent<SeasonTeam>().homeStadium); 
+                }
+                else
+                   
+            }*/
+            //go here for mgmt
+        }
+        else
+           players.BeginMatch(seasonTeams[visitorInt], seasonTeams[homeInt], stadiumList[stadiumSelected]);
     }
 
     public void StartGame(SeasonTeam visitor, SeasonTeam home, Stadium stadium)
@@ -998,14 +1047,48 @@ public class GameManager : MonoBehaviour
         matchStatsMenu.SetActive(true);
         matchMomentumMenu.SetActive(false);
         if (managementMode)
+        {
             managementStatsButton.SetActive(true);
+        }         
 
         TimeSpan timeSpan = TimeSpan.FromSeconds(duration);
         durationText.text = string.Format("{0:D2}:{1:D2}:{2:D2}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
 
         team1NameText.text = players.team1;
         team2NameText.text = players.team2;
-        stadium.text = stadiumList[stadiumSelected].stadiumName;
+
+        if (hogwartsSeason)
+            stadium.text = stadiumList[0].stadiumName.ToString();
+        else if (britishIslesSeason)
+        {
+            for (int i = 0; i < seasonTeams.Length; i++)
+            {
+                if (seasonTeams[i].team == players.team1)
+                    stadium.text = seasonTeams[i].homeStadium.stadiumName.ToString();
+            }
+        }
+        else if (worldCupSeason)
+        {
+            for (int i = 0; i < seasonTeams.Length; i++)
+            {
+                if (seasonTeams[i].team == players.team1)
+                    stadium.text = seasonTeams[i].homeStadium.stadiumName.ToString();
+            }
+        }
+        else if (playoffsAreActive)
+        {
+            for (int i = 0; i < seasonTeams.Length; i++)
+            {
+                if (seasonTeams[i].team == players.team1)
+                    stadium.text = seasonTeams[i].homeStadium.stadiumName.ToString();
+            }
+        }
+        else if (managementMode)
+        {
+            stadium.text = managementModeStadiumName;
+        }
+        else
+            stadium.text = stadiumList[stadiumSelected].stadiumName;
 
         team1chaserName1Text.text = players.team1ChasersNames[0];
         team1chaserName2Text.text = players.team1ChasersNames[1];
@@ -1140,16 +1223,16 @@ public class GameManager : MonoBehaviour
     {
         homeSelected = true;
         //set up homestadium
-        if (!hogwartsSeason && !britishIslesSeason && !worldCupSeason)
+        if (!hogwartsSeason && !britishIslesSeason && !worldCupSeason && !playoffsAreActive && !managementMode)
         {
             for (int i = 0; i < stadiumGO.Length; i++)
             {
                 stadiumGO[i].transform.GetChild(1).gameObject.SetActive(false);
             }
 
-            stadiumGO[seasonTeams[homeInt].GetComponent<SeasonTeam>().homeStadiumNum].transform.GetChild(1).gameObject.SetActive(true);
+            stadiumGO[seasonTeams[visitorInt].GetComponent<SeasonTeam>().homeStadiumNum].transform.GetChild(1).gameObject.SetActive(true);
         }
-        stadiumSelected = seasonTeams[homeInt].GetComponent<SeasonTeam>().homeStadiumNum;
+        stadiumSelected = seasonTeams[visitorInt].GetComponent<SeasonTeam>().homeStadiumNum;
         CheckWeather();
         homeTeam = homeInt;
         players.SetLineUp(seasonTeams[visitorInt], seasonTeams[homeInt]);
@@ -1530,8 +1613,9 @@ public class GameManager : MonoBehaviour
         playoffMenu.SetActive(false);
         exhibSeasonMenu.SetActive(false);
 
-        players.RandomWeather(seasonTeams[homeTeam].homeStadium);
-        players.BeginMatch(seasonTeams[visitorTeam], seasonTeams[homeTeam], seasonTeams[homeTeam].homeStadium);
+        players.RandomWeather(seasonTeams[visitorTeam].homeStadium);
+
+        players.BeginMatch(seasonTeams[visitorTeam], seasonTeams[homeTeam], seasonTeams[visitorTeam].homeStadium);
 
         spotter.SetActive(false);
     }
@@ -1632,8 +1716,8 @@ public class GameManager : MonoBehaviour
 
         ClearStats();
 
-        players.RandomWeather(seasonTeams[homeTeam].homeStadium);
-        players.BeginMatch(seasonTeams[visitorTeam], seasonTeams[homeTeam], seasonTeams[homeTeam].homeStadium);
+        players.RandomWeather(seasonTeams[visitorTeam].homeStadium);
+        players.BeginMatch(seasonTeams[visitorTeam], seasonTeams[homeTeam], seasonTeams[visitorTeam].homeStadium);
     }
 
     public void NextPlayoffGame(SeasonTeam visitor, SeasonTeam home)
@@ -1642,8 +1726,8 @@ public class GameManager : MonoBehaviour
 
         ClearStats();
 
-        players.RandomWeather(home.homeStadium);
-        players.BeginMatch(visitor, home, home.homeStadium);
+        players.RandomWeather(visitor.homeStadium);
+        players.BeginMatch(visitor, home, visitor.homeStadium);
     }
     //turn button on correctly
     public void OpenManagementMenuAfterAGame()

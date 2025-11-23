@@ -170,7 +170,7 @@ public class ManagementSeasonTracker : MonoBehaviour
             {
                 matchPreviewMenu.SetActive(true);
                 SetUIForMatchPreview(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[homeTeams[placeInList]].homeStadium);
-                placeInList++;
+                placeInList++; 
             }
             else
             {
@@ -272,7 +272,7 @@ public class ManagementSeasonTracker : MonoBehaviour
         hChaser3.text = home.chasers[2].Name;
         hSeeker.text = home.seeker[0].Name;
 
-        playersManager.RandomWeather(home.homeStadium);
+        playersManager.RandomWeather(visitor.homeStadium);
     }
     public void UpdateWeatherText(string weatherText)
     {
@@ -285,14 +285,15 @@ public class ManagementSeasonTracker : MonoBehaviour
         //players.RandomWeather(teamsInLeague[homeTeams[placeInList]].homeStadium);
 
         //might be a hacky way, but currently it is pulling the wrong team from the match preview to the actual game being played
-        matchStart.BeginMatch(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[homeTeams[placeInList]].homeStadium);
+        GameObject.Find("Main Camera").GetComponent<GameManager>().managementModeStadiumName = teamsInLeague[visitorTeams[placeInList]].homeStadium.stadiumName.ToString();
+        matchStart.BeginMatch(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[visitorTeams[placeInList]].homeStadium);
         managementMenu.SetActive(false);
         ExhibOrSeason.SetActive(false);
         TeamSelection.SetActive(false);
         playoffMode.SetActive(false);
         startingMenu.SetActive(true);
         matchPreviewMenu.SetActive(false);
-        CalculateGameRevenue(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[homeTeams[placeInList]].homeStadium);
+        CalculateGameRevenue(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[visitorTeams[placeInList]].homeStadium);
     }
 
     public void CalculateGameRevenue(SeasonTeam visitor, SeasonTeam home, Stadium stadium)

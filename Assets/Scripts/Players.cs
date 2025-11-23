@@ -481,6 +481,7 @@ public class Players : MonoBehaviour
         if (home.homeStadium == stadium)
             homeTeamhomeField += homeField;
 
+        print("Temp for Verification: " + stadium.stadiumName);
         /*if (gameManager.stadiumSelected == gameManager.seasonTeams[gameManager.visitorInt].GetComponent<SeasonTeam>().homeStadiumNum)
             visitorTeamhomeField += homeField;
         if (gameManager.stadiumSelected == gameManager.seasonTeams[gameManager.homeInt].GetComponent<SeasonTeam>().homeStadiumNum)

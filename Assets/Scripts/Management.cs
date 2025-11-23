@@ -122,7 +122,9 @@ public class Management : MonoBehaviour
     public void NewTeam()
     {
         if (GameObject.Find("Players_Team"))
+        {
             Destroy(GameObject.Find("Players_Team"));
+        }
         saveLoad.ClearTeam();
         gameManager.managementMode = true;
         playersTeam = new GameObject("Players_Team");
