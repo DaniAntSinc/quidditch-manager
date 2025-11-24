@@ -19,7 +19,7 @@ public class CalendarDayInfo : MonoBehaviour
             if (visitorList[matchDays.IndexOf(day)] == 9)
             {
                 int holder = homeList[matchDays.IndexOf(day)];
-                matchDetails.transform.GetChild(1).GetComponent<TMP_Text>().text = "at";
+                matchDetails.transform.GetChild(1).GetComponent<TMP_Text>().text = "vs";
                 matchDetails.transform.Find("Image").GetChild(0).GetComponent<Image>().sprite = GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[holder].logo;
                 matchDetails.transform.GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[holder].team;
                 matchDetails.transform.GetChild(3).GetComponent<TMP_Text>().text = GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[holder].win + " - " + GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[holder].loss;
@@ -27,7 +27,7 @@ public class CalendarDayInfo : MonoBehaviour
             else
             {
                 int holder = visitorList[matchDays.IndexOf(day)];
-                matchDetails.transform.GetChild(1).GetComponent<TMP_Text>().text = "vs.";
+                matchDetails.transform.GetChild(1).GetComponent<TMP_Text>().text = "at";
                 matchDetails.transform.Find("Image").GetChild(0).GetComponent<Image>().sprite = GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[holder].logo;
                 matchDetails.transform.GetChild(2).GetComponent<TMP_Text>().text = GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[holder].team;
                 matchDetails.transform.GetChild(3).GetComponent<TMP_Text>().text = GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[holder].win + " - " + GameObject.Find("ManagementSeasonTracker").GetComponent<ManagementSeasonTracker>().teamsInLeague[holder].loss;

@@ -169,8 +169,7 @@ public class ManagementSeasonTracker : MonoBehaviour
             if (dayOfSeason - 1 == matchDays[placeInList])
             {
                 matchPreviewMenu.SetActive(true);
-                SetUIForMatchPreview(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[homeTeams[placeInList]].homeStadium);
-                placeInList++; 
+                SetUIForMatchPreview(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[visitorTeams[placeInList]].homeStadium);
             }
             else
             {
@@ -294,11 +293,12 @@ public class ManagementSeasonTracker : MonoBehaviour
         startingMenu.SetActive(true);
         matchPreviewMenu.SetActive(false);
         CalculateGameRevenue(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[visitorTeams[placeInList]].homeStadium);
+        placeInList++;
     }
 
     public void CalculateGameRevenue(SeasonTeam visitor, SeasonTeam home, Stadium stadium)
     {
-        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().homeStadium != home.homeStadium)
+        if (GameObject.Find("Players_Team").GetComponent<SeasonTeam>().homeStadium != visitor.homeStadium)
         {
             ticketSales = 0;
             concessions = 0;
