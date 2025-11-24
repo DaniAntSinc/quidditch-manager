@@ -36,13 +36,13 @@ public class CalendarDayInfo : MonoBehaviour
         else
             matchDetails.SetActive(false);
 
-        if (day < 28)
+        if (day < 28) //mar
             date.text = (day + 1).ToString();
-        else if (day >= 28 && day < 57)
-            date.text = (day - 28).ToString();
-        else if (day >= 57 && day < 86)
-            date.text = (day - 57).ToString();
-        else if (day >= 86)
-            date.text = (day - 86).ToString();
+        else if (day >= 28 && day < 56) //apr
+            date.text = (day - 27).ToString();
+        else if (day >= 56 && day < 84) //may
+            date.text = (day - 55).ToString();
+        else if (day >= 84) //june
+            date.text = (day - 83).ToString();
     }
 }

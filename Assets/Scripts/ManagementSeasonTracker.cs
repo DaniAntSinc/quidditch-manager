@@ -145,7 +145,7 @@ public class ManagementSeasonTracker : MonoBehaviour
 
     void CheckSchedule()
     {
-        if (dayOfSeason >= 100)
+        if (dayOfSeason >= 104)
         {
             //end of season
             GameObject.Find("ManagementAISchedule").GetComponent<ManagementAISchedule>().CheckEndOfSeasonStatus();
@@ -352,21 +352,21 @@ public class ManagementSeasonTracker : MonoBehaviour
                 month.text = "April";
                 for (int i = 0; i < aprCal.Length; i++)
                 {
-                    aprCal[i].GetComponent<CalendarDayInfo>().DateCheck(i + 29, matchDays, visitorTeams, homeTeams);
+                    aprCal[i].GetComponent<CalendarDayInfo>().DateCheck(i + 28, matchDays, visitorTeams, homeTeams);
                 }
                 break;
             case 2:
                 month.text = "May";
                 for (int i = 0; i < mayCal.Length; i++)
                 {
-                    mayCal[i].GetComponent<CalendarDayInfo>().DateCheck(i + 58, matchDays, visitorTeams, homeTeams);
+                    mayCal[i].GetComponent<CalendarDayInfo>().DateCheck(i + 56, matchDays, visitorTeams, homeTeams);
                 }
                 break;
             case 3:
                 month.text = "June";
                 for (int i = 0; i < juneCal.Length; i++)
                 {
-                    juneCal[i].GetComponent<CalendarDayInfo>().DateCheck(i + 87, matchDays, visitorTeams, homeTeams);
+                    juneCal[i].GetComponent<CalendarDayInfo>().DateCheck(i + 84, matchDays, visitorTeams, homeTeams);
                 }
                 break;
             default:
