@@ -311,20 +311,20 @@ public class ManagementSeasonTracker : MonoBehaviour
         {
             leagueDistribution = 2600;
             //calculate capacity
-            if (dayOfSeason < 10)
-            {
-                thisGameCapacity = Mathf.RoundToInt(stadium.capacity * Random.Range(.85f, 1));
-            }
-            else if (home.win / (home.win + home.loss + 1) > 0.75f)
+            if (dayOfSeason < 5)
             {
                 thisGameCapacity = Mathf.RoundToInt(stadium.capacity * Random.Range(.75f, 1));
             }
+            else if (home.win / (home.win + home.loss + 1) > 0.75f)
+            {
+                thisGameCapacity = Mathf.RoundToInt(stadium.capacity * Random.Range(.6f, .9f));
+            }
             else if (home.win / (home.win + home.loss + 1) > 0.4f && home.win / (home.win + home.loss + 1) <= 0.75f)
             {
-                thisGameCapacity = Mathf.RoundToInt(stadium.capacity * Random.Range(.5f, .75f));
+                thisGameCapacity = Mathf.RoundToInt(stadium.capacity * Random.Range(.4f, .7f));
             }
             else
-                thisGameCapacity = Mathf.RoundToInt(stadium.capacity * Random.Range(.3f, .5f));
+                thisGameCapacity = Mathf.RoundToInt(stadium.capacity * Random.Range(.25f, .5f));
 
             //ticket sales
             ticketSales = thisGameCapacity * Random.Range(1, 3);
