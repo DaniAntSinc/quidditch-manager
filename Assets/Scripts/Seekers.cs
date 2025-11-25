@@ -101,7 +101,7 @@ public class Seekers : MonoBehaviour
                         int randomChance = Random.Range(0, 100);
                         if (randomChance <= (players.team1SeekerReach + players.team1SeekerSight))
                         {
-                            StartCoroutine(waitForUpdate(players.team1Seeker + " has caught the Snitch!", (0.01f * gameManager.gameSpeedMultiplier)));
+                            StartCoroutine(waitForUpdate(players.team1Seeker + " has caught the Snitch!", (0.1f * gameManager.gameSpeedMultiplier)));
                             Team1Caught();
                         }
                         else
@@ -116,7 +116,7 @@ public class Seekers : MonoBehaviour
                         int randomChance = Random.Range(0, 100);
                         if (randomChance <= (players.team2SeekerReach + players.team2SeekerSight))
                         {
-                            StartCoroutine(waitForUpdate(players.team2Seeker + " has caught the Snitch!", (0.01f * gameManager.gameSpeedMultiplier)));
+                            StartCoroutine(waitForUpdate(players.team2Seeker + " has caught the Snitch!", (0.1f * gameManager.gameSpeedMultiplier)));
                             Team2Caught();
                         }
                         else
