@@ -461,15 +461,15 @@ public class GameManager : MonoBehaviour
         {
            // players.BeginMatch(seasonTeams[visitorInt], seasonTeams[homeInt], seasonTeams[homeInt].homeStadium);
            // print("HOME:  " + seasonTeams[homeInt].homeStadium + "VIS:  " + seasonTeams[visitorInt].homeStadium);
-           /* for (int i = 0; i < seasonTeams.Length; i++)
+            for (int i = 0; i < seasonTeams.Length; i++)
             {
                 if (seasonTeams[i].team == players.team1)
                 {
                     players.BeginMatch(seasonTeams[visitorInt], seasonTeams[homeInt], GameObject.Find("Players_Team").GetComponent<SeasonTeam>().homeStadium); 
                 }
-                else
-                   
-            }*/
+                if(seasonTeams[i].team == players.team1)
+                    players.BeginMatch(seasonTeams[visitorInt], seasonTeams[homeInt], seasonTeams[i].homeStadium);
+            }
             //go here for mgmt
         }
         else

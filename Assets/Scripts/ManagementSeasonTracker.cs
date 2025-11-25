@@ -282,7 +282,6 @@ public class ManagementSeasonTracker : MonoBehaviour
     {
         GameObject.Find("Main Camera").GetComponent<GameManager>().ClearStats();
         //players.RandomWeather(teamsInLeague[homeTeams[placeInList]].homeStadium);
-
         //might be a hacky way, but currently it is pulling the wrong team from the match preview to the actual game being played
         GameObject.Find("Main Camera").GetComponent<GameManager>().managementModeStadiumName = teamsInLeague[visitorTeams[placeInList]].homeStadium.stadiumName.ToString();
         matchStart.BeginMatch(teamsInLeague[visitorTeams[placeInList]], teamsInLeague[homeTeams[placeInList]], teamsInLeague[visitorTeams[placeInList]].homeStadium);
