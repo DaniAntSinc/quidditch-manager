@@ -31,12 +31,12 @@ public class Seekers : MonoBehaviour
 
     public void StartGame()
     {
-        seeker1.transform.position = new Vector3(35, 25, 37.5f);
-        seeker2.transform.position = new Vector3(65, 25, 37.5f);
-        team1SeekerPosition.transform.position = new Vector3(35, 25, 37.5f);
-        team2SeekerPosition.transform.position = new Vector3(65, 25, 37.5f);
-        snitch.transform.position = new Vector3(0, 0, 0);
-        snitchLocation.transform.position = new Vector3(0, 0, 0);
+        seeker1.transform.position = new Vector3(0, 25, 0f);
+        seeker2.transform.position = new Vector3(0, 25, 0f);
+        team1SeekerPosition.transform.position = new Vector3(0, 25, 0f);
+        team2SeekerPosition.transform.position = new Vector3(0, 25, 0f);
+        snitch.transform.position = new Vector3(Random.Range(-80, 80), Random.Range(0, 50), Random.Range(-80, 80));
+        snitchLocation.transform.position = new Vector3(Random.Range(-80, 80), Random.Range(0, 50), Random.Range(-80, 80));
     }
     void Update()
     {
@@ -184,7 +184,7 @@ public class Seekers : MonoBehaviour
     public void EstablishSnitchPosition()
     {
         speed = Random.Range(1, 9) * gameManager.gameSpeedMultiplier;
-        snitchLocation.transform.position = new Vector3(Random.Range(-30, 30), Random.Range(0, 40), Random.Range(-50, 50));
+        snitchLocation.transform.position = new Vector3(Random.Range(-80, 80), Random.Range(0, 50), Random.Range(-80, 80));
     }
 
     public void EstablishSeeker1Position()

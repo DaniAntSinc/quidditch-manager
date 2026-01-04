@@ -11,7 +11,7 @@ public class StadiumButtonSelection : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine("WaitForASecond");
+        stadiumNameField.text = GameObject.Find("Main Camera").GetComponent<GameManager>().stadiumList[itemInStadiumList].stadiumName.ToString();
     }
 
     public void StadiumSelected()
@@ -25,20 +25,5 @@ public class StadiumButtonSelection : MonoBehaviour
         print(gameManager.stadiumList[gameManager.stadiumSelected].stadiumName);
 
         gameManager.CheckWeather();   
-    }
-
-    IEnumerator WaitForASecond()
-    {
-        yield return new WaitForSeconds(0.3f);
-
-        /*for (int i = 0; i < gameManager.stadiumList.Length; i++)
-        {
-            print(gameManager.stadiumList[i]);
-        }
-        */
-
-        // print(gameManager.stadiumList[itemInStadiumList].stadiumName.ToString());
-        // stadiumNameField.text = gameManager.stadiumList[itemInStadiumList].stadiumName.ToString();
-        stadiumNameField.text = GameObject.Find("Main Camera").GetComponent<GameManager>().stadiumList[itemInStadiumList].stadiumName.ToString();
     }
 }

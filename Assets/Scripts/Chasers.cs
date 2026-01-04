@@ -80,7 +80,7 @@ public class Chasers : MonoBehaviour
 
             if (team1Chaser1Stunned)
             {
-                print("Chaser Down 1 ");
+             //   print("Chaser Down 1 ");
                 gameManager.visitorChaser1icon.SetActive(false);
                 team1Chaser1Cooldown -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                 if (team1Chaser1Cooldown <= 0)
@@ -94,7 +94,7 @@ public class Chasers : MonoBehaviour
 
             if (team1Chaser2Stunned)
             {
-                print("Chaser Down 2 ");
+              //  print("Chaser Down 2 ");
                 gameManager.visitorChaser2icon.SetActive(false);
                 team1Chaser2Cooldown -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                 if (team1Chaser2Cooldown <= 0)
@@ -108,7 +108,7 @@ public class Chasers : MonoBehaviour
 
             if (team1Chaser3Stunned)
             {
-                print("Chaser Down 3 ");
+              //  print("Chaser Down 3 ");
                 gameManager.visitorChaser3icon.SetActive(false);
                 team1Chaser3Cooldown -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                 if (team1Chaser3Cooldown <= 0)
@@ -122,7 +122,7 @@ public class Chasers : MonoBehaviour
 
             if (team2Chaser1Stunned)
             {
-                print("Chaser Down 4 ");
+              //  print("Chaser Down 4 ");
                 gameManager.homeChaser1icon.SetActive(false);
                 team2Chaser1Cooldown -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                 if (team2Chaser1Cooldown <= 0)
@@ -136,7 +136,7 @@ public class Chasers : MonoBehaviour
 
             if (team2Chaser2Stunned)
             {
-                print("Chaser Down 5 ");
+              //  print("Chaser Down 5 ");
                 gameManager.homeChaser2icon.SetActive(false);
                 team2Chaser2Cooldown -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                 if (team2Chaser2Cooldown <= 0)
@@ -150,7 +150,7 @@ public class Chasers : MonoBehaviour
 
             if (team2Chaser3Stunned)
             {
-                print("Chaser Down 6 ");
+               // print("Chaser Down 6 ");
                 gameManager.homeChaser3icon.SetActive(false);
                 team2Chaser3Cooldown -= Time.deltaTime * gameManager.gameSpeedMultiplier;
                 if (team2Chaser3Cooldown <= 0)

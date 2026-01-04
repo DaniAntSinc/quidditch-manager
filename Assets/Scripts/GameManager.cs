@@ -1259,6 +1259,7 @@ public class GameManager : MonoBehaviour
             {
                 weatherButtons[i].SetActive(true);
             }
+            weatherButtons[0].SetActive(false);
             weatherButtons[0].transform.GetChild(2).GetComponent<TMP_Text>().text = "Clear";
             players.RandomWeather(stadiumList[stadiumSelected]);
         }

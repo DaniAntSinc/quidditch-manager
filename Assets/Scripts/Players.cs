@@ -859,6 +859,29 @@ public class Players : MonoBehaviour
             managementSeasonTracker.UpdateWeatherText(gameManager.weatherTextToDisplay);
     }
 
+    public void WRandom()
+    {
+        int randomWeather = Random.Range(0, 4);
+        switch (randomWeather)
+        {
+            case 0:
+                Sunny();
+                break;
+            case 1:
+                Rain();
+                break;
+            case 2:
+                Fog();
+                break;
+            case 3:
+                Snow();
+                break;
+            default:
+                Sunny();
+                break;
+        }
+    }
+
     public void Indoor()
     {
         WeatherReset();
