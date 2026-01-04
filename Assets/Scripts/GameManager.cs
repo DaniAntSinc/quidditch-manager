@@ -670,7 +670,7 @@ public class GameManager : MonoBehaviour
                         StartCoroutine("DelayForAuto");
                     }
                 }
-                else if (seasonGameCount == 83 || seasonGameCount == 84 || seasonGameCount == 85)
+                else if (seasonGameCount == 82 || seasonGameCount == 83 || seasonGameCount == 84 || seasonGameCount == 85)
                 {
                     playoffPageOn = false;
                     TogglePlayoffPage();
